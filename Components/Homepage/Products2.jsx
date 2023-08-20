@@ -1,29 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-function Products({ product, dynamicBtn, setCategory, addToFav }) {
-  // const halfLength = Math.ceil(products.length / 2);
-  // const firstHalf = products.slice(0, halfLength);
+function Products({ products, addToCar }) {
+  const halfLength = Math.ceil(products.length / 2);
+  const firstHalf = products.slice(0, halfLength);
   // filter products by category
+  const dynamicBtn = [
+    "All",
+    ...new Set(products.map((category) => category?.data()?.productcategory)),
+  ];
 
   return (
     <div className="product-session-con">
       <div className="product-main-con">
         {/* <h1>PRODUCTS</h1> */}
-        <form>
-          <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
-            {dynamicBtn.map((category, index) => (
-              <option value={category} key={index}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </form>
+
         {/* PRODUCTS ARRAY */}
 
         <div className="products-con">
-          {product.map((product) => (
+          {firstHalf.map((product) => (
             <Product
               key={product.id}
               id={product.id}
@@ -31,7 +26,7 @@ function Products({ product, dynamicBtn, setCategory, addToFav }) {
               productname={product.data().productname}
               productprice={product.data().productprice}
               productoldprice={product.data().productoldprice}
-              addToFav={addToFav}
+              addToCar={addToCar}
             />
           ))}
         </div>
@@ -48,7 +43,7 @@ function Products({ product, dynamicBtn, setCategory, addToFav }) {
 export default Products;
 
 function Product({
-  addToFav,
+  addToCar,
   id,
   productimages,
   productname,
@@ -103,7 +98,7 @@ function Product({
           {productoldprice && "₦ " + Number(productoldprice).toLocaleString()}
         </p>
       </div>
-      <button className="addto-cart" onClick={(e) => addToFav(e, id)}>
+      <button className="addto-cart" onClick={(e) => addToCar(e, id)}>
         Add to cart
       </button>
     </div>

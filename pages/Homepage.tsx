@@ -17,9 +17,8 @@ import {
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 // components
 import Topbar from "../Components/Topbar";
-import Banner from "../Components/Homepage/Banner";
-// import NewArrivals from "../Components/Homepage/NewArrivals";
 import Products from "../Components/Homepage/Products";
+import Products2 from "../Components/Homepage/Products2";
 import NewsLetter from "../Components/Homepage/NewsLetter";
 import Promo from "../Components/Homepage/Promo";
 import Footer from "../Components/Footer";
@@ -27,17 +26,21 @@ import Modal from "../Components/Modal";
 import Review from "../Components/Homepage/Review";
 import Advert from "../Components/Homepage/Advert";
 import Advantages from "../Components/Advantages";
-import { AuthGuard } from "./api/auth/AuthGuard.";
 import { useRouter } from "next/router";
 import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "./_app";
 
+// typescript
+interface VariableTypes {
+  displayedProducts: any[];
+}
 const Homepage = () => {
   const router = useRouter();
-  const [loginTriger, setLoginTriger] = useState(false);
 
-  // Products from firebase db
-  const [products, setProducts] = useState([]);
+  // get images from firebase db
+  const [loginTriger, setLoginTriger] = useState<boolean>(false);
+  const [products, setProducts] = useState<any[]>([]);
+
   useEffect(() => {
     return onSnapshot(
       query(collection(db, "products"), orderBy("timestamp", "desc")),
@@ -47,22 +50,22 @@ const Homepage = () => {
     );
   }, [router, loginTriger]);
 
-  // ADD TO CART
-
+  // ADD IMAGE TO FAVORITE
   const setCartQty = useContext(CartQuantityContext).setCartQty;
-
-  // add to art
-  const addToCar = async (e, id) => {
+  const addToFav = async (e: { target: { innerHTML: string } }, id: string) => {
     e.target.innerHTML = "Loading ...";
     const productDoc = doc(db, "products", id);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     const triger = await getSessionUser();
 
+    // check if image exist in favourrite
     if (!triger) {
       return setLoginTriger(true);
     }
-    const productExist = triger?.userCart.find((item) => item.productID === id);
+    const productExist = triger?.userCart.find(
+      (item: { productID: string }) => item.productID === id
+    );
 
     if (
       (productExist && !productExist.productID) ||
@@ -90,31 +93,51 @@ const Homepage = () => {
       return setLoginTriger(true);
     }
   };
-  // console.log(cartBtnLoading);
+
+  // FILTER THE PICTURES
+  const dynamicBtn = [
+    "All",
+    ...new Set(products.map((category) => category?.data()?.productcategory)),
+  ];
+  const [category, setCategory] = useState<string>("All");
+  // state for products
+  const [product, setProduct] = useState<any[]>(products);
+
+  // filter products based on category
+  useEffect(() => {
+    if (category === "All") {
+      setProduct(products);
+    } else {
+      setProduct(
+        products?.filter((item) => item.data().productcategory === category)
+      );
+    }
+  }, [category, products]);
+
   return (
     <div className="homepage-main-con" style={{ position: "relative" }}>
       {/* TOPBAR */}
-      <Topbar />
-      {/* BANNER */}
+      <Topbar dynamictriger={undefined} triga={undefined} />
 
       {products.length < 1 ? (
         <Loader />
       ) : (
         <>
-          {/* <AuthGuard> */}
-
           <Group position="center"></Group>
           {/* <Banner /> */}
-          <div className="category-con">{/* <h1>CATEGORIES</h1> */}</div>
           <Advert />
-          {/* NEW ARRIVALS */}
-          {/* <NewArrivals /> */}
-          {/* <Advert /> */}
           {/* MAIN PRODUCT */}
-          <Products products={products} addToCar={addToCar} />
+          <Products
+            dynamicBtn={dynamicBtn}
+            product={product}
+            setCategory={setCategory}
+            addToFav={addToFav}
+          />
           <Advert />
+          <Products2 products={products} addToCar={addToFav} />
+
           {/* SUBSCRIBE */}
-          {/* <NewsLetter /> */}
+
           {/* PROMO */}
           <Promo />
           <Advantages />
