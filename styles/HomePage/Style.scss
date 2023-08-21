@@ -197,14 +197,27 @@ $txt-light-blue: #cfe8ff;
     width: 100%;
     max-width: 1500px;
     margin: 0 auto;
-    h1 {
-      color: $txt-blue;
-      margin-left: 5px;
-      margin-top: 20px;
-      font-size: 30px;
 
-      @include responsive(tablet) {
-        font-size: 50px;
+    form {
+      @include flexDisplay(center, center, row);
+      width: 100%;
+      padding: 10px;
+
+      div {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 10px;
+        border: 1px solid $font-light;
+      }
+      label {
+        color: $font-light;
+      }
+      select {
+        width: 100%;
+        height: 40px;
+        padding: 0 5px;
+        outline: none;
+        border: none;
       }
     }
     p {
@@ -218,47 +231,38 @@ $txt-light-blue: #cfe8ff;
       flex-wrap: wrap;
       margin-top: 30px;
       width: 100%;
-      // border: 2px solid red;
+      border: 2px solid red;
 
       @include responsive(bigphone) {
         @include flexDisplay(center, center, row);
-        margin-top: 30px;
       }
 
       .products {
-        @include flexDisplay(space-evenly, center, column);
+        @include flexDisplay(space-between, center, column);
         width: 45%;
-        padding: 5px 5px 0 5px;
-        margin: 10px 5px;
+        margin: 5px;
         border-radius: 5px;
         background: white;
         overflow: hidden;
-        max-width: 180px;
         border-right: 1px solid #f5f3f3;
-        box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368);
-        // border: 2px solid red;
+        box-shadow: -1px -1px 2px #8080805e;
+        border: 2px solid red;
+
         @include responsive(bigphone) {
-          width: 20%;
-          max-width: 200px;
+          width: 32%;
         }
 
         .product-name {
-          // border: 2px solid red;
           margin-top: 3px;
-          // text-align: center;
           font-size: 15px;
-          // line-height: 2;
           color: $font-light;
-          // margin-top: -1px;
+          padding-left: 5px;
           width: 100%;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
           text-transform: lowercase;
-          // font-style: italic;
-          @include responsive(bigphone) {
-            font-size: 15px;
-          }
+
           @include responsive(tablet) {
             font-size: 18px;
           }
@@ -282,15 +286,15 @@ $txt-light-blue: #cfe8ff;
           .percentage-off {
             position: absolute;
             z-index: 20;
-            height: 45px;
-            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 12px;
             top: -20px;
-            left: 0px;
-            background: $txt-blue;
+            right: 5px;
+            background: #8080807d;
+            backdrop-filter: blur(10px);
             color: white;
             text-align: center;
             padding: 3px;
-            font-size: 12px;
+            font-size: 22px;
           }
           @include responsive(phone) {
             height: 200px;
@@ -325,30 +329,30 @@ $txt-light-blue: #cfe8ff;
           }
         }
 
-        .price {
+        .likenshare {
           @include flexDisplay(space-between, center, row);
           width: 100%;
           // border: 2px solid red;
           // height: 30px;
           // margin-top: 5px;
-          font-size: 15px;
+          font-size: 25px;
+          padding: 2px;
 
-          .product-price {
-            // border: 2px solid red;
-            text-align: center;
-            // line-height: 1.5;
-            margin-top: 5px;
-            color: $bg-dark-gray;
-          }
-
-          .product-oldprice {
-            text-align: center;
-            // line-height: 1.5;
-            margin-top: 5px;
-            font-size: 12px;
-            color: $font-light;
-            font-style: italic;
-            text-decoration: line-through;
+          span {
+            @include flexDisplay(center, center, column);
+            // border: 2px solid #2b00ff;
+            position: relative;
+            b {
+              // border: 2px solid red;
+              font-weight: normal;
+              font-size: 12px;
+              // position: absolute;
+              margin-top: -4px;
+              height: 10px;
+            }
+            .likenshareicon {
+              cursor: pointer;
+            }
           }
         }
 
@@ -358,11 +362,9 @@ $txt-light-blue: #cfe8ff;
           margin: 0 auto;
           text-align: center;
           font-size: 15px;
-          line-height: 1.9;
-          border: 0.1px solid $txt-blue;
-          color: $txt-blue;
+
           border-radius: 5px;
-          margin: 5px 0;
+
           cursor: pointer;
           background: white;
           @include flexDisplay(center, center, row);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { logOUT } from "../Services/functions";
-import Cookies from "js-cookie";
+// import { logOUT } from "../Services/functions";
+// import Cookies from "js-cookie";
 // ICONS
 import { SiCoinmarketcap } from "react-icons/si";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -13,9 +13,8 @@ import { getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "../pages/_app";
 import Image from "next/image";
 
-function Topbar({ dynamictriger, triga }) {
+function Topbar({ setSearch }: { setSearch: any }) {
   // SET NAV LIST COLOR WITH PAGE PATH NAME
-  const cartQty = useContext(CartQuantityContext).cartQty;
   const [active, setActive] = useState(0);
   const router = useRouter();
 
@@ -44,13 +43,13 @@ function Topbar({ dynamictriger, triga }) {
     async function fetchSessionUser() {
       const userData = await getSessionUser();
       if (userData && userData.user) {
-        setSession(userData);
+        // setSession(userData);
         setName(userData?.user?.username);
         setCartLength(userData?.user.cart);
       }
     }
     fetchSessionUser();
-  }, [router, triga, dynamictriger]);
+  }, [router]);
   // console.log(session.user.position);
 
   return (
@@ -69,7 +68,11 @@ function Topbar({ dynamictriger, triga }) {
           </Link>
         </div>
         <form>
-          <input type="text" placeholder="Search by name" />
+          <input
+            type="text"
+            placeholder="Search by name"
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </form>
         {/* cart and user icon */}
         <div className="topbar-top-con-right">

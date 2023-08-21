@@ -18,22 +18,17 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 // components
 import Topbar from "../Components/Topbar";
 import Products from "../Components/Homepage/Products";
-import Products2 from "../Components/Homepage/Products2";
-import NewsLetter from "../Components/Homepage/NewsLetter";
-import Promo from "../Components/Homepage/Promo";
-import Footer from "../Components/Footer";
+
 import Modal from "../Components/Modal";
-import Review from "../Components/Homepage/Review";
+
 import Advert from "../Components/Homepage/Advert";
-import Advantages from "../Components/Advantages";
+
 import { useRouter } from "next/router";
 import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "./_app";
 
 // typescript
-interface VariableTypes {
-  displayedProducts: any[];
-}
+
 const Homepage = () => {
   const router = useRouter();
 
@@ -100,9 +95,18 @@ const Homepage = () => {
     ...new Set(products.map((category) => category?.data()?.productcategory)),
   ];
   const [category, setCategory] = useState<string>("All");
-  // state for products
+  // state for images
   const [product, setProduct] = useState<any[]>(products);
 
+  // USING SEARCH BAR TO FILTER
+  const [search, setSearch] = useState<any>("");
+  // splite images into 3  const length = array.length;
+  const length = product.length;
+  const third = Math.ceil(length / 3);
+
+  const firstThird = product.slice(0, third);
+  const secondThird = product.slice(third, 2 * third);
+  const lastThird = product.slice(2 * third);
   // filter products based on category
   useEffect(() => {
     if (category === "All") {
@@ -117,8 +121,11 @@ const Homepage = () => {
   return (
     <div className="homepage-main-con" style={{ position: "relative" }}>
       {/* TOPBAR */}
-      <Topbar dynamictriger={undefined} triga={undefined} />
-
+      <Topbar
+        // dynamictriger={dynamictriger}
+        // triga={triga}
+        setSearch={setSearch}
+      />
       {products.length < 1 ? (
         <Loader />
       ) : (
@@ -132,23 +139,12 @@ const Homepage = () => {
             product={product}
             setCategory={setCategory}
             addToFav={addToFav}
+            search={search}
           />
-          <Advert />
-          <Products2 products={products} addToCar={addToFav} />
-
-          {/* SUBSCRIBE */}
-
-          {/* PROMO */}
-          <Promo />
-          <Advantages />
-          {/* REVIEWS */}
-          <Review />
-          {/* <Advert /> */}
-          {/* FOOTER */}
-          <Footer />
           {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
         </>
       )}
+      
     </div>
   );
 };
