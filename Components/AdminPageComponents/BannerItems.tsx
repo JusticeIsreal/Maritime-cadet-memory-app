@@ -105,7 +105,7 @@ function StoreItemsIndividual({
         </td>
         <td style={{ width: "10%", margin: "5px" }}>{bannercategory}</td>
         <td style={{ width: "40%", margin: "5px" }}>
-          {bannerdescription.substring(0, 70)} . . .
+          {bannerdescription?.substring(0, 70)} . . .
         </td>
         <td
           style={{

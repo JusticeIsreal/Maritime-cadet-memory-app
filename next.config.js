@@ -11,6 +11,7 @@ module.exports = withPWA({
       "lh3.googleusercontent.com",
       "firebasestorage.googleapis.com",
       "google.com",
+      "lh3.googleusercontent.com",
     ],
   },
 });

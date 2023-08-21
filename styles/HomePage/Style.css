@@ -184,22 +184,74 @@
     width: 32%;
   }
 }
-.product-session-con .product-main-con .products-con .products .poster-name {
-  width: 100%;
-  line-height: 1;
-  padding: 2px 4px;
+.product-session-con .product-main-con .products-con .products .main-poster-con {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
 }
-.product-session-con .product-main-con .products-con .products .poster-name span {
-  font-weight: 600;
+.product-session-con .product-main-con .products-con .products .poster-name {
+  width: 100%;
+  line-height: 1;
+  padding: 2px 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
 }
-.product-session-con .product-main-con .products-con .products .poster-name i {
+.product-session-con .product-main-con .products-con .products .poster-name .profile-img {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 2px solid red;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products .poster-name .profile-img {
+    width: 50px;
+    height: 50px;
+  }
+}
+.product-session-con .product-main-con .products-con .products .poster-name .profile-img .img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.product-session-con .product-main-con .products-con .products .poster-name .profile-name {
+  margin-left: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products .poster-name .profile-name {
+    margin-left: 4px;
+  }
+}
+.product-session-con .product-main-con .products-con .products .poster-name .profile-name span {
+  font-weight: 600;
+  color: #444;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products .poster-name .profile-name span {
+    font-size: 20px;
+  }
+}
+.product-session-con .product-main-con .products-con .products .poster-name .profile-name i {
   font-style: normal;
-  font-size: 14px;
+  font-size: 10px;
   color: #666;
+}
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products .poster-name .profile-name i {
+    font-size: 15px;
+  }
 }
 .product-session-con .product-main-con .products-con .products .share-btn {
   position: absolute;
@@ -272,15 +324,9 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  padding: 0 2px;
+  padding: 5px;
   color: #666;
   margin-top: 3px;
-  border-top: 0.1px solid #666;
-}
-@media only screen and (min-width: 768px) {
-  .product-session-con .product-main-con .products-con .products .likenshare {
-    padding: 5px;
-  }
 }
 .product-session-con .product-main-con .products-con .products .likenshare span {
   display: flex;
@@ -292,8 +338,8 @@
 .product-session-con .product-main-con .products-con .products .likenshare span sub {
   font-weight: normal;
   font-size: 10px;
-  margin-bottom: -1px;
-  height: 10px;
+  margin-top: 3px;
+  height: 6px;
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products .likenshare span sub {
@@ -308,6 +354,17 @@
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products .likenshare .likenshareicon {
     font-size: 35px;
+  }
+}
+.product-session-con .product-main-con .products-con .products .likenshare .likenshareicon .like-red {
+  animation: like 0.2s linear;
+}
+@keyframes like {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 .product-session-con .product-main-con .products-con .products .likenshare .comment {

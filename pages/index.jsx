@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Homepage from "./Homepage";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import {
   addDoc,
@@ -68,7 +68,7 @@ export default function Home() {
       </Head>
       <main className="app-main-con">
         {/* HOOME PAE */}
-
+        {/* <button onClick={signIn}>out</button> */}
         <Homepage />
       </main>
     </section>

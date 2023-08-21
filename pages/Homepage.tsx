@@ -8,6 +8,7 @@ import { Blockquote } from "@mantine/core";
 import { db, storage } from "../Firebase";
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   onSnapshot,
@@ -26,16 +27,20 @@ import Advert from "../Components/Homepage/Advert";
 import { useRouter } from "next/router";
 import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "./_app";
+import { useSession } from "next-auth/react";
 
 // typescript
 
 const Homepage = () => {
   const router = useRouter();
-
+  // get sesion detail
+  const { data: session } = useSession();
   // get images from firebase db
   const [loginTriger, setLoginTriger] = useState<boolean>(false);
   const [products, setProducts] = useState<any[]>([]);
-
+  // likes state
+  const [likes, setLikes] = useState([]);
+  const [hasLikes, setHasLikes] = useState(false);
   useEffect(() => {
     return onSnapshot(
       query(collection(db, "products"), orderBy("timestamp", "desc")),
@@ -47,47 +52,6 @@ const Homepage = () => {
 
   // ADD IMAGE TO FAVORITE
   const setCartQty = useContext(CartQuantityContext).setCartQty;
-  const addToFav = async (e: { target: { innerHTML: string } }, id: string) => {
-    e.target.innerHTML = "Loading ...";
-    const productDoc = doc(db, "products", id);
-    const productSnapshot = await getDoc(productDoc);
-    const productData = productSnapshot.data();
-    const triger = await getSessionUser();
-
-    // check if image exist in favourrite
-    if (!triger) {
-      return setLoginTriger(true);
-    }
-    const productExist = triger?.userCart.find(
-      (item: { productID: string }) => item.productID === id
-    );
-
-    if (
-      (productExist && !productExist.productID) ||
-      productExist === undefined
-    ) {
-      const cartResponse = await addToCart(productData, id);
-      if (cartResponse === "SUCCESS") {
-        const userData = await getSessionUser();
-        setCartQty(userData?.user.cart.length);
-        e.target.innerHTML = "Now In Cart";
-        notifications.show({
-          title: "Notification",
-          message: "Successful , Item added to cart",
-        });
-      }
-    } else {
-      notifications.show({
-        title: "Notification",
-        message: "Failed, Item already in cart",
-        color: "red",
-      });
-      e.target.innerHTML = "Already In Cart";
-    }
-    if (!triger) {
-      return setLoginTriger(true);
-    }
-  };
 
   // FILTER THE PICTURES
   const dynamicBtn = [
@@ -100,13 +64,7 @@ const Homepage = () => {
 
   // USING SEARCH BAR TO FILTER
   const [search, setSearch] = useState<any>("");
-  // splite images into 3  const length = array.length;
-  const length = product.length;
-  const third = Math.ceil(length / 3);
 
-  const firstThird = product.slice(0, third);
-  const secondThird = product.slice(third, 2 * third);
-  const lastThird = product.slice(2 * third);
   // filter products based on category
   useEffect(() => {
     if (category === "All") {
@@ -138,13 +96,12 @@ const Homepage = () => {
             dynamicBtn={dynamicBtn}
             product={product}
             setCategory={setCategory}
-            addToFav={addToFav}
             search={search}
+            setLoginTriger={setLoginTriger}
           />
           {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
         </>
       )}
-      
     </div>
   );
 };

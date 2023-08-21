@@ -179,6 +179,7 @@ function ProductForm() {
 
     const productDetails = {
       ...data,
+      id: Date.now(),
       timestamp: serverTimestamp(),
       image: [
         imageBase64File1,

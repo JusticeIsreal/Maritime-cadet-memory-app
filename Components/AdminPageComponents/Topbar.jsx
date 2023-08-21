@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { AiFillBell } from "react-icons/ai";
 import { getSessionUser } from "../../Services/functions";
 import { FaMoneyCheckAlt } from "react-icons/fa";
+import { useSession } from "next-auth/react";
 // ICONS
 import { GiBookCover } from "react-icons/gi";
 import { useRouter } from "next/router";
 function Topbar() {
+  const { data: session } = useSession();
   // FETCHING SESSION USER NAME AND CART LENGTH
   const router = useRouter();
   const [name, setName] = useState(null);

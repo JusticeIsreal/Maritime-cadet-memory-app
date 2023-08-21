@@ -12,8 +12,10 @@ import { GrUserAdmin } from "react-icons/gr";
 import { getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "../pages/_app";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 function Topbar({ setSearch }: { setSearch: any }) {
+  const { data: sessions } = useSession();
   // SET NAV LIST COLOR WITH PAGE PATH NAME
   const [active, setActive] = useState(0);
   const router = useRouter();
@@ -78,7 +80,7 @@ function Topbar({ setSearch }: { setSearch: any }) {
         <div className="topbar-top-con-right">
           <div className="cart-icon-con">
             <Image
-              src="https://res.cloudinary.com/isreal/image/upload/v1690675954/My%20portfolio%20Project/1671744344371-removebg-preview_dxwbbb_Background_Removed_eh44ec.png"
+              src={sessions?.user?.image}
               alt="profile"
               height={50}
               width={50}

@@ -3,21 +3,33 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
-import { BsShare } from "react-icons/bs";
+import { BsHeart, BsHeartFill, BsShare } from "react-icons/bs";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  onSnapshot,
+  query,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../../Firebase";
+import { useSession } from "next-auth/react";
+import Moment from "react-moment";
 
 interface TypeProps {
   product: any[];
   dynamicBtn: string[];
   setCategory: any;
-  addToFav: any;
   search: string;
+  setLoginTriger: any;
 }
 function Products({
   search,
   product,
   dynamicBtn,
   setCategory,
-  addToFav,
+  setLoginTriger,
 }: TypeProps) {
   const newProduct = product?.filter((item) => {
     if (item.data().productname === "") {
@@ -68,22 +80,24 @@ function Products({
                 (product: {
                   id: number;
                   data: () => {
+                    timestamp: any;
                     (): any;
                     new (): any;
-                    image: any;
-                    productname: any;
-                    productprice: any;
-                    productoldprice: any;
+                    image: string;
+                    productname: string;
+                    productprice: string;
+                    productoldprice: string;
                   };
                 }) => (
                   <Product
                     key={product.id}
                     id={product.id}
                     productimages={product.data().image}
+                    timestamp={product.data().timestamp}
                     productname={product.data().productname}
                     productprice={product.data().productprice}
                     productoldprice={product.data().productoldprice}
-                    addToFav={addToFav}
+                    setLoginTriger={setLoginTriger}
                   />
                 )
               )}
@@ -98,35 +112,88 @@ function Products({
 export default Products;
 
 function Product({
-  addToFav,
   id,
   productimages,
   productname,
   productprice,
   productoldprice,
+  setLoginTriger,
+  timestamp,
 }: {
-  addToFav: any;
   id: any;
   productimages: any;
-  productname: any;
-  productprice: any;
-  productoldprice: any;
+  productname: string;
+  productprice: string;
+  productoldprice: string;
+  setLoginTriger: any;
+  timestamp: any;
 }) {
-  // percentage of peomo
-  const priceDifference =
-    parseFloat(productoldprice.toString()) -
-    parseFloat(productprice.toString());
+  // like image
+  const { data: session } = useSession();
+  // likes state
+  const [likes, setLikes] = useState<any[]>([]);
+  const [hasLikes, setHasLikes] = useState<boolean>(false);
 
-  const percentageDifference = Math.floor(
-    (priceDifference / parseFloat(productoldprice.toString())) * 100
-  );
+  // fetch likes from firebase
+  useEffect(() => {
+    onSnapshot(collection(db, "products", id, "likes"), (snapshot) => {
+      return setLikes(snapshot.docs);
+    });
+  }, [db, id]);
+
+  // to unlike logic
+  useEffect(() => {
+    if (session) {
+      setHasLikes(
+        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+      );
+    }
+  }, [likes]);
+
+  const addToFav = async (id: string) => {
+    const productDoc = doc(db, "products", id);
+    const productSnapshot = await getDoc(productDoc);
+    const productData = productSnapshot.data();
+    if (session) {
+      if (hasLikes) {
+        await deleteDoc(doc(db, "products", id, "likes", session?.user?.uid));
+        return;
+      } else {
+        await setDoc(doc(db, "products", id, "likes", session?.user?.uid), {
+          username: session?.user?.username,
+        });
+        return;
+      }
+    } else {
+      setLoginTriger(true);
+    }
+  };
 
   return (
     <div className="products">
-      <div className="poster-name">
-        <span>justice</span>
-        <i>time</i>
-      </div>
+      <Link
+        href={`/ClientDynamic/${id}`}
+        className="main-poster-con"
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+      >
+        <div className="poster-name">
+          <div className="profile-img">
+            <Image
+              src={session?.user?.image}
+              height={50}
+              width={50}
+              className="img"
+            />
+          </div>
+          <div className="profile-name">
+            <span>{session?.user?.name?.split(" ")[0]}</span>
+            <i>
+              <Moment fromNow>{timestamp?.toDate()}</Moment>
+            </i>
+          </div>
+        </div>
+        <p className="product-name">hjhhv hjhsg reger eh reheth ethe</p>
+      </Link>
       <div className="product-img">
         <Link href={`/ClientDynamic/${id}`}>
           <Image
@@ -138,16 +205,26 @@ function Product({
           />
         </Link>
       </div>
-      <Link
-        href={`/ClientDynamic/${id}`}
-        style={{ width: "100%", display: "flex", justifyContent: "center" }}
-      >
-        <p className="product-name">hjhhv hjhsg reger eh reheth ethe</p>
-      </Link>
+
       <div className="likenshare">
-        <span className="likenshareicon" onClick={(e) => addToFav(e, id)}>
-          <IoIosHeartEmpty />
-          <sub>2 likes</sub>
+        <span className="likenshareicon">
+          {hasLikes ? (
+            <BsHeartFill
+              className="like-red"
+              style={{ color: "red" }}
+              onClick={() => addToFav(id)}
+            />
+          ) : (
+            <BsHeart onClick={() => addToFav(id)} />
+          )}
+          <sub>
+            {likes.length > 0 ? (
+              <>
+                {likes.length}
+                {likes.length > 1 ? " " + "likes" : " " + "like"}
+              </>
+            ) : null}
+          </sub>
         </span>
         <span className="comment">2 comments</span>
       </div>
