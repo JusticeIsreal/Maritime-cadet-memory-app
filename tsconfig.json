@@ -27,7 +27,9 @@
     "pages/Homepage.tsx",
     "pages/index.jsx",
     "pages/_app.jsx",
-    "pages/api/auth/AuthGuard..jsx"
-, "Components/Homepage/Products.tsx", "pages/api/getUserDetails.js"  ],
+    "pages/api/authe/AuthGuard..jsx",
+    "Components/Homepage/Products.tsx",
+    "pages/api/getUserDetails.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -17,11 +17,13 @@ export function AuthGuard({ children }) {
   //   userInfo();
   // }, [token, router]);
 
-  useEffect(() => {
-    if (!token) {
-      router.push("/");
-    }
-  }, []); // empty dependency array ensures this only runs on the client-side
+  // useEffect(() => {
+  //   if (!token) {
+  //     router.push("/");
+  //   }
+  // }, []);
+
+  // empty dependency array ensures this only runs on the client-side
 
   // if (userPosition === "client" || userPosition === "" || !userPosition) {
   //   if (
@@ -37,9 +39,9 @@ export function AuthGuard({ children }) {
 
   //   return <>{children}</>;
   // }
-  if (token) {
-    return <>{children}</>;
-  }
-
-  return null;
+  // if (token) {
+  //   return <>{children}</>;
+  // }
+  return <>{children}</>;
+  // return null;
 }

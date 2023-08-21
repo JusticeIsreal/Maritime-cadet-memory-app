@@ -9,7 +9,7 @@ const defaultAdImg =
   "https://res.cloudinary.com/isreal/image/upload/v1682609506/E-Commerce%20Project/advert_ehvsy1.png";
 
 function Advert() {
-  const autoplay = useRef(Autoplay({ delay: 3000 }));
+  const autoplay = useRef(Autoplay({ delay: 4000 }));
 
   // FETCHING ADVERT SORTED FROM FIREBABSE
   const [advertDetails, setAdvertDetails] = useState([]);
@@ -43,7 +43,7 @@ function Advert() {
           loop
           align="start"
           breakpoints={[
-            { maxWidth: "lg", slideSize: "100%" },
+            { maxWidth: "lg", slideSize: "50%" },
             { maxWidth: "md", slideSize: "100%" },
             { maxWidth: "sm", slideSize: "100%", slideGap: 0 },
           ]}

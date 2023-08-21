@@ -2,6 +2,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Homepage from "./Homepage";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
+import { db2 } from "../Firebase";
 // import Homepage from "./Homepage";
 
 // PAGES
@@ -9,6 +20,41 @@ import Homepage from "./Homepage";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { data: session } = useSession();
+  const [isSessionSaved, setIsSessionSaved] = useState(false);
+
+  const saveSession = async () => {
+    if (session && !isSessionSaved) {
+      const usersRef = collection(db2, "registered_Users");
+      const q = query(usersRef, where("email", "==", session.user.email));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        await addDoc(usersRef, {
+          name: session.user.username,
+          email: session.user.email,
+          image: session.user.image,
+          userId: session.user.uid,
+          phone_number: "",
+          department: "",
+          year_of_ad: "",
+          year_of_grad: "",
+          position_held: "",
+          favourite_quote: "",
+          bio: "",
+          time: serverTimestamp(),
+        });
+        console.log("User added to signedInUsers collection");
+        setIsSessionSaved(true);
+      } else {
+        console.log("User already exists in signedInUsers collection");
+        setIsSessionSaved(true);
+      }
+    }
+  };
+  useEffect(() => {
+    saveSession();
+  }, [session]);
   return (
     <section className="oo">
       <Head>

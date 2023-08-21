@@ -123,7 +123,7 @@ $txt-light-blue: #cfe8ff;
     .topbar-top-con-right {
       @include flexDisplay(space-between, center, row);
       .cart-icon-con {
-        border: 2px solid red;
+        // border: 2px solid red;
         border-radius: 50%;
         overflow: hidden;
         Image {
@@ -134,55 +134,11 @@ $txt-light-blue: #cfe8ff;
   }
 }
 
-// BANNER STYLE
-.banner-main-con {
-  // border: 2px solid red;
-
-  margin-top: 14px;
-  @include responsive(bigphone) {
-    margin-top: 64px;
-  }
-  .carousel-main-con {
-    // border: 2px solid rgb(0, 64, 255);
-    position: relative;
-    // height: 200px;
-
-    .carousel-con {
-      // border: 2px solid rgb(0, 255, 34);
-      height: 190px;
-      .carousel-items-con {
-        height: 200px;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        // border: 2px solid red;
-
-        @include responsive(bigphone) {
-          height: 300px;
-        }
-        @include responsive(desktop) {
-          height: 500px;
-        }
-        .img {
-          width: 100%;
-          // object-fit: contain;
-        }
-      }
-      @include responsive(bigphone) {
-        height: 300px;
-      }
-      @include responsive(desktop) {
-        height: 500px;
-      }
-    }
-  }
-}
-
 // images
 .product-session-con {
   // border: 2px solid red;
   background: whitesmoke;
-  // margin-top: 70px;
+
   padding: 10px 0;
   width: 100%;
 
@@ -208,6 +164,7 @@ $txt-light-blue: #cfe8ff;
         max-width: 300px;
         margin: 0 10px;
         border: 1px solid $font-light;
+        text-align: center;
       }
       label {
         color: $font-light;
@@ -231,7 +188,6 @@ $txt-light-blue: #cfe8ff;
       flex-wrap: wrap;
       margin-top: 30px;
       width: 100%;
-      border: 2px solid red;
 
       @include responsive(bigphone) {
         @include flexDisplay(center, center, row);
@@ -246,15 +202,42 @@ $txt-light-blue: #cfe8ff;
         overflow: hidden;
         border-right: 1px solid #f5f3f3;
         box-shadow: -1px -1px 2px #8080805e;
-        border: 2px solid red;
-
-        @include responsive(bigphone) {
+        position: relative;
+        @include responsive(tablet) {
           width: 32%;
         }
+        .poster-name {
+          width: 100%;
+          line-height: 1;
+          padding: 2px 4px;
+          @include flexDisplay(space-between, flex-start, column);
 
+          span {
+            font-weight: 600;
+          }
+          i {
+            font-style: normal;
+            font-size: 14px;
+            color: $font-light;
+          }
+        }
+        .share-btn {
+          position: absolute;
+          z-index: 23;
+          border-bottom-left-radius: 12px;
+          top: -20px;
+          right: 0px;
+          background: #8080807d;
+          backdrop-filter: blur(10px);
+          color: white;
+          text-align: center;
+          padding: 3px;
+          font-size: 22px;
+          height: 33px;
+        }
         .product-name {
           margin-top: 3px;
-          font-size: 15px;
+          font-size: 12px;
           color: $font-light;
           padding-left: 5px;
           width: 100%;
@@ -263,44 +246,22 @@ $txt-light-blue: #cfe8ff;
           text-overflow: ellipsis;
           text-transform: lowercase;
 
-          @include responsive(tablet) {
+          @include responsive(bigphone) {
             font-size: 18px;
           }
         }
 
         .product-img {
-          // margin-top: 5px;
-          // border: 1px solid rgba(128, 128, 128, 0.107);
           width: 100%;
-          // height: 150px;
           border-radius: 5px;
-          // display: flex;
-          // justify-content: center;
-          // background: linear-gradient(15deg, #eee 40%, #fff 30.1%);
-          // @include flexDisplay(center, center, row);
           overflow: hidden;
-          // object-fit: contain;
           position: relative;
-          border: 2px solid red;
 
-          .percentage-off {
-            position: absolute;
-            z-index: 20;
-            border-bottom-left-radius: 12px;
-            top: -20px;
-            right: 0px;
-            background: #8080807d;
-            backdrop-filter: blur(10px);
-            color: white;
-            text-align: center;
-            padding: 3px;
-            font-size: 22px;
-          }
           @include responsive(phone) {
-            height: 200px;
+            height: 180px;
           }
           @include responsive(bigphone) {
-            height: 250px;
+            height: 350px;
           }
           @include responsive(tablet) {
             height: 320px;
@@ -317,60 +278,53 @@ $txt-light-blue: #cfe8ff;
             &:hover {
               transform: scale(1.1);
             }
-            @include responsive(tablet) {
-              // height: 250px;
-              transform: scale(1);
-              &:hover {
-                transform: scale(1.1);
-              }
-            }
-            @include responsive(desktop) {
-              // height: 300px;
-              transform: scale(1);
-
-              &:hover {
-                transform: scale(1.1);
-              }
-            }
           }
         }
 
         .likenshare {
           @include flexDisplay(space-between, center, row);
           width: 100%;
-          // border: 2px solid red;
-          // height: 30px;
-          // margin-top: 5px;
-          font-size: 25px;
-          padding: 2px;
-
+          padding: 0 2px;
+          color: $font-light;
+          margin-top: 3px;
+          border-top: 0.1px solid $font-light;
+          @include responsive(bigphone) {
+            padding: 5px;
+          }
           span {
             @include flexDisplay(center, center, column);
-            // border: 2px solid #2b00ff;
             position: relative;
-            b {
-              // border: 2px solid red;
+
+            sub {
               font-weight: normal;
-              font-size: 12px;
-              // position: absolute;
-              margin-top: -4px;
+              font-size: 10px;
+              margin-bottom: -1px;
               height: 10px;
+              @include responsive(bigphone) {
+                font-size: 15px;
+              }
             }
-            .likenshareicon {
-              cursor: pointer;
+          }
+          .likenshareicon {
+            cursor: pointer;
+            font-size: 25px;
+            font-weight: 300;
+            @include responsive(bigphone) {
+              font-size: 35px;
             }
+          }
+          .comment {
+            font-size: 15px;
           }
         }
 
         .addto-cart {
-          // border: 1px solid red;
+          border: 1px solid red;
           width: 100%;
           margin: 0 auto;
           text-align: center;
           font-size: 15px;
-
           border-radius: 5px;
-
           cursor: pointer;
           background: white;
           @include flexDisplay(center, center, row);
@@ -699,23 +653,26 @@ $txt-light-blue: #cfe8ff;
 .ad-con {
   position: relative;
   width: 100%;
-  border: 2px solid red;
-  margin-top: 14px;
+  // border: 2px solid red;
+  margin-top: 20px;
   @include responsive(bigphone) {
-    margin-top: 64px;
+    margin-top: 70px;
   }
   .ad-img {
     @include flexDisplay(center, center, row);
     border: 2px solid red;
+    margin: 0 auto;
     height: 150px;
-    width: 100vw;
+    border-radius: 10px;
+    width: 98vw;
+    padding-left: 5px;
     img {
       margin: 0 auto;
       cursor: pointer;
       object-fit: contain;
       height: 100px;
       width: 30vw;
-      border: 2px solid red;
+      border: 1px solid red;
       @include responsive(bigphone) {
         height: 100px;
         width: 30vw;

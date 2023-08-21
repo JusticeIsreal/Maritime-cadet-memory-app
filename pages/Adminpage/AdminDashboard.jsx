@@ -33,19 +33,19 @@ function AdminDashboard() {
   }, [db]);
 
   // ALLOW ONLY ADMI AND STAFF ACCESS
-  const [userPosition, setUserPosituon] = useState("");
+  const [userPosition, setUserPosituon] = useState("admin");
   const router = useRouter();
-  useEffect(() => {
-    const userInfo = async () => {
-      const userData = await getSessionUser();
-      setUserPosituon(userData?.user?.position);
+  // useEffect(() => {
+  //   const userInfo = async () => {
+  //     const userData = await getSessionUser();
+  //     setUserPosituon(userData?.user?.position);
 
-      if (userPosition === "client") {
-        router.push("/");
-      }
-    };
-    userInfo();
-  }, [userPosition, router]);
+  //     if (userPosition === "client") {
+  //       router.push("/");
+  //     }
+  //   };
+  //   userInfo();
+  // }, [userPosition, router]);
 
 
 
@@ -69,5 +69,5 @@ function AdminDashboard() {
     </div>
   );
 }
-AdminDashboard.requireAuth = true;
+// AdminDashboard.requireAuth = true;
 export default AdminDashboard;

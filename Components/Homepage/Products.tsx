@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BiCommentDetail } from "react-icons/bi";
+import { IoIosHeartEmpty } from "react-icons/io";
 import { BsShare } from "react-icons/bs";
 
 interface TypeProps {
@@ -36,8 +36,8 @@ function Products({
       <div className="product-main-con">
         {/* <h1>PRODUCTS</h1> */}
         <form>
-          <label>Filter</label>
           <div>
+            <label>Select Department</label>
             <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
               {dynamicBtn?.map((category: string, index: number) => (
                 <option value={category} key={index}>
@@ -47,6 +47,7 @@ function Products({
             </select>
           </div>
           <div>
+            <label>Select Year</label>
             <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
               {dynamicBtn?.map((category: string, index: number) => (
                 <option value={category} key={index}>
@@ -122,13 +123,11 @@ function Product({
 
   return (
     <div className="products">
+      <div className="poster-name">
+        <span>justice</span>
+        <i>time</i>
+      </div>
       <div className="product-img">
-        <p className="percentage-off">
-          <span>
-            <BsShare className="likenshareicon" />
-          </span>
-        </p>
-
         <Link href={`/ClientDynamic/${id}`}>
           <Image
             src={productimages[0]}
@@ -143,17 +142,14 @@ function Product({
         href={`/ClientDynamic/${id}`}
         style={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
-        <p className="product-name">{productname}</p>
+        <p className="product-name">hjhhv hjhsg reger eh reheth ethe</p>
       </Link>
       <div className="likenshare">
-        <span>
-          <AiOutlineHeart className="likenshareicon" />
-          <b>2</b>
+        <span className="likenshareicon" onClick={(e) => addToFav(e, id)}>
+          <IoIosHeartEmpty />
+          <sub>2 likes</sub>
         </span>
-        <span onClick={(e) => addToFav(e, id)}>
-          <BiCommentDetail className="likenshareicon" />
-          <b>2</b>
-        </span>
+        <span className="comment">2 comments</span>
       </div>
     </div>
   );
