@@ -37,14 +37,14 @@ function Advert() {
         <Carousel
           // withIndicators
           // height={200}
-          slideSize="33.333333%"
+          slideSize="50%"
           slideGap="md"
           dragFree
           loop
           align="start"
           breakpoints={[
-            { maxWidth: "lg", slideSize: "50%" },
-            { maxWidth: "md", slideSize: "100%" },
+            // { maxWidth: "lg", slideSize: "50%" },
+            { maxWidth: "md", slideSize: "50%" },
             { maxWidth: "sm", slideSize: "100%", slideGap: 0 },
           ]}
           plugins={[autoplay.current]}

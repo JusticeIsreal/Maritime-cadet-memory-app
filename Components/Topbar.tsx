@@ -1,22 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, FC, ChangeEventHandler } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-// import { logOUT } from "../Services/functions";
-// import Cookies from "js-cookie";
-// ICONS
-import { SiCoinmarketcap } from "react-icons/si";
-import { FaCartArrowDown } from "react-icons/fa";
-import { BsShop, BsWhatsapp } from "react-icons/bs";
-import { FiGrid, FiTruck } from "react-icons/fi";
-import { GrUserAdmin } from "react-icons/gr";
-import { getSessionUser } from "../Services/functions";
-import { CartQuantityContext } from "../pages/_app";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
-function Topbar({ setSearch }: { setSearch: any }) {
+interface TopbarProps {
+  setSearch: (value: string) => void;
+}
+
+const Topbar: FC<TopbarProps> = ({ setSearch }) => {
   const { data: sessions } = useSession();
-  // SET NAV LIST COLOR WITH PAGE PATH NAME
   const [active, setActive] = useState(0);
   const router = useRouter();
 
@@ -36,29 +29,12 @@ function Topbar({ setSearch }: { setSearch: any }) {
         break;
     }
   }, [router.asPath]);
-
-  // // FETCHING SESSION USER NAME AND CART LENGTH
-  const [name, setName] = useState(null);
-  const [cartLength, setCartLength] = useState([]);
-  const [session, setSession] = useState([]);
-  useEffect(() => {
-    async function fetchSessionUser() {
-      const userData = await getSessionUser();
-      if (userData && userData.user) {
-        // setSession(userData);
-        setName(userData?.user?.username);
-        setCartLength(userData?.user.cart);
-      }
-    }
-    fetchSessionUser();
-  }, [router]);
-  // console.log(session.user.position);
+  // Handle the case where sessions.user.image might be undefined
+  const userImage = sessions?.user?.image || ""; // Provide a default value (empty string) if it's undefined
 
   return (
     <div className="topbar-main-con">
-      {/* TOPBAR  */}
       <div className="topbar-top-con">
-        {/* logo side */}
         <div className="topbar-top-con-left">
           <Link href="/">
             <img
@@ -76,20 +52,18 @@ function Topbar({ setSearch }: { setSearch: any }) {
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>
-        {/* cart and user icon */}
         <div className="topbar-top-con-right">
-          <div className="cart-icon-con">
-            <Image
-              src={sessions?.user?.image}
-              alt="profile"
-              height={50}
-              width={50}
-            />
-          </div>
+          {sessions ? (
+            <div className="cart-icon-con">
+              <Image src={userImage} alt="profile" height={50} width={50} />
+            </div>
+          ) : (
+            <div onClick={() => signIn()}>Login</div>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Topbar;

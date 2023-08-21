@@ -143,10 +143,20 @@ function Product({
 
   // to unlike logic
   useEffect(() => {
-    if (session) {
-      setHasLikes(
-        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
-      );
+    if (hasLikes) {
+      const shotLike = async () => {
+        await deleteDoc(
+          doc(
+            db,
+            "products",
+            id,
+            "likes",
+            (session?.user as { uid: string })?.uid
+          )
+        );
+      };
+      shotLike();
+      return;
     }
   }, [likes]);
 
@@ -156,18 +166,37 @@ function Product({
     const productData = productSnapshot.data();
     if (session) {
       if (hasLikes) {
-        await deleteDoc(doc(db, "products", id, "likes", session?.user?.uid));
+        await deleteDoc(
+          doc(
+            db,
+            "products",
+            id,
+            "likes",
+            (session?.user as { uid: string })?.uid
+          )
+        );
         return;
       } else {
-        await setDoc(doc(db, "products", id, "likes", session?.user?.uid), {
-          username: session?.user?.username,
-        });
+        await setDoc(
+          doc(
+            db,
+            "products",
+            id,
+            "likes",
+            (session?.user as { uid: string })?.uid
+          ),
+          {
+            username: (session.user as { username: string })?.username,
+          }
+        );
         return;
       }
     } else {
       setLoginTriger(true);
     }
   };
+  // Handle the case where sessions.user.image might be undefined
+  const userImage = session?.user?.image || ""; // Provide a default value (empty string) if it's undefined
 
   return (
     <div className="products">
@@ -176,22 +205,23 @@ function Product({
         className="main-poster-con"
         style={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
-        <div className="poster-name">
-          <div className="profile-img">
+        <span className="poster-name">
+          <span className="profile-img">
             <Image
-              src={session?.user?.image}
+              src={userImage}
+              alt="img"
               height={50}
               width={50}
               className="img"
             />
-          </div>
+          </span>
           <div className="profile-name">
             <span>{session?.user?.name?.split(" ")[0]}</span>
             <i>
               <Moment fromNow>{timestamp?.toDate()}</Moment>
             </i>
           </div>
-        </div>
+        </span>
         <p className="product-name">hjhhv hjhsg reger eh reheth ethe</p>
       </Link>
       <div className="product-img">

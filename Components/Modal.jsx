@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -8,10 +9,6 @@ const emoji =
 
 function Modal({ setLoginTriger }) {
   // GO BACK
-  const router = useRouter();
-  function goBack() {
-    router.back();
-  }
 
   const closeModal = () => {
     setLoginTriger(false);
@@ -27,19 +24,16 @@ function Modal({ setLoginTriger }) {
           </button>
           <div className="modal-img-con">
             {emoji ? (
-              <img
-                src="/undraw_Access_account_re_8spm (1).png"
-                alt=""
-              />
+              <img src="/undraw_Access_account_re_8spm (1).png" alt="" />
             ) : (
               <img src="/downloai.jpeg" alt="" />
             )}
           </div>
           <div className="modal-text">
             <p> To access this Function you need to sign in</p>{" "}
-            <Link href="/loginpage" className="modal-link">
+            <p className="modal-link" onClick={signIn}>
               Sign in
-            </Link>
+            </p>
           </div>
         </div>
       </div>
