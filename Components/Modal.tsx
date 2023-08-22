@@ -7,7 +7,7 @@ import { TiArrowBack } from "react-icons/ti";
 const emoji =
   "https://res.cloudinary.com/isreal/image/upload/v1681808231/downloai-removebg-preview_qgmagz.png";
 
-function Modal({ setLoginTriger }) {
+function Modal({ setLoginTriger }: { setLoginTriger: any }) {
   // GO BACK
 
   const closeModal = () => {

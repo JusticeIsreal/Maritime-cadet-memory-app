@@ -28,6 +28,8 @@ import { useRouter } from "next/router";
 import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
 import { CartQuantityContext } from "./_app";
 import { useSession } from "next-auth/react";
+import AddNewMemory from "../Components/AddNewMemory";
+import AddMemoryModal from "../Components/AddMemoryModal";
 
 // typescript
 
@@ -37,14 +39,12 @@ const Homepage = () => {
   const { data: session } = useSession();
   // get images from firebase db
   const [loginTriger, setLoginTriger] = useState<boolean>(false);
+  const [postTriger, setPostTriger] = useState<any>(false);
   const [products, setProducts] = useState<any[]>([]);
-  // likes state
-  const [likes, setLikes] = useState([]);
-  const [hasLikes, setHasLikes] = useState(false);
-  
+
   useEffect(() => {
     return onSnapshot(
-      query(collection(db, "products"), orderBy("timestamp", "desc")),
+      query(collection(db, "memories"), orderBy("timestamp", "desc")),
       (snapshot) => {
         setProducts(snapshot.docs);
       }
@@ -103,6 +103,12 @@ const Homepage = () => {
           {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
         </>
       )}
+
+      {postTriger && <AddMemoryModal setPostTriger={setPostTriger} />}
+      <AddNewMemory
+        setPostTriger={setPostTriger}
+        setLoginTriger={setLoginTriger}
+      />
     </div>
   );
 };

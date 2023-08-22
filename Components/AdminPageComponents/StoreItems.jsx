@@ -111,7 +111,7 @@ function StoreItemsIndividual({
   productnumber,
 }) {
   const deleteProduct = async (id) => {
-    const itemRef = doc(db, "products", id);
+    const itemRef = doc(db, "memories", id);
     await deleteDoc(itemRef);
     // console.log("Item successfully deleted!");
   };

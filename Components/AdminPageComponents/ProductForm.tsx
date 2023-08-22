@@ -4,24 +4,12 @@ import axios from "axios";
 // firebase imports
 import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import tester from "../AdminPageComponents/StoreItems";
 import { useSession } from "next-auth/react";
 function ProductForm() {
   const { data: session } = useSession();
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef<HTMLInputElement>("" || null);
-  const filePickerRef2 = useRef<HTMLInputElement>("" || null);
-  const filePickerRef3 = useRef<HTMLInputElement>("" || null);
-  const filePickerRef4 = useRef<HTMLInputElement>("" || null);
-  const [selectedFile1, setSelectedFile1] = useState("");
-  const [imageBase64File1, setImageBase64File1] = useState("");
-  const [selectedFile2, setSelectedFile2] = useState<string>("");
-  const [imageBase64File2, setImageBase64File2] = useState("");
-  const [selectedFile3, setSelectedFile3] = useState("");
-  const [imageBase64File3, setImageBase64File3] = useState("");
-  const [selectedFile4, setSelectedFile4] = useState("");
-  const [imageBase64File4, setImageBase64File4] = useState("");
-
+  const [imageUrls, setImageUrls] = useState<any>([]); // Array to store image URLs
   // CONVERT ALL IMAGE FILE TO BASE 64 STRING AND CREATE PREVIEW
 
   // image 1
@@ -46,116 +34,10 @@ function ProductForm() {
 
     if (file) {
       const imageUrl = await uploadFile1(file);
-      setImageBase64File1(imageUrl);
+
+      setImageUrls((prevUrls: any) => [...prevUrls, imageUrl]); // Add imageUrl to the array
 
       const reader = new FileReader();
-
-      reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target?.result;
-        setSelectedFile1(selectedFile as string);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
-  // image 2
-  const uploadFile2 = async (file: any) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "cadets");
-
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/dd61rrbxs/image/upload`,
-        formData
-      );
-
-      return response.data.secure_url;
-    } catch (error) {
-      console.error("File upload failed:", error);
-    }
-  };
-  const addImageToPost2 = async (e: ChangeEvent<any>) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const imageUrl = await uploadFile2(file);
-      setImageBase64File2(imageUrl);
-
-      const reader = new FileReader();
-
-      reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target?.result;
-        setSelectedFile2(selectedFile as string);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
-  // image 3
-  const uploadFile3 = async (file: any) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "cadets");
-
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/dd61rrbxs/image/upload`,
-        formData
-      );
-
-      return response.data.secure_url;
-    } catch (error) {
-      console.error("File upload failed:", error);
-    }
-  };
-  const addImageToPost3 = async (e: ChangeEvent<any>) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const imageUrl = await uploadFile3(file);
-      setImageBase64File3(imageUrl);
-
-      const reader = new FileReader();
-
-      reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target?.result;
-        setSelectedFile3(selectedFile as string);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
-  // image 4
-  const uploadFile4 = async (file: any) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "cadets");
-
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/dd61rrbxs/image/upload`,
-        formData
-      );
-
-      return response.data.secure_url;
-    } catch (error) {
-      console.error("File upload failed:", error);
-    }
-  };
-  const addImageToPost4 = async (e: ChangeEvent<any>) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const imageUrl = await uploadFile4(file);
-      setImageBase64File4(imageUrl);
-
-      const reader = new FileReader();
-
-      reader.onload = (readerEvent) => {
-        const selectedFile = readerEvent.target?.result;
-        setSelectedFile4(selectedFile as string);
-      };
 
       reader.readAsDataURL(file);
     }
@@ -172,7 +54,6 @@ function ProductForm() {
   } = useForm();
 
   const [loading, setLoading] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(true);
 
   const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
@@ -182,18 +63,15 @@ function ProductForm() {
     const productDetails = {
       ...data,
       id: Date.now(),
-      userId: (session?.user as { uid: any })?.uid,
+      approve: "yes",
+      posterId: (session?.user as { uid: string })?.uid,
+      posterEmail: (session?.user as { email: string })?.email,
       timestamp: serverTimestamp(),
-      image: [
-        imageBase64File1,
-        imageBase64File2,
-        imageBase64File3,
-        imageBase64File4,
-      ],
+      image: imageUrls.length > 0 ? [...imageUrls] : null,
     };
 
     try {
-      const colRef = collection(db, "products");
+      const colRef = collection(db, "memories");
       await addDoc(colRef, { ...productDetails });
       alert("Product added successfully!");
     } catch (error) {
@@ -201,17 +79,20 @@ function ProductForm() {
     }
 
     reset();
-    // setFormShow(false);
 
     setLoading(false);
-    setSelectedFile1("");
-    setSelectedFile2("");
-    setSelectedFile3("");
-    setSelectedFile4("");
+    setImageUrls([]);
   };
+
   const [showSliderForm, setShowSliderForm] = useState(false);
   const openForm = () => {
     setShowSliderForm(!showSliderForm);
+  };
+
+  const removeImageUrl = (e: any) => {
+    e.preventDefault();
+    const newArr = imageUrls.filter((img: string) => img !== e.target.src);
+    setImageUrls(newArr);
   };
   return (
     <div>
@@ -361,54 +242,23 @@ function ProductForm() {
               ref={filePickerRef1}
               onChange={addImageToPost1}
             />
-            <img
-              src={selectedFile1}
-              onClick={() => setSelectedFile1("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-            {/* IMAGE 2 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef2}
-              onChange={addImageToPost2}
-            />
-            <img
-              src={selectedFile2}
-              onClick={() => setSelectedFile2("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-            {/* IMAGE 3 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef3}
-              onChange={addImageToPost3}
-            />
-            <img
-              src={selectedFile3}
-              onClick={() => setSelectedFile3("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
-            {/* IMAGE 4 */}
-            <input
-              className="file-input"
-              type="file"
-              placeholder="Enter Product Number"
-              ref={filePickerRef4}
-              onChange={addImageToPost4}
-            />
-            <img
-              src={selectedFile4}
-              onClick={() => setSelectedFile4("")}
-              alt="img"
-              style={{ width: "40px", marginBottom: "10px" }}
-            />
+            <div>
+              {" "}
+              {imageUrls?.map((img: string) => (
+                <img
+                  key={img}
+                  src={img}
+                  onClick={(e) => removeImageUrl(e)}
+                  alt="img"
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    margin: "5px",
+                    border: "1px solid gray",
+                  }}
+                />
+              ))}
+            </div>
           </div>
           <input
             type="submit"

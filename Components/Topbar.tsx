@@ -58,7 +58,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
               <Image src={userImage} alt="profile" height={50} width={50} />
             </div>
           ) : (
-            <div onClick={signIn}>Login</div>
+            <div onClick={() => signIn()}>Login</div>
           )}
         </div>
       </div>

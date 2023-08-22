@@ -42,7 +42,7 @@ function Store() {
 
   useEffect(() => {
     return onSnapshot(
-      query(collection(db, "products"), orderBy("timestamp", "desc")),
+      query(collection(db, "memories"), orderBy("timestamp", "desc")),
       (snapshot) => {
         setProductDetails(snapshot.docs);
       }

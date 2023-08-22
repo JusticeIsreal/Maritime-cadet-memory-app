@@ -35,10 +35,37 @@
 
 .homepage-main-con {
   padding: 50px 0;
+  position: relative;
 }
 @media only screen and (min-width: 768px) {
   .homepage-main-con {
     padding: 0;
+  }
+}
+.homepage-main-con .post-memory {
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.homepage-main-con .post-memory .post-icon {
+  font-size: 60px;
+  font-weight: bolder;
+}
+@media only screen and (min-width: 768px) {
+  .homepage-main-con .post-memory {
+    left: 90%;
+    bottom: 30px;
   }
 }
 
@@ -781,6 +808,25 @@
 .modal-main-con .modal-relative .modal-card .go-back:hover {
   background: gray;
 }
+.modal-main-con .modal-relative .modal-card .go-back-form {
+  position: static;
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+  top: -40px;
+  left: 5px;
+  background: #ea9319;
+  border: 1px solid rgba(128, 128, 128, 0.168627451);
+  color: white;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.modal-main-con .modal-relative .modal-card .go-back-form:hover {
+  background: gray;
+}
 .modal-main-con .modal-relative .modal-card .modal-img-con {
   display: flex;
   justify-content: center;
@@ -823,6 +869,59 @@
   100% {
     transform: scale(1);
   }
+}
+.modal-main-con .modal-relative .modal-card h3 {
+  padding-top: 10px;
+  text-align: center;
+}
+.modal-main-con .modal-relative .modal-card form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.modal-main-con .modal-relative .modal-card form label {
+  border: 2px solid red;
+  margin-bottom: -100px;
+  width: 100%;
+}
+.modal-main-con .modal-relative .modal-card form input {
+  width: 90%;
+  height: 40px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.modal-main-con .modal-relative .modal-card form span {
+  margin-top: -10px;
+  width: 90%;
+  text-align: left;
+}
+.modal-main-con .modal-relative .modal-card form .Box .add-new-input {
+  width: 90%;
+  margin-top: -5px;
+}
+.modal-main-con .modal-relative .modal-card form .Box .add-new-input p {
+  margin-left: auto;
+  font-size: 13px;
+  color: blue;
+}
+.modal-main-con .modal-relative .modal-card form .mantine-group {
+  position: relative;
+}
+.modal-main-con .modal-relative .modal-card form .mantine-group .remove-input-icon {
+  position: absolute;
+  font-size: 20px;
+  right: 5%;
+}
+.modal-main-con .modal-relative .modal-card form .selectedImg {
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .footer-main-con {

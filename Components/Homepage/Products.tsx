@@ -82,7 +82,7 @@ function Products({
                   userId: any;
                   id: number;
                   data: () => {
-                    userId: any;
+                    posterId: any;
                     id: Key | null | undefined;
                     timestamp: any;
                     (): any;
@@ -96,7 +96,7 @@ function Products({
                   <Product
                     key={product.data().id}
                     id={product.id}
-                    userId={product.data().userId}
+                    posterId={product.data().posterId}
                     productimages={product.data().image}
                     timestamp={product.data().timestamp}
                     productname={product.data().productname}
@@ -124,7 +124,7 @@ function Product({
   productoldprice,
   setLoginTriger,
   timestamp,
-  userId,
+  posterId,
 }: {
   id: any;
   productimages: any;
@@ -133,7 +133,7 @@ function Product({
   productoldprice: string;
   setLoginTriger: any;
   timestamp: any;
-  userId: any;
+  posterId: any;
 }) {
   // like image
   const { data: session } = useSession();
@@ -143,7 +143,7 @@ function Product({
 
   // fetch likes from firebase
   useEffect(() => {
-    onSnapshot(collection(db, "products", id, "likes"), (snapshot) => {
+    onSnapshot(collection(db, "memories", id, "likes"), (snapshot) => {
       return setLikes(snapshot.docs);
     });
   }, [db, id]);
@@ -158,22 +158,21 @@ function Product({
     );
   }, [likes]);
 
-  const gg = userId;
   const addToFav = async (id: string) => {
-    const productDoc = doc(db, "products", id);
+    const productDoc = doc(db, "memories", id);
     const productSnapshot = await getDoc(productDoc);
     const productData = productSnapshot.data();
     if (session) {
       if (hasLikes) {
         await deleteDoc(
-          doc(db, "products", id, "likes", (session?.user as { uid: any })?.uid)
+          doc(db, "memories", id, "likes", (session?.user as { uid: any })?.uid)
         );
         // return;
       } else {
         await setDoc(
           doc(
             db,
-            "products",
+            "memories",
             id,
             "likes",
             (session?.user as { uid: any })?.uid
@@ -202,14 +201,13 @@ function Product({
   }, [likes]);
   const posterImage = users.filter(
     (user: { data: () => { (): any; new (): any; userId: any } }) =>
-      user.data().userId === userId
+      user.data().userId === posterId
   );
 
   const posterdetails = posterImage.map(
     (img: { data: () => { (): any; new (): any; length: any } }) => img.data()
   );
-  console.log(posterdetails[0]);
-  console.log(session);
+
   return (
     <div className="products">
       <Link
@@ -233,7 +231,7 @@ function Product({
           )}
 
           <div className="profile-name">
-            <span>{posterdetails[0]?.name}</span>
+            <span>{posterdetails[0]?.name.split(" ")[0]}</span>
             <i>
               <Moment fromNow>{timestamp?.toDate()}</Moment>
             </i>

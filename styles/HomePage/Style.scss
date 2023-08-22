@@ -80,9 +80,33 @@ $txt-light-blue: #cfe8ff;
 .homepage-main-con {
   padding: 50px 0;
   // background: #eee;
-
+  position: relative;
   @include responsive(bigphone) {
     padding: 0;
+  }
+
+  .post-memory {
+    border: 2px solid red;
+    @include flexDisplay(space-around, center, column);
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    .post-icon {
+      font-size: 60px;
+      font-weight: bolder;
+    }
+
+    @include responsive(bigphone) {
+      left: 90%;
+      // right: 20px;
+      bottom: 30px;
+    }
   }
 }
 
@@ -782,7 +806,26 @@ $txt-light-blue: #cfe8ff;
           background: gray;
         }
       }
+      .go-back-form {
+        position: static;
+        position: absolute;
 
+        z-index: 20;
+        cursor: pointer;
+        top: -40px;
+        left: 5px;
+        background: #ea9319;
+        border: 1px solid #8080802b;
+        color: white;
+        width: 70px;
+        height: 30px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 18px;
+        &:hover {
+          background: gray;
+        }
+      }
       .modal-img-con {
         @include flexDisplay(center, center, row);
         width: 100%;
@@ -823,6 +866,65 @@ $txt-light-blue: #cfe8ff;
               transform: scale(1);
             }
           }
+        }
+      }
+      h3 {
+        padding-top: 10px;
+        text-align: center;
+        // border: 2px solid red;
+      }
+      form {
+        @include flexDisplay(center, center, column);
+        // overflow-y: scroll;
+        // max-height: 100vh;
+
+        label {
+          border: 2px solid red;
+          margin-bottom: -100px;
+          width: 100%;
+        }
+        input {
+          width: 90%;
+          height: 40px;
+          margin: 10px;
+          padding: 5px;
+          border-radius: 5px;
+          border: 1px solid gray;
+        }
+        span {
+          margin-top: -10px;
+          width: 90%;
+          text-align: left;
+        }
+        .Box {
+          // border: 2px solid red;
+
+          .add-new-input {
+            // border: 2px solid red;
+            width: 90%;
+            margin-top: -5px;
+            p {
+              // border: 2px solid red;
+              margin-left: auto;
+              font-size: 13px;
+              color: blue;
+            }
+          }
+        }
+        .mantine-group {
+          // border: 2px solid red;
+          position: relative;
+
+          .remove-input-icon {
+            position: absolute;
+            font-size: 20px;
+            right: 5%;
+          }
+        }
+        .selectedImg {
+          width: 90%;
+          @include flexDisplay(flex-start, center, row);
+          flex-wrap: wrap;
         }
       }
     }
