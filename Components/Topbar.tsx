@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC, ChangeEventHandler } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
@@ -52,13 +52,13 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>
-        <div className="topbar-top-con-right">
+        <div className="topbar-top-con-right" onClick={() => signOut()}>
           {sessions ? (
             <div className="cart-icon-con">
               <Image src={userImage} alt="profile" height={50} width={50} />
             </div>
           ) : (
-            <div onClick={() => signIn()}>Login</div>
+            <div onClick={signIn}>Login</div>
           )}
         </div>
       </div>

@@ -5,7 +5,9 @@ import axios from "axios";
 import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import tester from "../AdminPageComponents/StoreItems";
+import { useSession } from "next-auth/react";
 function ProductForm() {
+  const { data: session } = useSession();
   // GENERATE IMAGE REVIEW
   const filePickerRef1 = useRef<HTMLInputElement>("" || null);
   const filePickerRef2 = useRef<HTMLInputElement>("" || null);
@@ -180,6 +182,7 @@ function ProductForm() {
     const productDetails = {
       ...data,
       id: Date.now(),
+      userId: (session?.user as { uid: any })?.uid,
       timestamp: serverTimestamp(),
       image: [
         imageBase64File1,

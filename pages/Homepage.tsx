@@ -41,6 +41,7 @@ const Homepage = () => {
   // likes state
   const [likes, setLikes] = useState([]);
   const [hasLikes, setHasLikes] = useState(false);
+  
   useEffect(() => {
     return onSnapshot(
       query(collection(db, "products"), orderBy("timestamp", "desc")),

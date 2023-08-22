@@ -190,6 +190,9 @@
   align-items: flex-start;
   flex-direction: column;
 }
+.product-session-con .product-main-con .products-con .products .unknown-avata {
+  font-size: 30px;
+}
 .product-session-con .product-main-con .products-con .products .poster-name {
   width: 100%;
   line-height: 1;
@@ -271,7 +274,7 @@
 .product-session-con .product-main-con .products-con .products .product-name {
   margin-top: 3px;
   font-size: 12px;
-  color: #666;
+  color: #444;
   padding-left: 5px;
   width: 100%;
   overflow: hidden;
@@ -281,7 +284,7 @@
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products .product-name {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 .product-session-con .product-main-con .products-con .products .product-img {

@@ -1,15 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
-import { BsHeart, BsHeartFill, BsShare } from "react-icons/bs";
+import { BsHeart, BsHeartFill, BsPersonCircle, BsShare } from "react-icons/bs";
 import {
   collection,
   deleteDoc,
   doc,
   getDoc,
   onSnapshot,
+  orderBy,
   query,
   setDoc,
 } from "firebase/firestore";
@@ -78,8 +79,11 @@ function Products({
             <div className="products-con">
               {newProduct.map(
                 (product: {
+                  userId: any;
                   id: number;
                   data: () => {
+                    userId: any;
+                    id: Key | null | undefined;
                     timestamp: any;
                     (): any;
                     new (): any;
@@ -90,8 +94,9 @@ function Products({
                   };
                 }) => (
                   <Product
-                    key={product.id}
+                    key={product.data().id}
                     id={product.id}
+                    userId={product.data().userId}
                     productimages={product.data().image}
                     timestamp={product.data().timestamp}
                     productname={product.data().productname}
@@ -119,6 +124,7 @@ function Product({
   productoldprice,
   setLoginTriger,
   timestamp,
+  userId,
 }: {
   id: any;
   productimages: any;
@@ -127,6 +133,7 @@ function Product({
   productoldprice: string;
   setLoginTriger: any;
   timestamp: any;
+  userId: any;
 }) {
   // like image
   const { data: session } = useSession();
@@ -142,24 +149,16 @@ function Product({
   }, [db, id]);
 
   // to unlike logic
+  // to unlike logic
   useEffect(() => {
-    if (hasLikes) {
-      const shotLike = async () => {
-        await deleteDoc(
-          doc(
-            db,
-            "products",
-            id,
-            "likes",
-            (session?.user as { uid: string })?.uid
-          )
-        );
-      };
-      shotLike();
-      return;
-    }
+    setHasLikes(
+      likes.findIndex(
+        (like) => like.id === (session?.user as { uid: any })?.uid
+      ) !== -1
+    );
   }, [likes]);
 
+  const gg = userId;
   const addToFav = async (id: string) => {
     const productDoc = doc(db, "products", id);
     const productSnapshot = await getDoc(productDoc);
@@ -167,15 +166,9 @@ function Product({
     if (session) {
       if (hasLikes) {
         await deleteDoc(
-          doc(
-            db,
-            "products",
-            id,
-            "likes",
-            (session?.user as { uid: string })?.uid
-          )
+          doc(db, "products", id, "likes", (session?.user as { uid: any })?.uid)
         );
-        return;
+        // return;
       } else {
         await setDoc(
           doc(
@@ -183,10 +176,10 @@ function Product({
             "products",
             id,
             "likes",
-            (session?.user as { uid: string })?.uid
+            (session?.user as { uid: any })?.uid
           ),
           {
-            username: (session.user as { username: string })?.username,
+            username: (session.user as { username: any })?.username,
           }
         );
         return;
@@ -198,6 +191,25 @@ function Product({
   // Handle the case where sessions.user.image might be undefined
   const userImage = session?.user?.image || ""; // Provide a default value (empty string) if it's undefined
 
+  const [users, setUsers] = useState<any>([]);
+  useEffect(() => {
+    return onSnapshot(
+      query(collection(db, "registered_Users"), orderBy("time", "desc")),
+      (snapshot) => {
+        setUsers(snapshot.docs);
+      }
+    );
+  }, [likes]);
+  const posterImage = users.filter(
+    (user: { data: () => { (): any; new (): any; userId: any } }) =>
+      user.data().userId === userId
+  );
+
+  const posterdetails = posterImage.map(
+    (img: { data: () => { (): any; new (): any; length: any } }) => img.data()
+  );
+  console.log(posterdetails[0]);
+  console.log(session);
   return (
     <div className="products">
       <Link
@@ -206,17 +218,22 @@ function Product({
         style={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
         <span className="poster-name">
-          <span className="profile-img">
-            <Image
-              src={userImage}
-              alt="img"
-              height={50}
-              width={50}
-              className="img"
-            />
-          </span>
+          {posterdetails[0]?.image ? (
+            <span className="profile-img">
+              <Image
+                src={posterdetails[0]?.image}
+                alt="img"
+                height={50}
+                width={50}
+                className="img"
+              />
+            </span>
+          ) : (
+            <BsPersonCircle className="unknown-avata" />
+          )}
+
           <div className="profile-name">
-            <span>{session?.user?.name?.split(" ")[0]}</span>
+            <span>{posterdetails[0]?.name}</span>
             <i>
               <Moment fromNow>{timestamp?.toDate()}</Moment>
             </i>

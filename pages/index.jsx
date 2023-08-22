@@ -31,7 +31,7 @@ export default function Home() {
 
       if (querySnapshot.empty) {
         await addDoc(usersRef, {
-          name: session.user.username,
+          name: session.user.name,
           email: session.user.email,
           image: session.user.image,
           userId: session.user.uid,

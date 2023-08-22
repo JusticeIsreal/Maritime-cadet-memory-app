@@ -209,6 +209,9 @@ $txt-light-blue: #cfe8ff;
         .main-poster-con {
           @include flexDisplay(space-between, flex-start, column);
         }
+        .unknown-avata {
+          font-size: 30px;
+        }
         .poster-name {
           width: 100%;
           line-height: 1;
@@ -234,7 +237,6 @@ $txt-light-blue: #cfe8ff;
             }
           }
           .profile-name {
-            // border: 2px solid red;
             margin-left: 3px;
             @include flexDisplay(space-between, flex-start, column);
             @include responsive(bigphone) {
@@ -275,7 +277,7 @@ $txt-light-blue: #cfe8ff;
         .product-name {
           margin-top: 3px;
           font-size: 12px;
-          color: $font-light;
+          color: $bg-dark-gray;
           padding-left: 5px;
           width: 100%;
           overflow: hidden;
@@ -284,7 +286,7 @@ $txt-light-blue: #cfe8ff;
           text-transform: lowercase;
 
           @include responsive(bigphone) {
-            font-size: 18px;
+            font-size: 15px;
           }
         }
 
