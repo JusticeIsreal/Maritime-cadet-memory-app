@@ -20,7 +20,7 @@
 
 .client-single-product {
   width: 100vw;
-  margin-top: 45px;
+  margin-top: 60px;
 }
 .client-single-product .single-product {
   width: 100%;
@@ -31,83 +31,44 @@
   align-items: center;
   flex-direction: column;
 }
-@media only screen and (min-width: 768px) {
-  .client-single-product .single-product {
-    margin-top: 100px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  .client-single-product .single-product {
-    margin-top: 100px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-  }
-}
 .client-single-product .single-product .top-container {
   width: 100%;
+  max-width: 480px;
+  border: 2px solid red;
 }
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .top-container {
-    padding: 5px 0 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    max-width: 680px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product .top-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-    width: 50%;
-    max-width: 480px;
-    margin-top: 20px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .client-single-product .single-product .top-container {
-    margin-top: 10px;
-    max-width: 400px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+    max-width: 850px;
   }
 }
 .client-single-product .single-product .top-container .big-display-con {
-  width: 100vw;
-  max-width: 400px;
+  border: 2px solid red;
+  width: 100%;
+  max-width: 480px;
   margin: 0 auto;
   height: 500px;
-  padding: 10px;
-}
-@media only screen and (min-width: 320px) {
-  .client-single-product .single-product .top-container .big-display-con {
-    position: relative;
-  }
 }
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .top-container .big-display-con {
-    width: 600px;
-    max-width: 600px;
-    height: 700px;
-    order: 2;
+    max-width: 680px;
+    height: 800px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) and (orientation: landscape) {
   .client-single-product .single-product .top-container .big-display-con {
-    width: 350px;
-    height: 400px;
+    max-width: 680px;
+    height: 500px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .client-single-product .single-product .top-container .big-display-con {
-    margin-top: 0;
-    width: 400px;
+    max-width: 500px;
+    height: 580px;
   }
 }
 .client-single-product .single-product .top-container .big-display-con .go-back {
@@ -115,47 +76,25 @@
   z-index: 20;
   cursor: pointer;
   position: fixed;
-  top: 60px;
-  left: 15px;
+  top: 60px !important;
+  left: 10px;
   background: #ea9319;
   border: 1px solid rgba(128, 128, 128, 0.168627451);
   color: white;
-  width: 70px;
+  width: 30px;
   height: 30px;
+  padding: 5px;
   text-align: center;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bolder;
 }
 .client-single-product .single-product .top-container .big-display-con .go-back:hover {
   background: gray;
 }
 @media only screen and (min-width: 768px) {
   .client-single-product .single-product .top-container .big-display-con .go-back {
-    top: 110px;
-  }
-}
-.client-single-product .single-product .top-container .big-display-con .percentage-off {
-  position: absolute;
-  z-index: 20;
-  height: 45px;
-  border-bottom-left-radius: 12px;
-  top: 10px;
-  right: 10px;
-  background: #ea9319;
-  color: white;
-  text-align: center;
-  padding: 3px;
-  font-size: 12px;
-}
-@media only screen and (min-width: 768px) {
-  .client-single-product .single-product .top-container .big-display-con .percentage-off {
-    top: 10px;
-    right: 25px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  .client-single-product .single-product .top-container .big-display-con .percentage-off {
-    right: 20px;
+    top: 80px !important;
   }
 }
 .client-single-product .single-product .top-container .big-display-con .big-display-img {
@@ -195,7 +134,7 @@
     height: 600px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product .top-container .small-display-img-con {
     width: 100px;
     height: 400px;
@@ -256,7 +195,7 @@
   width: 100%;
   padding: 5px;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product .lower-details {
     width: 50%;
     margin-top: 20px;
@@ -327,7 +266,7 @@
     width: 300px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product .lower-details .product-qty-price-con .qty-con {
     width: 200px;
     height: 60px;
@@ -350,7 +289,7 @@
     font-size: 50px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product .lower-details .product-qty-price-con .qty-con span {
     font-size: 40px;
   }
@@ -443,7 +382,7 @@
     margin-top: 150px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product-details .product-review {
     margin-top: 50px;
   }
@@ -575,7 +514,7 @@
   text-align: center;
   color: #ea9319;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product-details .product-review .review-con .review-form-con form label {
     font-size: 20px;
   }
@@ -590,7 +529,7 @@
   border: 1px solid gray;
   font-size: 15px;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product-details .product-review .review-con .review-form-con form input {
     font-size: 20px;
   }
@@ -605,7 +544,7 @@
   border: 1px solid gray;
   font-size: 15px;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product-details .product-review .review-con .review-form-con form textarea {
     font-size: 20px;
   }
@@ -687,7 +626,7 @@
     height: 230px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .client-single-product .single-product-details .similar-products .products .product-img {
     height: 270px;
   }

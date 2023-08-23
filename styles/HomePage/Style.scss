@@ -556,11 +556,13 @@ $txt-light-blue: #cfe8ff;
         background: #ea9319;
         border: 1px solid #8080802b;
         color: white;
-        width: 70px;
+        width: 30px !important;
         height: 30px;
+        padding: 5px;
         text-align: center;
-        border-radius: 10px;
-        font-size: 18px;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bolder;
         &:hover {
           background: gray;
         }
@@ -576,11 +578,13 @@ $txt-light-blue: #cfe8ff;
         background: #ea9319;
         border: 1px solid #8080802b;
         color: white;
-        width: 70px;
+        width: 30px;
         height: 30px;
+        padding: 5px;
         text-align: center;
-        // border-radius: 10px;
-        font-size: 18px;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bolder;
 
         &:hover {
           background: gray;

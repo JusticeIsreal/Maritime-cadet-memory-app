@@ -38,26 +38,48 @@ $txt-light-blue: #cfe8ff;
   flex-direction: $flexDirection;
 }
 
-@mixin responsive($breakpoint) {
-  @if $breakpoint==phone {
-    @media only screen and (min-width: 320px) {
-      @content;
+@mixin responsive($breakpoint, $orientation: portrait) {
+  @if $orientation == portrait {
+    @if $breakpoint == phone {
+      @media only screen and (min-width: 320px) {
+        @content;
+      }
     }
-  }
-  @if $breakpoint==bigphone {
-    @media only screen and (min-width: 768px) {
-      @content;
+    @if $breakpoint == bigphone {
+      @media only screen and (min-width: 768px) {
+        @content;
+      }
     }
-  }
-  @if $breakpoint==tablet {
-    @media only screen and (min-width: 900px) {
-      @content;
+    @if $breakpoint == tablet {
+      @media only screen and (min-width: 1024px) {
+        @content;
+      }
     }
-  }
-
-  @if $breakpoint==desktop {
-    @media only screen and (min-width: 1200px) {
-      @content;
+    @if $breakpoint == desktop {
+      @media only screen and (min-width: 1200px) {
+        @content;
+      }
+    }
+  } @else if $orientation == landscape {
+    @if $breakpoint == phone {
+      @media only screen and (min-width: 480px) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @if $breakpoint == bigphone {
+      @media only screen and (min-width: 1024px) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @if $breakpoint == tablet {
+      @media only screen and (min-width: 1200px) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @if $breakpoint == desktop {
+      @media only screen and (min-width: 1600px) and (orientation: landscape) {
+        @content;
+      }
     }
   }
 }
@@ -65,121 +87,74 @@ $txt-light-blue: #cfe8ff;
 // CLIENT SINGLE PRODUCT DYNAMIC PAGE STYLE
 .client-single-product {
   width: 100vw;
-  margin-top: 45px;
+  margin-top: 60px;
 
   .single-product {
-    // border: 2px solid red;
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    @include flexDisplay(space-between, center, column);
 
-    @include responsive(bigphone) {
-      margin-top: 100px;
-    }
-    @include responsive(tablet) {
-      margin-top: 100px;
-      @include flexDisplay(space-evenly, center, row);
-    }
+    @include flexDisplay(space-between, center, column);
 
     .top-container {
       width: 100%;
-      // border: 2px solid red;
+      max-width: 480px;
+      border: 2px solid red;
+
       @include responsive(bigphone) {
-        // border: 2px solid rgb(0, 26, 255);
-        padding: 5px 0 0 10px;
-
-        @include flexDisplay(center, center, row);
+        max-width: 680px;
       }
-
       @include responsive(tablet) {
-        // border: 2px solid rgb(0, 255, 64);
-        @include flexDisplay(flex-start, center, row);
-        width: 50%;
-        max-width: 480px;
-        margin-top: 20px;
-      }
-      @include responsive(desktop) {
-        margin-top: 10px;
-        max-width: 400px;
-        @include flexDisplay(flex-start, flex-start, column);
+        max-width: 850px;
       }
       .big-display-con {
-        // border: 2px solid red;
+        border: 2px solid red;
 
-        width: 100vw;
-        max-width: 400px;
+        width: 100%;
+        max-width: 480px;
         margin: 0 auto;
         height: 500px;
-        padding: 10px;
-        @include responsive(phone) {
-          position: relative;
-        }
+
         @include responsive(bigphone) {
-          // border: 2px solid red;
-          width: 600px;
-          max-width: 600px;
-          height: 700px;
-          order: 2;
+          max-width: 680px;
+          height: 800px;
         }
 
-        @include responsive(tablet) {
-          // margin-top: 10px;
-          width: 350px;
-          height: 400px;
+        @include responsive(bigphone, landscape) {
+          max-width: 680px;
+          height: 500px;
         }
         @include responsive(desktop) {
-          margin-top: 0;
-
-          width: 400px;
-          // height: 500px;
+          max-width: 500px;
+          height: 580px;
         }
         .go-back {
           position: absolute;
           z-index: 20;
           cursor: pointer;
           position: fixed;
-          top: 60px;
-          left: 15px;
+          top: 60px !important;
+          left: 10px;
           background: $txt-blue;
           border: 1px solid #8080802b;
           color: white;
-          width: 70px;
+          width: 30px;
           height: 30px;
+          padding: 5px;
           text-align: center;
-          border-radius: 10px;
-          font-size: 18px;
+          border-radius: 50%;
+          font-size: 20px;
+          font-weight: bolder;
 
           &:hover {
             background: gray;
           }
 
           @include responsive(bigphone) {
-            top: 110px;
+            top: 80px !important;
           }
         }
 
-        .percentage-off {
-          position: absolute;
-          z-index: 20;
-          height: 45px;
-          border-bottom-left-radius: 12px;
-          top: 10px;
-          right: 10px;
-          background: $txt-blue;
-          color: white;
-          text-align: center;
-          padding: 3px;
-          font-size: 12px;
-
-          @include responsive(bigphone) {
-            top: 10px;
-            right: 25px;
-          }
-          @include responsive(tablet) {
-            right: 20px;
-          }
-        }
         .big-display-img {
           position: relative;
           width: 100%;
@@ -598,7 +573,6 @@ $txt-light-blue: #cfe8ff;
               }
             }
 
-           
             textarea {
               margin-bottom: 20px;
               padding: 2px 8px;

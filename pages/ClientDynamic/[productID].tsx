@@ -37,6 +37,7 @@ import { addToCart, getSessionUser } from "../../Services/functions";
 import Modal from "../../Components/Modal";
 import { CartQuantityContext } from "../_app";
 import { signIn, useSession } from "next-auth/react";
+import { MdArrowBackIos } from "react-icons/md";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "memories");
@@ -229,17 +230,19 @@ function Details() {
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
 
       <Group position="center"></Group>
-      <Topbar dynamictriger={dynamictriger} />
+      <Topbar
+        setSearch={function (value: string): void {
+          router.push("/");
+        }}
+      />
       <div className="client-single-product">
         <div className="single-product">
           <div className="top-container">
             {" "}
             <div className="big-display-con">
               <button onClick={goBack} className="go-back">
-                <TiArrowBack />
-                Back
+                <MdArrowBackIos />
               </button>
-
               <div className="big-display-img">
                 {product ? (
                   <Image

@@ -37,18 +37,20 @@ function Products({
   setPostTriger,
 }: TypeProps) {
   // FILTER PICTURES BASED ON INPUT VALUE IN SEARCH
-  const newProduct = product?.filter((item) => {
-    if (item.data().namesonpicture === "") {
-      return item;
-    } else if (
-      item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
-    ) {
-      return item;
-    } else {
-      return "";
-    }
-  });
- 
+  const newProduct = product
+    ?.filter((approved) => approved.data().approve === "yes")
+    .filter((item) => {
+      if (item.data().namesonpicture === "") {
+        return item;
+      } else if (
+        item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
+      ) {
+        return item;
+      } else {
+        return "";
+      }
+    });
+
   return (
     <div className="product-session-con">
       <div className="product-main-con">

@@ -9,6 +9,7 @@ import { useForm as mantineform } from "@mantine/form";
 import { Group, ActionIcon, Box, Textarea } from "@mantine/core";
 import { randomId } from "@mantine/hooks";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { ImCancelCircle } from "react-icons/im";
 
 function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
   // MANTINE NESTED FORM CONFIG
@@ -93,7 +94,7 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
     const productDetails = {
       ...data,
       id: Date.now(),
-      approve: "yes",
+      approve: "no",
       message: [...form.values.employees],
       posterId: (session?.user as { uid: string })?.uid,
       posterEmail: (session?.user as { email: string })?.email,
@@ -127,8 +128,7 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
       <div className="modal-relative">
         <div className="modal-card">
           <button onClick={() => closeModal()} className="go-back-form">
-            <TiArrowBack />
-            Back
+            <ImCancelCircle />
           </button>
           <h3>Share those amazing memories in pictures</h3>
 

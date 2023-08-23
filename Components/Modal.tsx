@@ -2,7 +2,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { TiArrowBack } from "react-icons/ti";
+import { ImCancelCircle } from "react-icons/im";
 
 const emoji =
   "https://res.cloudinary.com/isreal/image/upload/v1681808231/downloai-removebg-preview_qgmagz.png";
@@ -19,8 +19,7 @@ function Modal({ setLoginTriger }: { setLoginTriger: any }) {
       <div className="modal-relative">
         <div className="modal-card">
           <button onClick={() => closeModal()} className="go-back">
-            <TiArrowBack />
-            Back
+            <ImCancelCircle />
           </button>
           <div className="modal-img-con">
             {emoji ? (
@@ -31,7 +30,7 @@ function Modal({ setLoginTriger }: { setLoginTriger: any }) {
           </div>
           <div className="modal-text">
             <p> To access this Function you need to sign in</p>{" "}
-            <p className="modal-link" onClick={signIn}>
+            <p className="modal-link" onClick={() => signIn()}>
               Sign in
             </p>
           </div>

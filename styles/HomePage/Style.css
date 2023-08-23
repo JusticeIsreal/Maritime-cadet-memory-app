@@ -547,11 +547,13 @@
   background: #ea9319;
   border: 1px solid rgba(128, 128, 128, 0.168627451);
   color: white;
-  width: 70px;
+  width: 30px !important;
   height: 30px;
+  padding: 5px;
   text-align: center;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bolder;
 }
 .modal-main-con .modal-relative .modal-card .go-back:hover {
   background: gray;
@@ -565,10 +567,13 @@
   background: #ea9319;
   border: 1px solid rgba(128, 128, 128, 0.168627451);
   color: white;
-  width: 70px;
+  width: 30px;
   height: 30px;
+  padding: 5px;
   text-align: center;
-  font-size: 18px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bolder;
 }
 .modal-main-con .modal-relative .modal-card .go-back-form:hover {
   background: gray;
