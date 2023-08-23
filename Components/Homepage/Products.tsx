@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Key, useEffect, useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { BsHeart, BsHeartFill, BsPersonCircle, BsShare } from "react-icons/bs";
+import { BsHeart, BsHeartFill, BsPersonCircle } from "react-icons/bs";
 import {
   collection,
   deleteDoc,
@@ -24,30 +22,36 @@ interface TypeProps {
   setCategory: any;
   search: string;
   setLoginTriger: any;
+  dynamicDate: string[];
+  setCategoryYear: any;
+  setPostTriger: any;
 }
 function Products({
   search,
   product,
   dynamicBtn,
+  dynamicDate,
+  setCategoryYear,
   setCategory,
   setLoginTriger,
+  setPostTriger,
 }: TypeProps) {
+  // FILTER PICTURES BASED ON INPUT VALUE IN SEARCH
   const newProduct = product?.filter((item) => {
-    if (item.data().productname === "") {
+    if (item.data().namesonpicture === "") {
       return item;
     } else if (
-      item.data().productname.toLowerCase().includes(search?.toLowerCase())
+      item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
     ) {
       return item;
     } else {
       return "";
     }
   });
-
+ 
   return (
     <div className="product-session-con">
       <div className="product-main-con">
-        {/* <h1>PRODUCTS</h1> */}
         <form>
           <div>
             <label>Select Department</label>
@@ -61,8 +65,12 @@ function Products({
           </div>
           <div>
             <label>Select Year</label>
-            <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
-              {dynamicBtn?.map((category: string, index: number) => (
+            <select
+              name=""
+              id=""
+              onChange={(e) => setCategoryYear(e.target.value)}
+            >
+              {dynamicDate?.map((category: string, index: number) => (
                 <option value={category} key={index}>
                   {category}
                 </option>
@@ -70,16 +78,20 @@ function Products({
             </select>
           </div>
         </form>
-        {/* PRODUCTS ARRAY */}
 
         <>
           {newProduct.length < 1 ? (
-            <p>No image with Name: {search}</p>
+            <p style={{ textAlign: "center" }}>
+              {search} Not avaliable <br />{" "}
+              <b style={{ color: "blue" }} onClick={() => setPostTriger(true)}>
+                Click here to post one
+              </b>
+            </p>
           ) : (
             <div className="products-con">
               {newProduct.map(
                 (product: {
-                  userId: any;
+                  userId: string;
                   id: number;
                   data: () => {
                     posterId: any;
@@ -88,9 +100,11 @@ function Products({
                     (): any;
                     new (): any;
                     image: string;
-                    productname: string;
-                    productprice: string;
-                    productoldprice: string;
+                    namesonpicture: string;
+                    picturelocation: string;
+                    pictureyear: number;
+                    approve: string;
+                    message: any[];
                   };
                 }) => (
                   <Product
@@ -99,9 +113,11 @@ function Products({
                     posterId={product.data().posterId}
                     productimages={product.data().image}
                     timestamp={product.data().timestamp}
-                    productname={product.data().productname}
-                    productprice={product.data().productprice}
-                    productoldprice={product.data().productoldprice}
+                    namesonpicture={product.data().namesonpicture}
+                    picturelocation={product.data().picturelocation}
+                    pictureyear={product.data().pictureyear}
+                    message={product.data().message}
+                    approve={product.data().approve}
                     setLoginTriger={setLoginTriger}
                   />
                 )
@@ -119,25 +135,30 @@ export default Products;
 function Product({
   id,
   productimages,
-  productname,
-  productprice,
-  productoldprice,
+  namesonpicture,
+  picturelocation,
+  pictureyear,
+  approve,
+  message,
   setLoginTriger,
   timestamp,
   posterId,
 }: {
   id: any;
   productimages: any;
-  productname: string;
-  productprice: string;
-  productoldprice: string;
+  namesonpicture: string;
+  picturelocation: string;
+  pictureyear: number;
   setLoginTriger: any;
   timestamp: any;
+  approve: any;
   posterId: any;
+  message: any[];
 }) {
-  // like image
+  // GET NEXT AUTH USER SESSION DETAILS
   const { data: session } = useSession();
-  // likes state
+
+  // PICTURES LIKE STATE
   const [likes, setLikes] = useState<any[]>([]);
   const [hasLikes, setHasLikes] = useState<boolean>(false);
 
@@ -149,7 +170,6 @@ function Product({
   }, [db, id]);
 
   // to unlike logic
-  // to unlike logic
   useEffect(() => {
     setHasLikes(
       likes.findIndex(
@@ -158,6 +178,7 @@ function Product({
     );
   }, [likes]);
 
+  // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
   const addToFav = async (id: string) => {
     const productDoc = doc(db, "memories", id);
     const productSnapshot = await getDoc(productDoc);
@@ -187,9 +208,8 @@ function Product({
       setLoginTriger(true);
     }
   };
-  // Handle the case where sessions.user.image might be undefined
-  const userImage = session?.user?.image || ""; // Provide a default value (empty string) if it's undefined
 
+  // GET  DETAILS OF POSTER
   const [users, setUsers] = useState<any>([]);
   useEffect(() => {
     return onSnapshot(
@@ -237,7 +257,7 @@ function Product({
             </i>
           </div>
         </span>
-        <p className="product-name">hjhhv hjhsg reger eh reheth ethe</p>
+        <p className="product-name">{message[0]?.name || namesonpicture}</p>
       </Link>
       <div className="product-img">
         <Link href={`/ClientDynamic/${id}`}>

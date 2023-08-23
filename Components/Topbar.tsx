@@ -48,7 +48,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
         <form>
           <input
             type="text"
-            placeholder="Search by name"
+            placeholder="Search by cadet name"
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>

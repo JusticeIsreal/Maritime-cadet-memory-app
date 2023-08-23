@@ -38,26 +38,48 @@ $txt-light-blue: #cfe8ff;
   flex-direction: $flexDirection;
 }
 
-@mixin responsive($breakpoint) {
-  @if $breakpoint==phone {
-    @media only screen and (min-width: 320px) {
-      @content;
+@mixin responsive($breakpoint, $orientation: portrait) {
+  @if $orientation == portrait {
+    @if $breakpoint == phone {
+      @media only screen and (min-width: 320px) {
+        @content;
+      }
     }
-  }
-  @if $breakpoint==bigphone {
-    @media only screen and (min-width: 768px) {
-      @content;
+    @if $breakpoint == bigphone {
+      @media only screen and (min-width: 768px) {
+        @content;
+      }
     }
-  }
-  @if $breakpoint==tablet {
-    @media only screen and (min-width: 1023px) {
-      @content;
+    @if $breakpoint == tablet {
+      @media only screen and (min-width: 1024px) {
+        @content;
+      }
     }
-  }
-
-  @if $breakpoint==desktop {
-    @media only screen and (min-width: 1200px) {
-      @content;
+    @if $breakpoint == desktop {
+      @media only screen and (min-width: 1200px) {
+        @content;
+      }
+    }
+  } @else if $orientation == landscape {
+    @if $breakpoint == phone {
+      @media only screen and (min-width: 480px) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @if $breakpoint == bigphone {
+      @media only screen and (min-width: 1024px) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @if $breakpoint == tablet {
+      @media only screen and (min-width: 1200px) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @if $breakpoint == desktop {
+      @media only screen and (min-width: 1600px) and (orientation: landscape) {
+        @content;
+      }
     }
   }
 }
@@ -72,7 +94,7 @@ $txt-light-blue: #cfe8ff;
   color: $txt-blue;
   cursor: pointer;
 
-  @include responsive(bigphone) {
+  @include responsive(bigphone, portrait) {
     font-size: 40px;
   }
 }
@@ -81,7 +103,7 @@ $txt-light-blue: #cfe8ff;
   padding: 50px 0;
   // background: #eee;
   position: relative;
-  @include responsive(bigphone) {
+  @include responsive(bigphone, portrait) {
     padding: 0;
   }
 
@@ -102,7 +124,7 @@ $txt-light-blue: #cfe8ff;
       font-weight: bolder;
     }
 
-    @include responsive(bigphone) {
+    @include responsive(bigphone, portrait) {
       left: 90%;
       // right: 20px;
       bottom: 30px;
@@ -168,7 +190,7 @@ $txt-light-blue: #cfe8ff;
 
   overflow-x: hidden;
 
-  @include responsive(bigphone) {
+  @include responsive(bigphone, portrait) {
     // margin-top: 100px;
     padding: 20px 0;
   }
@@ -213,7 +235,7 @@ $txt-light-blue: #cfe8ff;
       margin-top: 30px;
       width: 100%;
 
-      @include responsive(bigphone) {
+      @include responsive(bigphone, portrait) {
         @include flexDisplay(center, center, row);
       }
 
@@ -227,7 +249,7 @@ $txt-light-blue: #cfe8ff;
         border-right: 1px solid #f5f3f3;
         box-shadow: -1px -1px 2px #8080805e;
         position: relative;
-        @include responsive(tablet) {
+        @include responsive(tablet, portrait) {
           width: 32%;
         }
         .main-poster-con {
@@ -250,7 +272,7 @@ $txt-light-blue: #cfe8ff;
             width: 30px;
             height: 30px;
 
-            @include responsive(bigphone) {
+            @include responsive(bigphone, portrait) {
               width: 50px;
               height: 50px;
             }
@@ -263,14 +285,14 @@ $txt-light-blue: #cfe8ff;
           .profile-name {
             margin-left: 3px;
             @include flexDisplay(space-between, flex-start, column);
-            @include responsive(bigphone) {
+            @include responsive(bigphone, portrait) {
               margin-left: 4px;
             }
             span {
               font-weight: 600;
               color: $bg-dark-gray;
 
-              @include responsive(bigphone) {
+              @include responsive(bigphone, portrait) {
                 font-size: 20px;
               }
             }
@@ -278,26 +300,13 @@ $txt-light-blue: #cfe8ff;
               font-style: normal;
               font-size: 10px;
               color: $font-light;
-              @include responsive(bigphone) {
+              @include responsive(bigphone, portrait) {
                 font-size: 15px;
               }
             }
           }
         }
-        .share-btn {
-          position: absolute;
-          z-index: 23;
-          border-bottom-left-radius: 12px;
-          top: -20px;
-          right: 0px;
-          background: #8080807d;
-          backdrop-filter: blur(10px);
-          color: white;
-          text-align: center;
-          padding: 3px;
-          font-size: 22px;
-          height: 33px;
-        }
+
         .product-name {
           margin-top: 3px;
           font-size: 12px;
@@ -309,7 +318,7 @@ $txt-light-blue: #cfe8ff;
           text-overflow: ellipsis;
           text-transform: lowercase;
 
-          @include responsive(bigphone) {
+          @include responsive(bigphone, portrait) {
             font-size: 15px;
           }
         }
@@ -320,16 +329,16 @@ $txt-light-blue: #cfe8ff;
           overflow: hidden;
           position: relative;
 
-          @include responsive(phone) {
+          @include responsive(phone, portrait) {
             height: 180px;
           }
-          @include responsive(bigphone) {
+          @include responsive(bigphone, portrait) {
             height: 350px;
           }
-          @include responsive(tablet) {
+          @include responsive(tablet, portrait) {
             height: 320px;
           }
-          @include responsive(desktop) {
+          @include responsive(desktop, portrait) {
             height: 420px;
           }
 
@@ -360,7 +369,7 @@ $txt-light-blue: #cfe8ff;
               font-size: 10px;
               margin-top: 3px;
               height: 6px;
-              @include responsive(bigphone) {
+              @include responsive(bigphone, portrait) {
                 font-size: 15px;
               }
             }
@@ -370,7 +379,7 @@ $txt-light-blue: #cfe8ff;
             font-size: 25px;
             font-weight: 300;
 
-            @include responsive(bigphone) {
+            @include responsive(bigphone, portrait) {
               font-size: 35px;
             }
 
@@ -411,270 +420,6 @@ $txt-light-blue: #cfe8ff;
       }
     }
     padding-bottom: 10px;
-  }
-}
-
-// NEWS LETTER
-
-.newsletter {
-  // background: url(https://res.cloudinary.com/isreal/image/upload/v1662211845/jayflix%20vid%20posters/photo_2022-09-02_18-40-11_u8gi0i.jpg)
-  //   no-repeat;
-  background: $txt-blue;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  display: flex;
-  @include flexDisplay(center, center, row);
-  // margin-top: 20px;
-  padding: 10px 0;
-
-  form {
-    width: 90%;
-    text-align: center;
-    padding: 5px 0;
-    // border: 1px solid red;
-    @include flexDisplay(center, center, column);
-
-    @include responsive(bigphone) {
-      max-width: 500px;
-      height: 200px;
-    }
-
-    .btn {
-      // width: 150px;
-      // height: 40px;
-      cursor: pointer;
-      padding: 10px 20px;
-      background: $txt-blue;
-      color: white;
-      border: 1px solid $bg-gray;
-      border-radius: 5px;
-      font-size: 18px;
-      margin-top: 10px;
-
-      &:hover {
-        background: $font-light;
-      }
-      @include responsive(bigphone) {
-        font-size: 25px;
-        width: 210px;
-      }
-    }
-
-    h3 {
-      font-size: 15px;
-      color: #fff;
-      padding-bottom: 0.7rem;
-      font-weight: normal;
-
-      @include responsive(bigphone) {
-        font-size: 20px;
-      }
-    }
-
-    .box {
-      width: 100%;
-      margin: 0.7rem 0;
-      padding: 12px 5px;
-      font-size: 17px;
-      color: var(--black);
-      border-radius: 5px;
-      text-transform: none;
-      border: none;
-
-      &:focus {
-        border: 1px solid $txt-blue;
-      }
-    }
-  }
-}
-
-// PROMO
-.deal {
-  // border: 2px solid red;
-  margin-top: 50px;
-  align-items: center;
-  position: relative;
-  padding: 5px;
-
-  @include responsive(bigphone) {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-  }
-  .content {
-    width: 75%;
-    // border: 2px solid red;
-    @include responsive(bigphone) {
-      // max-width: 500px;
-      width: 60%;
-    }
-    h3 {
-      color: $font-light;
-      font-size: 20px;
-      padding-bottom: 0.5rem;
-
-      @include responsive(bigphone) {
-        font-size: 25px;
-      }
-    }
-
-    h1 {
-      color: $txt-blue;
-      font-size: 45px;
-      margin-bottom: 20px;
-
-      @include responsive(bigphone) {
-        font-size: 90px;
-      }
-    }
-
-    a {
-      padding: 10px 20px;
-      background: $txt-blue;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      margin-top: 10px;
-
-      @include responsive(bigphone) {
-        padding: 15px 50px;
-        font-size: 25px;
-        width: 210px;
-        margin-top: 20px;
-      }
-      @include responsive(bigphone) {
-        font-size: 25px;
-        width: 210px;
-      }
-      &:hover {
-        background: $font-light;
-      }
-    }
-  }
-
-  .fade-con {
-    // border: 2px solid rgb(0, 255, 34);
-    width: 100vw;
-    height: 200px;
-    float: right;
-    width: 150px;
-    position: relative;
-    margin-top: -170px;
-
-    overflow: hidden;
-    background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
-
-    // box-shadow: -10px -10px 10px rgba(128, 128, 128, 0.368);
-
-    @include responsive(bigphone) {
-      width: 35%;
-      height: 400px;
-      // border: 2px solid red;
-      margin-top: 10px;
-      background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
-    }
-    .image {
-      position: relative;
-      // border: 2px solid red;
-
-      img {
-        height: 200px;
-        border-radius: 5px;
-        position: absolute;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 0%);
-
-        // display: none;
-        @include responsive(bigphone) {
-          height: 400px;
-          border-radius: 10px;
-          // border: 2px solid red;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 320px) {
-  .deal {
-    padding: 0 1px 0 2px;
-  }
-  .fade-con {
-    margin-top: -70px !important;
-  }
-  .deal .content h3 {
-    font-size: 15px;
-  }
-  .deal .content h1 {
-    font-size: 29px;
-  }
-  .deal .content a {
-    padding: 10px 20px;
-  }
-}
-
-// REVIEW
-.review-main-con {
-  // border: 2px solid red;
-
-  background: whitesmoke;
-  padding: 0 5px;
-  margin: 0 auto;
-  margin: 130px 0 0 0;
-  width: 100vw;
-
-  @include responsive(bigphone) {
-    height: 350px;
-  }
-
-  h1 {
-    text-align: center;
-    color: $txt-blue;
-    // margin-left: 5px;
-    padding: 20px;
-    font-size: 30px;
-
-    @include responsive(tablet) {
-      font-size: 50px;
-    }
-  }
-  .review {
-    @include flexDisplay(center, flex-start, column);
-    height: 100%;
-    // border: 2px solid red;
-    .review-con {
-      border-radius: 5px;
-      padding: 5px;
-      border: 1px solid rgba(128, 128, 128, 0.132);
-      box-shadow: 5px 10px 15px rgba(128, 128, 128, 0.162);
-    }
-    h3 {
-      color: $txt-blue;
-      // border: 2px solid red;
-    }
-
-    .review-text {
-      // border: 2px solid red;
-      // @include flexDisplay(center, center, column);
-      color: $txt-blue;
-      margin-top: 10px;
-      p {
-        color: $font-light;
-        font-size: 15px;
-        line-height: 1.5;
-        font-style: italic;
-
-        @include responsive(tablet) {
-          font-size: 20px;
-        }
-      }
-    }
   }
 }
 
@@ -729,7 +474,7 @@ $txt-light-blue: #cfe8ff;
   width: 100%;
   // border: 2px solid red;
   margin-top: 20px;
-  @include responsive(bigphone) {
+  @include responsive(bigphone, portrait) {
     margin-top: 70px;
   }
   .ad-img {
@@ -747,7 +492,7 @@ $txt-light-blue: #cfe8ff;
       height: 100px;
       width: 30vw;
       border: 1px solid red;
-      @include responsive(bigphone) {
+      @include responsive(bigphone, portrait) {
         height: 100px;
         width: 30vw;
       }
@@ -763,31 +508,45 @@ $txt-light-blue: #cfe8ff;
 
 // MODAL TO LOGIN IN
 .modal-main-con {
-  position: absolute;
-  position: fixed;
-  z-index: 200;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  backdrop-filter: blur(10px);
+  position: relative;
+  // position: fixed;
+  // z-index: 200;
+  // width: 100%;
+  // height: 100%;
+  // top: 0;
+  backdrop-filter: blur(10px) !important;
+  // border: 2px solid red;
+  position: relative;
+  @include flexDisplay(center, center, row);
 
   .modal-relative {
     @include flexDisplay(center, center, row);
     position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
+    // width: 100%;
+    // border: 2px solid rgb(0, 255, 89);
+
+    // overflow: scroll;
+    height: 100% !important;
+    margin-top: auto !important;
 
     .modal-card {
       @include flexDisplay(center, center, column);
-      box-shadow: -5px -10px 15px rgba(128, 128, 128, 0.625);
+      box-shadow: -5px -10px 15px #8080809f;
       border-radius: 5px;
       width: 90% !important;
-      // max-width: 400px;
+      max-width: 400px;
       position: relative;
-      // border: 2px solid red;
+
       background: white;
 
+      @include responsive(phone, landscape) {
+        transform: rotateZ(90deg) !important;
+        max-width: 300px !important;
+      }
+      @include responsive(bigphone) {
+        transform: rotateZ(0deg) !important;
+        max-width: 400px !important;
+      }
       .go-back {
         position: absolute;
         z-index: 20;
@@ -807,23 +566,28 @@ $txt-light-blue: #cfe8ff;
         }
       }
       .go-back-form {
-        position: static;
         position: absolute;
 
         z-index: 20;
         cursor: pointer;
-        top: -40px;
-        left: 5px;
+        top: -20px;
+        left: 0px;
+
         background: #ea9319;
         border: 1px solid #8080802b;
         color: white;
         width: 70px;
         height: 30px;
         text-align: center;
-        border-radius: 10px;
+        // border-radius: 10px;
         font-size: 18px;
+
         &:hover {
           background: gray;
+        }
+        @include responsive(tablet, portrait) {
+          top: 0px;
+          left: -80px;
         }
       }
       .modal-img-con {
@@ -873,199 +637,59 @@ $txt-light-blue: #cfe8ff;
         text-align: center;
         // border: 2px solid red;
       }
-      form {
-        @include flexDisplay(center, center, column);
-        // overflow-y: scroll;
-        // max-height: 100vh;
 
-        label {
-          border: 2px solid red;
-          margin-bottom: -100px;
-          width: 100%;
-        }
-        input {
-          width: 90%;
-          height: 40px;
-          margin: 10px;
-          padding: 5px;
-          border-radius: 5px;
-          border: 1px solid gray;
-        }
-        span {
-          margin-top: -10px;
-          width: 90%;
-          text-align: left;
-        }
-        .Box {
-          // border: 2px solid red;
+      .form-con {
+        height: 550px;
+        width: 100%;
+        overflow: scroll;
 
-          .add-new-input {
-            // border: 2px solid red;
+        form {
+          @include flexDisplay(center, center, column);
+
+          input,
+          select {
             width: 90%;
-            margin-top: -5px;
-            p {
+            height: 40px;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid gray;
+          }
+          span {
+            margin-top: -10px;
+            width: 90%;
+            text-align: left;
+          }
+          .Box {
+            // border: 2px solid red;
+
+            .add-new-input {
               // border: 2px solid red;
-              margin-left: auto;
-              font-size: 13px;
-              color: blue;
+              width: 90%;
+              margin-top: -5px;
+              p {
+                // border: 2px solid red;
+                margin-left: auto;
+                font-size: 13px;
+                color: blue;
+              }
             }
           }
-        }
-        .mantine-group {
-          // border: 2px solid red;
-          position: relative;
+          .mantine-group {
+            // border: 2px solid red;
+            position: relative;
 
-          .remove-input-icon {
-            position: absolute;
-            font-size: 20px;
-            right: 5%;
+            .remove-input-icon {
+              position: absolute;
+              font-size: 20px;
+              right: 5%;
+            }
           }
-        }
-        .selectedImg {
-          width: 90%;
-          @include flexDisplay(flex-start, center, row);
-          flex-wrap: wrap;
-        }
-      }
-    }
-  }
-}
-
-// FOOTER
-.footer-main-con {
-  background: white;
-  margin-top: -7px;
-  padding-top: 30px;
-  background: $txt-blue;
-
-  .footer-con {
-    @include flexDisplay(space-around, center, column);
-    @include responsive(bigphone) {
-      max-width: 1100px;
-      margin: 0 auto;
-      @include flexDisplay(space-around, center, row);
-    }
-    .top-con {
-      background: whitesmoke;
-      padding: 20px 10px;
-      width: 90%;
-
-      @include responsive(bigphone) {
-        @include flexDisplay(center, flex-start, column);
-        height: 40vh;
-        max-width: 400px;
-        margin: 20px;
-      }
-      .img-con {
-        width: 100%;
-        max-width: 400px;
-
-        img {
-          width: 100%;
-        }
-      }
-      p {
-        font-size: 15px;
-        margin-top: 20px;
-      }
-
-      .icon-con {
-        width: 70%;
-        // padding: 5px;
-        margin-top: 20px;
-        @include flexDisplay(space-around, center, row);
-
-        .icon {
-          color: white;
-          background: $bg-dark;
-          width: 35px;
-          height: 35px;
-          padding: 5px;
-          margin: 0 5px;
-
-          &:hover {
-            transform: translateY(-5px);
+          .selectedImg {
+            width: 90%;
+            @include flexDisplay(flex-start, center, row);
+            flex-wrap: wrap;
           }
-        }
-      }
-    }
-
-    .lower-con {
-      width: 90%;
-      margin-top: 20px;
-      @include flexDisplay(space-around, flex-start, column);
-      @include responsive(bigphone) {
-        @include flexDisplay(space-around, center, row);
-      }
-      .quick-link {
-        margin-bottom: auto;
-        @include flexDisplay(center, flex-start, column);
-        @include responsive(bigphone) {
-          width: 30%;
-        }
-        h3 {
-          border-bottom: 2px solid black;
-          padding-bottom: 10px;
-          margin-bottom: 10px;
-          margin-top: 30px;
-
-          @include responsive(bigphone) {
-            font-size: 15px;
-          }
-        }
-        .links {
-          color: $bg-light;
-          margin-bottom: 10px;
-        }
-      }
-    }
-  }
-  .copyright {
-    padding: 20px 5px;
-    margin-top: 50px;
-    // background: $bg-blue;
-    p {
-      text-align: center;
-      color: white;
-    }
-  }
-}
-// ADVANTAGE
-
-.advantage-main-con {
-  // border: 2px solid red;
-  width: 100%;
-  margin: 100px 0 0 0;
-  margin-bottom: 50px;
-
-  .advantage-con {
-    // border: 2px solid red;
-    @include flexDisplay(space-around, center, row);
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1200px;
-
-    .advantage-img-con {
-      // border: 2px solid red;
-      width: 70px;
-      height: 50px;
-
-      @include responsive(bigphone) {
-        width: 100px;
-        height: 70px;
-      }
-      .img {
-        width: 100%;
-        height: 100%;
-      }
-
-      p {
-        // border: 2px solid red;
-        text-align: center;
-        font-size: 10px;
-
-        @include responsive(bigphone) {
-          font-size: 14px;
         }
       }
     }
