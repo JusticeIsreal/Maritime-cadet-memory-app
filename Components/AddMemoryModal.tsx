@@ -133,7 +133,6 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
           <h3>Share those amazing memories in pictures</h3>
 
           <div className="form-con">
-            {" "}
             <form onSubmit={handleSubmit(onSubmit)}>
               <p
                 style={{
@@ -233,8 +232,8 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
               <select {...register("department", { required: true })}>
                 <option value="">What department ?</option>
                 <option value="Mixed">Mixed</option>
-                <option value="Marine">Marine Engineering</option>
-                <option value="Nautical">Nautical Science</option>
+                <option value="Marine">Marine</option>
+                <option value="Nautical">Nautical</option>
                 <option value="Management">Management</option>
                 <option value="Elect/Elect">Elect/Elect</option>
                 <option value="Hydro/Metro">Hydro/Metro</option>

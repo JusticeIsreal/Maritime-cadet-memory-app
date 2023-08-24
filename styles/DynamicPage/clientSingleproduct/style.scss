@@ -209,6 +209,7 @@ $txt-light-blue: #cfe8ff;
       max-width: 480px;
       padding: 5px;
       // height: 100px;
+      @include flexDisplay(space-between, flex-start, column);
       // border: 2px solid #0008ff;
       display: flex;
       overflow-x: scroll;
@@ -226,6 +227,8 @@ $txt-light-blue: #cfe8ff;
       }
 
       .small-display-img-container {
+        // border: 2px solid #0008ff;
+        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -311,6 +314,7 @@ $txt-light-blue: #cfe8ff;
     color: $bg-dark;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: auto;
     position: relative;
     @include flexDisplay(space-between, flex-start, column);
     @include responsive(tablet) {
@@ -356,24 +360,24 @@ $txt-light-blue: #cfe8ff;
         // overflow-y: scroll;
 
         .reviews {
-          border: 2px solid #8080802b;
-          width: 100%;
-          max-height: 500px;
+          // border: 2px solid #8080802b;
+          // width: 100%;
+          // max-height: 500px;
           margin: 0 auto;
           border-radius: 10px;
           margin-top: 10px;
           position: relative !important;
           overflow-y: scroll;
-          padding-bottom: 105px;
+          margin-bottom: 105px;
           @include responsive(tablet) {
-            padding-bottom: 105px;
-            overflow-y: scroll;
-            max-height: 400px;
+            margin-bottom: 105px;
+            // overflow-y: scroll;
+            // max-height: 400px;
           }
           @include responsive(desktop) {
-            padding-bottom: 105px;
-            overflow-y: scroll;
-            max-height: 600px;
+            margin-bottom: 105px;
+            // overflow-y: scroll;
+            // max-height: 600px;
           }
           .review-count {
             font-size: 11px;

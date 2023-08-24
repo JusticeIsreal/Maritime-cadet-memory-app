@@ -362,14 +362,24 @@
   }
 }
 .product-session-con .product-main-con .products-con .products .likenshare .likenshareicon {
-  cursor: pointer;
-  font-size: 25px;
   font-weight: 300;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 @media only screen and (min-width: 768px) {
   .product-session-con .product-main-con .products-con .products .likenshare .likenshareicon {
     font-size: 35px;
   }
+}
+.product-session-con .product-main-con .products-con .products .likenshare .likenshareicon sub {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-left: -3px;
 }
 .product-session-con .product-main-con .products-con .products .likenshare .likenshareicon .like-red {
   animation: like 0.2s linear;
@@ -473,6 +483,17 @@
   border-radius: 10px;
   width: 98vw;
   padding-left: 5px;
+}
+@media only screen and (min-width: 768px) {
+  .ad-con .ad-img {
+    height: 250px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .ad-con .ad-img {
+    width: 50vw;
+    height: 250px;
+  }
 }
 .ad-con .ad-img img {
   margin: 0 auto;

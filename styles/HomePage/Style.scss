@@ -375,12 +375,20 @@ $txt-light-blue: #cfe8ff;
             }
           }
           .likenshareicon {
-            cursor: pointer;
-            font-size: 25px;
             font-weight: 300;
+            font-size: 30px;
+            cursor: pointer;
+            @include flexDisplay(center, center, row);
 
             @include responsive(bigphone, portrait) {
               font-size: 35px;
+            }
+            sub {
+              // border: 2px solid red;
+              text-align: center;
+              font-size: 13px;
+              margin-top: 15px;
+              margin-left: -3px;
             }
 
             .like-red {
@@ -485,6 +493,14 @@ $txt-light-blue: #cfe8ff;
     border-radius: 10px;
     width: 98vw;
     padding-left: 5px;
+
+    @include responsive(bigphone) {
+      height: 250px;
+    }
+    @include responsive(tablet) {
+      width: 50vw;
+      height: 250px;
+    }
     img {
       margin: 0 auto;
       cursor: pointer;

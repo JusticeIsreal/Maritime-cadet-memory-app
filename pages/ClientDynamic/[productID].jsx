@@ -39,7 +39,7 @@ import { Group, Button } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 
 // ICONS
-import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import { LuDownload } from "react-icons/lu";
 import { TiArrowBack } from "react-icons/ti";
 import { useForm } from "react-hook-form";
 import { addToCart, getSessionUser } from "../../Services/functions";
@@ -82,11 +82,6 @@ function Details() {
   const { productID } = router.query;
   const pic = useRef();
   const setCartQty = useContext(CartQuantityContext).setCartQty;
-
-  const [disimg, setDisimg] = useState(0);
-  const changeIMG = (index) => {
-    setDisimg(index);
-  };
 
   // GO BACK
 
@@ -274,7 +269,26 @@ function Details() {
   );
 
   const posterdetails = posterImage.map((img) => img.data());
+  // console.log(product?.image[disimg]);
+  const [disimg, setDisimg] = useState(0);
+  const changeIMG = (e, index) => {
+    setDisimg(index);
+  };
+  function replaceCloudinaryValue(url, replacement) {
+    const startIndex = url.indexOf("/upload/") + 8; // Find the index after "/upload/"
+    const endIndex = url.lastIndexOf("/"); // Find the last index before the filename
+    if (startIndex !== -1 && endIndex !== -1) {
+      const middlePart = url.substring(startIndex, endIndex); // Get the middle part to replace
+      const newURL = url.replace(middlePart, replacement); // Replace the middle part
 
+      return router.push(newURL);
+    }
+    return router.push(url); // Return the original URL if the parts are not found
+  }
+
+  const originalURL = product?.image[disimg];
+  // const newURL = replaceCloudinaryValue(originalURL, "fl_attachment:JJ2022");
+  // console.log(newURL);
   return (
     <>
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
@@ -319,7 +333,7 @@ function Details() {
                       width={50}
                       height={50}
                       ref={pic}
-                      onClick={() => changeIMG(index)}
+                      onClick={(e) => changeIMG(e, index)}
                     />
                   </div>
                 ))}
@@ -347,9 +361,17 @@ function Details() {
               </sub>
             </span>
             <span className="comment">
-              <a href="#comment">
+              <a href="#comment" style={{ color: "gray" }}>
                 {review.length} {review.length > 1 ? "comments" : "comment"}
               </a>
+            </span>
+            <span
+              className="comment"
+              onClick={() =>
+                replaceCloudinaryValue(originalURL, "fl_attachment:JJ2022")
+              }
+            >
+              <LuDownload /> Download
             </span>
           </div>
         </div>
@@ -382,7 +404,10 @@ function Details() {
               ) : (
                 <p className="testing">
                   {product?.message?.map((item, index) => (
-                    <span key={index}>{item.name}</span>
+                    <span key={index}>
+                      {item.name} <br />
+                      <br />
+                    </span>
                   ))}
                 </p>
               )}
@@ -433,7 +458,6 @@ function Details() {
               {/* COMMENT FORM */}
               {session && (
                 <div className="review-form-con">
-                  {" "}
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <textarea
                       type="text"

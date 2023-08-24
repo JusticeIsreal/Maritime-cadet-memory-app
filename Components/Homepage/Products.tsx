@@ -231,7 +231,7 @@ function Product({
   );
 
   // fetch comment rom firebase
-  const [review, setReview] = useState([]);
+  const [review, setReview] = useState<any>([]);
 
   useEffect(
     () =>
@@ -265,7 +265,6 @@ function Product({
           ) : (
             <BsPersonCircle className="unknown-avata" />
           )}
-
           <div className="profile-name">
             <span>{posterdetails[0]?.name.split(" ")[0]}</span>
             <i>
@@ -307,17 +306,14 @@ function Product({
           ) : (
             <BsHeart onClick={() => addToFav(id)} />
           )}
-          <sub>
-            {likes.length > 0 ? (
-              <>
-                {likes.length}
-                {likes.length > 1 ? " " + "likes" : " " + "like"}
-              </>
-            ) : null}
-          </sub>
+          <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
         </span>
         <span className="comment">
-          <a href="#comment">
+          <a
+            
+            href={`/ClientDynamic/${id}/#comment`}
+            style={{ color: "gray" }}
+          >
             {review.length} {review.length > 1 ? "comments" : "comment"}
           </a>
         </span>
