@@ -9,6 +9,13 @@ import {
   SetStateAction,
   Key,
 } from "react";
+import {
+  UnstyledButton,
+  Group as mantinegroup,
+  Avatar,
+  Text,
+} from "@mantine/core";
+
 import { useRouter } from "next/router";
 import Link from "next/link";
 import {
@@ -238,7 +245,6 @@ function Details() {
       <div className="client-single-product">
         <div className="single-product">
           <div className="top-container">
-            {" "}
             <div className="big-display-con">
               <button onClick={goBack} className="go-back">
                 <MdArrowBackIos />
@@ -257,31 +263,67 @@ function Details() {
                 )}
               </div>
             </div>
-            <div className="small-display-img-con">
-              {product?.image.map(
-                (img: any, index: Key | null | undefined) =>
-                  img && (
-                    <div className="small-display-img" key={index}>
-                      <Image
-                        src={img && img}
-                        alt="img"
-                        fill
-                        sizes="100vw"
-                        ref={pic}
-                        onClick={() => changeIMG(index)}
-                      />
-                    </div>
-                  )
-              )}
+          </div>
+          <div className="small-display-img-co">
+            <div className="small-display-img-container">
+              {product?.image.map((img: any, index: number) => (
+                <div className="small-display-img" key={index}>
+                  <Image
+                    className="smallimg"
+                    src={img && img}
+                    alt="img"
+                    width={50}
+                    height={50}
+                    ref={pic}
+                    onClick={() => changeIMG(index)}
+                  />
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* lower part */}
-          <div className="lower-details"></div>
+          nbnmbm
         </div>
         <div className="single-product-details">
+          <UnstyledButton className="profile-head">
+            <Group>
+              <Avatar size={40} color="blue">
+                BH
+              </Avatar>
+              <div>
+                <Text>Bob Handsome</Text>
+                <Text size="xs" color="dimmed">
+                  bob@handsome.inc
+                </Text>
+              </div>
+            </Group>
+          </UnstyledButton>
           <div className="product-review">
             <h1>COMMENTS</h1>
+            <p className="testing">
+              mbbvbvb Education +2348104015180 work experience Passionate
+              Backend Developer specialising in crafting robust web and mobile
+              solutions. With 3+ years of experience powering dynamic and
+              seamless applications. Proficient in modern tech and frameworks,
+              dedicated to staying up-to-date with industry trends. Led key
+              projects resulting in improved efficiency and user satisfaction.
+              Eager to contribute expertise to cutting-edge teams for meaningful
+              impact. JUSTICE ISREAL AGBONMA Backend Developer Full Stack Web
+              Developer (LocTech Institute of technology ) Scrum Fundamentals
+              Certified (SFC) (Accreditation Body for Scrum and Agile
+              Methodologies) Project Management Fundamentals (IBM) Master
+              Project Manager. (International Project Management Board
+              Certification. (MPM) IBM Engineering Systems Design. (IBM)
+              CERTIFICATIONS VisionVoice Inc. Tech Lead 2022 StringCode Limited
+              Backend developer 2021 - Present Collaborated with frontend teams
+              to seamlessly integrate frontend and backend functionalities,
+              ensuring cohesive user experiences. Utilised JavaScript, Node.js,
+              Nest.js, and Express.js to create efficient and scalable
+              server-side logic. Implemented APIs and data handling mechanisms
+              for improved data management and retrieval. Worked closely with
+              frontend designers to ensure consistent and engaging visuals in
+              applications. CONTACT ME Justiceyba@gmail.com
+             
+            </p>
             {session ? null : (
               <span
                 style={{ padding: "0 5px", fontSize: "14px", color: "red" }}
@@ -293,21 +335,29 @@ function Details() {
               </span>
             )}
             <div className="review-con">
+              <p className="review-count">
+                Total of {review.length}{" "}
+                {review.length > 1 ? "comments" : "comment"}
+              </p>
               <div className="reviews">
-                <p className="review-count">
-                  Total of {review.length}{" "}
-                  {review.length > 1 ? "comments" : "comment"}
-                </p>
-
                 {review.map((comment) => (
-                  <div className="quote" key={comment.id}>
+                  <div className="quote" key={comment?.id}>
                     <Blockquote cite="" className="chatit">
-                      <p>{comment.data().username} </p>
-                      <sup>
-                        <Moment fromNow className="time-posted">
-                          {comment.data().timestamp?.toDate()}
-                        </Moment>
-                      </sup>
+                      <UnstyledButton>
+                        <Group>
+                          <Avatar size={40} color="blue">
+                            BH
+                          </Avatar>
+                          <div>
+                            <Text>{comment.data().username}</Text>
+                            <Text size="xs" color="dimmed">
+                              <Moment fromNow className="time-posted">
+                                {comment.data().timestamp?.toDate()}
+                              </Moment>
+                            </Text>
+                          </div>
+                        </Group>
+                      </UnstyledButton>
                       <p className="quote-text">{comment.data().yourreview}</p>
                     </Blockquote>
                   </div>
@@ -342,40 +392,6 @@ function Details() {
             </div>
           </div>
           {/* similar products */}
-          {similarProducts.length > 0 && (
-            <>
-              <h3 style={{ marginTop: "100px", color: "#03a8a8" }}>
-                {similarProducts.length > 0 && "SIMILAR PRODUCTS"}
-              </h3>{" "}
-              <div className="similar-products">
-                <div className="single-product-con">
-                  {similarProducts?.map(
-                    (product: {
-                      userId: any;
-                      id: number;
-                      data: () => {
-                        posterId: any;
-                        id: Key | null | undefined;
-                        timestamp: any;
-                        (): any;
-                        new (): any;
-                        image: string;
-                        productname: string;
-                        productprice: string;
-                        productoldprice: string;
-                      };
-                    }) => (
-                      <SimilarProducts
-                        key={product?.data()?.id}
-                        id={product?.data()?.id}
-                        productimages={product?.data()?.image}
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            </>
-          )}
         </div>
       </div>
     </>
@@ -383,34 +399,3 @@ function Details() {
 }
 
 export default Details;
-
-function SimilarProducts({
-  id,
-  productimages,
-}: {
-  id: any;
-  productimages: any;
-}) {
-  // percentage of peomo
-
-  return (
-    <div className="products">
-      <div className="product-img">
-        <Link
-          href={`/ClientDynamic/${id}`}
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          <div style={{ width: "100%", height: "100%", position: "relative" }}>
-            <Image
-              src={productimages && productimages[0]}
-              alt="img"
-              className="home-product-img"
-              fill
-              sizes="100vw"
-            />
-          </div>
-        </Link>
-      </div>
-    </div>
-  );
-}
