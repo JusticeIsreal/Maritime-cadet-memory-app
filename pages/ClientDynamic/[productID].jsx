@@ -269,11 +269,14 @@ function Details() {
   );
 
   const posterdetails = posterImage.map((img) => img.data());
-  // console.log(product?.image[disimg]);
+
+  // change image display
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (e, index) => {
     setDisimg(index);
   };
+
+  // download image
   function replaceCloudinaryValue(url, replacement) {
     const startIndex = url.indexOf("/upload/") + 8; // Find the index after "/upload/"
     const endIndex = url.lastIndexOf("/"); // Find the last index before the filename
@@ -285,14 +288,11 @@ function Details() {
     }
     return router.push(url); // Return the original URL if the parts are not found
   }
-
   const originalURL = product?.image[disimg];
-  // const newURL = replaceCloudinaryValue(originalURL, "fl_attachment:JJ2022");
-  // console.log(newURL);
+
   return (
     <>
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
-
       <Group position="center"></Group>
       <Topbar
         setSearch={function (value) {

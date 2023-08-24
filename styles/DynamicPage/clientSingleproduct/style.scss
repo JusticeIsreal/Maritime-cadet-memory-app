@@ -289,17 +289,14 @@ $txt-light-blue: #cfe8ff;
       }
 
       .likenshareico {
-        // border: 2px solid red;
-        // width: 50px;
-        // margin-left: 5px;
         font-size: 30px;
         cursor: pointer;
         @include flexDisplay(center, center, row);
 
         sub {
-          text-align: center;
-          font-size: 15px;
-          margin-top: 5px;
+          height: 10px !important;
+          font-size: 17px;
+          margin-left: 2px;
         }
       }
     }

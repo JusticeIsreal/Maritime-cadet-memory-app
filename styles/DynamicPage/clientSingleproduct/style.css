@@ -236,9 +236,9 @@
   flex-direction: row;
 }
 .client-single-product .single-product .likenshar .likenshareico sub {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 5px;
+  height: 10px !important;
+  font-size: 17px;
+  margin-left: 2px;
 }
 .client-single-product .single-product-details {
   margin-top: 30px;
