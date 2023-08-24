@@ -29,6 +29,8 @@ import {
   onSnapshot,
   serverTimestamp,
   addDoc,
+  setDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../../Firebase";
 import Image from "next/image";
@@ -45,6 +47,7 @@ import Modal from "../../Components/Modal";
 import { CartQuantityContext } from "../_app";
 import { signIn, useSession } from "next-auth/react";
 import { MdArrowBackIos } from "react-icons/md";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "memories");
@@ -82,7 +85,7 @@ function Details() {
   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   const [disimg, setDisimg] = useState(0);
-  const changeIMG = (index ) => {
+  const changeIMG = (index) => {
     setDisimg(index);
     // console.log(disimg);
     // console.log(pic.current.classList);
@@ -144,7 +147,7 @@ function Details() {
   } = useForm();
 
   // submit review
-  const onSubmit = async (data , e) => {
+  const onSubmit = async (data, e) => {
     e.preventDefault();
     // console.log(product);
 
@@ -173,10 +176,6 @@ function Details() {
     [db, productID]
   );
 
-  // toggle review form
-  const [showForm, setShowForm] = useState(true);
-  // toggle review view
-
   // ADD TO CART
   const [dynamictriger, setDynamicTriger] = useState(true);
 
@@ -196,8 +195,7 @@ function Details() {
     }
 
     const productExist = triger.userCart.find(
-      (item) =>
-        item.productID === productID
+      (item) => item.productID === productID
     );
 
     if (
@@ -223,15 +221,73 @@ function Details() {
     setDynamicTriger(!dynamictriger);
   };
 
-  // PAY FUNCTION
-  const [payModal, setPayModal] = useState(false);
-  const PayNow = async () => {
-    const triger = await getSessionUser();
-    if (!triger) {
-      return setLoginTriger(true);
+  // PICTURES LIKE STATE
+
+  const [likes, setLikes] = useState([]);
+  const [hasLikes, setHasLikes] = useState(false);
+  // fetch likes from firebase
+  useEffect(() => {
+    onSnapshot(collection(db, "memories", productID, "likes"), (snapshot) => {
+      return setLikes(snapshot.docs);
+    });
+  }, [db, productID]);
+  // to unlike logic
+  useEffect(() => {
+    setHasLikes(
+      likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+    );
+  }, [likes]);
+
+  // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
+  const addToFav = async () => {
+    const productDoc = doc(db, "memories", productID);
+    const productSnapshot = await getDoc(productDoc);
+    const productData = productSnapshot.data();
+    if (session) {
+      if (hasLikes) {
+        await deleteDoc(
+          doc(db, "memories", productID, "likes", session?.user?.uid)
+        );
+        // return;
+      } else {
+        await setDoc(
+          doc(db, "memories", productID, "likes", session?.user?.uid),
+          {
+            username: session.user?.username,
+          }
+        );
+        return;
+      }
+    } else {
+      setLoginTriger(true);
     }
-    setPayModal(true);
   };
+  // GET  DETAILS OF POSTER
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    return onSnapshot(
+      query(collection(db, "registered_Users"), orderBy("time", "desc")),
+      (snapshot) => {
+        setUsers(snapshot.docs);
+      }
+    );
+  }, [likes]);
+
+  const posterImage = users.filter(
+    (user) => user.data().userId === product?.posterId
+  );
+
+  const posterdetails = posterImage.map((img) => img.data());
+
+  // GET COMMENT IMAGE
+
+  const commenterImage = users.filter(
+    (user) => user.data().email === product?.posterId
+  );
+  const commenterdetails = commenterImage.map((img) => img.data());
+  console.log(posterImage);
+  const comenterNmae = review.map((name) => name.data().username);
+  console.log(comenterNmae);
   return (
     <>
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
@@ -281,18 +337,39 @@ function Details() {
               ))}
             </div>
           </div>
-          nbnmbm
+          <div className="likenshare">
+            <span className="likenshareicon">
+              {hasLikes ? (
+                <BsHeartFill
+                  className="like-red"
+                  style={{ color: "red" }}
+                  onClick={() => addToFav()}
+                />
+              ) : (
+                <BsHeart onClick={() => addToFav()} />
+              )}
+              <sub>
+                {likes.length > 0 ? (
+                  <>
+                    {likes.length}
+                    {likes.length > 1 ? " " + "likes" : " " + "like"}
+                  </>
+                ) : null}
+              </sub>
+            </span>
+            <span className="comment">2 comments</span>
+          </div>
         </div>
         <div className="single-product-details">
           <UnstyledButton className="profile-head">
             <Group>
               <Avatar size={40} color="blue">
-                BH
+                <img src={posterdetails[0]?.image} alt="img" />
               </Avatar>
               <div>
-                <Text>Bob Handsome</Text>
+                <Text>{posterdetails[0]?.name}</Text>
                 <Text size="xs" color="dimmed">
-                  bob@handsome.inc
+                  <Moment fromNow>{product?.timestamp?.toDate()}</Moment>
                 </Text>
               </div>
             </Group>
@@ -322,7 +399,6 @@ function Details() {
               for improved data management and retrieval. Worked closely with
               frontend designers to ensure consistent and engaging visuals in
               applications. CONTACT ME Justiceyba@gmail.com
-             
             </p>
             {session ? null : (
               <span
