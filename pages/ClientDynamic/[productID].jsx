@@ -81,14 +81,11 @@ function Details() {
   const router = useRouter();
   const { productID } = router.query;
   const pic = useRef();
-  // console.log(product);
   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   const [disimg, setDisimg] = useState(0);
   const changeIMG = (index) => {
     setDisimg(index);
-    // console.log(disimg);
-    // console.log(pic.current.classList);
   };
 
   // GO BACK
@@ -149,7 +146,6 @@ function Details() {
   // submit review
   const onSubmit = async (data, e) => {
     e.preventDefault();
-    // console.log(product);
 
     // post coment func
     await addDoc(collection(db, "memories", productID, "review"), {
@@ -279,15 +275,6 @@ function Details() {
 
   const posterdetails = posterImage.map((img) => img.data());
 
-  // GET COMMENT IMAGE
-
-  const commenterImage = users.filter(
-    (user) => user.data().email === product?.posterId
-  );
-  const commenterdetails = commenterImage.map((img) => img.data());
-  console.log(posterImage);
-  const comenterNmae = review.map((name) => name.data().username);
-  console.log(comenterNmae);
   return (
     <>
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
@@ -320,25 +307,27 @@ function Details() {
               </div>
             </div>
           </div>
-          <div className="small-display-img-co">
-            <div className="small-display-img-container">
-              {product?.image.map((img, index) => (
-                <div className="small-display-img" key={index}>
-                  <Image
-                    className="smallimg"
-                    src={img && img}
-                    alt="img"
-                    width={50}
-                    height={50}
-                    ref={pic}
-                    onClick={() => changeIMG(index)}
-                  />
-                </div>
-              ))}
+          {product?.image.length > 1 && (
+            <div className="small-display-img-co">
+              <div className="small-display-img-container">
+                {product?.image.map((img, index) => (
+                  <div className="small-display-img" key={index}>
+                    <Image
+                      className="smallimg"
+                      src={img && img}
+                      alt="img"
+                      width={50}
+                      height={50}
+                      ref={pic}
+                      onClick={() => changeIMG(index)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="likenshare">
-            <span className="likenshareicon">
+          )}{" "}
+          <div className="likenshar">
+            <span className="likenshareico">
               {hasLikes ? (
                 <BsHeartFill
                   className="like-red"
@@ -357,7 +346,11 @@ function Details() {
                 ) : null}
               </sub>
             </span>
-            <span className="comment">2 comments</span>
+            <span className="comment">
+              <a href="#comment">
+                {review.length} {review.length > 1 ? "comments" : "comment"}
+              </a>
+            </span>
           </div>
         </div>
         <div className="single-product-details">
@@ -375,31 +368,26 @@ function Details() {
             </Group>
           </UnstyledButton>
           <div className="product-review">
-            <h1>COMMENTS</h1>
-            <p className="testing">
-              mbbvbvb Education +2348104015180 work experience Passionate
-              Backend Developer specialising in crafting robust web and mobile
-              solutions. With 3+ years of experience powering dynamic and
-              seamless applications. Proficient in modern tech and frameworks,
-              dedicated to staying up-to-date with industry trends. Led key
-              projects resulting in improved efficiency and user satisfaction.
-              Eager to contribute expertise to cutting-edge teams for meaningful
-              impact. JUSTICE ISREAL AGBONMA Backend Developer Full Stack Web
-              Developer (LocTech Institute of technology ) Scrum Fundamentals
-              Certified (SFC) (Accreditation Body for Scrum and Agile
-              Methodologies) Project Management Fundamentals (IBM) Master
-              Project Manager. (International Project Management Board
-              Certification. (MPM) IBM Engineering Systems Design. (IBM)
-              CERTIFICATIONS VisionVoice Inc. Tech Lead 2022 StringCode Limited
-              Backend developer 2021 - Present Collaborated with frontend teams
-              to seamlessly integrate frontend and backend functionalities,
-              ensuring cohesive user experiences. Utilised JavaScript, Node.js,
-              Nest.js, and Express.js to create efficient and scalable
-              server-side logic. Implemented APIs and data handling mechanisms
-              for improved data management and retrieval. Worked closely with
-              frontend designers to ensure consistent and engaging visuals in
-              applications. CONTACT ME Justiceyba@gmail.com
-            </p>
+            {/* <h1>COMMENTS</h1> */}
+
+            <div>
+              <p className="testing">
+                <b>tags: </b>
+                {product?.namesonpicture}
+              </p>
+            </div>
+            <div>
+              {product?.message.length < 2 ? (
+                <p className="testing">{product?.message[0].name}</p>
+              ) : (
+                <p className="testing">
+                  {product?.message?.map((item, index) => (
+                    <span key={index}>{item.name}</span>
+                  ))}
+                </p>
+              )}
+            </div>
+
             {session ? null : (
               <span
                 style={{ padding: "0 5px", fontSize: "14px", color: "red" }}
@@ -411,18 +399,21 @@ function Details() {
               </span>
             )}
             <div className="review-con">
-              <p className="review-count">
-                Total of {review.length}{" "}
-                {review.length > 1 ? "comments" : "comment"}
-              </p>
-              <div className="reviews">
+              {/* <p className="review-count">
+                {review.length} {review.length > 1 ? "comments" : "comment"}
+              </p> */}
+              <div className="reviews" id="comment">
                 {review.map((comment) => (
                   <div className="quote" key={comment?.id}>
                     <Blockquote cite="" className="chatit">
                       <UnstyledButton>
                         <Group>
                           <Avatar size={40} color="blue">
-                            BH
+                            {comment.data().username.split(" ").length > 1
+                              ? comment.data().username.split(" ")[0][0] +
+                                " " +
+                                comment.data().username.split(" ")[1][0]
+                              : comment.data().username.split(" ")[0][0]}
                           </Avatar>
                           <div>
                             <Text>{comment.data().username}</Text>

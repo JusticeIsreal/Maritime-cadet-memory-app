@@ -266,6 +266,40 @@ $txt-light-blue: #cfe8ff;
         margin-left: 20px;
       }
     }
+
+    .likenshar {
+      border-top: 1px solid gray;
+      width: 95%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 5px;
+      @include flexDisplay(space-between, center, row);
+      @include responsive(bigphone) {
+        max-width: 680px;
+      }
+
+      @include responsive(tablet) {
+        max-width: 500px;
+      }
+      @include responsive(desktop) {
+        max-width: 500px;
+      }
+
+      .likenshareico {
+        // border: 2px solid red;
+        // width: 50px;
+        // margin-left: 5px;
+        font-size: 30px;
+        cursor: pointer;
+        @include flexDisplay(center, center, row);
+
+        sub {
+          text-align: center;
+          font-size: 15px;
+          margin-top: 5px;
+        }
+      }
+    }
   }
 
   //   single product details style
@@ -406,13 +440,17 @@ $txt-light-blue: #cfe8ff;
           animation: reviewform 0.3s linear;
           z-index: 2000;
           bottom: 0;
-          right: 0;
+          // right: 0;
           // left: 0;
           width: 100%;
           background-color: white;
           @include responsive(tablet) {
             width: 55.5%;
           }
+          @include responsive(tablet) {
+            max-width: 820px;
+          }
+
           @keyframes reviewform {
             0% {
               padding: 0;

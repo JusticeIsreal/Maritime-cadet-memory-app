@@ -230,6 +230,20 @@ function Product({
     (img: { data: () => { (): any; new (): any; length: any } }) => img.data()
   );
 
+  // fetch comment rom firebase
+  const [review, setReview] = useState([]);
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, "memories", id, "review"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setReview(snapshot.docs)
+      ),
+    [db, id]
+  );
   return (
     <div className="products">
       <Link
@@ -259,7 +273,16 @@ function Product({
             </i>
           </div>
         </span>
-        <p className="product-name">{message[0]?.name || namesonpicture}</p>
+        <p className="product-name">
+          {message[0]?.name ? (
+            <span>{message[0]?.name}</span>
+          ) : (
+            <>
+              <b>tags:</b>
+              <span>{" " + namesonpicture}</span>
+            </>
+          )}
+        </p>
       </Link>
       <div className="product-img">
         <Link href={`/ClientDynamic/${id}`}>
@@ -293,7 +316,11 @@ function Product({
             ) : null}
           </sub>
         </span>
-        <span className="comment">2 comments</span>
+        <span className="comment">
+          <a href="#comment">
+            {review.length} {review.length > 1 ? "comments" : "comment"}
+          </a>
+        </span>
       </div>
     </div>
   );

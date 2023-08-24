@@ -196,6 +196,45 @@
     margin-left: 20px;
   }
 }
+.client-single-product .single-product .likenshar {
+  border-top: 1px solid gray;
+  width: 95%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+@media only screen and (min-width: 768px) {
+  .client-single-product .single-product .likenshar {
+    max-width: 680px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .client-single-product .single-product .likenshar {
+    max-width: 500px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .client-single-product .single-product .likenshar {
+    max-width: 500px;
+  }
+}
+.client-single-product .single-product .likenshar .likenshareico {
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.client-single-product .single-product .likenshar .likenshareico sub {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+}
 .client-single-product .single-product-details {
   margin-top: 30px;
   padding: 5px;
@@ -334,13 +373,17 @@
   animation: reviewform 0.3s linear;
   z-index: 2000;
   bottom: 0;
-  right: 0;
   width: 100%;
   background-color: white;
 }
 @media only screen and (min-width: 1024px) {
   .client-single-product .single-product-details .product-review .review-con .review-form-con {
     width: 55.5%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .client-single-product .single-product-details .product-review .review-con .review-form-con {
+    max-width: 820px;
   }
 }
 @keyframes reviewform {

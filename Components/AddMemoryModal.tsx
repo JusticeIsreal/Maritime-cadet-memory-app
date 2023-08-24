@@ -22,7 +22,7 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
   const fields = form.values.employees.map((item, index) => (
     <Group key={item.key} mt="xs" className="mantine-group">
       <Textarea
-        placeholder="What's the story behind these pictures?"
+        placeholder="Story behind these pictures? (optional)"
         withAsterisk
         sx={{ flex: 1 }}
         {...form.getInputProps(`employees.${index}.name`)}
@@ -233,8 +233,8 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
               <select {...register("department", { required: true })}>
                 <option value="">What department ?</option>
                 <option value="Mixed">Mixed</option>
-                <option value="Marine Engineering">Marine Engineering</option>
-                <option value="Nautical Science">Nautical Science</option>
+                <option value="Marine">Marine Engineering</option>
+                <option value="Nautical">Nautical Science</option>
                 <option value="Management">Management</option>
                 <option value="Elect/Elect">Elect/Elect</option>
                 <option value="Hydro/Metro">Hydro/Metro</option>
