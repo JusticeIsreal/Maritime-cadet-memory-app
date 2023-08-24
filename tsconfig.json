@@ -23,7 +23,7 @@
     "Components/Homepage/Banner.jsx",
     "Components/Topbar.tsx",
     "Components/AdminPageComponents/Sidebar.tsx",
-    "pages/ClientDynamic/[productID].tsx",
+    "pages/ClientDynamic/[productID].jsx",
     "pages/Homepage.tsx",
     "pages/index.jsx",
     "pages/_app.jsx",

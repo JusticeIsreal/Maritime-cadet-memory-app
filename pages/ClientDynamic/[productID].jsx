@@ -56,7 +56,7 @@ export async function getStaticPaths() {
   return { paths, fallback: "blocking" };
 }
 
-export const getStaticProps = async ({ params }: { params: any }) => {
+export const getStaticProps = async ({ params }) => {
   const { productID } = params;
   const productDoc = doc(db, "memories", productID);
   const productSnapshot = await getDoc(productDoc);
@@ -82,7 +82,7 @@ function Details() {
   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   const [disimg, setDisimg] = useState(0);
-  const changeIMG = (index: number) => {
+  const changeIMG = (index ) => {
     setDisimg(index);
     // console.log(disimg);
     // console.log(pic.current.classList);
@@ -95,7 +95,7 @@ function Details() {
   }
 
   // fetch product by id
-  const [product, setProduct] = useState<any>();
+  const [product, setProduct] = useState();
   async function fetchItemFromFirestore() {
     const itemRef = doc(db, "memories", productID);
     const itemDoc = await getDoc(itemRef);
@@ -144,7 +144,7 @@ function Details() {
   } = useForm();
 
   // submit review
-  const onSubmit = async (data: any, e: { preventDefault: () => void }) => {
+  const onSubmit = async (data , e) => {
     e.preventDefault();
     // console.log(product);
 
@@ -196,7 +196,7 @@ function Details() {
     }
 
     const productExist = triger.userCart.find(
-      (item: { productID: string | string[] | undefined }) =>
+      (item) =>
         item.productID === productID
     );
 
@@ -238,7 +238,7 @@ function Details() {
 
       <Group position="center"></Group>
       <Topbar
-        setSearch={function (value: string): void {
+        setSearch={function (value) {
           router.push("/");
         }}
       />
@@ -266,7 +266,7 @@ function Details() {
           </div>
           <div className="small-display-img-co">
             <div className="small-display-img-container">
-              {product?.image.map((img: any, index: number) => (
+              {product?.image.map((img, index) => (
                 <div className="small-display-img" key={index}>
                   <Image
                     className="smallimg"
