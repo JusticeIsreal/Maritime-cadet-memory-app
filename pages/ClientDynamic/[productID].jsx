@@ -9,6 +9,7 @@ import {
   SetStateAction,
   Key,
 } from "react";
+
 import {
   UnstyledButton,
   Group as mantinegroup,
@@ -37,6 +38,8 @@ import Image from "next/image";
 import { Blockquote } from "@mantine/core";
 import { Group, Button } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
+import { useDisclosure } from "@mantine/hooks";
+import { Drawer } from "@mantine/core";
 
 // ICONS
 import { LuDownload } from "react-icons/lu";
@@ -88,6 +91,7 @@ function Details() {
   function goBack() {
     router.back();
   }
+  const [opened, { open, close }] = useDisclosure(false);
 
   // fetch product by id
   const [product, setProduct] = useState();
@@ -140,6 +144,10 @@ function Details() {
 
   // submit review
   const onSubmit = async (data, e) => {
+    if (!session) {
+      return setLoginTriger(true);
+    }
+
     e.preventDefault();
 
     // post coment func
@@ -290,6 +298,7 @@ function Details() {
   }
   const originalURL = product?.image[disimg];
 
+  const [readAll, setReadAll] = useState(true);
   return (
     <>
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
@@ -391,7 +400,6 @@ function Details() {
           </UnstyledButton>
           <div className="product-review">
             {/* <h1>COMMENTS</h1> */}
-
             <div>
               <p className="testing">
                 <b>tags: </b>
@@ -403,19 +411,52 @@ function Details() {
                 <p className="testing">{product?.message[0].name}</p>
               ) : (
                 <p className="testing">
-                  {product?.message?.map((item, index) => (
-                    <span key={index}>
-                      {item.name} <br />
-                      <br />
-                    </span>
-                  ))}
+                  {readAll ? (
+                    <>
+                      {" "}
+                      {product?.message[0].name.substring(0, 100)}{" "}
+                      <span
+                        onClick={() => setReadAll(!readAll)}
+                        style={{
+                          color: "black",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
+                      >
+                        more. . .
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      {product?.message?.map((item, index) => (
+                        <span key={index}>
+                          {item.name} <br />
+                          <br />
+                        </span>
+                      ))}
+                      <span
+                        onClick={() => setReadAll(!readAll)}
+                        style={{
+                          color: "black",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
+                      >
+                        Read less
+                      </span>
+                    </>
+                  )}
                 </p>
               )}
             </div>
 
             {session ? null : (
               <span
-                style={{ padding: "0 5px", fontSize: "14px", color: "red" }}
+                style={{
+                  padding: "0 5px",
+                  fontSize: "14px",
+                  color: "red",
+                }}
               >
                 Login to write a comment{" "}
                 <span style={{ color: "blue" }} onClick={signIn}>
@@ -424,9 +465,6 @@ function Details() {
               </span>
             )}
             <div className="review-con">
-              {/* <p className="review-count">
-                {review.length} {review.length > 1 ? "comments" : "comment"}
-              </p> */}
               <div className="reviews" id="comment">
                 {review.map((comment) => (
                   <div className="quote" key={comment?.id}>
@@ -456,33 +494,31 @@ function Details() {
                 ))}
               </div>
               {/* COMMENT FORM */}
-              {session && (
-                <div className="review-form-con">
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <textarea
-                      type="text"
-                      placeholder="Write a comment"
-                      {...register("yourreview", { required: true })}
-                    />
-                    {errors.yourreview && (
-                      <span
-                        className="errror-msg"
-                        style={{
-                          fontSize: "12px",
-                          fontStyle: "italic",
-                          color: "red",
-                        }}
-                      >
-                        Kindly Enter Your Review
-                      </span>
-                    )}
-                    <input type="submit" className="submit-btn" value="SEND" />
-                  </form>
-                </div>
-              )}
+
+              <div className="review-form-con">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <textarea
+                    type="text"
+                    placeholder="Write a comment"
+                    {...register("yourreview", { required: true })}
+                  />
+                  {errors.yourreview && (
+                    <span
+                      className="errror-msg"
+                      style={{
+                        fontSize: "12px",
+                        fontStyle: "italic",
+                        color: "red",
+                      }}
+                    >
+                      Kindly Enter Your Review
+                    </span>
+                  )}
+                  <input type="submit" className="submit-btn" value="SEND" />
+                </form>
+              </div>
             </div>
           </div>
-          {/* similar products */}
         </div>
       </div>
     </>

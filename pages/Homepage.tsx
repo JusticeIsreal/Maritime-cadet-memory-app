@@ -100,7 +100,13 @@ const Homepage = () => {
   }, [category, products, categoryYear]);
 
   return (
-    <div className="homepage-main-con" style={{ position: "relative" }}>
+    <div
+      className="homepage-main-con"
+      style={{
+        position: "relative",
+        maxWidth: "2000px",
+      }}
+    >
       {/* TOPBAR */}
       <Topbar
         // dynamictriger={dynamictriger}

@@ -43,7 +43,7 @@ function Advert() {
           loop
           align="start"
           breakpoints={[
-            // { maxWidth: "lg", slideSize: "100%" },
+            { maxWidth: "lg", slideSize: "100%" },
             { maxWidth: "md", slideSize: "100%" },
             { maxWidth: "sm", slideSize: "100%", slideGap: 0 },
           ]}

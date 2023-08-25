@@ -34,7 +34,9 @@
 }
 
 .homepage-main-con {
-  padding: 50px 0;
+  max-width: 2000px;
+  margin: 0 auto;
+  padding-top: 50px;
   position: relative;
 }
 @media only screen and (min-width: 768px) {
@@ -43,7 +45,7 @@
   }
 }
 .homepage-main-con .post-memory {
-  border: 2px solid red;
+  background-color: aqua;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -62,12 +64,6 @@
   font-size: 60px;
   font-weight: bolder;
 }
-@media only screen and (min-width: 768px) {
-  .homepage-main-con .post-memory {
-    left: 90%;
-    bottom: 30px;
-  }
-}
 
 .topbar-main-con {
   display: flex;
@@ -76,11 +72,12 @@
   flex-direction: column;
   position: relative;
   z-index: 200;
-  width: 100vw;
+  width: 100%;
   position: sticky;
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   box-shadow: 5px 5px 10px #eee;
 }
 .topbar-main-con .topbar-top-con {
@@ -89,14 +86,17 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  padding: 5px 10px;
+  padding: 5px 15px;
   position: sticky;
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   background-color: rgba(4, 4, 40, 0.5019607843); /* Set your desired color and opacity */
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
+  margin: 0 auto;
+  max-width: 2000px !important;
 }
 .topbar-main-con .topbar-top-con form {
   height: 35px;
@@ -197,8 +197,8 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  width: 45%;
-  margin: 5px;
+  width: 46%;
+  margin: 5px 0;
   border-radius: 5px;
   background: white;
   overflow: hidden;
@@ -206,9 +206,21 @@
   box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368627451);
   position: relative;
 }
+@media only screen and (min-width: 768px) {
+  .product-session-con .product-main-con .products-con .products {
+    margin: 5px;
+  }
+}
 @media only screen and (min-width: 1024px) {
   .product-session-con .product-main-con .products-con .products {
     width: 32%;
+    margin: 5px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .product-session-con .product-main-con .products-con .products {
+    width: 32%;
+    margin: 5px;
   }
 }
 .product-session-con .product-main-con .products-con .products .main-poster-con {
@@ -301,7 +313,6 @@
 }
 .product-session-con .product-main-con .products-con .products .product-img {
   width: 100%;
-  border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
@@ -419,52 +430,58 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin-top: 20vh;
 }
-
-.lds-facebook {
+.loader-con .loader {
   display: inline-block;
+  text-align: center;
+  line-height: 86px;
+  text-align: center;
   position: relative;
-  width: 80px;
-  height: 80px;
+  padding: 0 48px;
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  color: #ea9319;
 }
-
-.lds-facebook div {
-  display: inline-block;
+.loader-con .loader:before,
+.loader-con .loader:after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: currentColor;
   position: absolute;
-  left: 8px;
-  width: 16px;
-  background: #ea9319;
-  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  animation: load 0.7s infinite alternate ease-in-out;
+  top: 0;
 }
-
-.lds-facebook div:nth-child(1) {
-  left: 8px;
-  animation-delay: -0.24s;
+.loader-con .loader:after {
+  top: auto;
+  bottom: 0;
 }
-
-.lds-facebook div:nth-child(2) {
-  left: 32px;
-  animation-delay: -0.12s;
-}
-
-.lds-facebook div:nth-child(3) {
-  left: 56px;
-  animation-delay: 0;
-}
-
-@keyframes lds-facebook {
+@keyframes load {
   0% {
-    top: 8px;
-    height: 64px;
+    left: 0;
+    height: 43px;
+    width: 15px;
+    transform: translateX(0);
   }
-  50%, 100% {
-    top: 24px;
-    height: 32px;
+  50% {
+    height: 10px;
+    width: 40px;
+  }
+  100% {
+    left: 100%;
+    height: 43px;
+    width: 15px;
+    transform: translateX(-100%);
   }
 }
+
 .ad-con {
   position: relative;
   width: 100%;
+  border: 2px solid red;
   margin-top: 20px;
 }
 @media only screen and (min-width: 768px) {
@@ -479,21 +496,9 @@
   flex-direction: row;
   border: 2px solid red;
   margin: 0 auto;
-  height: 150px;
+  height: 200px;
   border-radius: 10px;
-  width: 98vw;
   padding-left: 5px;
-}
-@media only screen and (min-width: 768px) {
-  .ad-con .ad-img {
-    height: 250px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .ad-con .ad-img {
-    width: 50vw;
-    height: 250px;
-  }
 }
 .ad-con .ad-img img {
   margin: 0 auto;

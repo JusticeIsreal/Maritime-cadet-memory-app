@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useDisclosure } from "@mantine/hooks";
+import { Drawer, Button, Group } from "@mantine/core";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
@@ -31,6 +33,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
   }, [router.asPath]);
   // Handle the case where sessions.user.image might be undefined
   const userImage = sessions?.user?.image || ""; // Provide a default value (empty string) if it's undefined
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <div className="topbar-main-con">
@@ -52,11 +55,34 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>
-        <div className="topbar-top-con-right" onClick={() => signOut()}>
+        <div className="topbar-top-con-right">
           {sessions ? (
-            <div className="cart-icon-con">
-              <Image src={userImage} alt="profile" height={50} width={50} />
-            </div>
+            <>
+              <Drawer
+                opened={opened}
+                onClose={close}
+                title="Settings"
+                overlayProps={{ opacity: 0.5, blur: 4 }}
+                position="right"
+              >
+                {/* Drawer content */}
+              </Drawer>
+
+              <Group
+                position="center"
+                className="cart-icon-con"
+                onClick={open}
+                // onClick={() => signOut()}
+              >
+                <Image
+                  src={userImage}
+                  alt="profile"
+                  height={50}
+                  width={50}
+                  style={{ cursor: "pointer" }}
+                />
+              </Group>
+            </>
           ) : (
             <div onClick={() => signIn()}>Login</div>
           )}
