@@ -5,6 +5,7 @@ import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useDisclosure } from "@mantine/hooks";
 import { Drawer, Button, Group } from "@mantine/core";
+import Settings from "./Settings";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
@@ -59,13 +60,14 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
           {sessions ? (
             <>
               <Drawer
+                className="menu-con"
                 opened={opened}
                 onClose={close}
                 title="Settings"
                 overlayProps={{ opacity: 0.5, blur: 4 }}
                 position="right"
               >
-                {/* Drawer content */}
+                <Settings />
               </Drawer>
 
               <Group

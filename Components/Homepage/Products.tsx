@@ -50,7 +50,7 @@ function Products({
         return "";
       }
     });
-
+ 
   return (
     <div className="product-session-con">
       <div className="product-main-con">
@@ -157,6 +157,7 @@ function Product({
   posterId: any;
   message: any[];
 }) {
+  // console.log(id);
   // GET NEXT AUTH USER SESSION DETAILS
   const { data: session } = useSession();
 
@@ -309,11 +310,7 @@ function Product({
           <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
         </span>
         <span className="comment">
-          <a
-            
-            href={`/ClientDynamic/${id}/#comment`}
-            style={{ color: "gray" }}
-          >
+          <a href={`/ClientDynamic/${id}/#comment`} style={{ color: "gray" }}>
             {review.length} {review.length > 1 ? "comments" : "comment"}
           </a>
         </span>
