@@ -3,7 +3,8 @@ import { Box, NavLink } from "@mantine/core";
 import SharedMemories from "./SharedMemories";
 import Profile from "./Profile";
 import EditProfile from "./EditProfile";
-// import { IconGauge, IconFingerprint } from "@tabler/icons-react";
+import Users from "./Users";
+
 function Settings({
   setPostTriger,
   onClose,
@@ -15,16 +16,15 @@ function Settings({
     <div className="settings">
       <Box w={240}>
         <Profile />
-        <NavLink label="Edit Profile" childrenOffset={28}>
+        <NavLink label="Update Profile" childrenOffset={28}>
           <EditProfile />
         </NavLink>
-        <NavLink label="Your momeries" childrenOffset={28}>
+        <NavLink label="Momeries" childrenOffset={28}>
           <SharedMemories setPostTriger={setPostTriger} onClose={onClose} />
         </NavLink>
-        <NavLink label="Admin" childrenOffset={28}>
-          <NavLink label="First child link" />
+        <NavLink label="Cadets" childrenOffset={28}>
+          <Users />
         </NavLink>
-        {/* <NavLink label="Edit Profile" /> */}
       </Box>
     </div>
   );
