@@ -157,6 +157,8 @@ function Details() {
       useremail: session?.user?.email,
       timestamp: serverTimestamp(),
     });
+    // Navigate to a different URL
+    window.location.href = "#commentLocation";
 
     reset();
   };
@@ -247,6 +249,7 @@ function Details() {
         await deleteDoc(
           doc(db, "memories", productID, "likes", session?.user?.uid)
         );
+
         // return;
       } else {
         await setDoc(
@@ -385,7 +388,7 @@ function Details() {
           </div>
         </div>
         <div className="single-product-details">
-          <UnstyledButton className="profile-head">
+          <UnstyledButton className="profile-head" id="commentLocation">
             <Group>
               <Avatar size={40} color="blue">
                 <img src={posterdetails[0]?.image} alt="img" />
