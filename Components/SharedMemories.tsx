@@ -7,7 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function SharedMemories() {
+function SharedMemories({
+  setPostTriger,
+  onClose,
+}: {
+  setPostTriger: any;
+  onClose: any;
+}) {
   const { data: session } = useSession();
   const [pictures, setPictures] = useState<any[]>([]);
   useEffect(() => {
@@ -19,15 +25,22 @@ function SharedMemories() {
     );
   }, [session]);
 
+  const openPicture = pictures.map((pic) => pic.data());
   const openPictures = pictures.map((pic) => pic);
   const userposts = openPictures.filter(
     (post) => post.data().posterId === (session?.user as { uid: any })?.uid
   );
-
+  const posterNewMemory = () => {
+    setPostTriger(true);
+    onClose();
+  };
   return (
     <>
       {userposts.length < 1 ? (
-        ""
+        <div onClick={() => posterNewMemory()} className="newUserMemory">
+          <p>you haven't shared a single memory</p>
+          <button>POST A MEMORY</button>
+        </div>
       ) : (
         <div className="sharedMemory">
           {userposts?.map((item) => (

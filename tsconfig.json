@@ -30,6 +30,6 @@
     "pages/api/authe/AuthGuard..jsx",
     "Components/Homepage/Products.tsx",
     "pages/api/getUserDetails.js"
-, "Components/Profile.jsx"  ],
+, "Components/Profile.tsx"  ],
   "exclude": ["node_modules"]
 }

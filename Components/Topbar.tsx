@@ -9,9 +9,10 @@ import Settings from "./Settings";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
+  setPostTriger: any;
 }
 
-const Topbar: FC<TopbarProps> = ({ setSearch }) => {
+const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
   const { data: sessions } = useSession();
   const [active, setActive] = useState(0);
   const router = useRouter();
@@ -67,7 +68,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch }) => {
                 overlayProps={{ opacity: 0.5, blur: 4 }}
                 position="right"
               >
-                <Settings />
+                <Settings setPostTriger={setPostTriger} onClose={close} />
               </Drawer>
 
               <Group

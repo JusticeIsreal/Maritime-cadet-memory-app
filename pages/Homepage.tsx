@@ -109,7 +109,7 @@ const Homepage = () => {
     >
       {/* TOPBAR */}
       <Topbar
-        // dynamictriger={dynamictriger}
+        setPostTriger={setPostTriger}
         // triga={triga}
         setSearch={setSearch}
       />
