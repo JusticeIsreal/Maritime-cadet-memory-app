@@ -4,7 +4,7 @@ import "../styles/AdminPage/App.css";
 import "../styles/DynamicPage/clientSingleproduct/style.css";
 import "../styles/DynamicPage/adminSingleproduct/style.css";
 import "../styles/DynamicPage/transactionreceipt/style.css";
-import "../styles/CartPage/style.css";
+// import "../styles/CartPage/style.css";
 import "../styles/Paginate/pagenate.css";
 import { AppProps } from "next/app";
 import { AuthGuard } from "./api/authe/AuthGuard.";

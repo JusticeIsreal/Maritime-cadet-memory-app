@@ -193,20 +193,15 @@
 .menu-con .settings .edit-profile-form select {
   width: 100%;
   height: 40px;
+  margin: 5px;
   margin-top: 25px;
   padding: 5px;
-}
-.menu-con .settings .edit-profile-form .select-con {
-  margin-top: 20px;
 }
 .menu-con .settings .edit-profile-form .select-con div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-}
-.menu-con .settings .edit-profile-form .select-con div select {
-  margin: 5px;
 }
 
 .singleuser-con {
