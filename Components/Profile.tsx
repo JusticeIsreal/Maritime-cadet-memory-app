@@ -44,12 +44,14 @@ function CustomerID() {
             height={50}
           />
         </div>
-        <h3>{userposts[0]?.name}</h3>
-        <p>{userposts[0]?.email}</p>
-        <p>{userposts[0]?.phone_number}08104015180</p>
-        <p>{userposts[0]?.year_of_ad}2020-2023</p>
-        <p>{userposts[0]?.department}M-Engr</p>
-        {/* <p>{userposts[0]?.position_held}CCC</p> */}
+        <div className="user-list">
+          <h3>{userposts[0]?.name}</h3>
+          <p>{userposts[0]?.email}</p>
+          <p>{userposts[0]?.phone_number}08104015180</p>
+          <p>{userposts[0]?.year_of_ad}2020-2023</p>
+          <p>{userposts[0]?.department}M-Engr</p>
+          {/* <p>{userposts[0]?.position_held}CCC</p> */}
+        </div>
       </div>
     </div>
   );

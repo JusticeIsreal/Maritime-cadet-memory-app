@@ -269,7 +269,7 @@ $txt-light-blue: #cfe8ff;
   // border: 2px solid red;
   @include flexDisplay(space-between, center, column);
   width: 340px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   // margin: 0 auto;
 
   @include responsive(bigphone) {
@@ -278,12 +278,15 @@ $txt-light-blue: #cfe8ff;
 
   .avatar {
     // border: 2px solid red;
-    @include flexDisplay(space-between, center, column);
+    @include flexDisplay(space-between, center, row);
+    .user-list {
+      margin-left: 10px;
+    }
     .user-profile-image {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      border: 2px solid red;
+      // border: 2px solid red;
       @include flexDisplay(space-between, center, column);
       .imgQ {
         height: 100%;
