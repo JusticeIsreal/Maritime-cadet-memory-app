@@ -256,6 +256,22 @@ $txt-light-blue: #cfe8ff;
         padding: 5px;
       }
       .select-con {
+        position: relative;
+        // border: 2px solid red;
+        margin-top: 20px;
+
+        p {
+          // border: 2px solid red;
+          @include flexDisplay(space-around, center, row);
+          margin-bottom: auto;
+          width: 100%;
+          margin-bottom: -20px;
+
+          sub {
+            // border: 2px solid red;
+            width: 100px;
+          }
+        }
         div {
           @include flexDisplay(space-between, center, row);
         }
@@ -278,6 +294,7 @@ $txt-light-blue: #cfe8ff;
 
   .avatar {
     // border: 2px solid red;
+    margin-right: auto;
     @include flexDisplay(space-between, center, row);
     .user-list {
       margin-left: 10px;

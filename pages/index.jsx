@@ -37,11 +37,8 @@ export default function Home() {
           userId: session.user.uid,
           phone_number: "",
           department: "",
-          year_of_ad: "",
-          year_of_grad: "",
-          position_held: "",
-          favourite_quote: "",
-          bio: "",
+          startyear: "",
+          endyear: "",
           time: serverTimestamp(),
         });
         console.log("User added to signedInUsers collection");

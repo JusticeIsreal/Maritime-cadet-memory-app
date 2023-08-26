@@ -27,9 +27,7 @@ function CustomerID() {
   const userposts = openPictures.filter(
     (post) => post?.userId === (session?.user as { uid: any })?.uid
   );
-
-  console.log(userposts[0]);
-
+  console.log(userposts);
   return (
     <div className="singleuser-con">
       <div className="avatar">
@@ -47,9 +45,11 @@ function CustomerID() {
         <div className="user-list">
           <h3>{userposts[0]?.name}</h3>
           <p>{userposts[0]?.email}</p>
-          <p>{userposts[0]?.phone_number}08104015180</p>
-          <p>{userposts[0]?.year_of_ad}2020-2023</p>
-          <p>{userposts[0]?.department}M-Engr</p>
+          <p>{userposts[0]?.phone_number}</p>
+          <p>
+            {userposts[0]?.startyear} - {userposts[0]?.endyear}
+          </p>
+          <p>{userposts[0]?.department}</p>
           {/* <p>{userposts[0]?.position_held}CCC</p> */}
         </div>
       </div>

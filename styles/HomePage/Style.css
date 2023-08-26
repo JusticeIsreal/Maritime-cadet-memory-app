@@ -197,6 +197,22 @@
   margin-top: 25px;
   padding: 5px;
 }
+.menu-con .settings .edit-profile-form .select-con {
+  position: relative;
+  margin-top: 20px;
+}
+.menu-con .settings .edit-profile-form .select-con p {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: auto;
+  width: 100%;
+  margin-bottom: -20px;
+}
+.menu-con .settings .edit-profile-form .select-con p sub {
+  width: 100px;
+}
 .menu-con .settings .edit-profile-form .select-con div {
   display: flex;
   justify-content: space-between;
@@ -218,6 +234,7 @@
   }
 }
 .singleuser-con .avatar {
+  margin-right: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
