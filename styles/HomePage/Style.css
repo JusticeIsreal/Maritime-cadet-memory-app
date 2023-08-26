@@ -204,6 +204,7 @@
   padding: 5px;
   border: none;
   background-color: white;
+  outline: none;
 }
 .menu-con .settings .edit-profile-form .select-con {
   position: relative;
