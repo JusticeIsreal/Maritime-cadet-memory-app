@@ -205,6 +205,7 @@
   border: none;
   background-color: white;
   outline: none;
+  color: #342e37;
 }
 .menu-con .settings .edit-profile-form .select-con {
   position: relative;
