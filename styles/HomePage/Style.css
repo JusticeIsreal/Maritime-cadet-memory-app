@@ -190,7 +190,7 @@
   }
 }
 .menu-con .settings .edit-profile-form .input-div {
-  width: 100%;
+  width: 97%;
   height: 40px;
   border-radius: 5px;
   margin: 5px;
@@ -208,13 +208,13 @@
 }
 .menu-con .settings .edit-profile-form .select-con {
   position: relative;
+  padding: 0;
 }
 .menu-con .settings .edit-profile-form .select-con p {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  margin-bottom: auto;
   width: 100%;
   margin-top: 20px;
   margin-bottom: -20px;
