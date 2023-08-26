@@ -388,7 +388,7 @@ function Details() {
           </div>
         </div>
         <div className="single-product-details">
-          <UnstyledButton className="profile-head" id="commentLocation">
+          <UnstyledButton className="profile-head">
             <Group>
               <Avatar size={40} color="blue">
                 <img src={posterdetails[0]?.image} alt="img" />
@@ -467,7 +467,7 @@ function Details() {
                 </span>
               </span>
             )}
-            <div className="review-con">
+            <div className="review-con" id="commentLocation">
               <div className="reviews" id="comment">
                 {review.map((comment) => (
                   <div className="quote" key={comment?.id}>
