@@ -193,6 +193,7 @@
 .menu-con .settings .edit-profile-form select {
   width: 100%;
   height: 40px;
+  border-radius: 5px;
   margin: 5px;
   margin-top: 25px;
   padding: 5px;

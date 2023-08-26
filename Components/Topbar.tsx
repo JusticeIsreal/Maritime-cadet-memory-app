@@ -64,7 +64,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
                 className="menu-con"
                 opened={opened}
                 onClose={close}
-                title="Settings"
+                title="User Profile"
                 overlayProps={{ opacity: 0.5, blur: 4 }}
                 position="right"
               >
