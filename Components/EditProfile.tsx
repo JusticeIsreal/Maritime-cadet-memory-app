@@ -85,37 +85,42 @@ function EditProfile() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="edit-profile-form">
-      <input
-        type="text"
-        placeholder="Enter phone number"
-        {...register("phone_number")}
-      />
-      <select {...register("department")}>
-        <option value="" key="">
-          Your department
-        </option>
-        <option value="ME" key="">
-          ME
-        </option>
-        <option value=" NS" key="">
-          NS
-        </option>
-        <option value="EE" key="">
-          EE
-        </option>
-        <option value="HYD" key="">
-          HYD
-        </option>
-        <option value="MET" key="">
-          MET
-        </option>
-        <option value="MTBS" key="">
-          MTBS
-        </option>
-        <option value="MTBM" key="">
-          MTBM
-        </option>
-      </select>
+      <div className="input-div">
+        <input
+          type="text"
+          placeholder="Enter phone number"
+          {...register("phone_number")}
+        />
+      </div>
+      <div className="input-div">
+        <select {...register("department")}>
+          <option value="" key="">
+            Your department
+          </option>
+          <option value="ME" key="">
+            ME
+          </option>
+          <option value=" NS" key="">
+            NS
+          </option>
+          <option value="EE" key="">
+            EE
+          </option>
+          <option value="HYD" key="">
+            HYD
+          </option>
+          <option value="MET" key="">
+            MET
+          </option>
+          <option value="MTBS" key="">
+            MTBS
+          </option>
+          <option value="MTBM" key="">
+            MTBM
+          </option>
+        </select>
+      </div>
+
       {/* department */}
       <div className="select-con">
         <p>
@@ -124,24 +129,30 @@ function EditProfile() {
           <span>to</span>
           <span>Grad Year</span>
         </p>
-        <div>
-          <select {...register("startyear")}>
-            {yearStart?.map((item, index) => (
-              <option value={item} key={index}>
-                {item}
-              </option>
-            ))}
-          </select>
-          <select {...register("endyear")}>
-            {yearEnd?.map((item, index) => (
-              <option value={item} key={index}>
-                {item}
-              </option>
-            ))}
-          </select>
+        <div className="select-con">
+          <div className="input-div">
+            <select {...register("startyear")}>
+              {yearStart?.map((item, index) => (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="input-div">
+            <select {...register("endyear")}>
+              {yearEnd?.map((item, index) => (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
-      <input type="submit" />
+      <div className="input-div">
+        <input type="submit" />
+      </div>
     </form>
   );
 }
