@@ -6,6 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useDisclosure } from "@mantine/hooks";
 import { Drawer, Button, Group } from "@mantine/core";
 import Settings from "./Settings";
+import { BsSearch } from "react-icons/bs";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
@@ -45,19 +46,21 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
             <img
               style={{ height: "40px" }}
               className="icon"
-              src="https://res.cloudinary.com/dk3iqiy2e/image/upload/v1685825962/WhatsApp_Image_2023-05-30_at_12.36.37_AM-removebg-preview_kxnfud.png"
+              src="/Mémoire 18.png"
               alt=""
             />
           </Link>
         </div>
-        <form>
-          <input
-            type="text"
-            placeholder="Search by cadet name"
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </form>
+
         <div className="topbar-top-con-right">
+          <form>
+            <BsSearch className="topbar-search-icon" />
+            <input
+              type="text"
+              placeholder="Search by cadet name"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </form>
           {sessions ? (
             <>
               <Drawer
@@ -87,7 +90,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
               </Group>
             </>
           ) : (
-            <div onClick={() => signIn()}>Login</div>
+            <button onClick={() => signIn()}>Login</button>
           )}
         </div>
       </div>

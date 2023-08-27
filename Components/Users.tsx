@@ -22,7 +22,13 @@ function Users() {
   console.log(allUsers);
   return (
     <div>
-      <div>admin</div>
+      <h3>Admin</h3>
+      <div>
+        {allUsers.map((item) => (
+          <SingleUsers key={item.id} {...item} />
+        ))}
+      </div>
+
       <div>
         {allUsers.map((item) => (
           <SingleUsers key={item.id} {...item} />
@@ -56,7 +62,41 @@ function SingleUsers({
       <div>
         <Image src={image} alt="h" height={40} width={50} />
       </div>
-      <p>{name}</p>
+      <div>
+        <p>{name}</p>
+        <p>{email}</p>
+      </div>
+    </div>
+  );
+}
+function AdminUsers({
+  name,
+  email,
+  image,
+  userId,
+  phone_number,
+  department,
+  startyear,
+  endyear,
+}: {
+  name: any;
+  email: any;
+  image: any;
+  userId: any;
+  phone_number: any;
+  department: any;
+  startyear: any;
+  endyear: any;
+}) {
+  return (
+    <div>
+      <div>
+        <Image src={image} alt="h" height={40} width={50} />
+      </div>
+      <div>
+        <p>{name}</p>
+        <p>{email}</p>
+      </div>
     </div>
   );
 }

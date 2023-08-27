@@ -23,7 +23,7 @@ import Products from "../Components/Homepage/Products";
 
 import Modal from "../Components/Modal";
 
-import Advert from "../Components/Homepage/Advert";
+// import Advert from "../Components/Homepage/Advert";
 
 import { useRouter } from "next/router";
 import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
@@ -119,9 +119,9 @@ const Homepage = () => {
         <>
           <Group position="center"></Group>
           {/* <Banner /> */}
-          <Advert />
+          {/* <Advert /> */}
           {/* MAIN PRODUCT */}
-          <Products
+          {/* <Products
             dynamicBtn={dynamicBtn}
             dynamicDate={dynamicDate}
             setCategoryYear={setCategoryYear}
@@ -130,7 +130,7 @@ const Homepage = () => {
             search={search}
             setLoginTriger={setLoginTriger}
             setPostTriger={setPostTriger}
-          />
+          /> */}
         </>
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}

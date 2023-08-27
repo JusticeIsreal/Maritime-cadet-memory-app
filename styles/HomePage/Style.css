@@ -65,65 +65,6 @@
   font-weight: bolder;
 }
 
-.topbar-main-con {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  z-index: 200;
-  width: 100%;
-  position: sticky;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 5px 5px 10px #eee;
-}
-.topbar-main-con .topbar-top-con {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  width: 100%;
-  padding: 5px 15px;
-  position: sticky;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(4, 4, 40, 0.5019607843); /* Set your desired color and opacity */
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  margin: 0 auto;
-  max-width: 2000px !important;
-}
-.topbar-main-con .topbar-top-con form {
-  height: 35px;
-  width: 55%;
-  max-width: 400px;
-}
-.topbar-main-con .topbar-top-con form input {
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  border-radius: 5px;
-}
-.topbar-main-con .topbar-top-con .topbar-top-con-right {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-}
-.topbar-main-con .topbar-top-con .topbar-top-con-right .cart-icon-con {
-  border-radius: 50%;
-  overflow: hidden;
-}
-.topbar-main-con .topbar-top-con .topbar-top-con-right .cart-icon-con Image {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
 .menu-con {
   background-color: #444;
 }
