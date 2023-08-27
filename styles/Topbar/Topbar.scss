@@ -25,13 +25,13 @@
 }
 
 $font-family: "Poppins", sans-serif;
-$bg-light: #f9f9f9;
-$font-light: #666;
-$bg-gray: #eee;
-$bg-dark-gray: #444;
-$bg-dark: #342e37;
-$txt-blue: #ea9319;
-$txt-light-blue: #cfe8ff;
+$navbar-con-color: #003566;
+$sreen-max-width: 2000px;
+$form-bg: #126782;
+$text-color: #8ecae6;
+$transparent-bg: #12688200;
+$placeholder-color: #1a97bf;
+$button-bg: #ffb703;
 
 @mixin flexDisplay($justifyProp, $alignProp, $flexDirection) {
   display: flex;
@@ -93,7 +93,6 @@ $txt-light-blue: #cfe8ff;
   position: relative;
   z-index: 200;
   width: 100%;
-  color: #ffffff;
   height: 70px;
   position: sticky;
   position: fixed;
@@ -111,15 +110,14 @@ $txt-light-blue: #cfe8ff;
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    max-width: 2000px !important;
+    max-width: $sreen-max-width;
     padding-left: 1%;
-    background: #003566;
+    background: $navbar-con-color;
     @include responsive(bigphone) {
       padding-left: 5%;
     }
 
     .topbar-top-con-left {
-      //   border: 2px solid rgb(0, 17, 255);
       width: 80px;
       @include responsive(bigphone) {
         width: 100px;
@@ -131,7 +129,6 @@ $txt-light-blue: #cfe8ff;
     }
 
     .topbar-top-con-right {
-      //   border: 2px solid rgb(0, 17, 255);
       gap: 5px;
       padding-right: 1%;
       width: 280px;
@@ -148,7 +145,7 @@ $txt-light-blue: #cfe8ff;
         width: 80%;
         margin-left: auto;
         border-radius: 10px;
-        background-color: #126782;
+        background: $form-bg;
         position: relative;
         @include responsive(bigphone) {
           width: 442px;
@@ -159,7 +156,7 @@ $txt-light-blue: #cfe8ff;
           position: absolute;
           top: 13px;
           left: 5px;
-          color: #8ecae6;
+          color: $text-color;
           @include responsive(bigphone) {
             top: 15px;
           }
@@ -168,15 +165,16 @@ $txt-light-blue: #cfe8ff;
           width: 100%;
           height: 100%;
           padding: 5px;
-          padding-left: 27px;
+          padding-left: 30px;
           border-radius: 5px;
-          background: #12688200;
+          background: $transparent-bg;
           border: none;
           outline: none;
-          color: #8ecae6;
+          color: $text-color;
+          letter-spacing: 1px;
 
           &::placeholder {
-            color: #1a97bf; /* Adjust placeholder color */
+            color: $placeholder-color; /* Adjust placeholder color */
           }
         }
       }
@@ -186,15 +184,27 @@ $txt-light-blue: #cfe8ff;
         height: 38px;
         border-radius: 10px;
         border: none;
-        background: #ffb703;
+        background: $button-bg;
         font-size: 14px;
         font-family: Fira Sans;
         font-weight: 500;
+        cursor: pointer;
         @include responsive(bigphone) {
           font-size: 16px;
           width: 105px;
           height: 44px;
         }
+
+        &:hover {
+          background: #cf9500;
+          color: white;
+        }
+      }
+
+      .nav-profile-img {
+        border: 1px solid $text-color;
+        border-radius: 50%;
+        object-fit: contain;
       }
     }
   }

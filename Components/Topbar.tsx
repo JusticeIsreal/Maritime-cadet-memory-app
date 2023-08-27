@@ -74,13 +74,9 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
                 <Settings setPostTriger={setPostTriger} onClose={close} />
               </Drawer>
 
-              <Group
-                position="center"
-                className="cart-icon-con"
-                onClick={open}
-                // onClick={() => signOut()}
-              >
+              <Group position="center" className="cart-icon-con" onClick={open}>
                 <Image
+                  className="nav-profile-img"
                   src={userImage}
                   alt="profile"
                   height={50}
