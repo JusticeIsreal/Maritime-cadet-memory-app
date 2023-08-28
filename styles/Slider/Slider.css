@@ -21,12 +21,10 @@
 }
 
 .slider-con {
-  border: 2px solid red;
   position: relative;
   background-image: url("https://res.cloudinary.com/dd61rrbxs/image/upload/v1693194653/Group_2_pjdiuf.png");
   background-size: cover;
   background-position: center;
-  /* Additional styles for the element */
   width: 90%;
   margin: 0 auto;
   padding-top: 50px;
@@ -36,59 +34,106 @@
     padding-top: 100px;
   }
 }
-.slider-con h3 {
+.slider-con .slider-main {
+  background: rgba(18, 104, 130, 0);
+}
+.slider-con .slider-main h3 {
   color: #219ebc;
   background: rgba(18, 104, 130, 0);
   font-size: 18px;
   font-weight: 700;
 }
 @media only screen and (min-width: 768px) {
-  .slider-con h3 {
+  .slider-con .slider-main h3 {
     font-size: 24px;
   }
 }
-.slider-con .about-mobile {
+.slider-con .slider-main .about-mobile {
   background: rgba(18, 104, 130, 0);
   color: rgba(255, 255, 255, 0.778);
   line-height: 2;
   font-size: 13px;
+  line-height: 15px;
 }
 @media only screen and (min-width: 768px) {
-  .slider-con .about-mobile {
+  .slider-con .slider-main .about-mobile {
     font-size: 20px;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .slider-con .about-mobile {
+  .slider-con .slider-main .about-mobile {
     display: none;
   }
 }
-.slider-con .about-mobile span {
+.slider-con .slider-main .about-mobile span {
   background: rgba(18, 104, 130, 0);
   color: #8ecae6;
   margin-left: 5px;
   cursor: pointer;
 }
-.slider-con .about-desktop {
+.slider-con .slider-main .about-desktop {
   background: rgba(18, 104, 130, 0);
   color: rgba(255, 255, 255, 0.778);
   line-height: 2;
   font-size: 13px;
   display: none;
+  line-height: 25px;
 }
 @media only screen and (min-width: 768px) {
-  .slider-con .about-desktop {
+  .slider-con .slider-main .about-desktop {
     font-size: 20px;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .slider-con .about-desktop {
+  .slider-con .slider-main .about-desktop {
     display: block;
   }
 }
-.slider-con .about-desktop span {
+.slider-con .slider-main .about-desktop span {
   background: rgba(18, 104, 130, 0);
   color: #8ecae6;
   margin-left: 5px;
   cursor: pointer;
+}
+.slider-con .slider-Image-bg {
+  margin-top: 30px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+@media only screen and (min-width: 768px) {
+  .slider-con .slider-Image-bg {
+    height: 400px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .slider-con .slider-Image-bg {
+    height: 600px;
+  }
+}
+.slider-con .slider-Image-bg .slider-img-con {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.slider-con .slider-Image-bg .slider-img-con .carousel-items-con {
+  position: absolute;
+  top: 0 !important;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio for landscape images */
+}
+.slider-con .slider-Image-bg .slider-img-con .carousel-items-con .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 0;
+  left: 0;
 }/*# sourceMappingURL=Slider.css.map */
