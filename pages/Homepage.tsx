@@ -32,6 +32,7 @@ import { useSession } from "next-auth/react";
 import AddNewMemory from "../Components/AddNewMemory";
 import AddMemoryModal from "../Components/AddMemoryModal";
 import Banner from "../Components/Banner";
+import Slider from "../Components/Slider";
 
 // typescript
 
@@ -120,7 +121,7 @@ const Homepage = () => {
         <>
           <Group position="center"></Group>
           <Banner />
-          {/* <Advert /> */}
+          <Slider />
           {/* MAIN PRODUCT */}
           {/* <Products
             dynamicBtn={dynamicBtn}

@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+  background: #001d3d;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+.slider-con {
+  border: 2px solid red;
+  position: relative;
+  background-image: url("https://res.cloudinary.com/dd61rrbxs/image/upload/v1693194653/Group_2_pjdiuf.png");
+  background-size: cover;
+  background-position: center;
+  /* Additional styles for the element */
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+@media only screen and (min-width: 768px) {
+  .slider-con {
+    padding-top: 100px;
+  }
+}
+.slider-con h3 {
+  color: #219ebc;
+  background: rgba(18, 104, 130, 0);
+  font-size: 18px;
+  font-weight: 700;
+}
+@media only screen and (min-width: 768px) {
+  .slider-con h3 {
+    font-size: 24px;
+  }
+}
+.slider-con .about-mobile {
+  background: rgba(18, 104, 130, 0);
+  color: rgba(255, 255, 255, 0.778);
+  line-height: 2;
+  font-size: 13px;
+}
+@media only screen and (min-width: 768px) {
+  .slider-con .about-mobile {
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .slider-con .about-mobile {
+    display: none;
+  }
+}
+.slider-con .about-mobile span {
+  background: rgba(18, 104, 130, 0);
+  color: #8ecae6;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.slider-con .about-desktop {
+  background: rgba(18, 104, 130, 0);
+  color: rgba(255, 255, 255, 0.778);
+  line-height: 2;
+  font-size: 13px;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .slider-con .about-desktop {
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .slider-con .about-desktop {
+    display: block;
+  }
+}
+.slider-con .about-desktop span {
+  background: rgba(18, 104, 130, 0);
+  color: #8ecae6;
+  margin-left: 5px;
+  cursor: pointer;
+}/*# sourceMappingURL=Slider.css.map */

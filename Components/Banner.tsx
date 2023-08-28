@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 
 const generateStars = () => {
+  // CREATING AN NIMATION OF SLY LIGHT
   const galaxy = document.querySelector(".galaxy") as HTMLElement;
   let iterator = 0;
   console.log(galaxy);
@@ -33,20 +34,22 @@ const Banner = () => {
 
   return (
     <div className="banner-main-con">
-      <div className="banner-img-con">
-        <img src="/Ellipse 3.png" alt="" className="icon1" />
-        <img src="/Ellipse 3.png" alt="" className="icon3" />
-        <img src="/Star 3.png" alt="" className="icon2" />
-        <img src="/Star 1.png" alt="" className="icon5" />
-        <img src="/Star 3.png" alt="" className="icon4" />
-        <img
-          className="banner-text-img"
-          src="/Collection of Cherished Moments.png"
-          alt=""
-        />
-        <div className="creator">
-          <p>Created by</p>
-          <h3>Marine Engineering Class of '20 - The 64</h3>
+      <div className="banner-con">
+        <div className="banner-img-con">
+          <img src="/Ellipse 3.png" alt="" className="icon1" />
+          <img src="/Ellipse 3.png" alt="" className="icon3" />
+          <img src="/Star 3.png" alt="" className="icon2" />
+          <img src="/Star 1.png" alt="" className="icon5" />
+          <img src="/Star 3.png" alt="" className="icon4" />
+          <img
+            className="banner-text-img"
+            src="/Collection of Cherished Moments.png"
+            alt=""
+          />
+          <div className="creator">
+            <p>Created by</p>
+            <h3>Marine Engineering Class of '20 - The 64</h3>
+          </div>
         </div>
       </div>
 

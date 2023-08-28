@@ -89,7 +89,6 @@ $general-bg: #001d3d;
 
 // BANNER SESSION
 .banner-main-con {
-//   border: 2px solid red !important;
   @include flexDisplay(center, center, row);
   position: relative;
   width: 100%;
@@ -99,21 +98,20 @@ $general-bg: #001d3d;
   @include responsive(bigphone) {
     margin-top: 80px;
   }
+  .banner-con {
+    width: 90%;
+    background: $transparent-bg;
+  }
   .banner-img-con {
     z-index: 5;
     width: 70%;
     margin-right: auto;
-    margin-left: 20px;
     margin-top: 60px;
     position: relative;
 
     @include responsive(bigphone) {
-      margin-left: 80px;
       margin-top: 100px;
       width: 50%;
-    }
-    @include responsive(tablet) {
-      margin-left: 100px;
     }
 
     .banner-text-img {
@@ -129,8 +127,8 @@ $general-bg: #001d3d;
       position: absolute;
       width: 15px;
       right: -45px;
-      top: 50%;
-      animation: blinking 4s linear infinite;
+      top: 25%;
+      animation: blinking 5s linear infinite;
       @include responsive(bigphone) {
         width: 25px;
         right: -50px;
@@ -153,28 +151,29 @@ $general-bg: #001d3d;
       animation-delay: 1s;
     }
     .icon3 {
-      right: -17px;
-      top: -25px;
+      right: -15px;
+      top: -15px;
       width: 10px;
       animation-delay: 2s;
     }
     .icon4 {
-      right: -30%;
-      top: -25px;
+      right: -40%;
+      top: -23px;
       width: 20px;
-      animation-delay: 1s;
+      animation-delay: 3s;
     }
     .icon5 {
       right: 20%;
-      top: 70%;
+      top: 50%;
       width: 20px;
       animation-delay: 2s;
     }
     .creator {
-    //   border: 2px solid red;
+      //   border: 2px solid red;
       margin-top: 20px;
-      width: 135%;
+      width: 145%;
       font-family: Fira Sans;
+
       p {
         color: $creator-text-color;
         line-height: 2;
