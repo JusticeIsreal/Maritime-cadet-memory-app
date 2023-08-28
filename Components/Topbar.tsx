@@ -2,9 +2,9 @@ import React, { useState, useEffect, FC, ChangeEventHandler } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useDisclosure } from "@mantine/hooks";
-import { Drawer, Button, Group } from "@mantine/core";
+import { Drawer, Group } from "@mantine/core";
 import Settings from "./Settings";
 import { BsSearch } from "react-icons/bs";
 
@@ -15,25 +15,7 @@ interface TopbarProps {
 
 const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
   const { data: sessions } = useSession();
-  const [active, setActive] = useState(0);
-  const router = useRouter();
 
-  useEffect(() => {
-    switch (router.asPath) {
-      case "/":
-        setActive(1);
-        break;
-      case "/products":
-        setActive(2);
-        break;
-      case "/orders":
-        setActive(3);
-        break;
-      default:
-        setActive(0);
-        break;
-    }
-  }, [router.asPath]);
   // Handle the case where sessions.user.image might be undefined
   const userImage = sessions?.user?.image || ""; // Provide a default value (empty string) if it's undefined
   const [opened, { open, close }] = useDisclosure(false);

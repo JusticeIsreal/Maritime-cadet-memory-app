@@ -1,5 +1,6 @@
 import Head from "next/head";
 import "../styles/Topbar/Topbar.css";
+import "../styles/Banner/Banner.css";
 import "../styles/HomePage/Style.css";
 import "../styles/AdminPage/App.css";
 import "../styles/DynamicPage/clientSingleproduct/style.css";

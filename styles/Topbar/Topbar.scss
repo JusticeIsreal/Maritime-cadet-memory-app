@@ -125,6 +125,7 @@ $button-bg: #ffb703;
       img {
         width: 100%;
         object-fit: contain;
+        background: $navbar-con-color;
       }
     }
 
@@ -133,7 +134,7 @@ $button-bg: #ffb703;
       padding-right: 1%;
       width: 280px;
       @include flexDisplay(space-between, center, row);
-
+      background: $navbar-con-color;
       @include responsive(bigphone) {
         padding-right: 5%;
         width: 549px;
@@ -157,6 +158,7 @@ $button-bg: #ffb703;
           top: 13px;
           left: 5px;
           color: $text-color;
+          background: $transparent-bg;
           @include responsive(bigphone) {
             top: 15px;
           }
@@ -200,7 +202,9 @@ $button-bg: #ffb703;
           color: white;
         }
       }
-
+      .cart-icon-con {
+        background: $navbar-con-color;
+      }
       .nav-profile-img {
         border: 1px solid $text-color;
         border-radius: 50%;

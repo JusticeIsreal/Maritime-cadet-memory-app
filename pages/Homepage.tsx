@@ -31,6 +31,7 @@ import { CartQuantityContext } from "./_app";
 import { useSession } from "next-auth/react";
 import AddNewMemory from "../Components/AddNewMemory";
 import AddMemoryModal from "../Components/AddMemoryModal";
+import Banner from "../Components/Banner";
 
 // typescript
 
@@ -118,7 +119,7 @@ const Homepage = () => {
       ) : (
         <>
           <Group position="center"></Group>
-          {/* <Banner /> */}
+          <Banner />
           {/* <Advert /> */}
           {/* MAIN PRODUCT */}
           {/* <Products

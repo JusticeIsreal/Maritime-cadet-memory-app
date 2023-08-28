@@ -68,6 +68,7 @@
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  background: #003566;
 }
 .topbar-main-con .topbar-top-con .topbar-top-con-right {
   gap: 5px;
@@ -77,6 +78,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  background: #003566;
 }
 @media only screen and (min-width: 768px) {
   .topbar-main-con .topbar-top-con .topbar-top-con-right {
@@ -104,6 +106,7 @@
   top: 13px;
   left: 5px;
   color: #8ecae6;
+  background: rgba(18, 104, 130, 0);
 }
 @media only screen and (min-width: 768px) {
   .topbar-main-con .topbar-top-con .topbar-top-con-right form .topbar-search-icon {
@@ -149,6 +152,9 @@
 .topbar-main-con .topbar-top-con .topbar-top-con-right button:hover {
   background: #cf9500;
   color: white;
+}
+.topbar-main-con .topbar-top-con .topbar-top-con-right .cart-icon-con {
+  background: #003566;
 }
 .topbar-main-con .topbar-top-con .topbar-top-con-right .nav-profile-img {
   border: 1px solid #8ecae6;
