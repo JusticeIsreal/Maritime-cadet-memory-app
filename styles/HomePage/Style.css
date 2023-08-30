@@ -131,14 +131,14 @@
 }
 @media only screen and (min-width: 1024px) {
   .product-main-con .products-con {
-    -moz-columns: 3;
-         columns: 3;
+    -moz-columns: 4;
+         columns: 4;
   }
 }
 @media only screen and (min-width: 1200px) {
   .product-main-con .products-con {
-    -moz-columns: 3;
-         columns: 3;
+    -moz-columns: 6;
+         columns: 6;
   }
 }
 .product-main-con .products-con .products {
@@ -247,6 +247,10 @@
   border-radius: 5px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .product-main-con .products-con .products .product-img .home-product-img {
   width: 100%;

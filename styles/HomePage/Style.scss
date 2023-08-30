@@ -316,10 +316,10 @@ $txt-light-blue: #cfe8ff;
       columns: 3;
     }
     @include responsive(tablet) {
-      columns: 3;
+      columns: 4;
     }
     @include responsive(desktop) {
-      columns: 3;
+      columns: 6;
     }
 
     .products {
@@ -408,6 +408,7 @@ $txt-light-blue: #cfe8ff;
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+        @include flexDisplay(center, center, column);
 
         .home-product-img {
           width: 100%;

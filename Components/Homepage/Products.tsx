@@ -15,6 +15,7 @@ import {
 import { db } from "../../Firebase";
 import { useSession } from "next-auth/react";
 import Moment from "react-moment";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface TypeProps {
   product: any[];
@@ -244,7 +245,13 @@ function Product({
     [db, id]
   );
   return (
-    <div className="products">
+    <div
+      className="products"
+      data-aos="fade-zoom-in"
+      data-aos-offset="500"
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="600"
+    >
       <div className="poster-name">
         {posterdetails[0]?.image ? (
           <div className="profile-img">
@@ -279,7 +286,13 @@ function Product({
 
       <div className="product-img">
         <Link href={`/ClientDynamic/${id}`}>
-          <img src={productimages[0]} alt="img" className="home-product-img" />
+          <LazyLoadImage
+            src={productimages[0]}
+            alt="img"
+            className="home-product-img"
+            effect="blur"
+            placeholderSrc={productimages[0]}
+          />
         </Link>
       </div>
 
