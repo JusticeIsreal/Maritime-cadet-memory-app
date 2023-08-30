@@ -36,8 +36,13 @@
   }
 }
 .banner-main-con .banner-con {
-  width: 90%;
+  width: 97%;
   background: rgba(18, 104, 130, 0);
+}
+@media only screen and (min-width: 768px) {
+  .banner-main-con .banner-con {
+    width: 90%;
+  }
 }
 .banner-main-con .banner-img-con {
   z-index: 5;
@@ -62,6 +67,7 @@
 .banner-main-con .banner-img-con .icon3,
 .banner-main-con .banner-img-con .icon4,
 .banner-main-con .banner-img-con .icon5 {
+  background: rgba(18, 104, 130, 0);
   position: absolute;
   width: 15px;
   right: -45px;

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   background: #001d3d;
 }
 
@@ -54,6 +54,7 @@
   line-height: 2;
   font-size: 13px;
   line-height: 15px;
+  font-family: Fira Sans;
 }
 @media only screen and (min-width: 768px) {
   .slider-con .slider-main .about-mobile {

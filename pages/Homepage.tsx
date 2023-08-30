@@ -106,7 +106,7 @@ const Homepage = () => {
       className="homepage-main-con"
       style={{
         position: "relative",
-        maxWidth: "2000px",
+        maxWidth: "3000px",
       }}
     >
       {/* TOPBAR */}
@@ -121,9 +121,9 @@ const Homepage = () => {
         <>
           <Group position="center"></Group>
           <Banner />
-          <Slider />
+          {/* <Slider /> */}
           {/* MAIN PRODUCT */}
-          {/* <Products
+          <Products
             dynamicBtn={dynamicBtn}
             dynamicDate={dynamicDate}
             setCategoryYear={setCategoryYear}
@@ -132,7 +132,7 @@ const Homepage = () => {
             search={search}
             setLoginTriger={setLoginTriger}
             setPostTriger={setPostTriger}
-          /> */}
+          />
         </>
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}

@@ -99,8 +99,12 @@ $general-bg: #001d3d;
     margin-top: 80px;
   }
   .banner-con {
-    width: 90%;
+    width: 97%;
     background: $transparent-bg;
+
+    @include responsive(bigphone) {
+      width: 90%;
+    }
   }
   .banner-img-con {
     z-index: 5;
@@ -124,6 +128,7 @@ $general-bg: #001d3d;
     .icon3,
     .icon4,
     .icon5 {
+      background: $transparent-bg;
       position: absolute;
       width: 15px;
       right: -45px;

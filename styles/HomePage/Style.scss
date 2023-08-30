@@ -274,262 +274,271 @@ $txt-light-blue: #cfe8ff;
   }
 }
 // images
-.product-session-con {
-  background: whitesmoke;
+// .product-session-con {
+//   // border: 2px solid red;
+//   width: 100%;
+//   margin: 0 auto;
 
-  padding: 10px 0;
+.product-main-con {
+  @include flexDisplay(space-between, center, column);
   width: 100%;
+  margin: 0 auto;
 
-  overflow-x: hidden;
+  // form {
+  //   @include flexDisplay(center, center, row);
+  //   width: 100%;
+  //   padding: 10px;
 
-  @include responsive(bigphone, portrait) {
-    // margin-top: 100px;
-    padding: 20px 0;
-  }
-  .product-main-con {
-    @include flexDisplay(space-between, center, column);
+  //   div {
+  //     width: 100%;
+  //     max-width: 300px;
+  //     margin: 0 10px;
+  //     border: 1px solid $font-light;
+  //     text-align: center;
+  //   }
+  //   label {
+  //     color: $font-light;
+  //   }
+  //   select {
+  //     width: 100%;
+  //     height: 40px;
+  //     padding: 0 5px;
+  //     outline: none;
+  //     border: none;
+  //   }
+  // }
+  // p {
+  //   cursor: pointer;
+  //   color: $txt-blue;
+  //   margin-top: 20px;
+  // }
+
+  .products-con {
+    // @include flexDisplay(space-evenly, flex-start, row);
+    // flex-wrap: wrap;
+    // margin-top: 30px;
     width: 100%;
-    max-width: 1500px;
+    // border: 5px solid #ffffff;
+    // margin: 0 auto;
+    // columns: 1;
+    // column-gap: 10px;
     margin: 0 auto;
+    columns: 1;
+    column-gap: 10px;
 
-    form {
-      @include flexDisplay(center, center, row);
-      width: 100%;
+    @include responsive(bigphone) {
+      columns: 2;
+    }
+    @include responsive(tablet) {
+      columns: 3;
+    }
+
+    .products {
+      @include flexDisplay(space-between, center, column);
+      // width: 46%;
+      margin: 5px 0;
+      border-radius: 5px;
+      background: white;
+      overflow: hidden;
+      border: 1px solid #f5f3f3;
+      box-shadow: -1px -1px 2px #8080805e;
+      position: relative;
+
+      width: 100% !important;
       padding: 10px;
-
-      div {
+      // float: left;
+      margin: 10px;
+      break-inside: avoid;
+      @include responsive(bigphone) {
+        // margin: 5px;
+      }
+      // @include responsive(tablet, portrait) {
+      //   width: 32%;
+      //   margin: 5px;
+      // }
+      // @include responsive(tablet, portrait) {
+      //   width: 32%;
+      //   margin: 5px;
+      // }
+      .main-poster-con {
+        @include flexDisplay(space-between, flex-start, column);
+      }
+      .unknown-avata {
+        font-size: 30px;
+      }
+      .poster-name {
         width: 100%;
-        max-width: 300px;
-        margin: 0 10px;
-        border: 1px solid $font-light;
-        text-align: center;
-      }
-      label {
-        color: $font-light;
-      }
-      select {
-        width: 100%;
-        height: 40px;
-        padding: 0 5px;
-        outline: none;
-        border: none;
-      }
-    }
-    p {
-      cursor: pointer;
-      color: $txt-blue;
-      margin-top: 20px;
-    }
+        line-height: 1;
+        padding: 2px 4px;
+        @include flexDisplay(flex-start, center, row);
 
-    .products-con {
-      @include flexDisplay(space-evenly, flex-start, row);
-      flex-wrap: wrap;
-      margin-top: 30px;
-      width: 100%;
-
-      @include responsive(bigphone, portrait) {
-        @include flexDisplay(center, center, row);
-      }
-
-      .products {
-        @include flexDisplay(space-between, center, column);
-        width: 46%;
-        margin: 5px 0;
-        border-radius: 5px;
-        background: white;
-        overflow: hidden;
-        border-right: 1px solid #f5f3f3;
-        box-shadow: -1px -1px 2px #8080805e;
-        position: relative;
-        @include responsive(bigphone) {
-          margin: 5px;
-        }
-        @include responsive(tablet, portrait) {
-          width: 32%;
-          margin: 5px;
-        }
-        @include responsive(tablet, portrait) {
-          width: 32%;
-          margin: 5px;
-        }
-        .main-poster-con {
+        .profile-img {
           @include flexDisplay(space-between, flex-start, column);
-        }
-        .unknown-avata {
-          font-size: 30px;
-        }
-        .poster-name {
-          width: 100%;
-          line-height: 1;
-          padding: 2px 4px;
-          @include flexDisplay(flex-start, center, row);
-
-          .profile-img {
-            @include flexDisplay(space-between, flex-start, column);
-            border: 2px solid red;
-            border-radius: 50%;
-            overflow: hidden;
-            width: 30px;
-            height: 30px;
-
-            @include responsive(bigphone, portrait) {
-              width: 50px;
-              height: 50px;
-            }
-            .img {
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-            }
-          }
-          .profile-name {
-            margin-left: 3px;
-            @include flexDisplay(space-between, flex-start, column);
-            @include responsive(bigphone, portrait) {
-              margin-left: 4px;
-            }
-            span {
-              font-weight: 600;
-              color: $bg-dark-gray;
-
-              @include responsive(bigphone, portrait) {
-                font-size: 20px;
-              }
-            }
-            i {
-              font-style: normal;
-              font-size: 10px;
-              color: $font-light;
-              @include responsive(bigphone, portrait) {
-                font-size: 15px;
-              }
-            }
-          }
-        }
-
-        .product-name {
-          margin-top: 3px;
-          font-size: 12px;
-          color: $bg-dark-gray;
-          padding-left: 5px;
-          width: 100%;
+          border: 2px solid red;
+          border-radius: 50%;
           overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          text-transform: lowercase;
+          width: 30px;
+          height: 30px;
 
           @include responsive(bigphone, portrait) {
-            font-size: 15px;
+            width: 50px;
+            height: 50px;
+          }
+          .memoryposteruserimg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
           }
         }
-
-        .product-img {
-          width: 100%;
-          // border-radius: 5px;
-          overflow: hidden;
-          position: relative;
-
-          @include responsive(phone, portrait) {
-            height: 180px;
-          }
+        .profile-name {
+          margin-left: 3px;
+          @include flexDisplay(space-between, flex-start, column);
           @include responsive(bigphone, portrait) {
-            height: 350px;
+            margin-left: 4px;
           }
-          @include responsive(tablet, portrait) {
-            height: 320px;
-          }
-          @include responsive(desktop, portrait) {
-            height: 420px;
-          }
-
-          .home-product-img {
-            // height: 100%;
-            transition: transform 0.3s linear;
-            object-fit: cover;
-
-            &:hover {
-              transform: scale(1.1);
-            }
-          }
-        }
-
-        .likenshare {
-          @include flexDisplay(space-between, center, row);
-          width: 100%;
-          padding: 5px;
-          color: $font-light;
-          margin-top: 3px;
-
           span {
-            @include flexDisplay(center, center, column);
-            position: relative;
-
-            sub {
-              font-weight: normal;
-              font-size: 10px;
-              margin-top: 3px;
-              height: 6px;
-              @include responsive(bigphone, portrait) {
-                font-size: 15px;
-              }
-            }
-          }
-          .likenshareicon {
-            font-weight: 300;
-            font-size: 30px;
-            cursor: pointer;
-            @include flexDisplay(center, center, row);
+            font-weight: 600;
+            color: $bg-dark-gray;
 
             @include responsive(bigphone, portrait) {
-              font-size: 35px;
-            }
-            sub {
-              // border: 2px solid red;
-              text-align: center;
-              font-size: 13px;
-              margin-top: 15px;
-              margin-left: -3px;
-            }
-
-            .like-red {
-              animation: like 0.2s linear;
-
-              @keyframes like {
-                0% {
-                  transform: scale(1.1);
-                }
-                100% {
-                  transform: scale(1);
-                }
-              }
+              font-size: 20px;
             }
           }
-          .comment {
-            font-size: 15px;
+          i {
+            font-style: normal;
+            font-size: 10px;
+            color: $font-light;
+            @include responsive(bigphone, portrait) {
+              font-size: 15px;
+            }
           }
         }
+      }
 
-        .addto-cart {
-          border: 1px solid red;
-          width: 100%;
-          margin: 0 auto;
-          text-align: center;
+      .product-name {
+        margin-top: 3px;
+        font-size: 12px;
+        color: $bg-dark-gray;
+        padding-left: 5px;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-transform: lowercase;
+
+        @include responsive(bigphone, portrait) {
           font-size: 15px;
-          border-radius: 5px;
-          cursor: pointer;
-          background: white;
-          @include flexDisplay(center, center, row);
+        }
+      }
+
+      .product-img {
+        width: 100%;
+        // border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+
+        // @include responsive(phone, portrait) {
+        //   height: 180px;
+        // }
+        // @include responsive(bigphone, portrait) {
+        //   height: 350px;
+        // }
+        // @include responsive(tablet, portrait) {
+        //   height: 320px;
+        // }
+        // @include responsive(desktop, portrait) {
+        //   height: 420px;
+        // }
+
+        .home-product-img {
+          width: 100%;
+          transition: transform 0.3s linear;
+          // object-fit: cover;
 
           &:hover {
-            background: $txt-blue;
-            color: white;
+            transform: scale(1.1);
           }
         }
       }
+
+      .likenshare {
+        @include flexDisplay(space-between, center, row);
+        width: 100%;
+        padding: 5px;
+        color: $font-light;
+        margin-top: 3px;
+
+        span {
+          @include flexDisplay(center, center, column);
+          position: relative;
+
+          sub {
+            font-weight: normal;
+            font-size: 10px;
+            margin-top: 3px;
+            height: 6px;
+            @include responsive(bigphone, portrait) {
+              font-size: 15px;
+            }
+          }
+        }
+        .likenshareicon {
+          font-weight: 300;
+          font-size: 30px;
+          cursor: pointer;
+          @include flexDisplay(center, center, row);
+
+          @include responsive(bigphone, portrait) {
+            font-size: 35px;
+          }
+          sub {
+            // border: 2px solid red;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 15px;
+            margin-left: -3px;
+          }
+
+          .like-red {
+            animation: like 0.2s linear;
+
+            @keyframes like {
+              0% {
+                transform: scale(1.1);
+              }
+              100% {
+                transform: scale(1);
+              }
+            }
+          }
+        }
+        .comment {
+          font-size: 15px;
+        }
+      }
+
+      .addto-cart {
+        border: 1px solid red;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        background: white;
+        @include flexDisplay(center, center, row);
+
+        &:hover {
+          background: $txt-blue;
+          color: white;
+        }
+      }
     }
-    padding-bottom: 10px;
   }
+  padding-bottom: 10px;
 }
+// }
+// //////////////////////////////////////////////////////////////////
 
 // LOADER STYLE
 .loader-con {

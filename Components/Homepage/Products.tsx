@@ -50,11 +50,11 @@ function Products({
         return "";
       }
     });
- 
+
   return (
-    <div className="product-session-con">
+    // <div className="product-session-con">
       <div className="product-main-con">
-        <form>
+        {/* <form>
           <div>
             <label>Select Department</label>
             <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
@@ -79,7 +79,7 @@ function Products({
               ))}
             </select>
           </div>
-        </form>
+        </form> */}
 
         <>
           {newProduct.length < 1 ? (
@@ -128,7 +128,7 @@ function Products({
           )}
         </>
       </div>
-    </div>
+    // </div>
   );
 }
 
@@ -247,56 +247,51 @@ function Product({
   );
   return (
     <div className="products">
-      <Link
-        href={`/ClientDynamic/${id}`}
-        className="main-poster-con"
-        style={{ width: "100%", display: "flex", justifyContent: "center" }}
-      >
-        <span className="poster-name">
-          {posterdetails[0]?.image ? (
-            <span className="profile-img">
-              <Image
-                src={posterdetails[0]?.image}
-                alt="img"
-                height={50}
-                width={50}
-                className="img"
-              />
-            </span>
-          ) : (
-            <BsPersonCircle className="unknown-avata" />
-          )}
-          <div className="profile-name">
-            <span>{posterdetails[0]?.name.split(" ")[0]}</span>
-            <i>
-              <Moment fromNow>{timestamp?.toDate()}</Moment>
-            </i>
+      {/* <div className="poster-name">
+        {posterdetails[0]?.image ? (
+          <div className="profile-img">
+            <Image
+              src={posterdetails[0]?.image}
+              alt="memoryposteruserimg"
+              height={50}
+              width={50}
+              className="img"
+            />
           </div>
-        </span>
-        <p className="product-name">
-          {message[0]?.name ? (
-            <span>{message[0]?.name}</span>
-          ) : (
-            <>
-              <b>tags:</b>
-              <span>{" " + namesonpicture}</span>
-            </>
-          )}
-        </p>
-      </Link>
+        ) : (
+          <BsPersonCircle className="unknown-avata" />
+        )}
+        <div className="profile-name">
+          <span>{posterdetails[0]?.name.split(" ")[0]}</span>
+          <i>
+            <Moment fromNow>{timestamp?.toDate()}</Moment>
+          </i>
+        </div>
+      </div> */}
+      {/* <p className="product-name">
+        {message[0]?.name ? (
+          <span>{message[0]?.name}</span>
+        ) : (
+          <>
+            <b>tags:</b>
+            <span>{" " + namesonpicture}</span>
+          </>
+        )}
+      </p> */}
+
       <div className="product-img">
-        <Link href={`/ClientDynamic/${id}`}>
-          <Image
+        {/* <Link href={`/ClientDynamic/${id}`}> */}
+          <img
             src={productimages[0]}
             alt="img"
             className="home-product-img"
-            fill
-            sizes="100vw"
+            // fill
+            // sizes="100vw"
           />
-        </Link>
+        {/* </Link> */}
       </div>
 
-      <div className="likenshare">
+      {/* <div className="likenshare">
         <span className="likenshareicon">
           {hasLikes ? (
             <BsHeartFill
@@ -314,7 +309,7 @@ function Product({
             {review.length} {review.length > 1 ? "comments" : "comment"}
           </a>
         </span>
-      </div>
+      </div> */}
     </div>
   );
 }
