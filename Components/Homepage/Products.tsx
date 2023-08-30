@@ -52,9 +52,8 @@ function Products({
     });
 
   return (
-    // <div className="product-session-con">
-      <div className="product-main-con">
-        {/* <form>
+    <div className="product-main-con">
+      {/* <form>
           <div>
             <label>Select Department</label>
             <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
@@ -81,54 +80,53 @@ function Products({
           </div>
         </form> */}
 
-        <>
-          {newProduct.length < 1 ? (
-            <p style={{ textAlign: "center" }}>
-              {search} Not avaliable <br />{" "}
-              <b style={{ color: "blue" }} onClick={() => setPostTriger(true)}>
-                Click here to post one
-              </b>
-            </p>
-          ) : (
-            <div className="products-con">
-              {newProduct.map(
-                (product: {
-                  userId: string;
-                  id: number;
-                  data: () => {
-                    posterId: any;
-                    id: Key | null | undefined;
-                    timestamp: any;
-                    (): any;
-                    new (): any;
-                    image: string;
-                    namesonpicture: string;
-                    picturelocation: string;
-                    pictureyear: number;
-                    approve: string;
-                    message: any[];
-                  };
-                }) => (
-                  <Product
-                    key={product.data().id}
-                    id={product.id}
-                    posterId={product.data().posterId}
-                    productimages={product.data().image}
-                    timestamp={product.data().timestamp}
-                    namesonpicture={product.data().namesonpicture}
-                    picturelocation={product.data().picturelocation}
-                    pictureyear={product.data().pictureyear}
-                    message={product.data().message}
-                    approve={product.data().approve}
-                    setLoginTriger={setLoginTriger}
-                  />
-                )
-              )}
-            </div>
-          )}
-        </>
-      </div>
-    // </div>
+      <>
+        {newProduct.length < 1 ? (
+          <p style={{ textAlign: "center" }}>
+            {search} Not avaliable <br />{" "}
+            <b style={{ color: "blue" }} onClick={() => setPostTriger(true)}>
+              Click here to post one
+            </b>
+          </p>
+        ) : (
+          <div className="products-con">
+            {newProduct.map(
+              (product: {
+                userId: string;
+                id: number;
+                data: () => {
+                  posterId: any;
+                  id: Key | null | undefined;
+                  timestamp: any;
+                  (): any;
+                  new (): any;
+                  image: string;
+                  namesonpicture: string;
+                  picturelocation: string;
+                  pictureyear: number;
+                  approve: string;
+                  message: any[];
+                };
+              }) => (
+                <Product
+                  key={product.data().id}
+                  id={product.id}
+                  posterId={product.data().posterId}
+                  productimages={product.data().image}
+                  timestamp={product.data().timestamp}
+                  namesonpicture={product.data().namesonpicture}
+                  picturelocation={product.data().picturelocation}
+                  pictureyear={product.data().pictureyear}
+                  message={product.data().message}
+                  approve={product.data().approve}
+                  setLoginTriger={setLoginTriger}
+                />
+              )
+            )}
+          </div>
+        )}
+      </>
+    </div>
   );
 }
 
@@ -247,7 +245,7 @@ function Product({
   );
   return (
     <div className="products">
-      {/* <div className="poster-name">
+      <div className="poster-name">
         {posterdetails[0]?.image ? (
           <div className="profile-img">
             <Image
@@ -267,8 +265,8 @@ function Product({
             <Moment fromNow>{timestamp?.toDate()}</Moment>
           </i>
         </div>
-      </div> */}
-      {/* <p className="product-name">
+      </div>
+      <p className="product-name">
         {message[0]?.name ? (
           <span>{message[0]?.name}</span>
         ) : (
@@ -277,21 +275,15 @@ function Product({
             <span>{" " + namesonpicture}</span>
           </>
         )}
-      </p> */}
+      </p>
 
       <div className="product-img">
-        {/* <Link href={`/ClientDynamic/${id}`}> */}
-          <img
-            src={productimages[0]}
-            alt="img"
-            className="home-product-img"
-            // fill
-            // sizes="100vw"
-          />
-        {/* </Link> */}
+        <Link href={`/ClientDynamic/${id}`}>
+          <img src={productimages[0]} alt="img" className="home-product-img" />
+        </Link>
       </div>
 
-      {/* <div className="likenshare">
+      <div className="likenshare">
         <span className="likenshareicon">
           {hasLikes ? (
             <BsHeartFill
@@ -309,7 +301,7 @@ function Product({
             {review.length} {review.length > 1 ? "comments" : "comment"}
           </a>
         </span>
-      </div> */}
+      </div>
     </div>
   );
 }

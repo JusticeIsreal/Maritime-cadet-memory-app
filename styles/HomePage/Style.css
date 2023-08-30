@@ -103,7 +103,6 @@
   border-radius: 50%;
 }
 .singleuser-con .user-details {
-  border: 2px solid red;
   width: 100%;
 }
 
@@ -119,15 +118,15 @@
 .product-main-con .products-con {
   width: 100%;
   margin: 0 auto;
-  -moz-columns: 1;
-       columns: 1;
+  -moz-columns: 2;
+       columns: 2;
   -moz-column-gap: 10px;
        column-gap: 10px;
 }
 @media only screen and (min-width: 768px) {
   .product-main-con .products-con {
-    -moz-columns: 2;
-         columns: 2;
+    -moz-columns: 3;
+         columns: 3;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -136,21 +135,23 @@
          columns: 3;
   }
 }
+@media only screen and (min-width: 1200px) {
+  .product-main-con .products-con {
+    -moz-columns: 5;
+         columns: 5;
+  }
+}
 .product-main-con .products-con .products {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  margin: 5px 0;
   border-radius: 5px;
-  background: white;
-  overflow: hidden;
   border: 1px solid #f5f3f3;
   box-shadow: -1px -1px 2px rgba(128, 128, 128, 0.368627451);
   position: relative;
   width: 100% !important;
-  padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
   -moz-column-break-inside: avoid;
        break-inside: avoid;
 }
@@ -174,8 +175,8 @@
 }
 .product-main-con .products-con .products .poster-name .profile-img {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   border: 2px solid red;
   border-radius: 50%;
@@ -192,8 +193,8 @@
 .product-main-con .products-con .products .poster-name .profile-img .memoryposteruserimg {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .product-main-con .products-con .products .poster-name .profile-name {
   margin-left: 3px;
@@ -244,6 +245,7 @@
 }
 .product-main-con .products-con .products .product-img {
   width: 100%;
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
