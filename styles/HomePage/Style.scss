@@ -319,7 +319,7 @@ $txt-light-blue: #cfe8ff;
       columns: 3;
     }
     @include responsive(desktop) {
-      columns: 5;
+      columns: 3;
     }
 
     .products {
@@ -346,7 +346,7 @@ $txt-light-blue: #cfe8ff;
 
         .profile-img {
           @include flexDisplay(center, center, column);
-          border: 2px solid red;
+          // border: 2px solid red;
           border-radius: 50%;
           overflow: hidden;
           width: 30px;

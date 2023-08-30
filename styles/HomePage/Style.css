@@ -137,8 +137,8 @@
 }
 @media only screen and (min-width: 1200px) {
   .product-main-con .products-con {
-    -moz-columns: 5;
-         columns: 5;
+    -moz-columns: 3;
+         columns: 3;
   }
 }
 .product-main-con .products-con .products {
@@ -178,7 +178,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid red;
   border-radius: 50%;
   overflow: hidden;
   width: 30px;
