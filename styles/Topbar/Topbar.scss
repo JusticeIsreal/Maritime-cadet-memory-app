@@ -28,7 +28,7 @@ $font-family: "Poppins", sans-serif;
 $navbar-con-color: #003566;
 $sreen-max-width: 3000px;
 $form-bg: #126782;
-$text-color: #8ecae6;
+$text-color: #1a97bf;
 $transparent-bg: #12688200;
 $placeholder-color: #1a97bf;
 $button-bg: #ffb703;
@@ -88,10 +88,10 @@ $button-bg: #ffb703;
 
 // TOP BAR
 .topbar-main-con {
-  //   border: 2px solid red !important;
-  @include flexDisplay(space-around, center, column);
+  // border: 2px solid red !important;
+  @include flexDisplay(center, center, column);
   position: relative;
-  z-index: 200;
+  z-index: 20;
   width: 100%;
   height: 70px;
   position: sticky;
@@ -99,10 +99,7 @@ $button-bg: #ffb703;
   top: 0;
   left: 0;
   right: 0;
-
-  @include responsive(bigphone) {
-    height: 80px;
-  }
+  background: $transparent-bg;
 
   .topbar-top-con {
     // border: 2px solid rgb(0, 17, 255) !important;
@@ -112,29 +109,33 @@ $button-bg: #ffb703;
     margin: 0 auto;
     max-width: $sreen-max-width;
     padding-left: 1%;
-    background: $navbar-con-color;
+    background: rgba(0, 29, 61, 0.4);
+    backdrop-filter: blur(4.5px);
+    gap: 5px;
     @include responsive(bigphone) {
       padding-left: 5%;
     }
 
     .topbar-top-con-left {
       width: 80px;
+      background: $transparent-bg;
       @include responsive(bigphone) {
         width: 100px;
       }
       img {
         width: 100%;
         object-fit: contain;
-        background: $navbar-con-color;
+        background: $transparent-bg;
       }
     }
 
     .topbar-top-con-right {
+      // border: 2px solid red;
       gap: 5px;
-      padding-right: 1%;
-      width: 280px;
+      padding-right: 3%;
+      width: 100%;
       @include flexDisplay(space-between, center, row);
-      background: $navbar-con-color;
+      background: $transparent-bg;
       @include responsive(bigphone) {
         padding-right: 5%;
         width: 549px;
@@ -142,22 +143,25 @@ $button-bg: #ffb703;
       }
 
       form {
-        height: 40px;
+        height: 35px;
         width: 80%;
         margin-left: auto;
-        border-radius: 10px;
+        border-radius: 5px;
         background: $form-bg;
         position: relative;
+
         @include responsive(bigphone) {
+          border-radius: 10px;
           width: 442px;
           height: 44px;
         }
 
         .topbar-search-icon {
           position: absolute;
-          top: 13px;
-          left: 5px;
+          top: 10px;
+          left: 8px;
           color: $text-color;
+          font-size: 16px;
           background: $transparent-bg;
           @include responsive(bigphone) {
             top: 15px;
@@ -173,42 +177,46 @@ $button-bg: #ffb703;
           border: none;
           outline: none;
           color: $text-color;
-          letter-spacing: 1px;
+          font-family: Fira Sans;
+          font-size: 12px;
+          font-weight: 600;
 
           &::placeholder {
             color: $placeholder-color; /* Adjust placeholder color */
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
           }
         }
       }
 
       button {
         width: 20%;
-        height: 38px;
-        border-radius: 10px;
+        height: 35px;
+        border-radius: 5px;
         border: none;
         background: $button-bg;
-        font-size: 14px;
+        color: #040303;
         font-family: Fira Sans;
-        font-weight: 500;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
         cursor: pointer;
         @include responsive(bigphone) {
           font-size: 16px;
-          width: 105px;
+          display: flex;
           height: 44px;
+          padding: 10px 20px;
+          border-radius: 10px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
         }
 
         &:hover {
-          background: #cf9500;
-          color: white;
+          background: #fd9e02;
         }
-      }
-      .cart-icon-con {
-        background: $navbar-con-color;
-      }
-      .nav-profile-img {
-        border: 1px solid $text-color;
-        border-radius: 50%;
-        object-fit: contain;
       }
     }
   }

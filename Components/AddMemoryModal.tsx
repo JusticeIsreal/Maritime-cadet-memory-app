@@ -60,7 +60,7 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
         `https://api.cloudinary.com/v1_1/dd61rrbxs/image/upload`,
         formData
       );
-      return response.data.secure_url;
+     
     } catch (error) {
       console.error("File upload failed:", error);
     }

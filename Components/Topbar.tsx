@@ -7,6 +7,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Drawer, Group } from "@mantine/core";
 import Settings from "./Settings";
 import { BsSearch } from "react-icons/bs";
+import { BiSolidSearch } from "react-icons/bi";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
@@ -36,40 +37,14 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
 
         <div className="topbar-top-con-right">
           <form>
-            <BsSearch className="topbar-search-icon" />
+            <BiSolidSearch className="topbar-search-icon" />
             <input
               type="text"
-              placeholder="Search by cadet name"
+              placeholder="Search by names, dept or location..."
               onChange={(e) => setSearch(e.target.value)}
             />
           </form>
-          {sessions ? (
-            <>
-              <Drawer
-                className="menu-con"
-                opened={opened}
-                onClose={close}
-                title="User Profile"
-                overlayProps={{ opacity: 0.5, blur: 4 }}
-                position="right"
-              >
-                <Settings setPostTriger={setPostTriger} onClose={close} />
-              </Drawer>
-
-              <Group position="center" className="cart-icon-con" onClick={open}>
-                <Image
-                  className="nav-profile-img"
-                  src={userImage}
-                  alt="profile"
-                  height={50}
-                  width={50}
-                  style={{ cursor: "pointer" }}
-                />
-              </Group>
-            </>
-          ) : (
-            <button onClick={() => signIn()}>Login</button>
-          )}
+          <button onClick={() => signIn()}>Upload</button>
         </div>
       </div>
     </div>

@@ -123,7 +123,7 @@ const Homepage = () => {
           <Banner />
           {/* <Slider /> */}
           {/* MAIN PRODUCT */}
-          <Products
+          {/* <Products
             dynamicBtn={dynamicBtn}
             dynamicDate={dynamicDate}
             setCategoryYear={setCategoryYear}
@@ -132,7 +132,7 @@ const Homepage = () => {
             search={search}
             setLoginTriger={setLoginTriger}
             setPostTriger={setPostTriger}
-          />
+          /> */}
         </>
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
