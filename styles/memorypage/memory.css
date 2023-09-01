@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Orbitron", sans-serif;
+  background: #001d3d;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0);
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: rgba(65, 105, 225, 0);
+}
+
+.product-main-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .product-main-con {
+    padding-top: 102px;
+  }
+}
+.product-main-con .products-con {
+  width: 100%;
+  margin: 0 auto;
+  -moz-columns: 2;
+       columns: 2;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .product-main-con .products-con {
+    -moz-columns: 3;
+         columns: 3;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .product-main-con .products-con {
+    -moz-columns: 4;
+         columns: 4;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .product-main-con .products-con {
+    -moz-columns: 6;
+         columns: 6;
+  }
+}
+.product-main-con .products-con .products {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  position: relative;
+  width: 100% !important;
+  margin: 10px 0;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+@media only screen and (min-width: 768px) {
+  .product-main-con .products-con .products {
+    margin: 20px 0;
+  }
+}
+.product-main-con .products-con .products .main-poster-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.product-main-con .products-con .products .product-img {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.product-main-con .products-con .products .product-img .home-product-img {
+  width: 100%;
+  transition: transform 0.3s linear;
+}
+.product-main-con .products-con .products .product-img .home-product-img:hover {
+  transform: scale(1.1);
+}
+.product-main-con .products-con .products .likenshare {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  color: #666;
+  position: absolute;
+  bottom: 4%;
+  padding-right: 15px;
+  background: transparent;
+}
+.product-main-con .products-con .products .likenshare .likenshareicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  padding: 2px;
+  background: rgba(0, 29, 61, 0.7);
+  margin-left: auto;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .product-main-con .products-con .products .likenshare .likenshareicon {
+    font-size: 35px;
+  }
+}
+.product-main-con .products-con .products .likenshare .likenshareicon .icon {
+  font-size: 20px;
+  text-align: center;
+  color: #8ecae6;
+}
+.product-main-con .products-con .products .likenshare .likenshareicon sub {
+  font-weight: normal;
+  font-size: 10px;
+  font-size: 10px;
+  bottom: 6px;
+  position: absolute;
+  color: #8ecae6;
+  background: transparent;
+}
+.product-main-con .products-con .products .likenshare .likenshareicon .like-red {
+  animation: like 0.2s linear;
+}
+@keyframes like {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.product-main-con .products-con .products .likenshare .comment {
+  font-size: 15px;
+}
+.product-main-con .products-con .products .addto-cart {
+  border: 1px solid red;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.product-main-con .products-con .products .addto-cart:hover {
+  background: #ea9319;
+  color: white;
+}/*# sourceMappingURL=Memory.css.map */

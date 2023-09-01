@@ -59,7 +59,15 @@ const Banner = () => {
       <div className="galaxy">
         <div></div>
       </div>
-
+      <div className="cadet-img-con">
+        <img
+          src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1693577187/Official_Launch_Date_Background_Removed_u3ad6p.png"
+          alt="img"
+          width={100}
+          height={100}
+          className="cadet-img"
+        />
+      </div>
       <div style={{ color: "white" }} className="text-slid">
         <div className="text-slide">
           <span>

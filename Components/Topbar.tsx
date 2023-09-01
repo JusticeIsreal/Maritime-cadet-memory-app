@@ -15,27 +15,7 @@ interface TopbarProps {
 
 const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
   const { data: sessions } = useSession<any>();
-  const [userPicture, setUserPicture] = useState<any>(sessions?.user);
-  // GET  DETAILS OF POSTER
-  const [users, setUsers] = useState<any>([]);
-  useEffect(() => {
-    return onSnapshot(
-      query(collection(db, "registered_Users"), orderBy("time", "desc")),
-      (snapshot) => {
-        setUsers(snapshot.docs);
-      }
-    );
-  }, []);
-  const posterImage = users.filter(
-    (user: { data: () => { (): any; new (): any; userId: any } }) =>
-      user.data().userId === sessions?.user?.uid
-  );
-  // console.log(users);
 
-  const posterdetails = posterImage.map(
-    (img: { data: () => { (): any; new (): any; length: any } }) => img.data()
-  );
-  console.log(posterdetails);
   return (
     <div className="topbar-main-con">
       <div className="topbar-top-con">
@@ -63,7 +43,7 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
           {sessions ? (
             <div className="profile-img-con">
               <Image
-                src={posterdetails.image}
+                src={sessions?.user?.image || ""}
                 alt="img"
                 width={50}
                 height={50}

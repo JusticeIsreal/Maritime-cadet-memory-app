@@ -16,6 +16,7 @@ import { db } from "../Firebase";
 import { useSession } from "next-auth/react";
 import Moment from "react-moment";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Loader from "./Loader";
 
 interface TypeProps {
   product: any[];
@@ -53,81 +54,63 @@ function Products({
     });
 
   return (
-    <div className="product-main-con">
-      {/* <form>
-          <div>
-            <label>Select Department</label>
-            <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
-              {dynamicBtn?.map((category: string, index: number) => (
-                <option value={category} key={index}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label>Select Year</label>
-            <select
-              name=""
-              id=""
-              onChange={(e) => setCategoryYear(e.target.value)}
-            >
-              {dynamicDate?.map((category: string, index: number) => (
-                <option value={category} key={index}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-        </form> */}
-
-      <>
-        {newProduct.length < 1 ? (
-          <p style={{ textAlign: "center" }}>
-            {search} Not avaliable <br />{" "}
-            <b style={{ color: "blue" }} onClick={() => setPostTriger(true)}>
-              Click here to post one
-            </b>
-          </p>
-        ) : (
-          <div className="products-con">
-            {newProduct.map(
-              (product: {
-                userId: string;
-                id: number;
-                data: () => {
-                  posterId: any;
-                  id: Key | null | undefined;
-                  timestamp: any;
-                  (): any;
-                  new (): any;
-                  image: string;
-                  namesonpicture: string;
-                  picturelocation: string;
-                  pictureyear: number;
-                  approve: string;
-                  message: any[];
-                };
-              }) => (
-                <Product
-                  key={product.data().id}
-                  id={product.id}
-                  posterId={product.data().posterId}
-                  productimages={product.data().image}
-                  timestamp={product.data().timestamp}
-                  namesonpicture={product.data().namesonpicture}
-                  picturelocation={product.data().picturelocation}
-                  pictureyear={product.data().pictureyear}
-                  message={product.data().message}
-                  approve={product.data().approve}
-                  setLoginTriger={setLoginTriger}
-                />
-              )
+    <>
+      {product.length > 0 ? (
+        <div className="product-main-con">
+          <>
+            {newProduct.length < 1 ? (
+              <p style={{ textAlign: "center", color: "#219ebc" }}>
+                {search}: is not avaliable <br />{" "}
+                <b
+                  style={{ color: "#219ebc", textDecorationLine: "underline" }}
+                  onClick={() => setPostTriger(true)}
+                >
+                  Click here to post one
+                </b>
+              </p>
+            ) : (
+              <div className="products-con">
+                {newProduct.map(
+                  (product: {
+                    userId: string;
+                    id: number;
+                    data: () => {
+                      posterId: any;
+                      id: Key | null | undefined;
+                      timestamp: any;
+                      (): any;
+                      new (): any;
+                      image: string;
+                      namesonpicture: string;
+                      picturelocation: string;
+                      pictureyear: number;
+                      approve: string;
+                      message: any[];
+                    };
+                  }) => (
+                    <Product
+                      key={product.data().id}
+                      id={product.id}
+                      posterId={product.data().posterId}
+                      productimages={product.data().image}
+                      timestamp={product.data().timestamp}
+                      namesonpicture={product.data().namesonpicture}
+                      picturelocation={product.data().picturelocation}
+                      pictureyear={product.data().pictureyear}
+                      message={product.data().message}
+                      approve={product.data().approve}
+                      setLoginTriger={setLoginTriger}
+                    />
+                  )
+                )}
+              </div>
             )}
-          </div>
-        )}
-      </>
-    </div>
+          </>
+        </div>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 }
 
@@ -252,69 +235,34 @@ function Product({
       data-aos-easing="ease-in-sine"
       data-aos-duration="600"
     >
-      <div className="poster-name">
-        {posterdetails[0]?.image ? (
-          <div className="profile-img">
-            <Image
-              src={posterdetails[0]?.image}
-              alt="memoryposteruserimg"
-              height={50}
-              width={50}
-              className="img"
-            />
-          </div>
-        ) : (
-          <BsPersonCircle className="unknown-avata" />
-        )}
-        <div className="profile-name">
-          <span>{posterdetails[0]?.name.split(" ")[0]}</span>
-          <i>
-            <Moment fromNow>{timestamp?.toDate()}</Moment>
-          </i>
-        </div>
-      </div>
-      <p className="product-name">
-        {message[0]?.name ? (
-          <span>{message[0]?.name}</span>
-        ) : (
-          <>
-            <b>tags:</b>
-            <span>{" " + namesonpicture}</span>
-          </>
-        )}
-      </p>
-
       <div className="product-img">
         <Link href={`/ClientDynamic/${id}`}>
           <LazyLoadImage
             src={productimages[0]}
             alt="img"
+            loading="lazy"
             className="home-product-img"
             effect="blur"
             placeholderSrc={productimages[0]}
           />
         </Link>
       </div>
-
-      <div className="likenshare">
-        <span className="likenshareicon">
-          {hasLikes ? (
-            <BsHeartFill
-              className="like-red"
-              style={{ color: "red" }}
-              onClick={() => addToFav(id)}
-            />
-          ) : (
-            <BsHeart onClick={() => addToFav(id)} />
-          )}
-          <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
-        </span>
-        <span className="comment">
-          <a href={`/ClientDynamic/${id}/#comment`} style={{ color: "gray" }}>
-            {review.length} {review.length > 1 ? "comments" : "comment"}
-          </a>
-        </span>
-      </div>
+      {productimages && (
+        <div className="likenshare">
+          <span className="likenshareicon">
+            {hasLikes ? (
+              <BsHeartFill
+                className="like-red icon"
+                style={{ color: "red" }}
+                onClick={() => addToFav(id)}
+              />
+            ) : (
+              <BsHeart onClick={() => addToFav(id)} className="icon" />
+            )}
+            <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
+          </span>
+        </div>
+      )}{" "}
     </div>
   );
 }
