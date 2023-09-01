@@ -137,10 +137,10 @@ const Homepage = () => {
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
       {postTriger && <AddMemoryModal setPostTriger={setPostTriger} />}
-      <AddNewMemory
+      {/* <AddNewMemory
         setPostTriger={setPostTriger}
         setLoginTriger={setLoginTriger}
-      />
+      /> */}
     </div>
   );
 };

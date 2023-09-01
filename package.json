@@ -25,6 +25,7 @@
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
     "firebase": "^9.18.0",
+    "gsap": "^3.12.2",
     "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.1",
     "jsbarcode": "^3.11.5",

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect } from "react";
 
 const generateStars = () => {
@@ -7,7 +8,7 @@ const generateStars = () => {
   let iterator = 0;
   console.log(galaxy);
   if (galaxy) {
-    while (iterator <= 50) {
+    while (iterator <= 80) {
       const xposition = Math.random();
       const yposition = Math.random();
       const star_type = Math.floor(Math.random() * 3) + 1;
@@ -32,6 +33,7 @@ const Banner = () => {
     generateStars();
   }, []);
 
+  // Text Slide
   return (
     <div className="banner-main-con">
       <div className="banner-con">
@@ -46,15 +48,38 @@ const Banner = () => {
             src="/Collection of Cherished Moments.png"
             alt=""
           />
-          <div className="creator">
-            <p>Created by</p>
-            <h3>Marine Engineering Class of '20 - The 64</h3>
-          </div>
+          <Link href="/memories">
+            <div className="creator">
+              <button>See Memories</button>
+            </div>
+          </Link>
         </div>
       </div>
 
       <div className="galaxy">
         <div></div>
+      </div>
+
+      <div style={{ color: "white" }} className="text-slid">
+        <div className="text-slide">
+          <span>
+            Developed by{" "}
+            <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
+          </span>
+          <img src="/sta 3.png" alt="" />
+          <span>
+            Designed by <a href="http://kingsleyjohn.com.com">Kingsley John</a>
+          </span>
+          <img src="/sta 3.png" alt="" />
+          <span>
+            Developed by{" "}
+            <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
+          </span>
+          <img src="/sta 3.png" alt="" />
+          <span>
+            Designed by <a href="http://kingsleyjohn.com.com">Kingsley John</a>
+          </span>
+        </div>
       </div>
     </div>
   );
