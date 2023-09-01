@@ -6,7 +6,7 @@ const generateStars = () => {
   // CREATING AN NIMATION OF SLY LIGHT
   const galaxy = document.querySelector(".galaxy") as HTMLElement;
   let iterator = 0;
-  console.log(galaxy);
+
   if (galaxy) {
     while (iterator <= 80) {
       const xposition = Math.random();

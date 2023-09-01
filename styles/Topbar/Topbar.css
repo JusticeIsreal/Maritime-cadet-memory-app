@@ -141,6 +141,36 @@
   font-style: normal;
   font-weight: 400;
 }
+.topbar-main-con .topbar-top-con .topbar-top-con-right form .search-dropdown-con {
+  margin-top: 5px;
+  border-radius: 10px;
+  background: #d8f2ff;
+  padding: 16px;
+}
+.topbar-main-con .topbar-top-con .topbar-top-con-right form .search-dropdown-con .search-dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  z-index: 2000;
+  color: #1a97bf;
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 34px;
+  background: transparent;
+}
+.topbar-main-con .topbar-top-con .topbar-top-con-right form .search-dropdown-con .search-dropdown p {
+  background: transparent;
+  padding: 8px;
+}
+.topbar-main-con .topbar-top-con .topbar-top-con-right form .search-dropdown-con .search-dropdown:hover {
+  background: #fd9e02;
+  border-radius: 5px;
+  background: rgba(33, 158, 188, 0.2);
+}
 .topbar-main-con .topbar-top-con .topbar-top-con-right button {
   width: 20%;
   height: 35px;

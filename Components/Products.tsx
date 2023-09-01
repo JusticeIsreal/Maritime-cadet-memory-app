@@ -31,10 +31,6 @@ interface TypeProps {
 function Products({
   search,
   product,
-  dynamicBtn,
-  dynamicDate,
-  setCategoryYear,
-  setCategory,
   setLoginTriger,
   setPostTriger,
 }: TypeProps) {

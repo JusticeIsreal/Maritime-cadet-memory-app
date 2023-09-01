@@ -25,9 +25,9 @@ function memories() {
   //   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // FILTER THE PICTURES
-  const dynamicBtn = [
+  const dynamicName = [
     "All",
-    ...new Set(products.map((category) => category?.data()?.department)),
+    ...new Set(products.map((category) => category?.data()?.namesonpicture)),
   ];
   const dynamicDate = [
     "All",
@@ -66,22 +66,41 @@ function memories() {
       );
     }
   }, [category, products, categoryYear]);
+  //   console.log(dynamicName);
+  const newSetFilter = products
+    ?.filter((approved) => approved.data().approve === "yes")
+    .filter((item) => {
+      if (item.data().namesonpicture === "") {
+        return item;
+      } else if (
+        item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
+      ) {
+        return item;
+      } else {
+        return null;
+      }
+    });
+  const selectName = [
+    "All",
+    ...new Set(products.map((category) => category?.data()?.namesonpicture)),
+  ];
   return (
     <div>
       <Topbar
         setPostTriger={setPostTriger}
-        // triga={triga}
+        newSetFilter={selectName}
         setSearch={setSearch}
+        search={search}
       />
       <Products
-        dynamicBtn={dynamicBtn}
-        dynamicDate={dynamicDate}
-        setCategoryYear={setCategoryYear}
         product={product}
-        setCategory={setCategory}
         search={search}
         setLoginTriger={setLoginTriger}
         setPostTriger={setPostTriger}
+        dynamicBtn={[]}
+        setCategory={undefined}
+        dynamicDate={[]}
+        setCategoryYear={undefined}
       />
     </div>
   );

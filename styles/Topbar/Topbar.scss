@@ -188,6 +188,35 @@ $button-bg: #ffb703;
             font-weight: 400;
           }
         }
+
+        .search-dropdown-con {
+          // border: 2px solid red;
+          margin-top: 5px;
+          border-radius: 10px;
+          background: #d8f2ff;
+          padding: 16px;
+          .search-dropdown {
+            @include flexDisplay(space-between, center, row);
+            z-index: 2000;
+            color: #1a97bf;
+            font-family: Fira Sans;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            height: 34px;
+            background: transparent;
+            p {
+              background: transparent;
+              padding: 8px;
+            }
+            &:hover {
+              background: #fd9e02;
+              border-radius: 5px;
+              background: rgba(33, 158, 188, 0.2);
+            }
+          }
+        }
       }
 
       button {

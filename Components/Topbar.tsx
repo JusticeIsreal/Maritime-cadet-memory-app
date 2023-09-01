@@ -1,21 +1,38 @@
-import React, { useState, useEffect, FC, ChangeEventHandler } from "react";
+import React, { useState, useEffect, FC } from "react";
 import Link from "next/link";
-
 import { signIn, useSession } from "next-auth/react";
-
 import { BiSolidSearch } from "react-icons/bi";
 import Image from "next/image";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "../Firebase";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
   setPostTriger: any;
+  newSetFilter: any[];
+  search: string;
 }
 
-const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
+const Topbar: FC<TopbarProps> = ({
+  setSearch,
+  setPostTriger,
+  newSetFilter,
+  search,
+}) => {
   const { data: sessions } = useSession<any>();
+  const [dropDownCon, setDropDownCon] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (search || dropDownCon) {
+      setDropDownCon(true);
+    } else {
+      setDropDownCon(false);
+    }
+  }, [search]);
+
+  const closeDropdown = () => {
+    if (dropDownCon === true) {
+      setDropDownCon(false);
+    }
+  };
   return (
     <div className="topbar-main-con">
       <div className="topbar-top-con">
@@ -35,9 +52,32 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
             <BiSolidSearch className="topbar-search-icon" />
             <input
               type="text"
+              value={search || ""}
               placeholder="Search by names, department or location..."
-              onChange={(e) => setSearch(e.target.value)}
+              onFocus={() => {
+                setDropDownCon(true);
+              }}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
             />
+            {dropDownCon && search ? (
+              <div className="search-dropdown-con">
+                {newSetFilter
+                  ?.filter((product) =>
+                    product.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((product, index) => (
+                    <TopbarSearchOption
+                      key={index}
+                      product={product}
+                      setSearch={setSearch}
+                      setDropDownCon={setDropDownCon}
+                      closeDropdown={closeDropdown}
+                    />
+                  ))}
+              </div>
+            ) : null}
           </form>
 
           {sessions ? (
@@ -58,5 +98,29 @@ const Topbar: FC<TopbarProps> = ({ setSearch, setPostTriger }) => {
     </div>
   );
 };
+
+function TopbarSearchOption({
+  product,
+  setSearch,
+  setDropDownCon,
+  closeDropdown,
+}: {
+  product: any;
+  setSearch: (value: string) => void;
+  setDropDownCon: (value: boolean) => void;
+  closeDropdown: () => void;
+}) {
+  const selectedName = (e: any) => {
+    setSearch(e.target.textContent);
+    closeDropdown();
+    setDropDownCon(false); // Close the dropdown when an option is clicked
+  };
+
+  return (
+    <div className="search-dropdown" onClick={(e) => selectedName(e)}>
+      <p>{product}</p>
+    </div>
+  );
+}
 
 export default Topbar;
