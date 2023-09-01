@@ -19,7 +19,7 @@ import {
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 // components
 import Topbar from "../Components/Topbar";
-import Products from "../Components/Homepage/Products";
+import Products from "../Components/Products";
 
 import Modal from "../Components/Modal";
 
@@ -31,7 +31,7 @@ import { CartQuantityContext } from "./_app";
 import { useSession } from "next-auth/react";
 import AddNewMemory from "../Components/AddNewMemory";
 import AddMemoryModal from "../Components/AddMemoryModal";
-import Banner from "../Components/Banner";
+import Banner from "../Components/Banner/Banner";
 import Slider from "../Components/Slider";
 
 // typescript
@@ -123,16 +123,6 @@ const Homepage = () => {
           <Banner />
           {/* <Slider /> */}
           {/* MAIN PRODUCT */}
-          {/* <Products
-            dynamicBtn={dynamicBtn}
-            dynamicDate={dynamicDate}
-            setCategoryYear={setCategoryYear}
-            product={product}
-            setCategory={setCategory}
-            search={search}
-            setLoginTriger={setLoginTriger}
-            setPostTriger={setPostTriger}
-          /> */}
         </>
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}

@@ -12,7 +12,7 @@ import {
   query,
   setDoc,
 } from "firebase/firestore";
-import { db } from "../../Firebase";
+import { db } from "../Firebase";
 import { useSession } from "next-auth/react";
 import Moment from "react-moment";
 import { LazyLoadImage } from "react-lazy-load-image-component";

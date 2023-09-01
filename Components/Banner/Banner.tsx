@@ -68,7 +68,7 @@ const Banner = () => {
           </span>
           <img src="/sta 3.png" alt="" />
           <span>
-            Designed by <a href="http://kingsleyjohn.com.com">Kingsley John</a>
+            Designed by <a href="http://kingsleyjohn.com">Kingsley John</a>
           </span>
           <img src="/sta 3.png" alt="" />
           <span>
@@ -77,7 +77,7 @@ const Banner = () => {
           </span>
           <img src="/sta 3.png" alt="" />
           <span>
-            Designed by <a href="http://kingsleyjohn.com.com">Kingsley John</a>
+            Designed by <a href="https://www.kingsleyjohn.com">Kingsley John</a>
           </span>
         </div>
       </div>
