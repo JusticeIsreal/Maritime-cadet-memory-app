@@ -81,14 +81,28 @@ function memories() {
       }
     });
   const selectName = [
-    "All",
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),
+  ];
+  const selectDept = [
+    ...new Set(products.map((category) => category?.data()?.department)),
+  ];
+  const selectLocation = [
+    ...new Set(products.map((category) => category?.data()?.picturelocation)),
+  ];
+  const selectDate = [
+    ...new Set(products.map((category) => category?.data()?.pictureyear)),
+  ];
+  const finalList = [
+    ...selectName,
+    ...selectDept,
+    ...selectLocation,
+    ...selectDate,
   ];
   return (
     <div>
       <Topbar
         setPostTriger={setPostTriger}
-        newSetFilter={selectName}
+        newSetFilter={finalList}
         setSearch={setSearch}
         search={search}
       />

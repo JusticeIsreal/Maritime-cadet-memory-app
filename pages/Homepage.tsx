@@ -1,38 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
-import { useForm } from "react-hook-form";
-import { Group, Button } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
-import { Blockquote } from "@mantine/core";
+import { Group } from "@mantine/core";
+
 // firebase
 import { db, storage } from "../Firebase";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+
 // components
 import Topbar from "../Components/Topbar";
-import Products from "../Components/Products";
-
 import Modal from "../Components/Modal";
 
 // import Advert from "../Components/Homepage/Advert";
 
 import { useRouter } from "next/router";
-import { addToCart, allCartItem, getSessionUser } from "../Services/functions";
-import { CartQuantityContext } from "./_app";
 import { useSession } from "next-auth/react";
-import AddNewMemory from "../Components/AddNewMemory";
 import AddMemoryModal from "../Components/AddMemoryModal";
 import Banner from "../Components/Banner/Banner";
 import Slider from "../Components/Slider";
+import AddNewMemory from "../Components/AddNewMemory";
 
 // typescript
 
@@ -58,9 +43,24 @@ const Homepage = () => {
   const [search, setSearch] = useState<any>("");
 
   const selectName = [
-    "All",
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),
   ];
+  const selectDept = [
+    ...new Set(products.map((category) => category?.data()?.department)),
+  ];
+  const selectLocation = [
+    ...new Set(products.map((category) => category?.data()?.picturelocation)),
+  ];
+  const selectDate = [
+    ...new Set(products.map((category) => category?.data()?.pictureyear)),
+  ];
+  const finalList = [
+    ...selectName,
+    ...selectDept,
+    ...selectLocation,
+    ...selectDate,
+  ];
+  // console.log(finalList);
   return (
     <div
       className="homepage-main-con"
@@ -72,7 +72,7 @@ const Homepage = () => {
       {/* TOPBAR */}
       <Topbar
         setPostTriger={setPostTriger}
-        newSetFilter={selectName}
+        newSetFilter={finalList}
         setSearch={setSearch}
         search={search}
       />

@@ -20,6 +20,7 @@ const Topbar: FC<TopbarProps> = ({
 }) => {
   // NAVIGATE TO MEMORIE PAGE WHENEVER YOU TRY TO SEARCH
   // FROM THE HOME PAGE
+
   const router = useRouter();
   useEffect(() => {
     if (search && router.pathname === "/") {
@@ -35,6 +36,7 @@ const Topbar: FC<TopbarProps> = ({
   const result = newSetFilter?.filter((product) =>
     product.toLowerCase().includes(search.toLowerCase())
   );
+
   useEffect(() => {
     if (search || dropDownCon) {
       setDropDownCon(true);
@@ -42,7 +44,7 @@ const Topbar: FC<TopbarProps> = ({
       setDropDownCon(false);
     }
 
-    if (result.length < 1) {
+    if (result?.length < 1) {
       setDropDownCon(false);
       closeDropdown();
     }

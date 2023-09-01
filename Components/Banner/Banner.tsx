@@ -60,11 +60,12 @@ const Banner = () => {
         <div></div>
       </div>
       <div className="cadet-img-con">
-        <img
+        <Image
           src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1693577187/Official_Launch_Date_Background_Removed_u3ad6p.png"
           alt="img"
-          width={100}
-          height={100}
+          // width={100}
+          // height={100}
+          fill={true}
           className="cadet-img"
         />
       </div>

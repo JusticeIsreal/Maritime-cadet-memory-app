@@ -35,19 +35,35 @@ function Products({
   setPostTriger,
 }: TypeProps) {
   // FILTER PICTURES BASED ON INPUT VALUE IN SEARCH
-  const newProduct = product
-    ?.filter((approved) => approved.data().approve === "yes")
-    .filter((item) => {
-      if (item.data().namesonpicture === "") {
-        return item;
-      } else if (
-        item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
-      ) {
-        return item;
-      } else {
-        return "";
-      }
-    });
+  const approvedPictures = product?.filter(
+    (approved) => approved.data().approve === "yes"
+  );
+  
+  const dd = approvedPictures.map((item) => item.data());
+
+  const newProduct = approvedPictures.filter((item) => {
+    if (item.data().namesonpicture === "") {
+      return item;
+    } else if (
+      item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
+    ) {
+      return item;
+    } else if (
+      item.data().department.toLowerCase().includes(search?.toLowerCase())
+    ) {
+      return item;
+    } else if (
+      item.data().pictureyear.toLowerCase().includes(search?.toLowerCase())
+    ) {
+      return item;
+    } else if (
+      item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
+    ) {
+      return item;
+    } else {
+      return "";
+    }
+  });
 
   return (
     <>
