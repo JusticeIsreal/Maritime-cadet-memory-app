@@ -55,7 +55,13 @@ function Products({
         <div className="product-main-con">
           <>
             {newProduct.length < 1 ? (
-              <p style={{ textAlign: "center", color: "#219ebc" }}>
+              <p
+                style={{
+                  textAlign: "center",
+                  color: "#219ebc",
+                  marginTop: "100px",
+                }}
+              >
                 {search}: is not avaliable <br />{" "}
                 <b
                   style={{ color: "#219ebc", textDecorationLine: "underline" }}

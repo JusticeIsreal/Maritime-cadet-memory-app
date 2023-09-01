@@ -3,6 +3,7 @@ import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { BiSolidSearch } from "react-icons/bi";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface TopbarProps {
   setSearch: (value: string) => void;
@@ -17,14 +18,33 @@ const Topbar: FC<TopbarProps> = ({
   newSetFilter,
   search,
 }) => {
-  const { data: sessions } = useSession<any>();
-  const [dropDownCon, setDropDownCon] = useState<boolean>(false);
+  // NAVIGATE TO MEMORIE PAGE WHENEVER YOU TRY TO SEARCH
+  // FROM THE HOME PAGE
+  const router = useRouter();
+  useEffect(() => {
+    if (search && router.pathname === "/") {
+      router.push("/memories");
+    }
+  }, [router, search]);
 
+  // GET SESSION USER DETAILS FROM NEXT AUTH
+  const { data: sessions } = useSession<any>();
+
+  // OPEN AND CLOSE SEARCH DROP DOWN
+  const [dropDownCon, setDropDownCon] = useState<boolean>(false);
+  const result = newSetFilter?.filter((product) =>
+    product.toLowerCase().includes(search.toLowerCase())
+  );
   useEffect(() => {
     if (search || dropDownCon) {
       setDropDownCon(true);
     } else {
       setDropDownCon(false);
+    }
+
+    if (result.length < 1) {
+      setDropDownCon(false);
+      closeDropdown();
     }
   }, [search]);
 
@@ -33,6 +53,7 @@ const Topbar: FC<TopbarProps> = ({
       setDropDownCon(false);
     }
   };
+
   return (
     <div className="topbar-main-con">
       <div className="topbar-top-con">
@@ -63,19 +84,15 @@ const Topbar: FC<TopbarProps> = ({
             />
             {dropDownCon && search ? (
               <div className="search-dropdown-con">
-                {newSetFilter
-                  ?.filter((product) =>
-                    product.toLowerCase().includes(search.toLowerCase())
-                  )
-                  .map((product, index) => (
-                    <TopbarSearchOption
-                      key={index}
-                      product={product}
-                      setSearch={setSearch}
-                      setDropDownCon={setDropDownCon}
-                      closeDropdown={closeDropdown}
-                    />
-                  ))}
+                {result?.map((product, index) => (
+                  <TopbarSearchOption
+                    key={index}
+                    product={product}
+                    setSearch={setSearch}
+                    setDropDownCon={setDropDownCon}
+                    closeDropdown={closeDropdown}
+                  />
+                ))}
               </div>
             ) : null}
           </form>
