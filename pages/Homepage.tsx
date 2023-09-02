@@ -82,8 +82,7 @@ const Homepage = () => {
         <>
           <Group position="center"></Group>
           <Banner />
-          {/* <Slider /> */}
-          {/* MAIN PRODUCT */}
+         
         </>
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}

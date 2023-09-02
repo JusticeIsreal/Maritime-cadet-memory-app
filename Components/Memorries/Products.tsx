@@ -12,11 +12,11 @@ import {
   query,
   setDoc,
 } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db } from "../../Firebase";
 import { useSession } from "next-auth/react";
 import Moment from "react-moment";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 interface TypeProps {
   product: any[];
@@ -38,7 +38,7 @@ function Products({
   const approvedPictures = product?.filter(
     (approved) => approved.data().approve === "yes"
   );
-  
+
   const dd = approvedPictures.map((item) => item.data());
 
   const newProduct = approvedPictures.filter((item) => {
@@ -183,9 +183,6 @@ function Product({
 
   // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
   const addToFav = async (id: string) => {
-    const productDoc = doc(db, "memories", id);
-    const productSnapshot = await getDoc(productDoc);
-    const productData = productSnapshot.data();
     if (session) {
       if (hasLikes) {
         await deleteDoc(
@@ -212,39 +209,6 @@ function Product({
     }
   };
 
-  // GET  DETAILS OF POSTER
-  const [users, setUsers] = useState<any>([]);
-  useEffect(() => {
-    return onSnapshot(
-      query(collection(db, "registered_Users"), orderBy("time", "desc")),
-      (snapshot) => {
-        setUsers(snapshot.docs);
-      }
-    );
-  }, [likes]);
-  const posterImage = users.filter(
-    (user: { data: () => { (): any; new (): any; userId: any } }) =>
-      user.data().userId === posterId
-  );
-
-  const posterdetails = posterImage.map(
-    (img: { data: () => { (): any; new (): any; length: any } }) => img.data()
-  );
-
-  // fetch comment rom firebase
-  const [review, setReview] = useState<any>([]);
-
-  useEffect(
-    () =>
-      onSnapshot(
-        query(
-          collection(db, "memories", id, "review"),
-          orderBy("timestamp", "desc")
-        ),
-        (snapshot) => setReview(snapshot.docs)
-      ),
-    [db, id]
-  );
   return (
     <div
       className="products"

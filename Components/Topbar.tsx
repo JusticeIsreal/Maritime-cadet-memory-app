@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FC } from "react";
 import Link from "next/link";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { BiSolidSearch } from "react-icons/bi";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -107,6 +107,7 @@ const Topbar: FC<TopbarProps> = ({
                 width={50}
                 height={50}
                 className="profile-img"
+                onClick={() => signOut()}
               />
             </div>
           ) : (

@@ -28,7 +28,7 @@
     "pages/index.jsx",
     "pages/_app.jsx",
     "pages/api/authe/AuthGuard..jsx",
-    "Components/Products.tsx",
+    "Components/Memorries/Products.tsx",
     "pages/api/getUserDetails.js",
     "Components/Profile.tsx"
   ],

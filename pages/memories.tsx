@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import Products from "../Components/Products";
+import Products from "../Components/Memorries/Products";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../Firebase";
 import Topbar from "../Components/Topbar";
+import LoginModal from "../Components/LoginModal";
 
 function memories() {
   const router = useRouter();
@@ -98,6 +99,7 @@ function memories() {
     ...selectLocation,
     ...selectDate,
   ];
+
   return (
     <div>
       <Topbar
@@ -106,6 +108,11 @@ function memories() {
         setSearch={setSearch}
         search={search}
       />
+
+      {loginTriger && (
+        <LoginModal loginTriger={loginTriger} setLoginTriger={setLoginTriger} />
+      )}
+
       <Products
         product={product}
         search={search}
