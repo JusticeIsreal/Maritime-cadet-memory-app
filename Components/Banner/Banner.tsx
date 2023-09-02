@@ -63,30 +63,30 @@ const Banner = () => {
         <Image
           src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1693577187/Official_Launch_Date_Background_Removed_u3ad6p.png"
           alt="img"
-          // width={100}
-          // height={100}
           fill={true}
           className="cadet-img"
         />
       </div>
-      <div style={{ color: "white" }} className="text-slid">
-        <div className="text-slide">
+
+      <div style={{ color: "white" }} className="text-sli">
+        <div className="text-sl">
+          <span>
+            Developed by{" "}
+            <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
+          </span>
+          <img src="/sta 3.png" alt="img" />
+          <span>
+            Designed by <a href="http://kingsleyjohn.com"> Kingsley John</a>
+          </span>
+          <img src="/sta 3.png" alt="" />
           <span>
             Developed by{" "}
             <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
           </span>
           <img src="/sta 3.png" alt="" />
           <span>
-            Designed by <a href="http://kingsleyjohn.com">Kingsley John</a>
-          </span>
-          <img src="/sta 3.png" alt="" />
-          <span>
-            Developed by{" "}
-            <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
-          </span>
-          <img src="/sta 3.png" alt="" />
-          <span>
-            Designed by <a href="https://www.kingsleyjohn.com">Kingsley John</a>
+            Designed by{" "}
+            <a href="https://www.kingsleyjohn.com"> Kingsley John</a>
           </span>
         </div>
       </div>

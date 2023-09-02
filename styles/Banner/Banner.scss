@@ -92,6 +92,7 @@ $general-bg: #001d3d;
   width: 100%;
   height: calc(100vh - 140px);
   overflow: hidden;
+  background: #001d3d;
   // border: 2px solid red;
 
   @include responsive(bigphone) {
@@ -217,7 +218,7 @@ $general-bg: #001d3d;
   }
   /* ScrollingText.css */
 
-  .text-slid {
+  .text-sli {
     border-top: 0.1px solid #8ecae6;
     z-index: 200;
     display: flex;
@@ -232,28 +233,34 @@ $general-bg: #001d3d;
     bottom: 0;
     left: 0;
     right: 0;
-    // background: transparent;
   }
 
-  .text-slide {
+  .text-sl {
     color: white;
     width: max-content;
     display: flex;
     align-items: center;
     animation: scrollText 25s linear infinite; /* Adjust the animation duration */
+    animation-delay: -25s; /* Delay the animation by 25 seconds */
     background: transparent;
+    display: flex;
+    flex-direction: row;
+    // border: 2px solid red;
   }
+
   img {
     width: 30px;
   }
-  .text-slide span {
+
+  .text-sl span {
     background: transparent;
     margin: 0 15px;
     color: #8ecae6;
     font-size: 20px;
+    // border: 2px solid red;
   }
 
-  .text-slide span a {
+  .text-sl span a {
     text-decoration-line: underline;
     color: #8ecae6;
     font-size: 20px;
@@ -267,39 +274,42 @@ $general-bg: #001d3d;
       transform: translateX(-100%);
     }
   }
-}
-.cadet-img-con {
-  // border: 2px solid red;
-  z-index: 10;
-  background: transparent;
-  position: absolute;
-  width: 100%;
-  height: 300px;
-  bottom: 0;
-  padding-bottom: 70px;
-  position: sticky;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  // display: none;
 
-  @include responsive(tablet) {
-    width: 40%;
-    margin-left: auto;
-  }
-  @include responsive(tablet) {
-    width: 40%;
-    height: 350px;
-    margin-left: auto;
-  }
-  .cadet-img {
+  // //////////////////////////////////////
+  .cadet-img-con {
+    // border: 2px solid red;
+    z-index: 10;
     background: transparent;
+    position: absolute;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: 300px;
+    bottom: 0;
+    padding-bottom: 70px;
+    position: sticky;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // display: none;
+
+    @include responsive(tablet) {
+      width: 40%;
+      margin-left: auto;
+    }
+    @include responsive(tablet) {
+      width: 40%;
+      height: 350px;
+      margin-left: auto;
+    }
+    .cadet-img {
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 }
+
 .galaxy {
   position: absolute;
   width: 100%;

@@ -11,6 +11,7 @@
   text-decoration: none;
   list-style: none;
   font-family: "Orbitron", sans-serif;
+  // background: #001d3d;
   // background: rgba(4,9,30,0.8);
 }
 
@@ -88,6 +89,7 @@ $button-bg: #ffb703;
 
 // TOP BAR
 .topbar-main-con {
+ 
   // border: 2px solid red !important;
   @include flexDisplay(center, center, column);
   position: relative;

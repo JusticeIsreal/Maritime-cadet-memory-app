@@ -46,7 +46,7 @@ import { LuDownload } from "react-icons/lu";
 import { TiArrowBack } from "react-icons/ti";
 import { useForm } from "react-hook-form";
 import { addToCart, getSessionUser } from "../../Services/functions";
-import Modal from "../../Components/Modal";
+import Modal from "../../Components/Modals/LoginModal";
 import { CartQuantityContext } from "../_app";
 import { signIn, useSession } from "next-auth/react";
 import { MdArrowBackIos } from "react-icons/md";

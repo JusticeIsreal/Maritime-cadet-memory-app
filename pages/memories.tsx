@@ -5,7 +5,8 @@ import { useSession } from "next-auth/react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../Firebase";
 import Topbar from "../Components/Topbar";
-import LoginModal from "../Components/LoginModal";
+// import LoginModal from "../Components/LoginModal";
+import Modal from "../Components/Modals/LoginModal";
 
 function memories() {
   const router = useRouter();
@@ -108,10 +109,7 @@ function memories() {
         setSearch={setSearch}
         search={search}
       />
-
-      {loginTriger && (
-        <LoginModal loginTriger={loginTriger} setLoginTriger={setLoginTriger} />
-      )}
+      {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
 
       <Products
         product={product}

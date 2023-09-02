@@ -224,7 +224,7 @@ function Product({
             alt="img"
             loading="lazy"
             className="home-product-img"
-            effect="blur"
+            // effect="blur"
             placeholderSrc={productimages[0]}
           />
         </Link>

@@ -8,7 +8,7 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 // components
 import Topbar from "../Components/Topbar";
-import Modal from "../Components/Modal";
+import Modal from "../Components/Modals/LoginModal";
 
 // import Advert from "../Components/Homepage/Advert";
 
@@ -76,13 +76,12 @@ const Homepage = () => {
         setSearch={setSearch}
         search={search}
       />
-      {products.length < 1 ? (
+      {finalList.length < 1 ? (
         <Loader />
       ) : (
         <>
           <Group position="center"></Group>
           <Banner />
-         
         </>
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
