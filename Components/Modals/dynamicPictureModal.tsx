@@ -4,14 +4,17 @@ import React, { useState } from "react";
 import { GiStopSign } from "react-icons/gi";
 import { MdOutlineClose } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Moment from "react-moment";
 
 interface DynamicPictureProps {
   grabDynamicDetails: any;
   setGrabDynamicDetails: (value: any) => void;
+  fetchDetail: any[];
 }
 function DynamicPictureModal({
   grabDynamicDetails,
   setGrabDynamicDetails,
+  fetchDetail,
 }: DynamicPictureProps) {
   // GO BACK
   const closeModal = () => {
@@ -23,6 +26,7 @@ function DynamicPictureModal({
     setDisimg(index);
   };
   const originalURL = grabDynamicDetails?.image[disimg];
+  console.log(grabDynamicDetails);
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
@@ -46,7 +50,14 @@ function DynamicPictureModal({
                   <div className="small-display-img">
                     {grabDynamicDetails?.image.map(
                       (img: any, index: number) => (
-                        <div className="display-img" key={index}>
+                        <div
+                          className={`${
+                            disimg === index
+                              ? "chosen-image display-img"
+                              : "display-img"
+                          }`}
+                          key={index}
+                        >
                           <Image
                             className="smalling"
                             src={img && img}
@@ -62,7 +73,65 @@ function DynamicPictureModal({
                 </div>
               )}
             </div>
-            <div>
+            <div className="details-comment-main-con">
+              <div>
+                <div>
+                  <img src={fetchDetail[0]?.image} alt="" />
+                </div>
+                <p>{fetchDetail[0]?.name}</p>
+                <Moment fromNow>
+                  {grabDynamicDetails?.timestamp?.toDate()}
+                </Moment>
+                {/* <span>{fetchDetail[0]?.name}</span> */}
+              </div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
+
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
+              <div>poster info</div>
+              <div>location and year</div>
+              <div>people</div>
+              <div>story</div>
+              <div>comment inbox</div>
+              <div>comment list</div>
               <div>poster info</div>
               <div>location and year</div>
               <div>people</div>

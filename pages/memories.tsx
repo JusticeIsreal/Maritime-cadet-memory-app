@@ -5,11 +5,13 @@ import { useSession } from "next-auth/react";
 import {
   DocumentData,
   collection,
+  getDocs,
   onSnapshot,
   orderBy,
   query,
+  where,
 } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db, db2 } from "../Firebase";
 import Topbar from "../Components/Topbar";
 // import LoginModal from "../Components/LoginModal";
 import Modal from "../Components/Modals/LoginModal";
@@ -75,20 +77,7 @@ function memories() {
       );
     }
   }, [category, products, categoryYear]);
-  //   console.log(dynamicName);
-  //   const newSetFilter = products
-  //     ?.filter((approved) => approved.data().approve === "yes")
-  //     .filter((item) => {
-  //       if (item.data().namesonpicture === "") {
-  //         return item;
-  //       } else if (
-  //         item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
-  //       ) {
-  //         return item;
-  //       } else {
-  //         return null;
-  //       }
-  //     });
+
   const selectName = [
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),
   ];
@@ -110,7 +99,27 @@ function memories() {
 
   // fetch product by id to triger picture modal
   const [grabDynamicDetails, setGrabDynamicDetails] = useState<DocumentData>();
-
+  const [posterDetails, setPosterDetails] = useState<any[]>([]);
+  useEffect(() => {
+    const getPosterDetails = async () => {
+      if (grabDynamicDetails) {
+        onSnapshot(
+          query(collection(db, "registered_Users"), orderBy("time", "desc")),
+          (snapshot) => {
+            setPosterDetails(
+              snapshot.docs.filter(
+                (item) => item.data().userId === grabDynamicDetails.posterId
+              )
+            );
+          }
+        );
+        // console.log();
+      }
+    };
+    getPosterDetails();
+  }, [grabDynamicDetails]);
+  const fetchDetail = posterDetails.map((item) => item.data());
+ 
   return (
     <div>
       <Topbar
@@ -123,6 +132,7 @@ function memories() {
         <DynamicPictureModal
           grabDynamicDetails={grabDynamicDetails}
           setGrabDynamicDetails={setGrabDynamicDetails}
+          fetchDetail={fetchDetail}
         />
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}

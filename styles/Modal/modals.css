@@ -197,14 +197,15 @@
   flex-wrap: wrap;
 }
 .modal-main-con .modal-relative .forDynamic-picture {
-  width: 100% !important;
-  padding: 12px;
+  width: 95% !important;
+  height: 700px;
 }
 @media only screen and (min-width: 1024px) {
   .modal-main-con .modal-relative .forDynamic-picture {
     padding: 32px;
     max-width: 900px !important;
     height: 500px;
+    overflow: hidden !important;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -212,6 +213,7 @@
     padding: 32px;
     max-width: 1100px !important;
     height: 684px;
+    overflow: hidden !important;
   }
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details {
@@ -231,21 +233,22 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: row;
+    overflow: hidden;
   }
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con {
-  background: transparent !important;
-  border: 2px solid red;
   border: 0.1px solid #1a97bf;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 5px;
   width: 100%;
-  height: 550px;
+  height: 100%;
 }
 @media only screen and (min-width: 1024px) {
   .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con {
     width: 45%;
     height: 100%;
+    border-radius: 10px;
   }
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con {
@@ -254,18 +257,25 @@
   align-items: center;
   flex-direction: row;
   background: transparent !important;
-  border: 2px solid red;
   border-radius: 10px !important;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
   width: 100%;
-  height: 83%;
+  height: 81%;
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .cadet-img {
   background: transparent !important;
   width: 100%;
-  height: 100%;
+  height: 500px;
   -o-object-fit: contain;
      object-fit: contain;
   border-radius: 5px !important;
+}
+@media only screen and (min-width: 1024px) {
+  .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .cadet-img {
+    height: 100%;
+  }
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .small-display {
   width: 100%;
@@ -280,6 +290,7 @@
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  overflow-y: hidden;
   background: transparent !important;
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .small-display .small-display-img {
@@ -293,9 +304,10 @@
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .small-display .small-display-img .display-img {
   background: transparent !important;
   margin: 5px;
-  width: 90px;
-  height: 90px;
+  width: 65px;
+  height: 65px;
   overflow: hidden;
+  transition: all 0.1s ease;
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .small-display .small-display-img .display-img .smalling {
   background: transparent !important;
@@ -304,9 +316,29 @@
   -o-object-fit: cover;
      object-fit: cover;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
 }
-.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .small-display .small-display-img .display-img .smalling:hover {
-  border: 1px solid #001d3d;
-  transform: scale(1.1);
+.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .small-display .small-display-img .chosen-image {
+  border: 2px solid #8ecae6;
+}
+.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+}
+.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con div {
+  background: transparent;
+}
+@media only screen and (min-width: 1024px) {
+  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con {
+    width: 55%;
+    margin-left: 30px;
+    padding: 10px;
+    height: 500px;
+    overflow-y: scroll;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con {
+    height: 684px;
+  }
 }/*# sourceMappingURL=modals.css.map */

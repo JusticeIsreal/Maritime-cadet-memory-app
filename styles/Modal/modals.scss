@@ -257,19 +257,23 @@ $general-bg: #001d3d;
     }
 
     // STYLE FOR DYNAMIC PICTURE DETAILS
-    .forDynamic-picture {
-      width: 100% !important;
-      padding: 12px;
 
+    .forDynamic-picture {
+      width: 95% !important;
+      //   padding: 12px;
+      // overflow-y: scroll;
+      height: 700px;
       @include responsive(tablet) {
         padding: 32px;
         max-width: 900px !important;
         height: 500px;
+        overflow: hidden !important;
       }
       @include responsive(desktop) {
         padding: 32px;
         max-width: 1100px !important;
         height: 684px;
+        overflow: hidden !important;
       }
       .Dynamic-picture-details {
         border: 2px solid red;
@@ -281,34 +285,40 @@ $general-bg: #001d3d;
 
         @include responsive(tablet) {
           @include flexDisplay(flex-start, flex-start, row);
+          overflow: hidden;
         }
         .image-side-main-con {
-          background: transparent !important;
-          border: 2px solid red;
           border: 0.1px solid $placeholder-color;
-          border-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
           padding: 5px;
           width: 100%;
-          height: 550px;
+          height: 100%;
           @include responsive(tablet) {
             width: 45%;
             height: 100%;
+            border-radius: 10px;
           }
 
           .main-image-con {
             @include flexDisplay(center, center, row);
             background: transparent !important;
-            border: 2px solid red;
             border-radius: 10px !important;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
             width: 100%;
-            height: 83%;
+            height: 81%;
 
             .cadet-img {
               background: transparent !important;
               width: 100%;
-              height: 100%;
+              height: 500px;
               object-fit: contain;
               border-radius: 5px !important;
+              @include responsive(tablet) {
+                height: 100%;
+              }
             }
           }
 
@@ -323,6 +333,7 @@ $general-bg: #001d3d;
             display: flex;
             overflow-x: scroll;
             scroll-snap-type: x mandatory;
+            overflow-y: hidden;
             background: transparent !important;
 
             .small-display-img {
@@ -337,9 +348,10 @@ $general-bg: #001d3d;
                 background: transparent !important;
                 // border: 2px solid red;
                 margin: 5px;
-                width: 90px;
-                height: 90px;
+                width: 65px;
+                height: 65px;
                 overflow: hidden;
+                transition: all 0.1s ease;
 
                 .smalling {
                   background: transparent !important;
@@ -347,15 +359,34 @@ $general-bg: #001d3d;
                   height: 100%;
                   object-fit: cover;
                   cursor: pointer;
-                  transition: all 0.5s ease-in-out;
-                  &:hover {
-                    border: 1px solid $general-bg;
-                    transform: scale(1.1);
-                  }
                 }
+              }
+              .chosen-image {
+                border: 2px solid $text-color;
+                // transform: scale(1.1);
               }
             }
           }
+        }
+      }
+      //   DETAILS AND COMMENTS CONTAINER
+      .details-comment-main-con {
+        // border: 2px solid red;
+        width: 100%;
+        padding: 10px;
+        background: transparent;
+        div {
+          background: transparent;
+        }
+        @include responsive(tablet) {
+          width: 55%;
+          margin-left: 30px;
+          padding: 10px;
+          height: 500px;
+          overflow-y: scroll;
+        }
+        @include responsive(desktop) {
+          height: 684px;
         }
       }
     }
