@@ -68,14 +68,38 @@
 .modal-main-con .modal-relative .modal-card .go-back-login {
   position: absolute;
   cursor: pointer;
-  top: 16px;
-  right: 16px;
+  top: 5px;
+  right: 5px;
   background: transparent;
-  color: #000c18 !important;
+  color: #8ecae6 !important;
 }
 .modal-main-con .modal-relative .modal-card .go-back-login .login-close-icon {
   font-size: 24px;
   background: transparent;
+}
+@media only screen and (min-width: 1024px) {
+  .modal-main-con .modal-relative .modal-card .go-back-login {
+    color: #000c18 !important;
+  }
+}
+.modal-main-con .modal-relative .modal-card .download-image {
+  position: absolute;
+  position: static;
+  cursor: pointer;
+  margin-right: auto;
+  margin-top: -15px;
+  background: transparent;
+  color: #8ecae6 !important;
+}
+.modal-main-con .modal-relative .modal-card .download-image .login-close-icon {
+  font-size: 24px;
+  background: transparent;
+}
+@media only screen and (min-width: 1024px) {
+  .modal-main-con .modal-relative .modal-card .download-image {
+    position: absolute;
+    margin-right: 5px;
+  }
 }
 .modal-main-con .modal-relative .modal-card .go-back-form {
   position: absolute;
@@ -114,7 +138,7 @@
 }
 .modal-main-con .modal-relative .modal-card .modal-text .login-stop-icon {
   background: transparent;
-  color: rgb(184, 1, 1);
+  color: #b80101;
   font-size: 50px;
 }
 .modal-main-con .modal-relative .modal-card .modal-text p {
@@ -129,12 +153,12 @@
 }
 .modal-main-con .modal-relative .modal-card .modal-text .modal-link {
   border-radius: 10px;
-  width: 100%;
+  width: 96%;
   text-align: center;
   background: transparent;
   color: #000c18;
   padding: 20px;
-  border: 1px solid #000c18;
+  border: 2px solid #000c18;
   margin-top: 24px;
   cursor: pointer;
 }
@@ -204,7 +228,7 @@
   .modal-main-con .modal-relative .forDynamic-picture {
     padding: 32px;
     max-width: 900px !important;
-    height: 500px;
+    height: 550px;
     overflow: hidden !important;
   }
 }
@@ -236,12 +260,16 @@
   }
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con {
-  border: 0.1px solid #1a97bf;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 5px;
+  padding-top: 20px;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
 }
 @media only screen and (min-width: 1024px) {
   .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con {
@@ -262,6 +290,8 @@
   overflow: hidden;
   width: 100%;
   height: 81%;
+  position: relative;
+  margin-top: 10px;
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .cadet-img {
   background: transparent !important;

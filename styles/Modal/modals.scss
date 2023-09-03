@@ -119,13 +119,33 @@ $general-bg: #001d3d;
       .go-back-login {
         position: absolute;
         cursor: pointer;
-        top: 16px;
-        right: 16px;
+        top: 5px;
+        right: 5px;
         background: transparent;
-        color: #000c18 !important;
+        color: $text-color !important;
         .login-close-icon {
           font-size: 24px;
           background: transparent;
+        }
+        @include responsive(tablet) {
+          color: #000c18 !important;
+        }
+      }
+      .download-image {
+        position: absolute;
+        position: static;
+        cursor: pointer;
+        margin-right: auto;
+        margin-top: -15px;
+        background: transparent;
+        color: $text-color !important;
+        .login-close-icon {
+          font-size: 24px;
+          background: transparent;
+        }
+        @include responsive(tablet) {
+          position: absolute;
+          margin-right: 5px;
         }
       }
 
@@ -158,16 +178,14 @@ $general-bg: #001d3d;
       .modal-text {
         @include flexDisplay(center, center, column);
         background: transparent;
-        // border: 2px solid red;
         padding: 55px;
         width: 100%;
         .login-stop-icon {
           background: transparent;
-          color: rgb(184, 1, 1);
+          color: #b80101;
           font-size: 50px;
         }
         p {
-          //   border: 2px solid red;
           text-align: center;
           color: #000c18;
           font-family: Fira Sans;
@@ -180,12 +198,12 @@ $general-bg: #001d3d;
 
         .modal-link {
           border-radius: 10px;
-          width: 100%;
+          width: 96%;
           text-align: center;
           background: transparent;
           color: #000c18;
           padding: 20px;
-          border: 1px solid #000c18;
+          border: 2px solid #000c18;
           margin-top: 24px;
           cursor: pointer;
           &:hover {
@@ -197,7 +215,6 @@ $general-bg: #001d3d;
       h3 {
         padding-top: 10px;
         text-align: center;
-        // border: 2px solid red;
       }
 
       .form-con {
@@ -266,7 +283,7 @@ $general-bg: #001d3d;
       @include responsive(tablet) {
         padding: 32px;
         max-width: 900px !important;
-        height: 500px;
+        height: 550px;
         overflow: hidden !important;
       }
       @include responsive(desktop) {
@@ -282,18 +299,22 @@ $general-bg: #001d3d;
         width: 100%;
         height: 100%;
         overflow: scroll;
-
+        // border: 2px solid red;
         @include responsive(tablet) {
           @include flexDisplay(flex-start, flex-start, row);
           overflow: hidden;
         }
         .image-side-main-con {
-          border: 0.1px solid $placeholder-color;
+          //   border: 0.1px solid $placeholder-color;
           border-top-left-radius: 10px;
           border-top-right-radius: 10px;
           padding: 5px;
+          padding-top: 20px;
           width: 100%;
           height: 100%;
+          //   border: 2px solid red;
+          @include flexDisplay(flex-start, flex-end, column);
+
           @include responsive(tablet) {
             width: 45%;
             height: 100%;
@@ -309,7 +330,9 @@ $general-bg: #001d3d;
             overflow: hidden;
             width: 100%;
             height: 81%;
-
+            position: relative;
+            margin-top: 10px;
+            // border: 2px solid red;
             .cadet-img {
               background: transparent !important;
               width: 100%;

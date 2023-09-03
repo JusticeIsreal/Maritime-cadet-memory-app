@@ -1,7 +1,10 @@
 import { signIn } from "next-auth/react";
+import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { GiStopSign } from "react-icons/gi";
+import { LuDownload, LuDownloadCloud } from "react-icons/lu";
 import { MdOutlineClose } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Moment from "react-moment";
@@ -26,7 +29,19 @@ function DynamicPictureModal({
     setDisimg(index);
   };
   const originalURL = grabDynamicDetails?.image[disimg];
-  console.log(grabDynamicDetails);
+
+  // download image
+  const router = useRouter();
+  function replaceCloudinaryValue(url: string, replacement: string) {
+    const startIndex = url.indexOf("/upload/") + 8; // Find the index after "/upload/"
+    const endIndex = url.lastIndexOf("/"); // Find the last index before the filename
+    if (startIndex !== -1 && endIndex !== -1) {
+      const middlePart = url.substring(startIndex, endIndex); // Get the middle part to replace
+      const newURL = url.replace(middlePart, replacement); // Replace the middle part
+      return router.push(newURL);
+    }
+    return router.push(url); // Return the original URL if the parts are not found
+  }
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
@@ -34,8 +49,17 @@ function DynamicPictureModal({
           <span className="go-back-login" onClick={() => closeModal()}>
             <MdOutlineClose className="login-close-icon" />
           </span>
+
           <div className=" Dynamic-picture-details">
             <div className="image-side-main-con">
+              <span
+                className="download-image"
+                onClick={() =>
+                  replaceCloudinaryValue(originalURL, "fl_attachment:JJ2022")
+                }
+              >
+                <LuDownload className="login-close-icon" />
+              </span>
               <div className="main-image-con">
                 <LazyLoadImage
                   src={originalURL}
@@ -82,7 +106,6 @@ function DynamicPictureModal({
                 <Moment fromNow>
                   {grabDynamicDetails?.timestamp?.toDate()}
                 </Moment>
-                {/* <span>{fetchDetail[0]?.name}</span> */}
               </div>
               <div>location and year</div>
               <div>people</div>
