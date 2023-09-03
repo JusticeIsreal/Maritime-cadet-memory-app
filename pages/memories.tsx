@@ -117,9 +117,9 @@ function memories() {
       }
     };
     getPosterDetails();
-  }, [grabDynamicDetails]);
+  }, [grabDynamicDetails, posterDetails]);
   const fetchDetail = posterDetails.map((item) => item.data());
- 
+
   return (
     <div>
       <Topbar

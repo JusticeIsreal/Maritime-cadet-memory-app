@@ -277,8 +277,6 @@ $general-bg: #001d3d;
 
     .forDynamic-picture {
       width: 95% !important;
-      //   padding: 12px;
-      // overflow-y: scroll;
       height: 700px;
       @include responsive(tablet) {
         padding: 32px;
@@ -293,26 +291,22 @@ $general-bg: #001d3d;
         overflow: hidden !important;
       }
       .Dynamic-picture-details {
-        // border: 2px solid red;
         background: transparent !important;
         @include flexDisplay(flex-start, flex-start, column);
         width: 100%;
         height: 100%;
         overflow: scroll;
-        // border: 2px solid red;
         @include responsive(tablet) {
           @include flexDisplay(flex-start, flex-start, row);
           overflow: hidden;
         }
         .image-side-main-con {
-          //   border: 0.1px solid $placeholder-color;
           border-top-left-radius: 10px;
           border-top-right-radius: 10px;
           padding: 5px;
           padding-top: 20px;
           width: 100%;
           height: 100%;
-          //   border: 2px solid red;
           @include flexDisplay(flex-start, flex-end, column);
 
           @include responsive(tablet) {
@@ -410,6 +404,94 @@ $general-bg: #001d3d;
         }
         @include responsive(desktop) {
           height: 684px;
+        }
+
+        .poster-details {
+          //   border: 2px solid red;
+          @include flexDisplay(flex-start, center, row);
+
+          .poster-details-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          .poster-name-con {
+            margin-left: 15px;
+            background: transparent;
+
+            .poster-name {
+              background: transparent;
+              color: #001d3d;
+              //   font-family: Archivo Expanded;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+            .time-sent {
+              background: transparent;
+              color: #001d3d;
+              font-family: Archivo Expanded;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+          }
+        }
+
+        .post-details {
+          @include flexDisplay(flex-start, flex-start, row);
+          background: transparent;
+          margin-top: 19px;
+          //   border: 2px solid red;
+          .post-details-icon {
+            background: transparent;
+            margin-top: 4px;
+            font-size: 20px;
+            color: #001d3d;
+          }
+          .post-detail {
+            margin-left: 11px;
+            width: 95%;
+            background: transparent;
+            font-family: Fira Sans;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            @include responsive(tablet) {
+              font-size: 20px;
+            }
+            span {
+              color: #001d3d;
+              font-family: Fira Sans;
+              background: transparent;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              @include responsive(tablet) {
+                font-size: 20px;
+              }
+              span {
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                @include responsive(tablet) {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
         }
       }
     }
