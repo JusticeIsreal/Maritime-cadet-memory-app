@@ -14,7 +14,7 @@ import Modal from "../Components/Modals/LoginModal";
 
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import AddMemoryModal from "../Components/AddMemoryModal";
+import AddMemoryModal from "../Components/Modals/AddMemoryModal";
 import Banner from "../Components/Banner/Banner";
 import Slider from "../Components/Slider";
 import AddNewMemory from "../Components/AddNewMemory";

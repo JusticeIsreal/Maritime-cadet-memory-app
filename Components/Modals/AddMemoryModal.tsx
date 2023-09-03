@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TiArrowBack } from "react-icons/ti";
-import { db } from "../Firebase";
+import { db } from "../../Firebase";
 import { useForm as mantineform } from "@mantine/form";
 import { Group, ActionIcon, Box, Textarea } from "@mantine/core";
 import { randomId } from "@mantine/hooks";
@@ -60,7 +60,6 @@ function AddMemoryModal({ setPostTriger }: { setPostTriger: any }) {
         `https://api.cloudinary.com/v1_1/dd61rrbxs/image/upload`,
         formData
       );
-     
     } catch (error) {
       console.error("File upload failed:", error);
     }

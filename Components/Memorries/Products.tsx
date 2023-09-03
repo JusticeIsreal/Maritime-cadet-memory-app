@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Key, useEffect, useState } from "react";
+import { Key, MouseEvent, useEffect, useState } from "react";
 import { BsHeart, BsHeartFill, BsPersonCircle } from "react-icons/bs";
 import {
+  DocumentData,
   collection,
   deleteDoc,
   doc,
@@ -17,7 +18,8 @@ import { useSession } from "next-auth/react";
 import Moment from "react-moment";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Loader from "../Loader";
-
+import DynamicPictureModal from "../Modals/dynamicPictureModal";
+// import { DynamicPictureModal } from "../Modals/DynamicPictureModal";
 interface TypeProps {
   product: any[];
   dynamicBtn: string[];
@@ -27,12 +29,14 @@ interface TypeProps {
   dynamicDate: string[];
   setCategoryYear: any;
   setPostTriger: any;
+  setGrabDynamicDetails: (value: DocumentData) => void;
 }
 function Products({
   search,
   product,
   setLoginTriger,
   setPostTriger,
+  setGrabDynamicDetails,
 }: TypeProps) {
   // FILTER PICTURES BASED ON INPUT VALUE IN SEARCH
   const approvedPictures = product?.filter(
@@ -67,67 +71,73 @@ function Products({
 
   return (
     <>
-      {product.length > 0 ? (
-        <div className="product-main-con">
-          <>
-            {newProduct.length < 1 ? (
-              <p
-                style={{
-                  textAlign: "center",
-                  color: "#219ebc",
-                  marginTop: "100px",
-                }}
-              >
-                {search}: is not avaliable <br />{" "}
-                <b
-                  style={{ color: "#219ebc", textDecorationLine: "underline" }}
-                  onClick={() => setPostTriger(true)}
+      <>
+        {product.length > 0 ? (
+          <div className="product-main-con">
+            <>
+              {newProduct.length < 1 ? (
+                <p
+                  style={{
+                    textAlign: "center",
+                    color: "#219ebc",
+                    marginTop: "100px",
+                  }}
                 >
-                  Click here to post one
-                </b>
-              </p>
-            ) : (
-              <div className="products-con">
-                {newProduct.map(
-                  (product: {
-                    userId: string;
-                    id: number;
-                    data: () => {
-                      posterId: any;
-                      id: Key | null | undefined;
-                      timestamp: any;
-                      (): any;
-                      new (): any;
-                      image: string;
-                      namesonpicture: string;
-                      picturelocation: string;
-                      pictureyear: number;
-                      approve: string;
-                      message: any[];
-                    };
-                  }) => (
-                    <Product
-                      key={product.data().id}
-                      id={product.id}
-                      posterId={product.data().posterId}
-                      productimages={product.data().image}
-                      timestamp={product.data().timestamp}
-                      namesonpicture={product.data().namesonpicture}
-                      picturelocation={product.data().picturelocation}
-                      pictureyear={product.data().pictureyear}
-                      message={product.data().message}
-                      approve={product.data().approve}
-                      setLoginTriger={setLoginTriger}
-                    />
-                  )
-                )}
-              </div>
-            )}
-          </>
-        </div>
-      ) : (
-        <Loader />
-      )}
+                  {search}: is not avaliable <br />{" "}
+                  <b
+                    style={{
+                      color: "#219ebc",
+                      textDecorationLine: "underline",
+                    }}
+                    onClick={() => setPostTriger(true)}
+                  >
+                    Click here to post one
+                  </b>
+                </p>
+              ) : (
+                <div className="products-con">
+                  {newProduct.map(
+                    (product: {
+                      userId: string;
+                      id: number;
+                      data: () => {
+                        posterId: any;
+                        id: Key | null | undefined;
+                        timestamp: any;
+                        (): any;
+                        new (): any;
+                        image: string;
+                        namesonpicture: string;
+                        picturelocation: string;
+                        pictureyear: number;
+                        approve: string;
+                        message: any[];
+                      };
+                    }) => (
+                      <Product
+                        key={product.data().id}
+                        id={product.id}
+                        posterId={product.data().posterId}
+                        productimages={product.data().image}
+                        timestamp={product.data().timestamp}
+                        namesonpicture={product.data().namesonpicture}
+                        picturelocation={product.data().picturelocation}
+                        pictureyear={product.data().pictureyear}
+                        message={product.data().message}
+                        approve={product.data().approve}
+                        setLoginTriger={setLoginTriger}
+                        setGrabDynamicDetails={setGrabDynamicDetails}
+                      />
+                    )
+                  )}
+                </div>
+              )}
+            </>
+          </div>
+        ) : (
+          <Loader />
+        )}
+      </>
     </>
   );
 }
@@ -145,6 +155,7 @@ function Product({
   setLoginTriger,
   timestamp,
   posterId,
+  setGrabDynamicDetails,
 }: {
   id: any;
   productimages: any;
@@ -156,6 +167,7 @@ function Product({
   approve: any;
   posterId: any;
   message: any[];
+  setGrabDynamicDetails: (value: DocumentData) => void;
 }) {
   // console.log(id);
   // GET NEXT AUTH USER SESSION DETAILS
@@ -208,6 +220,19 @@ function Product({
       setLoginTriger(true);
     }
   };
+  // fetch product by id
+  const getClickedPictureDetails = async (id: any) => {
+    console.log(id);
+
+    const itemRef = doc(db, "memories", id);
+    const itemDoc = await getDoc(itemRef);
+    if (itemDoc.exists()) {
+      const itemData = itemDoc.data();
+      setGrabDynamicDetails(itemData);
+    } else {
+      return null;
+    }
+  };
 
   return (
     <div
@@ -218,16 +243,16 @@ function Product({
       data-aos-duration="600"
     >
       <div className="product-img">
-        <Link href={`/ClientDynamic/${id}`}>
+        <span onClick={() => getClickedPictureDetails(id)}>
           <LazyLoadImage
             src={productimages[0]}
             alt="img"
             loading="lazy"
             className="home-product-img"
-            // effect="blur"
+            effect="blur"
             placeholderSrc={productimages[0]}
           />
-        </Link>
+        </span>
       </div>
       {productimages && (
         <div className="likenshare">

@@ -106,7 +106,7 @@ $general-bg: #001d3d;
       max-width: 520px;
       position: relative;
       border-radius: 10px;
-      background: #d8f2ff;
+      background: #d8f2ff !important;
 
       @include responsive(phone, landscape) {
         transform: rotateZ(90deg) !important;
@@ -251,6 +251,110 @@ $general-bg: #001d3d;
             width: 90%;
             @include flexDisplay(flex-start, center, row);
             flex-wrap: wrap;
+          }
+        }
+      }
+    }
+
+    // STYLE FOR DYNAMIC PICTURE DETAILS
+    .forDynamic-picture {
+      width: 100% !important;
+      padding: 12px;
+
+      @include responsive(tablet) {
+        padding: 32px;
+        max-width: 900px !important;
+        height: 500px;
+      }
+      @include responsive(desktop) {
+        padding: 32px;
+        max-width: 1100px !important;
+        height: 684px;
+      }
+      .Dynamic-picture-details {
+        border: 2px solid red;
+        background: transparent !important;
+        @include flexDisplay(flex-start, flex-start, column);
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+
+        @include responsive(tablet) {
+          @include flexDisplay(flex-start, flex-start, row);
+        }
+        .image-side-main-con {
+          background: transparent !important;
+          border: 2px solid red;
+          border: 0.1px solid $placeholder-color;
+          border-radius: 10px;
+          padding: 5px;
+          width: 100%;
+          height: 550px;
+          @include responsive(tablet) {
+            width: 45%;
+            height: 100%;
+          }
+
+          .main-image-con {
+            @include flexDisplay(center, center, row);
+            background: transparent !important;
+            border: 2px solid red;
+            border-radius: 10px !important;
+            width: 100%;
+            height: 83%;
+
+            .cadet-img {
+              background: transparent !important;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              border-radius: 5px !important;
+            }
+          }
+
+          .small-display {
+            // border: 2px solid red;
+            width: 100%;
+            max-width: 480px;
+            height: 20%;
+            padding: 5px;
+            margin: 0 auto;
+            @include flexDisplay(space-between, flex-start, column);
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            background: transparent !important;
+
+            .small-display-img {
+              background: transparent !important;
+              margin: 0 auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5px; /* Adjust the gap between images */
+
+              .display-img {
+                background: transparent !important;
+                // border: 2px solid red;
+                margin: 5px;
+                width: 90px;
+                height: 90px;
+                overflow: hidden;
+
+                .smalling {
+                  background: transparent !important;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  cursor: pointer;
+                  transition: all 0.5s ease-in-out;
+                  &:hover {
+                    border: 1px solid $general-bg;
+                    transform: scale(1.1);
+                  }
+                }
+              }
+            }
           }
         }
       }

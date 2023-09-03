@@ -308,7 +308,7 @@ function Details() {
       <Group position="center"></Group>
       <Topbar
         setSearch={function (value) {
-          router.push("/");
+          router.push("/memories");
         }}
       />
       <div className="client-single-product">
@@ -351,7 +351,7 @@ function Details() {
                 ))}
               </div>
             </div>
-          )}{" "}
+          )}
           <div className="likenshar">
             <span className="likenshareico">
               {hasLikes ? (

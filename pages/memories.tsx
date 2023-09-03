@@ -2,11 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import Products from "../Components/Memorries/Products";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../Firebase";
 import Topbar from "../Components/Topbar";
 // import LoginModal from "../Components/LoginModal";
 import Modal from "../Components/Modals/LoginModal";
+import DynamicPictureModal from "../Components/Modals/dynamicPictureModal";
 
 function memories() {
   const router = useRouter();
@@ -69,19 +76,19 @@ function memories() {
     }
   }, [category, products, categoryYear]);
   //   console.log(dynamicName);
-  const newSetFilter = products
-    ?.filter((approved) => approved.data().approve === "yes")
-    .filter((item) => {
-      if (item.data().namesonpicture === "") {
-        return item;
-      } else if (
-        item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
-      ) {
-        return item;
-      } else {
-        return null;
-      }
-    });
+  //   const newSetFilter = products
+  //     ?.filter((approved) => approved.data().approve === "yes")
+  //     .filter((item) => {
+  //       if (item.data().namesonpicture === "") {
+  //         return item;
+  //       } else if (
+  //         item.data().namesonpicture.toLowerCase().includes(search?.toLowerCase())
+  //       ) {
+  //         return item;
+  //       } else {
+  //         return null;
+  //       }
+  //     });
   const selectName = [
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),
   ];
@@ -101,6 +108,9 @@ function memories() {
     ...selectDate,
   ];
 
+  // fetch product by id to triger picture modal
+  const [grabDynamicDetails, setGrabDynamicDetails] = useState<DocumentData>();
+
   return (
     <div>
       <Topbar
@@ -109,6 +119,12 @@ function memories() {
         setSearch={setSearch}
         search={search}
       />
+      {grabDynamicDetails && (
+        <DynamicPictureModal
+          grabDynamicDetails={grabDynamicDetails}
+          setGrabDynamicDetails={setGrabDynamicDetails}
+        />
+      )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
 
       <Products
@@ -120,6 +136,7 @@ function memories() {
         setCategory={undefined}
         dynamicDate={[]}
         setCategoryYear={undefined}
+        setGrabDynamicDetails={setGrabDynamicDetails}
       />
     </div>
   );
