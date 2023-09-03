@@ -30,6 +30,7 @@ interface TypeProps {
   setCategoryYear: any;
   setPostTriger: any;
   setGrabDynamicDetails: (value: DocumentData) => void;
+  setPostID: (value: any) => void;
 }
 function Products({
   search,
@@ -37,6 +38,7 @@ function Products({
   setLoginTriger,
   setPostTriger,
   setGrabDynamicDetails,
+  setPostID,
 }: TypeProps) {
   // FILTER PICTURES BASED ON INPUT VALUE IN SEARCH
   const approvedPictures = product?.filter(
@@ -127,6 +129,7 @@ function Products({
                         approve={product.data().approve}
                         setLoginTriger={setLoginTriger}
                         setGrabDynamicDetails={setGrabDynamicDetails}
+                        setPostID={setPostID}
                       />
                     )
                   )}
@@ -156,6 +159,7 @@ function Product({
   timestamp,
   posterId,
   setGrabDynamicDetails,
+  setPostID,
 }: {
   id: any;
   productimages: any;
@@ -166,10 +170,10 @@ function Product({
   timestamp: any;
   approve: any;
   posterId: any;
+  setPostID: any;
   message: any[];
   setGrabDynamicDetails: (value: DocumentData) => void;
 }) {
-  // console.log(id);
   // GET NEXT AUTH USER SESSION DETAILS
   const { data: session } = useSession();
 
@@ -222,10 +226,9 @@ function Product({
   };
   // fetch product by id
   const getClickedPictureDetails = async (id: any) => {
-    console.log(id);
-
     const itemRef = doc(db, "memories", id);
     const itemDoc = await getDoc(itemRef);
+    setPostID(id);
     if (itemDoc.exists()) {
       const itemData = itemDoc.data();
       setGrabDynamicDetails(itemData);
@@ -269,7 +272,7 @@ function Product({
             <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
           </span>
         </div>
-      )}{" "}
+      )}
     </div>
   );
 }

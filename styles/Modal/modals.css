@@ -420,7 +420,7 @@
 }
 .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-details-icon {
   background: transparent;
-  margin-top: 4px;
+  margin-top: 0px;
   font-size: 20px;
   color: #001d3d;
 }
@@ -429,7 +429,7 @@
   width: 95%;
   background: transparent;
   font-family: Fira Sans;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -443,7 +443,7 @@
   color: #001d3d;
   font-family: Fira Sans;
   background: transparent;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -454,7 +454,7 @@
   }
 }
 .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span span {
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

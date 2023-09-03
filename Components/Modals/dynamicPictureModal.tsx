@@ -1,24 +1,37 @@
-import { signIn } from "next-auth/react";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
+import { signIn, useSession } from "next-auth/react";
 import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { BsHeart, BsHeartFill, BsPersonFill } from "react-icons/bs";
 import { GiPerson, GiStopSign } from "react-icons/gi";
 import { LuDownload, LuDownloadCloud } from "react-icons/lu";
 import { MdLocationPin, MdOutlineClose } from "react-icons/md";
 import { RiChatHistoryFill } from "react-icons/ri";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Moment from "react-moment";
+import { db } from "../../Firebase";
 
 interface DynamicPictureProps {
   grabDynamicDetails: any;
   setGrabDynamicDetails: (value: any) => void;
   fetchDetail: any[];
+  setLoginTriger: (value: any) => void;
+  postID: any;
 }
 function DynamicPictureModal({
   grabDynamicDetails,
   setGrabDynamicDetails,
   fetchDetail,
+  setLoginTriger,
+  postID,
 }: DynamicPictureProps) {
   // GO BACK
   const closeModal = () => {
@@ -44,7 +57,62 @@ function DynamicPictureModal({
     return router.push(url); // Return the original URL if the parts are not found
   }
 
-  console.log(grabDynamicDetails);
+  // GET NEXT AUTH USER SESSION DETAILS
+  const { data: session } = useSession();
+
+  // PICTURES LIKE STATE
+  const [likes, setLikes] = useState<any[]>([]);
+  const [hasLikes, setHasLikes] = useState<boolean>(false);
+
+  // fetch likes from firebase
+  useEffect(() => {
+    onSnapshot(collection(db, "memories", postID, "likes"), (snapshot) => {
+      return setLikes(snapshot.docs);
+    });
+  }, [db]);
+
+  // to unlike logic
+  useEffect(() => {
+    setHasLikes(
+      likes.findIndex(
+        (like) => like.id === (session?.user as { uid: any })?.uid
+      ) !== -1
+    );
+  }, [likes]);
+
+  // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
+  const addToFav = async (id: string) => {
+    if (session) {
+      if (hasLikes) {
+        await deleteDoc(
+          doc(
+            db,
+            "memories",
+            postID,
+            "likes",
+            (session?.user as { uid: any })?.uid
+          )
+        );
+        // return;
+      } else {
+        await setDoc(
+          doc(
+            db,
+            "memories",
+            postID,
+            "likes",
+            (session?.user as { uid: any })?.uid
+          ),
+          {
+            username: (session.user as { username: any })?.username,
+          }
+        );
+        return;
+      }
+    } else {
+      setLoginTriger(true);
+    }
+  };
   const [readAll, setReadAll] = useState(true);
   return (
     <div className="modal-main-con">
@@ -71,6 +139,23 @@ function DynamicPictureModal({
                   loading="lazy"
                   className="cadet-img"
                 />
+                <div className="likenshare">
+                  <span className="likenshareicon">
+                    {hasLikes ? (
+                      <BsHeartFill
+                        className="like-red icon"
+                        style={{ color: "red" }}
+                        onClick={() => addToFav(grabDynamicDetails.id)}
+                      />
+                    ) : (
+                      <BsHeart
+                        onClick={() => addToFav(grabDynamicDetails.id)}
+                        className="icon"
+                      />
+                    )}
+                    <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
+                  </span>
+                </div>
               </div>
               {grabDynamicDetails?.image.length > 1 && (
                 <div className="small-display">
@@ -113,12 +198,16 @@ function DynamicPictureModal({
                 </div>
               </div>
               <div className="post-details">
-                <MdLocationPin  className="post-details-icon"/>
-                <span className="post-detail">{grabDynamicDetails?.picturelocation}</span>
+                <MdLocationPin className="post-details-icon" />
+                <span className="post-detail">
+                  {grabDynamicDetails?.picturelocation}
+                </span>
               </div>
               <div className="post-details">
-                <GiPerson  className="post-details-icon"/>
-                <span className="post-detail">{grabDynamicDetails?.namesonpicture}</span>
+                <BsPersonFill className="post-details-icon" />
+                <span className="post-detail">
+                  {grabDynamicDetails?.namesonpicture}
+                </span>
               </div>
               <div className="post-details">
                 <RiChatHistoryFill className="post-details-icon" />

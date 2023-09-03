@@ -36,14 +36,6 @@ function memories() {
   //   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // FILTER THE PICTURES
-  const dynamicName = [
-    "All",
-    ...new Set(products.map((category) => category?.data()?.namesonpicture)),
-  ];
-  const dynamicDate = [
-    "All",
-    ...new Set(products.map((category) => category?.data()?.pictureyear)),
-  ];
 
   const [category, setCategory] = useState<string>("All");
   const [categoryYear, setCategoryYear] = useState<string>("All");
@@ -98,27 +90,31 @@ function memories() {
   ];
 
   // fetch product by id to triger picture modal
-  const [grabDynamicDetails, setGrabDynamicDetails] = useState<DocumentData>();
+  const [grabDynamicDetails, setGrabDynamicDetails] = useState<any>();
   const [posterDetails, setPosterDetails] = useState<any[]>([]);
+  const [postID, setPostID] = useState<any[]>();
+
   useEffect(() => {
     const getPosterDetails = async () => {
-      if (grabDynamicDetails) {
-        onSnapshot(
-          query(collection(db, "registered_Users"), orderBy("time", "desc")),
-          (snapshot) => {
-            setPosterDetails(
-              snapshot.docs.filter(
-                (item) => item.data().userId === grabDynamicDetails.posterId
-              )
-            );
-          }
-        );
-        // console.log();
-      }
+      //   if (grabDynamicDetails?.length > 0) {
+      onSnapshot(
+        query(collection(db, "registered_Users"), orderBy("time", "desc")),
+        (snapshot) => {
+          setPosterDetails(
+            snapshot.docs.filter(
+              (item) => item.data().userId === grabDynamicDetails?.posterId
+            )
+          );
+        }
+      );
+      // console.log();
     };
+    // };
     getPosterDetails();
-  }, [grabDynamicDetails, posterDetails]);
+  }, [grabDynamicDetails]);
   const fetchDetail = posterDetails.map((item) => item.data());
+
+  
 
   return (
     <div>
@@ -133,6 +129,8 @@ function memories() {
           grabDynamicDetails={grabDynamicDetails}
           setGrabDynamicDetails={setGrabDynamicDetails}
           fetchDetail={fetchDetail}
+          setLoginTriger={setLoginTriger}
+          postID={postID}
         />
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
@@ -147,6 +145,7 @@ function memories() {
         dynamicDate={[]}
         setCategoryYear={undefined}
         setGrabDynamicDetails={setGrabDynamicDetails}
+        setPostID={setPostID}
       />
     </div>
   );
