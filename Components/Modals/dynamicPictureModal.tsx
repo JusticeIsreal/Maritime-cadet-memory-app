@@ -118,8 +118,8 @@ function DynamicPictureModal({
     <div className="modal-main-con">
       <div className="modal-relative">
         <div className="modal-card forDynamic-picture">
-          <span className="go-back-login" onClick={() => closeModal()}>
-            <MdOutlineClose className="login-close-icon" />
+          <span className="go-back-login " onClick={() => closeModal()}>
+            <MdOutlineClose className="login-close-icon go-bac" />
           </span>
 
           <div className=" Dynamic-picture-details">

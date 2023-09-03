@@ -71,14 +71,17 @@
   top: 5px;
   right: 5px;
   background: transparent;
-  color: #8ecae6 !important;
+  color: #001d3d;
 }
 .modal-main-con .modal-relative .modal-card .go-back-login .login-close-icon {
   font-size: 24px;
   background: transparent;
 }
+.modal-main-con .modal-relative .modal-card .go-back-login .go-bac {
+  color: #8ecae6 !important;
+}
 @media only screen and (min-width: 1024px) {
-  .modal-main-con .modal-relative .modal-card .go-back-login {
+  .modal-main-con .modal-relative .modal-card .go-back-login .go-bac {
     color: #000c18 !important;
   }
 }
@@ -292,6 +295,58 @@
   height: 81%;
   position: relative;
   margin-top: 10px;
+}
+.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .likenshare {
+  position: absolute;
+  background: transparent;
+  width: 50px;
+  height: 50px;
+  bottom: 10px;
+  right: 10px;
+}
+.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .likenshare .likenshareicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  padding: 2px;
+  background: rgba(0, 29, 61, 0.7);
+  margin-left: auto;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .likenshare .likenshareicon {
+    font-size: 35px;
+  }
+}
+.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .likenshare .likenshareicon .icon {
+  font-size: 20px;
+  text-align: center;
+  color: #8ecae6;
+}
+.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .likenshare .likenshareicon sub {
+  font-weight: normal;
+  font-size: 10px;
+  font-size: 10px;
+  bottom: 6px;
+  position: absolute;
+  color: #8ecae6;
+  background: transparent;
+}
+.modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .likenshare .likenshareicon .like-red {
+  animation: like 0.2s linear;
+}
+@keyframes like {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .modal-main-con .modal-relative .forDynamic-picture .Dynamic-picture-details .image-side-main-con .main-image-con .cadet-img {
   background: transparent !important;
