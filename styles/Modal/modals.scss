@@ -276,7 +276,7 @@ $general-bg: #001d3d;
         overflow: hidden !important;
       }
       .Dynamic-picture-details {
-        border: 2px solid red;
+        // border: 2px solid red;
         background: transparent !important;
         @include flexDisplay(flex-start, flex-start, column);
         width: 100%;
