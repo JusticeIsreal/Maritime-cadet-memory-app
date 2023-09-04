@@ -97,6 +97,7 @@
 .product-main-con .products-con .products .product-img .home-product-img {
   width: 100%;
   transition: transform 0.3s linear;
+  cursor: pointer;
 }
 .product-main-con .products-con .products .product-img .home-product-img:hover {
   transform: scale(1.1);

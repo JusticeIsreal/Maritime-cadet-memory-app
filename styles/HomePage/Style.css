@@ -23,6 +23,17 @@
   overflow-x: hidden;
 }
 
+.icon {
+  font-size: 30px;
+  color: #ea9319;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .icon {
+    font-size: 40px;
+  }
+}
+
 .homepage-main-con {
   max-width: 2000px;
   margin: 0 auto;
@@ -53,12 +64,6 @@
 .homepage-main-con .post-memory .post-icon {
   font-size: 60px;
   font-weight: bolder;
-}
-@media only screen and (min-width: 768px) {
-  .homepage-main-con .post-memory {
-    left: 90%;
-    bottom: 30px;
-  }
 }
 
 .singleuser-con {
@@ -155,4 +160,47 @@
     width: 15px;
     transform: translateX(-100%);
   }
+}
+
+.ad-con {
+  position: relative;
+  width: 100%;
+  border: 2px solid red;
+  margin-top: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .ad-con {
+    margin-top: 70px;
+  }
+}
+.ad-con .ad-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border: 2px solid red;
+  margin: 0 auto;
+  height: 200px;
+  border-radius: 10px;
+  padding-left: 5px;
+}
+.ad-con .ad-img img {
+  margin: 0 auto;
+  cursor: pointer;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100px;
+  width: 30vw;
+  border: 1px solid red;
+}
+@media only screen and (min-width: 768px) {
+  .ad-con .ad-img img {
+    height: 100px;
+    width: 30vw;
+  }
+}
+.ad-con .ad-img h3 {
+  text-align: center;
+  color: #ea9319;
+  font-size: 15px;
 }/*# sourceMappingURL=Style.css.map */

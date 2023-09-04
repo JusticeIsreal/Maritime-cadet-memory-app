@@ -150,6 +150,7 @@ $general-bg: #001d3d;
         .home-product-img {
           width: 100%;
           transition: transform 0.3s linear;
+          cursor: pointer;
 
           &:hover {
             transform: scale(1.1);

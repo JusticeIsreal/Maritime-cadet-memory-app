@@ -20,15 +20,18 @@
 }
 
 .modal-main-con {
-  position: relative;
   -webkit-backdrop-filter: blur(2px) !important;
           backdrop-filter: blur(2px) !important;
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   background: rgba(0, 0, 0, 0.4666666667);
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  position: fixed;
 }
 .modal-main-con .modal-relative {
   display: flex;
@@ -576,6 +579,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
+  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .review-con .review-form-con form input {
