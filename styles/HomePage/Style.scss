@@ -100,16 +100,7 @@ $general-bg: #001d3d;
 .app-main-con {
   overflow-x: hidden;
 }
-// icons
-.icon {
-  font-size: 30px;
-  color: $txt-blue;
-  cursor: pointer;
 
-  @include responsive(bigphone, portrait) {
-    font-size: 40px;
-  }
-}
 // HOME PAGE MAIN CON
 .homepage-main-con {
   max-width: 2000px;
@@ -138,11 +129,11 @@ $general-bg: #001d3d;
       font-weight: bolder;
     }
 
-    // @include responsive(bigphone, portrait) {
-    //   left: 90%;
-    //   // right: 20px;
-    //   bottom: 30px;
-    // }
+    @include responsive(bigphone, portrait) {
+      left: 90%;
+      // right: 20px;
+      bottom: 30px;
+    }
   }
 }
 
@@ -235,52 +226,3 @@ $general-bg: #001d3d;
     }
   }
 }
-
-// PAGE ADVERYS
-.ad-con {
-  position: relative;
-  width: 100%;
-  border: 2px solid red;
-  margin-top: 20px;
-  @include responsive(bigphone, portrait) {
-    margin-top: 70px;
-  }
-  .ad-img {
-    @include flexDisplay(center, center, row);
-    border: 2px solid red;
-    margin: 0 auto;
-    height: 200px;
-    border-radius: 10px;
-    // width: 98vw;
-    padding-left: 5px;
-
-    // @include responsive(bigphone) {
-    //   height: 250px;
-    //   width: 50%;
-    // }
-    // @include responsive(tablet) {
-    //   width: 98%;
-    //   height: 250px;
-    // }
-    img {
-      margin: 0 auto;
-      cursor: pointer;
-      object-fit: contain;
-      height: 100px;
-      width: 30vw;
-      border: 1px solid red;
-      @include responsive(bigphone, portrait) {
-        height: 100px;
-        width: 30vw;
-      }
-    }
-
-    h3 {
-      text-align: center;
-      color: $txt-blue;
-      font-size: 15px;
-    }
-  }
-}
-
-
