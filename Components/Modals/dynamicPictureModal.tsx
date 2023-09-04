@@ -1,8 +1,12 @@
 import {
+  addDoc,
   collection,
   deleteDoc,
   doc,
   onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
   setDoc,
 } from "firebase/firestore";
 import { signIn, useSession } from "next-auth/react";
@@ -18,6 +22,8 @@ import { RiChatHistoryFill } from "react-icons/ri";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Moment from "react-moment";
 import { db } from "../../Firebase";
+import { useForm } from "react-hook-form";
+import { Avatar, Blockquote, Group, Text, UnstyledButton } from "@mantine/core";
 
 interface DynamicPictureProps {
   grabDynamicDetails: any;
@@ -114,6 +120,53 @@ function DynamicPictureModal({
     }
   };
   const [readAll, setReadAll] = useState(true);
+
+  // useform config
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  // submit review
+  const onSubmit = async (data: any, e: any) => {
+    if (!session) {
+      return setLoginTriger(true);
+    }
+
+    e.preventDefault();
+
+    // post coment func
+    await addDoc(collection(db, "memories", postID, "review"), {
+      ...data,
+      username: session?.user?.name,
+      useremail: session?.user?.email,
+      userimage: session?.user?.image,
+      timestamp: serverTimestamp(),
+    });
+    // Navigate to a different URL
+    window.location.href = "#commentLocation";
+
+    reset();
+  };
+
+  const [review, setReview] = useState<any[]>([]);
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, "memories", postID, "review"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setReview(snapshot.docs)
+      ),
+    [db, postID]
+  );
+
+  console.log(review.map((item) => item.data()));
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
@@ -262,57 +315,55 @@ function DynamicPictureModal({
                 </span>
               </div>
 
-              <div>comment inbox</div>
-              <div>comment list</div>
-
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
-              <div>poster info</div>
-              <div>location and year</div>
-              <div>people</div>
-              <div>story</div>
-              <div>comment inbox</div>
-              <div>comment list</div>
+              <div className="review-con" id="commentLocation">
+                {/* COMMENT FORM */}
+                <div className="review-form-con">
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <textarea
+                      placeholder="Write a comment"
+                      {...register("yourreview", { required: true })}
+                    />
+                    {errors.yourreview && (
+                      <span
+                        className="errror-msg"
+                        style={{
+                          fontSize: "12px",
+                          fontStyle: "italic",
+                          color: "red",
+                        }}
+                      >
+                        Kindly write a comment
+                      </span>
+                    )}
+                    <input
+                      type="submit"
+                      value="Comment"
+                      className="submit-btn"
+                    />
+                  </form>
+                </div>
+                {/* comments */}
+                <div className="reviews" id="comment">
+                  {review?.map((comment) => (
+                    <div className="quote" key={comment?.id}>
+                      <Group>
+                        <Avatar color="blue" className="commentimage">
+                          <img src={comment.data().userimage} alt="img" />
+                        </Avatar>
+                        <div className="commenter-name">
+                          <Text>{comment.data().username}</Text>
+                          <Text size="xs" color="dimmed">
+                            <Moment fromNow className="time-posted">
+                              {comment.data().timestamp?.toDate()}
+                            </Moment>
+                          </Text>
+                        </div>
+                      </Group>
+                      <p className="quote-text">{comment.data().yourreview}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
