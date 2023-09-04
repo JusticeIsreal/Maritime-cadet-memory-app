@@ -290,7 +290,7 @@ $general-bg: #001d3d;
     bottom: 0;
     left: 0;
     right: 0;
-    // display: none;
+    display: none;
 
     @include responsive(tablet) {
       width: 40%;
