@@ -83,8 +83,8 @@ const Homepage = () => {
           <Banner />
         </>
       )}
-      {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
-      {postTriger && <AddMemoryModal setPostTriger={setPostTriger} />}
+      {/* {loginTriger && <Modal setLoginTriger={setLoginTriger} />} */}
+      {/* {postTriger && <AddMemoryModal setPostTriger={setPostTriger} />} */}
       {/* <AddNewMemory
         setPostTriger={setPostTriger}
         setLoginTriger={setLoginTriger}

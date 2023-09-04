@@ -23,15 +23,6 @@
   background-color: rgba(65, 105, 225, 0);
 }
 
-$font-family: "Poppins", sans-serif;
-$bg-light: #f9f9f9;
-$font-light: #666;
-$bg-gray: #eee;
-$bg-dark-gray: #444;
-$bg-dark: #342e37;
-$txt-blue: #ea9319;
-$txt-light-blue: #cfe8ff;
-
 // ///////////
 $font-family: "Poppins", sans-serif;
 $navbar-con-color: #003566;
@@ -161,8 +152,6 @@ $general-bg: #001d3d;
       .likenshare {
         @include flexDisplay(space-between, center, row);
         width: 100%;
-        color: $font-light;
-        // border: 2px solid red;
         position: absolute;
         bottom: 4%;
         padding-right: 15px;
@@ -220,24 +209,82 @@ $general-bg: #001d3d;
           font-size: 15px;
         }
       }
-
-      .addto-cart {
-        border: 1px solid red;
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
-        font-size: 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        background: white;
-        @include flexDisplay(center, center, row);
-
-        &:hover {
-          background: $txt-blue;
-          color: white;
-        }
-      }
     }
   }
   padding-bottom: 10px;
+  position: relative;
 }
+
+.post-memory {
+  background-color: #ffb703;
+  @include flexDisplay(space-around, center, column);
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  position: absolute;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  border-radius: 50%;
+  z-index: 2000;
+  cursor: pointer;
+
+  &:hover {
+    background: #da8701;
+  }
+  .post-icon {
+    font-size: 60px;
+    font-weight: bolder;
+    background: transparent;
+    color: $general-bg;
+  }
+
+  @include responsive(bigphone, portrait) {
+    left: 90%;
+
+    bottom: 30px;
+  }
+
+  &::before {
+    content: "";
+    animation: glow 2s linear infinite 0s;
+    background: #001d3d;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 10px solid #da8701;
+    background: transparent;
+    opacity: 0;
+    z-index: -1;
+  }
+  &::after {
+    content: "";
+    animation: glow 2s linear infinite 0s;
+    background: #001d3d;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 10px solid #da8701;
+    background: transparent;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  @keyframes glow {
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 0.5;
+    }
+    100% {
+      width: 110px;
+      height: 110px;
+      opacity: 0;
+    }
+  }
+}
+
+// /////////////////////

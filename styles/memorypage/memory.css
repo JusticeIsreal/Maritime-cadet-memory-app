@@ -27,6 +27,7 @@
   margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 10px;
+  position: relative;
 }
 @media only screen and (min-width: 768px) {
   .product-main-con {
@@ -108,7 +109,6 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  color: #666;
   position: absolute;
   bottom: 4%;
   padding-right: 15px;
@@ -161,21 +161,75 @@
 .product-main-con .products-con .products .likenshare .comment {
   font-size: 15px;
 }
-.product-main-con .products-con .products .addto-cart {
-  border: 1px solid red;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  background: white;
+
+.post-memory {
+  background-color: #ffb703;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  position: absolute;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  border-radius: 50%;
+  z-index: 2000;
+  cursor: pointer;
 }
-.product-main-con .products-con .products .addto-cart:hover {
-  background: #ea9319;
-  color: white;
+.post-memory:hover {
+  background: #da8701;
+}
+.post-memory .post-icon {
+  font-size: 60px;
+  font-weight: bolder;
+  background: transparent;
+  color: #001d3d;
+}
+@media only screen and (min-width: 768px) {
+  .post-memory {
+    left: 90%;
+    bottom: 30px;
+  }
+}
+.post-memory::before {
+  content: "";
+  animation: glow 2s linear infinite 0s;
+  background: #001d3d;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 10px solid #da8701;
+  background: transparent;
+  opacity: 0;
+  z-index: -1;
+}
+.post-memory::after {
+  content: "";
+  animation: glow 2s linear infinite 0s;
+  background: #001d3d;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 10px solid #da8701;
+  background: transparent;
+  opacity: 0;
+  z-index: -1;
+}
+@keyframes glow {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 110px;
+    height: 110px;
+    opacity: 0;
+  }
 }/*# sourceMappingURL=Memory.css.map */

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import AddNewMemory from "../AddNewMemory";
 
 const generateStars = () => {
   // CREATING AN NIMATION OF SLY LIGHT
@@ -90,6 +91,7 @@ const Banner = () => {
           </span>
         </div>
       </div>
+     
     </div>
   );
 };

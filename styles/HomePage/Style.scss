@@ -117,32 +117,9 @@ $general-bg: #001d3d;
   padding-top: 50px;
   // background: #eee;
   position: relative;
+  border: 2px solid red;
   @include responsive(bigphone) {
     padding: 0;
-  }
-
-  .post-memory {
-    background-color: aqua;
-    @include flexDisplay(space-around, center, column);
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    .post-icon {
-      font-size: 60px;
-      font-weight: bolder;
-    }
-
-    // @include responsive(bigphone, portrait) {
-    //   left: 90%;
-    //   // right: 20px;
-    //   bottom: 30px;
-    // }
   }
 }
 
@@ -282,5 +259,3 @@ $general-bg: #001d3d;
     }
   }
 }
-
-

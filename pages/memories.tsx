@@ -16,6 +16,7 @@ import Topbar from "../Components/Topbar";
 // import LoginModal from "../Components/LoginModal";
 import Modal from "../Components/Modals/LoginModal";
 import DynamicPictureModal from "../Components/Modals/dynamicPictureModal";
+import AddNewMemory from "../Components/AddNewMemory";
 
 function memories() {
   const router = useRouter();
@@ -114,8 +115,6 @@ function memories() {
   }, [grabDynamicDetails]);
   const fetchDetail = posterDetails.map((item) => item.data());
 
-  
-
   return (
     <div>
       <Topbar
@@ -134,6 +133,11 @@ function memories() {
         />
       )}
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
+      <AddNewMemory
+      // setPostTriger={undefined}
+      // setLoginTriger={undefined} // setPostTriger={setPostTriger}
+      // setLoginTriger={setLoginTriger}
+      />
 
       <Products
         product={product}
