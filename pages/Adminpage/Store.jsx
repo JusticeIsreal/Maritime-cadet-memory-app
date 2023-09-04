@@ -12,15 +12,15 @@ import StoreItems from "../../Components/AdminPageComponents/StoreItems";
 
 // ICONS
 import { MdArrowBackIos } from "react-icons/md";
-import BannerForm from "../../Components/AdminPageComponents/BannerForm";
-import ProductForm from "../../Components/AdminPageComponents/ProductForm";
-import BannerItems from "../../Components/AdminPageComponents/BannerItems";
+// import BannerForm from "../../Components/AdminPageComponentsProductForm'";
+// import ProductForm from "../../Components/AdminPageComponents/ProductForm";
+// import BannerItems from "../../Components/AdminPageComponents/BannerItems";
 import Loader from "../../Components/Loader";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { getSessionUser } from "../../Services/functions";
-import AdvertItems from "../../Components/AdminPageComponents/AdvertItems";
-import AdvertForm from "../../Components/AdminPageComponents/AdvertForm";
+// import AdvertItems from "../../Components/AdminPageComponents/AdvertItems";
+// import AdvertForm from "../../Components/AdminPageComponents/AdvertForm";
 
 function Store() {
   // display form on and of
