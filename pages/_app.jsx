@@ -3,11 +3,9 @@ import "../styles/Topbar/Topbar.css";
 import "../styles/Banner/Banner.css";
 import "../styles/memorypage/memory.css";
 import "../styles/Modal/modals.css";
-
-// import "../styles/Slider/Slider.css";
 import "../styles/HomePage/Style.css";
 // import "../styles/AdminPage/App.css";
-import "../styles/DynamicPage/clientSingleproduct/style.css";
+
 // import "../styles/DynamicPage/adminSingleproduct/style.css";
 // import "../styles/DynamicPage/transactionreceipt/style.css";
 // import "../styles/CartPage/style.css";
@@ -38,38 +36,6 @@ export default function MyApp({
   const [blockedUsers, setBlockedUsers] = useState(false);
   // useEffect(() => {
   //   setPreRender(true);
-
-  // async function fetchSessionUser() {
-  //   const userData = await getSessionUser();
-  //   if (userData && userData?.user) {
-  //     setCartQty(userData?.user.cart.length);
-  //   }
-  //   if (userData?.user?.block === true) {
-  //     router.push("/Login");
-  //   }
-  //   if (!userData) {
-  //     let userInLocal = localStorage.getItem("reLogin");
-  //     let logInGuestUser = JSON.parse(userInLocal);
-
-  //     if (logInGuestUser) {
-  //       axios
-  //         .post(
-  //           "https://houseofhilda.onrender.com/api/v1/userverification/loginuser",
-  //           logInGuestUser
-  //         )
-  //         .then((resp) => {
-  //           const token = resp.data.data;
-  //           Cookies.set("JWTtoken", token);
-  //           // router.push("/");
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //     }
-  //   }
-  // }
-  // fetchSessionUser();
-  // }, [router]);
 
   return (
     <SessionProvider session={session}>
