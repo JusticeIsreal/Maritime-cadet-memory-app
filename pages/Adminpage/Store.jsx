@@ -127,9 +127,9 @@ function Store() {
                   <ProductForm />
                 </div>
               )}
-              <AdvertItems advertDetails={advertDetails} />
-              <BannerItems bannerDetails={bannerDetails} />
-              <StoreItems productDetails={productDetails} />
+              {/* <AdvertItems advertDetails={advertDetails} /> */}
+              {/* <BannerItems bannerDetails={bannerDetails} /> */}
+              {/* <StoreItems productDetails={productDetails} /> */}
             </main>
           </div>
         </>
