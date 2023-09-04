@@ -264,7 +264,7 @@ function DynamicPictureModal({
               </div>
               <div className="post-details">
                 <RiChatHistoryFill className="post-details-icon" />
-                <span className="post-detail">
+                <p className="post-detail">
                   {grabDynamicDetails?.message.length < 2 ? (
                     <span className="testing">
                       {grabDynamicDetails?.message[0].name}
@@ -292,10 +292,10 @@ function DynamicPictureModal({
                         <>
                           {grabDynamicDetails?.message?.map(
                             (item: any, index: number) => (
-                              <span key={index}>
+                              <p key={index}>
                                 {item.name} <br />
                                 <br />
-                              </span>
+                              </p>
                             )
                           )}
                           <span
@@ -312,7 +312,7 @@ function DynamicPictureModal({
                       )}
                     </span>
                   )}
-                </span>
+                </p>
               </div>
 
               <div className="review-con" id="commentLocation">

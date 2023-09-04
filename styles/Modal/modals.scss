@@ -114,7 +114,7 @@ $general-bg: #001d3d;
       border-radius: 10px;
       overflow: hidden;
       background: #d8f2ff !important;
-    //   border: 2px solid red;
+      //   border: 2px solid red;
 
       @include responsive(phone, landscape) {
         transform: rotateZ(90deg) !important;
@@ -534,18 +534,20 @@ $general-bg: #001d3d;
             width: 95%;
             background: transparent;
             font-family: Fira Sans;
-            font-size: 13px;
+            font-size: 14px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
             @include responsive(bigphone) {
               font-size: 18px;
             }
-            span {
+
+            span,
+            p {
               color: #001d3d;
               font-family: Fira Sans;
               background: transparent;
-              font-size: 13px;
+              font-size: 14px;
               font-style: normal;
               font-weight: 500;
               line-height: normal;
@@ -557,7 +559,10 @@ $general-bg: #001d3d;
                 font-style: normal;
                 font-weight: 500;
                 line-height: normal;
-                color: rgb(118, 117, 117) !important;
+                color: #001d3d;
+                // border: 2px solid #001d3d;
+                color: #767575 !important;
+
                 @include responsive(bigphone) {
                   font-size: 18px;
                 }

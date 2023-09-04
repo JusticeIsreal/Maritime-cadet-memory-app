@@ -488,7 +488,7 @@
   width: 95%;
   background: transparent;
   font-family: Fira Sans;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -498,29 +498,34 @@
     font-size: 18px;
   }
 }
-.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span {
+.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span,
+.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail p {
   color: #001d3d;
   font-family: Fira Sans;
   background: transparent;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 @media only screen and (min-width: 768px) {
-  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span {
+  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span,
+  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail p {
     font-size: 18px;
   }
 }
-.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span span {
+.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span span,
+.modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail p span {
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  color: rgb(118, 117, 117) !important;
+  color: #001d3d;
+  color: #767575 !important;
 }
 @media only screen and (min-width: 768px) {
-  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span span {
+  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail span span,
+  .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .post-details .post-detail p span {
     font-size: 18px;
   }
 }
