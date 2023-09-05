@@ -101,7 +101,7 @@ $font-family: "Poppins", sans-serif;
   padding-top: 50px;
   // background: #eee;
   position: relative;
-  border: 2px solid red;
+  // border: 2px solid red;
   @include responsive(bigphone) {
     padding: 0;
   }

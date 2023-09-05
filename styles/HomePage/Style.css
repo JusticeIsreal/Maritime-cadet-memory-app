@@ -39,7 +39,6 @@
   margin: 0 auto;
   padding-top: 50px;
   position: relative;
-  border: 2px solid red;
 }
 @media only screen and (min-width: 768px) {
   .homepage-main-con {

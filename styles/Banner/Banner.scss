@@ -93,7 +93,6 @@ $general-bg: #001d3d;
   height: calc(100vh - 140px);
   overflow: hidden;
   background: #001d3d;
-  // border: 2px solid red;
 
   @include responsive(bigphone) {
     height: 100vh;
