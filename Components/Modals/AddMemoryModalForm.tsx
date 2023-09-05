@@ -141,7 +141,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
             <MdOutlineClose className="login-close-icon go-bac" />
           </span>
 
-          <div className=" Dynamic-picture-details">
+          <div className=" Dynamic-picture-details ">
             <div className="image-side-main-con Dark-for-form">
               <div className="main-image-con">
                 {imageUrls.length > 0 && (
@@ -154,7 +154,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
                 )}
               </div>
             </div>
-            <div className="details-comment-main-con">
+            <div className="details-comment-main-con details-post-picture">
               <div className="form-con">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="file-input-main-con">
