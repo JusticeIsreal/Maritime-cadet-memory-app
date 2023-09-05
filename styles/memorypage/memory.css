@@ -216,20 +216,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  border: 10px solid #da8701;
   background: transparent;
   opacity: 0;
   z-index: -1;
-}
-@keyframes glow {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: 0.5;
-  }
-  100% {
-    width: 110px;
-    height: 110px;
-    opacity: 0;
-  }
 }/*# sourceMappingURL=Memory.css.map */

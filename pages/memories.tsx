@@ -17,6 +17,7 @@ import Topbar from "../Components/Topbar";
 import Modal from "../Components/Modals/LoginModal";
 import DynamicPictureModal from "../Components/Modals/dynamicPictureModal";
 import AddNewMemory from "../Components/AddNewMemory";
+import AddMemoryModalForm from "../Components/Modals/AddMemoryModalForm";
 
 function memories() {
   const router = useRouter();
@@ -37,7 +38,7 @@ function memories() {
   //   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // FILTER THE PICTURES
-
+  console.log(postTriger);
   const [category, setCategory] = useState<string>("All");
   const [categoryYear, setCategoryYear] = useState<string>("All");
   // state for images
@@ -123,6 +124,7 @@ function memories() {
         setSearch={setSearch}
         search={search}
       />
+
       {grabDynamicDetails && (
         <DynamicPictureModal
           grabDynamicDetails={grabDynamicDetails}
@@ -132,11 +134,13 @@ function memories() {
           postID={postID}
         />
       )}
+
       {loginTriger && <Modal setLoginTriger={setLoginTriger} />}
+
+      {postTriger && <AddMemoryModalForm setPostTriger={setPostTriger} />}
       <AddNewMemory
-      // setPostTriger={undefined}
-      // setLoginTriger={undefined} // setPostTriger={setPostTriger}
-      // setLoginTriger={setLoginTriger}
+        setPostTriger={setPostTriger}
+        setLoginTriger={setLoginTriger}
       />
 
       <Products

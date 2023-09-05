@@ -231,12 +231,34 @@ $general-bg: #001d3d;
       }
 
       .form-con {
-        height: 550px;
-        width: 100%;
-        overflow: scroll;
+        border: 2px solid red;
+        background: transparent;
 
         form {
+          // height: 100%;
+          // border: 2px solid red;
           @include flexDisplay(center, center, column);
+          background: transparent;
+
+          .file-input-main-con {
+            border: 2px solid red;
+            @include flexDisplay(flex-start, flex-start, row);
+            flex-wrap: wrap;
+            width: 90%;
+            gap: 10px;
+            .file-input-con {
+              border: 2px solid red;
+              position: relative;
+              width: 100%;
+              height: 70px;
+              overflow: hidden;
+              .file-input {
+                width: 100%;
+                height: 100%;
+                // opacity: 0;
+              }
+            }
+          }
 
           input,
           select {
@@ -246,29 +268,28 @@ $general-bg: #001d3d;
             padding: 5px;
             border-radius: 5px;
             border: 1px solid gray;
+            background: transparent;
           }
           span {
             margin-top: -10px;
             width: 90%;
             text-align: left;
+            background: transparent;
           }
           .Box {
-            // border: 2px solid red;
-
+            background: transparent;
             .add-new-input {
-              // border: 2px solid red;
               width: 90%;
               margin-top: -5px;
               p {
-                // border: 2px solid red;
                 margin-left: auto;
                 font-size: 13px;
                 color: blue;
+                background: transparent;
               }
             }
           }
           .mantine-group {
-            // border: 2px solid red;
             position: relative;
 
             .remove-input-icon {
@@ -278,9 +299,33 @@ $general-bg: #001d3d;
             }
           }
           .selectedImg {
-            width: 90%;
             @include flexDisplay(flex-start, center, row);
             flex-wrap: wrap;
+            position: relative;
+            div {
+              // border: 2px solid red;
+              position: relative;
+              // width: 25% !important;
+              height: 70px;
+              margin: 8px;
+              .delete-pic {
+                position: absolute;
+                top: -8px;
+                right: -10px;
+                color: red;
+                color: $general-bg;
+                font-size: 20px;
+                font-weight: bolder;
+                background: transparent;
+                cursor: pointer;
+              }
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background: transparent;
+              }
+            }
           }
         }
       }
@@ -336,7 +381,7 @@ $general-bg: #001d3d;
             border-top-right-radius: 10px;
             overflow: hidden;
             width: 100%;
-            height: 81%;
+            height: 100%;
             position: relative;
             margin-top: 10px;
             // border: 2px solid red;
@@ -693,5 +738,13 @@ $general-bg: #001d3d;
         }
       }
     }
+  }
+}
+.Dark-for-form {
+  border: 2px solid red;
+  display: none !important;
+
+  @include responsive(tablet) {
+    display: block !important;
   }
 }

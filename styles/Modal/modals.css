@@ -179,15 +179,36 @@
   text-align: center;
 }
 .modal-main-con .modal-relative .modal-card .form-con {
-  height: 550px;
-  width: 100%;
-  overflow: scroll;
+  border: 2px solid red;
+  background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: transparent;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con {
+  border: 2px solid red;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+  gap: 10px;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con {
+  border: 2px solid red;
+  position: relative;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .file-input {
+  width: 100%;
+  height: 100%;
 }
 .modal-main-con .modal-relative .modal-card .form-con form input,
 .modal-main-con .modal-relative .modal-card .form-con form select {
@@ -197,11 +218,16 @@
   padding: 5px;
   border-radius: 5px;
   border: 1px solid gray;
+  background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form span {
   margin-top: -10px;
   width: 90%;
   text-align: left;
+  background: transparent;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .Box {
+  background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .Box .add-new-input {
   width: 90%;
@@ -211,6 +237,7 @@
   margin-left: auto;
   font-size: 13px;
   color: blue;
+  background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .mantine-group {
   position: relative;
@@ -221,12 +248,35 @@
   right: 5%;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .selectedImg {
-  width: 90%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  position: relative;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .selectedImg div {
+  position: relative;
+  height: 70px;
+  margin: 8px;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .selectedImg div .delete-pic {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  color: red;
+  color: #001d3d;
+  font-size: 20px;
+  font-weight: bolder;
+  background: transparent;
+  cursor: pointer;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .selectedImg div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background: transparent;
 }
 .modal-main-con .modal-relative .forDynamic-picture {
   width: 95% !important;
@@ -297,7 +347,7 @@
   border-top-right-radius: 10px;
   overflow: hidden;
   width: 100%;
-  height: 81%;
+  height: 100%;
   position: relative;
   margin-top: 10px;
 }
@@ -648,5 +698,15 @@
 @media only screen and (min-width: 768px) {
   .modal-main-con .modal-relative .forDynamic-picture .details-comment-main-con .review-con .reviews .quote .quote-text {
     font-size: 15px;
+  }
+}
+
+.Dark-for-form {
+  border: 2px solid red;
+  display: none !important;
+}
+@media only screen and (min-width: 1024px) {
+  .Dark-for-form {
+    display: block !important;
   }
 }/*# sourceMappingURL=modals.css.map */

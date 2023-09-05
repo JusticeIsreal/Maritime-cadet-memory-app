@@ -14,7 +14,7 @@ import Modal from "../Components/Modals/LoginModal";
 
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import AddMemoryModal from "../Components/Modals/AddMemoryModal";
+// import AddMemoryModal from "../Components/Modals/AddMemoryModal";
 import Banner from "../Components/Banner/Banner";
 import AddNewMemory from "../Components/AddNewMemory";
 
@@ -83,12 +83,6 @@ const Homepage = () => {
           <Banner />
         </>
       )}
-      {/* {loginTriger && <Modal setLoginTriger={setLoginTriger} />} */}
-      {/* {postTriger && <AddMemoryModal setPostTriger={setPostTriger} />} */}
-      {/* <AddNewMemory
-        setPostTriger={setPostTriger}
-        setLoginTriger={setLoginTriger}
-      /> */}
     </div>
   );
 };

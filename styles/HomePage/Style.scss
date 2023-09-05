@@ -23,25 +23,9 @@
   background-color: rgba(65, 105, 225, 0);
 }
 
-$font-family: "Poppins", sans-serif;
-$bg-light: #f9f9f9;
-$font-light: #666;
-$bg-gray: #eee;
-$bg-dark-gray: #444;
-$bg-dark: #342e37;
 $txt-blue: #ea9319;
-$txt-light-blue: #cfe8ff;
-
-// ///////////
 $font-family: "Poppins", sans-serif;
-$navbar-con-color: #003566;
-$sreen-max-width: 2000px;
-$creator-bold: #219ebc;
-$text-color: #8ecae6;
-$transparent-bg: #12688200;
-$placeholder-color: #1a97bf;
-$creator-text-color: #0b5b6f;
-$general-bg: #001d3d;
+
 
 @mixin flexDisplay($justifyProp, $alignProp, $flexDirection) {
   display: flex;
@@ -209,53 +193,6 @@ $general-bg: #001d3d;
       height: 43px;
       width: 15px;
       transform: translateX(-100%);
-    }
-  }
-}
-
-// PAGE ADVERYS
-.ad-con {
-  position: relative;
-  width: 100%;
-  border: 2px solid red;
-  margin-top: 20px;
-  @include responsive(bigphone, portrait) {
-    margin-top: 70px;
-  }
-  .ad-img {
-    @include flexDisplay(center, center, row);
-    border: 2px solid red;
-    margin: 0 auto;
-    height: 200px;
-    border-radius: 10px;
-    // width: 98vw;
-    padding-left: 5px;
-
-    // @include responsive(bigphone) {
-    //   height: 250px;
-    //   width: 50%;
-    // }
-    // @include responsive(tablet) {
-    //   width: 98%;
-    //   height: 250px;
-    // }
-    img {
-      margin: 0 auto;
-      cursor: pointer;
-      object-fit: contain;
-      height: 100px;
-      width: 30vw;
-      border: 1px solid red;
-      @include responsive(bigphone, portrait) {
-        height: 100px;
-        width: 30vw;
-      }
-    }
-
-    h3 {
-      text-align: center;
-      color: $txt-blue;
-      font-size: 15px;
     }
   }
 }

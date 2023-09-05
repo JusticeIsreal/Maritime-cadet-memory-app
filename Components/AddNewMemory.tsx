@@ -2,21 +2,22 @@ import { useSession } from "next-auth/react";
 import React from "react";
 import { FiPlus } from "react-icons/fi";
 
-function AddNewMemory({}: // setPostTriger,
-// setLoginTriger,
-{
-  // setPostTriger: any;
-  // setLoginTriger: any;
+function AddNewMemory({
+  setPostTriger,
+  setLoginTriger,
+}: {
+  setPostTriger: any;
+  setLoginTriger: any;
 }) {
   const { data: session } = useSession();
 
   const loginStatus = () => {
     if (session) {
-      // setPostTriger(true);
-      // setLoginTriger(false);
+      setPostTriger(true);
+      setLoginTriger(false);
     } else {
-      // setPostTriger(false);
-      // setLoginTriger(true);
+      setPostTriger(false);
+      setLoginTriger(true);
     }
   };
   return (
