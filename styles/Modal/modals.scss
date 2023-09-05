@@ -231,7 +231,7 @@ $general-bg: #001d3d;
       }
 
       .form-con {
-        border: 2px solid red;
+        // border: 2px solid red;
         background: transparent;
 
         form {
@@ -241,21 +241,153 @@ $general-bg: #001d3d;
           background: transparent;
 
           .file-input-main-con {
-            border: 2px solid red;
             @include flexDisplay(flex-start, flex-start, row);
             flex-wrap: wrap;
             width: 90%;
             gap: 10px;
+            background: #cae5f3;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
             .file-input-con {
-              border: 2px solid red;
+              // border: 2px solid red;
               position: relative;
               width: 100%;
-              height: 70px;
+              cursor: pointer;
+              height: 100%;
               overflow: hidden;
               .file-input {
                 width: 100%;
                 height: 100%;
-                // opacity: 0;
+                position: absolute;
+                top: 0;
+                opacity: 0;
+                cursor: pointer;
+              }
+              .file-input-holder {
+                // border: 2px solid red;
+                background: transparent;
+                @include flexDisplay(center, center, column);
+                cursor: pointer;
+                color: $general-bg;
+                .input-icon {
+                  background: transparent;
+                  font-size: 50px;
+                  cursor: pointer;
+                }
+                p {
+                  background: transparent;
+                  font-size: 15px;
+                  cursor: pointer;
+                }
+              }
+              .img-loader-cont {
+                // position: absolute;
+                // z-index: 3000;
+                // top: 35px;
+                margin-top: 10px;
+                width: 100%;
+              }
+              .loader {
+                display: block;
+                position: relative;
+                height: 32px;
+                width: 100%;
+                background: transparent;
+                border: 1px solid $navbar-con-color;
+                border-radius: 5px;
+                color: $navbar-con-color;
+                overflow: hidden;
+              }
+              .loader::before {
+                content: "";
+                background: $general-bg;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 0;
+                height: 100%;
+                animation: loading 10s linear infinite;
+              }
+              .loader:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                font-size: 24px;
+                line-height: 32px;
+                color: $navbar-con-color;
+                // mix-blend-mode: difference;
+                animation: percentage 10s linear infinite;
+              }
+
+              @keyframes loading {
+                0% {
+                  width: 0;
+                }
+                100% {
+                  width: 100%;
+                }
+              }
+              @keyframes percentage {
+                0% {
+                  content: "0%";
+                }
+                5% {
+                  content: "5%";
+                }
+                10% {
+                  content: "10%";
+                }
+                20% {
+                  content: "20%";
+                }
+                30% {
+                  content: "30%";
+                }
+                40% {
+                  content: "40%";
+                }
+                50% {
+                  color: $placeholder-color;
+                  content: "50%";
+                }
+                60% {
+                  content: "60%";
+                }
+                70% {
+                  color: $placeholder-color;
+                  content: "70%";
+                }
+                80% {
+                  content: "80%";
+                }
+                90% {
+                  content: "90%";
+                }
+                95% {
+                  color: $placeholder-color;
+                  content: "95%";
+                }
+                96% {
+                  content: "96%";
+                }
+                97% {
+                  content: "97%";
+                }
+                98% {
+                  content: "98%";
+                }
+                99% {
+                  color: $placeholder-color;
+                  content: "99%";
+                }
+                100% {
+                  content: "100%";
+                }
               }
             }
           }
@@ -265,11 +397,14 @@ $general-bg: #001d3d;
             width: 90%;
             height: 40px;
             margin: 10px;
-            padding: 5px;
+            margin-top: 18px;
+            padding: 12px;
             border-radius: 5px;
-            border: 1px solid gray;
-            background: transparent;
+            border: none;
+            background: #cae5f3;
+            font-size: 13px;
           }
+
           span {
             margin-top: -10px;
             width: 90%;
@@ -277,10 +412,13 @@ $general-bg: #001d3d;
             background: transparent;
           }
           .Box {
-            background: transparent;
+            // border: 2px solid red;
+            width: 90%;
+            background: #cae5f3;
             .add-new-input {
               width: 90%;
               margin-top: -5px;
+              background: #cae5f3 !important;
               p {
                 margin-left: auto;
                 font-size: 13px;
@@ -291,7 +429,10 @@ $general-bg: #001d3d;
           }
           .mantine-group {
             position: relative;
-
+            background: #cae5f3  !important;
+            .textArea-Input {
+              background: #cae5f3 !important;
+            }
             .remove-input-icon {
               position: absolute;
               font-size: 20px;
@@ -302,12 +443,14 @@ $general-bg: #001d3d;
             @include flexDisplay(flex-start, center, row);
             flex-wrap: wrap;
             position: relative;
+
             div {
               // border: 2px solid red;
               position: relative;
               // width: 25% !important;
               height: 70px;
               margin: 8px;
+              background: #cae5f3;
               .delete-pic {
                 position: absolute;
                 top: -8px;
@@ -741,7 +884,7 @@ $general-bg: #001d3d;
   }
 }
 .Dark-for-form {
-  border: 2px solid red;
+  // border: 2px solid red;
   display: none !important;
 
   @include responsive(tablet) {

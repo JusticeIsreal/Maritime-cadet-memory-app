@@ -179,7 +179,6 @@
   text-align: center;
 }
 .modal-main-con .modal-relative .modal-card .form-con {
-  border: 2px solid red;
   background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form {
@@ -190,7 +189,6 @@
   background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con {
-  border: 2px solid red;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -198,27 +196,159 @@
   flex-wrap: wrap;
   width: 90%;
   gap: 10px;
+  background: #cae5f3;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con {
-  border: 2px solid red;
   position: relative;
   width: 100%;
-  height: 70px;
+  cursor: pointer;
+  height: 100%;
   overflow: hidden;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .file-input {
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .file-input-holder {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  color: #001d3d;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .file-input-holder .input-icon {
+  background: transparent;
+  font-size: 50px;
+  cursor: pointer;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .file-input-holder p {
+  background: transparent;
+  font-size: 15px;
+  cursor: pointer;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .img-loader-cont {
+  margin-top: 10px;
+  width: 100%;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .loader {
+  display: block;
+  position: relative;
+  height: 32px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #003566;
+  border-radius: 5px;
+  color: #003566;
+  overflow: hidden;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .loader::before {
+  content: "";
+  background: #001d3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  animation: loading 10s linear infinite;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .file-input-main-con .file-input-con .loader:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+  color: #003566;
+  animation: percentage 10s linear infinite;
+}
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes percentage {
+  0% {
+    content: "0%";
+  }
+  5% {
+    content: "5%";
+  }
+  10% {
+    content: "10%";
+  }
+  20% {
+    content: "20%";
+  }
+  30% {
+    content: "30%";
+  }
+  40% {
+    content: "40%";
+  }
+  50% {
+    color: #1a97bf;
+    content: "50%";
+  }
+  60% {
+    content: "60%";
+  }
+  70% {
+    color: #1a97bf;
+    content: "70%";
+  }
+  80% {
+    content: "80%";
+  }
+  90% {
+    content: "90%";
+  }
+  95% {
+    color: #1a97bf;
+    content: "95%";
+  }
+  96% {
+    content: "96%";
+  }
+  97% {
+    content: "97%";
+  }
+  98% {
+    content: "98%";
+  }
+  99% {
+    color: #1a97bf;
+    content: "99%";
+  }
+  100% {
+    content: "100%";
+  }
 }
 .modal-main-con .modal-relative .modal-card .form-con form input,
 .modal-main-con .modal-relative .modal-card .form-con form select {
   width: 90%;
   height: 40px;
   margin: 10px;
-  padding: 5px;
+  margin-top: 18px;
+  padding: 12px;
   border-radius: 5px;
-  border: 1px solid gray;
-  background: transparent;
+  border: none;
+  background: #cae5f3;
+  font-size: 13px;
 }
 .modal-main-con .modal-relative .modal-card .form-con form span {
   margin-top: -10px;
@@ -227,11 +357,13 @@
   background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .Box {
-  background: transparent;
+  width: 90%;
+  background: #cae5f3;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .Box .add-new-input {
   width: 90%;
   margin-top: -5px;
+  background: #cae5f3 !important;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .Box .add-new-input p {
   margin-left: auto;
@@ -241,6 +373,10 @@
 }
 .modal-main-con .modal-relative .modal-card .form-con form .mantine-group {
   position: relative;
+  background: #cae5f3 !important;
+}
+.modal-main-con .modal-relative .modal-card .form-con form .mantine-group .textArea-Input {
+  background: #cae5f3 !important;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .mantine-group .remove-input-icon {
   position: absolute;
@@ -259,6 +395,7 @@
   position: relative;
   height: 70px;
   margin: 8px;
+  background: #cae5f3;
 }
 .modal-main-con .modal-relative .modal-card .form-con form .selectedImg div .delete-pic {
   position: absolute;
@@ -702,7 +839,6 @@
 }
 
 .Dark-for-form {
-  border: 2px solid red;
   display: none !important;
 }
 @media only screen and (min-width: 1024px) {

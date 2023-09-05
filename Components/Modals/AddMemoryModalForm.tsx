@@ -11,9 +11,9 @@ import { randomId } from "@mantine/hooks";
 import { RiChatHistoryFill, RiDeleteBin6Line } from "react-icons/ri";
 import { ImCancelCircle } from "react-icons/im";
 import { MdOutlineClose } from "react-icons/md";
-import { BsFillTrashFill, BsPersonFill } from "react-icons/bs";
+import { BsPersonFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { LuGitPullRequestClosed } from "react-icons/lu";
+import { FiPlus } from "react-icons/fi";
 interface DynamicPictureProps {
   setPostTriger: (value: boolean) => void;
 }
@@ -33,9 +33,11 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
   const fields = form.values.employees.map((item, index) => (
     <Group key={item.key} mt="xs" className="mantine-group">
       <Textarea
+        className="textArea-Input"
+        style={{ background: "#cae5f3" }}
         placeholder="Story behind these pictures? (optional)"
         withAsterisk
-        sx={{ flex: 1 }}
+        sx={{ flex: 1, background: "#cae5f3" }}
         {...form.getInputProps(`employees.${index}.name`)}
       />
       <ActionIcon
@@ -51,8 +53,10 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
   const filePickerRef1 = useRef<HTMLInputElement>("" || null);
   const [imageUrls, setImageUrls] = useState<any>([]); // Array to store image URLs
   // CONVERT ALL IMAGE FILE TO BASE 64 STRING AND CREATE PREVIEW
+  const [imageState, setImageState] = useState(true);
   const uploadFile1 = async (file: any) => {
     try {
+      setImageState(false);
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "cadets");
@@ -60,6 +64,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
         `https://api.cloudinary.com/v1_1/dd61rrbxs/image/upload`,
         formData
       );
+
       return response.data.secure_url;
     } catch (error) {
       console.error("File upload failed:", error);
@@ -71,11 +76,12 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
     if (file) {
       const imageUrl = await uploadFile1(file);
       setImageUrls((prevUrls: any) => [...prevUrls, imageUrl]); // Add imageUrl to the array
+      setImageState(true);
       const reader = new FileReader();
       reader.readAsDataURL(file);
     }
   };
-  console.log(imageUrls);
+  console.log(imageState);
   // GET NEXT AUTH USER SESSION DETAILS
   const { data: session } = useSession();
 
@@ -156,28 +162,42 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
                   <div className="file-input-main-con">
                     {/* IMAGEs */}
                     <div className="file-input-con">
-                      <input
-                        className="file-input"
-                        type="file"
-                        ref={filePickerRef1}
-                        onChange={addImageToPost1}
-                      />
+                      <>
+                        <div className="file-input-holder">
+                          <FiPlus className="input-icon" />
+                          <p>
+                            {imageUrls.length < 1
+                              ? "click here to add image"
+                              : "Click here to add more images"}
+                          </p>
+                        </div>
+                        <input
+                          className="file-input"
+                          type="file"
+                          ref={filePickerRef1}
+                          onChange={addImageToPost1}
+                        />
+                      </>
+                      {imageState ? null : (
+                        <div className="img-loader-cont">
+                          <span className="loader"></span>
+                        </div>
+                      )}
                     </div>
-
                     <div className="selectedImg">
                       {imageUrls?.map((img: string) => (
-                        <div>
-                          <MdOutlineClose
-                            className="delete-pic"
-                            onClick={(e) => removeImageUrl(e)}
-                          />
-                          <img
-                            key={img}
-                            src={img}
-                            onClick={(e) => removeImageUrl(e)}
-                            alt="img"
-                          />
-                        </div>
+                        <img
+                          key={img}
+                          src={img}
+                          onClick={(e) => removeImageUrl(e)}
+                          alt="img"
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            margin: "5px",
+                            border: "1px solid gray",
+                          }}
+                        />
                       ))}
                     </div>
                   </div>
@@ -260,7 +280,6 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
                   {/* memory */}
                   <Box maw={500} mx="auto" className="Box">
                     {fields}
-
                     <Group mt="md" className="add-new-input">
                       <p
                         onClick={() =>
