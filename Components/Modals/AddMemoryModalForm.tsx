@@ -32,12 +32,10 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
   });
   const fields = form.values.employees.map((item, index) => (
     <Group key={item.key} mt="xs" className="mantine-group">
-      <Textarea
+      <textarea
         className="textArea-Input"
         style={{ background: "#cae5f3" }}
         placeholder="Story behind these pictures? (optional)"
-        withAsterisk
-        sx={{ flex: 1, background: "#cae5f3" }}
         {...form.getInputProps(`employees.${index}.name`)}
       />
       <ActionIcon
@@ -81,7 +79,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
       reader.readAsDataURL(file);
     }
   };
-  console.log(imageState);
+  // console.log([...form.values.employees]);
   // GET NEXT AUTH USER SESSION DETAILS
   const { data: session } = useSession();
 
@@ -167,8 +165,8 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
                           <FiPlus className="input-icon" />
                           <p>
                             {imageUrls.length < 1
-                              ? "click here to add image"
-                              : "Click here to add more images"}
+                              ? "Click here to add picture"
+                              : "Click here to add more pictures"}
                           </p>
                         </div>
                         <input
@@ -257,7 +255,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
                   )}
                   {/* department */}
                   <select {...register("department", { required: true })}>
-                    <option value="">What department ?</option>
+                    <option value="">Department ?</option>
                     <option value="Mixed">Mixed</option>
                     <option value="Marine">Marine</option>
                     <option value="Nautical">Nautical</option>
@@ -293,33 +291,13 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
                     </Group>
                   </Box>
                   {imageUrls.length > 0 ? (
-                    <input
-                      type="submit"
-                      className="submit-btn"
-                      value={
-                        loading
-                          ? "POSTING..."
-                          : `POST WITH ${
-                              imageUrls?.length > 0
-                                ? imageUrls?.length
-                                : imageUrls?.length
-                            } ${imageUrls?.length > 1 ? "IMAGES" : "IMAGE"}`
-                      }
-                    />
+                    <input type="submit" className="submit-btn" value="Post" />
                   ) : (
                     <input
                       style={{ textAlign: "center" }}
                       onClick={() => alert("Kindly add pictures")}
                       className="submit-btn"
-                      value={
-                        loading
-                          ? "POSTING..."
-                          : `POST WITH ${
-                              imageUrls?.length > 0
-                                ? imageUrls?.length
-                                : imageUrls?.length
-                            } ${imageUrls?.length > 1 ? "IMAGES" : "IMAGE"}`
-                      }
+                      value="Post"
                     />
                   )}
                 </form>
