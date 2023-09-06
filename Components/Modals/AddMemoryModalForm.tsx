@@ -104,7 +104,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
     const productDetails = {
       ...data,
       id: Date.now(),
-      approve: "no",
+      approve: "yes",
       message: [...form.values.employees],
       posterId: (session?.user as { uid: string })?.uid,
       posterEmail: (session?.user as { email: string })?.email,
