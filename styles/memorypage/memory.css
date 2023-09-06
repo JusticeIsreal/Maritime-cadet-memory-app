@@ -26,13 +26,14 @@
   width: 100%;
   margin: 0 auto;
   max-width: 3000px;
-  padding: 0 16px;
+  padding: 0 14px;
   padding-top: 80px;
   padding-bottom: 10px;
   position: relative;
 }
 @media only screen and (min-width: 768px) {
   .product-main-con {
+    padding: 0 16px;
     padding-top: 102px;
   }
 }
@@ -72,7 +73,6 @@
   border-radius: 5px;
   position: relative;
   width: 100% !important;
-  max-height: 230px;
   margin: 10px 0;
   -moz-column-break-inside: avoid;
        break-inside: avoid;
@@ -80,12 +80,6 @@
 @media only screen and (min-width: 768px) {
   .product-main-con .products-con .products {
     margin: 20px 0;
-    max-height: 330px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .product-main-con .products-con .products {
-    max-height: 100%;
   }
 }
 .product-main-con .products-con .products .main-poster-con {
