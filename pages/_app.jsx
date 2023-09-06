@@ -14,7 +14,6 @@ import { AppProps } from "next/app";
 import { AuthGuard } from "./api/authe/AuthGuard.";
 import { createContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
-import { getSessionUser } from "../Services/functions";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "next-auth/react";

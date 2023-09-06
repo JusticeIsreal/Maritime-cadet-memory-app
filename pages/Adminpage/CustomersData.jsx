@@ -10,7 +10,6 @@ import { GrUserWorker, GrUserAdmin } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
 import { useRouter } from "next/router";
-import { allUsers, getSessionUser } from "../../Services/functions";
 import { GoVerified } from "react-icons/go";
 import Link from "next/link";
 import { FcCancel } from "react-icons/fc";

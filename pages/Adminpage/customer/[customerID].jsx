@@ -1,12 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
 import useSWR from "swr";
-import {
-  allUsers,
-  getSessionUser,
-  getSingleUser,
-  singleUser,
-} from "../../../Services/functions";
 import { useEffect } from "react";
 import { GoVerified } from "react-icons/go";
 import { RxAvatar } from "react-icons/rx";

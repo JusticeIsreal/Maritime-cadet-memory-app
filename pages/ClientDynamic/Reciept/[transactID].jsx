@@ -6,11 +6,6 @@ import html2canvas from "html2canvas";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import {
-  transactionStatus,
-  singleTransactionFetcher,
-  getSessionUser,
-} from "../../../Services/functions";
 import { TiArrowBack } from "react-icons/ti";
 import useSWR from "swr";
 import Loader from "../../../Components/Loader";

@@ -16,7 +16,6 @@ import axios from "axios";
 // firebase imports
 
 import { addDoc, serverTimestamp } from "firebase/firestore";
-import { getSessionUser } from "../../../Services/functions";
 
 export async function getStaticPaths() {
   const colRef = collection(db, "products");
