@@ -286,7 +286,9 @@ function DynamicPictureModal({
                 </span>
               </div>
               <div className="post-details">
-                <RiChatHistoryFill className="post-details-icon" />
+                {grabDynamicDetails?.message.length < 1 && (
+                  <RiChatHistoryFill className="post-details-icon" />
+                )}
                 <p className="post-detail">
                   {grabDynamicDetails?.message.length < 2 ? (
                     <span className="testing">
