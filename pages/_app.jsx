@@ -11,7 +11,6 @@ import "../styles/HomePage/Style.css";
 // import "../styles/CartPage/style.css";
 // import "../styles/Paginate/pagenate.css";
 import { AppProps } from "next/app";
-import { AuthGuard } from "./api/authe/AuthGuard.";
 import { createContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
 import { useRouter } from "next/router";
