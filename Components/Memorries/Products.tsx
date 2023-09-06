@@ -192,7 +192,7 @@ function Product({
   useEffect(() => {
     setHasLikes(
       likes?.findIndex(
-        (like: { id: any; }) => like.id === (session?.user as { uid: any })?.uid
+        (like: { id: any }) => like.id === (session?.user as { uid: any })?.uid
       ) !== -1
     );
   }, [likes]);
@@ -258,7 +258,7 @@ function Product({
         </span>
       </div>
       <></>
-      {likes &&  (
+      {likes && (
         <div className="likenshare">
           <span className="likenshareicon">
             {hasLikes ? (
