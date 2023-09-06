@@ -92,6 +92,8 @@ $general-bg: #001d3d;
   @include flexDisplay(space-between, center, column);
   width: 100%;
   margin: 0 auto;
+  max-width: 3000px;
+  padding: 0 16px;
   padding-top: 80px;
 
   @include responsive(bigphone) {
@@ -122,10 +124,15 @@ $general-bg: #001d3d;
       // box-shadow: -1px -1px 2px #8ecae6;
       position: relative;
       width: 100% !important;
+      max-height: 230px;
       margin: 10px 0;
       break-inside: avoid;
       @include responsive(bigphone) {
         margin: 20px 0;
+        max-height: 330px;
+      }
+      @include responsive(desktop) {
+        max-height: 100%;
       }
       .main-poster-con {
         @include flexDisplay(space-between, flex-start, column);
@@ -133,6 +140,7 @@ $general-bg: #001d3d;
 
       .product-img {
         width: 100%;
+        height: 100%;
         border-radius: 5px;
         overflow: hidden;
         position: relative;
@@ -141,6 +149,7 @@ $general-bg: #001d3d;
         .home-product-img {
           width: 100%;
           transition: transform 0.3s linear;
+          object-fit: contain !important;
           cursor: pointer;
 
           &:hover {
@@ -165,7 +174,8 @@ $general-bg: #001d3d;
           border-radius: 50%;
           padding: 2px;
           // border: 2px solid red;
-          background: rgba(0, 29, 61, 0.7);
+          background: rgba(0, 29, 61, 0.774);
+          // background: $general-bg;
           margin-left: auto;
 
           cursor: pointer;

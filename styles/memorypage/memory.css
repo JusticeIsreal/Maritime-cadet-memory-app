@@ -25,6 +25,8 @@
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
+  max-width: 3000px;
+  padding: 0 16px;
   padding-top: 80px;
   padding-bottom: 10px;
   position: relative;
@@ -70,6 +72,7 @@
   border-radius: 5px;
   position: relative;
   width: 100% !important;
+  max-height: 230px;
   margin: 10px 0;
   -moz-column-break-inside: avoid;
        break-inside: avoid;
@@ -77,6 +80,12 @@
 @media only screen and (min-width: 768px) {
   .product-main-con .products-con .products {
     margin: 20px 0;
+    max-height: 330px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .product-main-con .products-con .products {
+    max-height: 100%;
   }
 }
 .product-main-con .products-con .products .main-poster-con {
@@ -87,6 +96,7 @@
 }
 .product-main-con .products-con .products .product-img {
   width: 100%;
+  height: 100%;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -98,6 +108,8 @@
 .product-main-con .products-con .products .product-img .home-product-img {
   width: 100%;
   transition: transform 0.3s linear;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
   cursor: pointer;
 }
 .product-main-con .products-con .products .product-img .home-product-img:hover {
@@ -124,7 +136,7 @@
   height: 43px;
   border-radius: 50%;
   padding: 2px;
-  background: rgba(0, 29, 61, 0.7);
+  background: rgba(0, 29, 61, 0.774);
   margin-left: auto;
   cursor: pointer;
 }

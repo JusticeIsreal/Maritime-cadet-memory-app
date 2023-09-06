@@ -73,7 +73,7 @@
 @media only screen and (min-width: 1024px) {
   .modal-main-con .modal-relative .modal-card {
     height: 90% !important;
-    max-height: 600px !important;
+    max-height: 750px !important;
   }
 }
 .modal-main-con .modal-relative .modal-card .go-back-login {
