@@ -3,7 +3,6 @@ import Products from "../Components/Memorries/Products";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import {
-  DocumentData,
   collection,
   getDocs,
   onSnapshot,
