@@ -54,25 +54,22 @@ export default function MyApp({
 
           <meta name="description" content="Description" />
           <meta name="keywords" content="Keywords" />
-          <title>House of Hilda</title>
+          <title>MAN/18</title>
 
           <link rel="manifest" href="/manifest.json" />
           <link
-            href="https://res.cloudinary.com/dk3iqiy2e/image/upload/v1685825962/WhatsApp_Image_2023-05-30_at_12.36.37_AM-removebg-preview_kxnfud.png"
+            href="/Mémoire 18.png"
             rel="icon"
             type="image/png"
             sizes="16x16"
           />
           <link
-            href="https://res.cloudinary.com/dk3iqiy2e/image/upload/v1685825962/WhatsApp_Image_2023-05-30_at_12.36.37_AM-removebg-preview_kxnfud.png"
+            href="/Mémoire 18.png"
             rel="icon"
             type="image/png"
             sizes="32x32"
           />
-          <link
-            rel="apple-touch-icon"
-            href="https://res.cloudinary.com/dk3iqiy2e/image/upload/v1685825962/WhatsApp_Image_2023-05-30_at_12.36.37_AM-removebg-preview_kxnfud.png"
-          ></link>
+          <link rel="apple-touch-icon" href="/Mémoire 18.png"></link>
           <meta name="theme-color" content="white" />
         </Head>
         <MantineProvider withNormalizeCSS withGlobalStyles>

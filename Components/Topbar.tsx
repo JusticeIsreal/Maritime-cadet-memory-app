@@ -2,9 +2,10 @@ import React, { useState, useEffect, FC } from "react";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { BiSolidSearch } from "react-icons/bi";
+import { PiSignOutBold } from "react-icons/pi";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import { Menu, Button, Text } from "@mantine/core";
 interface TopbarProps {
   setSearch: (value: string) => void;
   setPostTriger: any;
@@ -101,14 +102,65 @@ const Topbar: FC<TopbarProps> = ({
 
           {sessions ? (
             <div className="profile-img-con">
-              <Image
-                src={sessions?.user?.image || ""}
-                alt="img"
-                width={50}
-                height={50}
-                className="profile-img"
-                onClick={() => signOut()}
-              />
+              <Menu shadow="md" width={200}>
+                <Menu.Target>
+                  <Image
+                    src={sessions?.user?.image || ""}
+                    alt="img"
+                    width={50}
+                    height={50}
+                    className="profile-img"
+                    // onClick={() => signOut()}
+                  />
+                </Menu.Target>
+
+                <Menu.Dropdown style={{ background: "#d8f2ff" }}>
+                  <Menu.Label
+                    style={{
+                      background: "#d8f2ff",
+                      display: "flex",
+                      // justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Sign Out{" "}
+                    <PiSignOutBold
+                      style={{
+                        background: "#d8f2ff",
+                        marginLeft: "10px",
+                      }}
+                    />
+                  </Menu.Label>
+                  <p
+                    style={{
+                      background: "#d8f2ff",
+                    }}
+                  >
+                    <br />
+                    <br />
+                  </p>
+
+                  <Menu.Label style={{ background: "#d8f2ff" }}>
+                    This platform was
+                  </Menu.Label>
+                  <a
+                    href={`https://wa.me/+2348143221117?text=Hello John, I am ${sessions?.user?.name} from the cadet memory platform you designed.`}
+                    target="_blank"
+                  >
+                    <Menu.Label style={{ background: "#d8f2ff" }}>
+                      Designed Kngsley John and
+                    </Menu.Label>
+                  </a>
+                  <a
+                    href={`https://wa.me/+2348104015180?text=Hello Justice, I am ${sessions?.user?.name} from the cadet memory platform you developed.`}
+                    target="_blank"
+                  >
+                    <Menu.Label style={{ background: "#d8f2ff" }}>
+                      Developed by Justice Agbonma
+                    </Menu.Label>
+                  </a>
+                </Menu.Dropdown>
+              </Menu>
             </div>
           ) : (
             <button onClick={() => signIn()}>Login</button>

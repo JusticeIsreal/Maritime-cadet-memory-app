@@ -112,7 +112,7 @@ $general-bg: #001d3d;
       columns: 4;
     }
     @include responsive(desktop) {
-      columns: 6;
+      columns: 5;
     }
 
     .products {

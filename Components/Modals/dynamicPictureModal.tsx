@@ -23,7 +23,15 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Moment from "react-moment";
 import { db } from "../../Firebase";
 import { useForm } from "react-hook-form";
-import { Avatar, Blockquote, Group, Text, UnstyledButton } from "@mantine/core";
+import {
+  Avatar,
+  Blockquote,
+  Group,
+  Menu,
+  Text,
+  UnstyledButton,
+} from "@mantine/core";
+import { BiSolidCalendar } from "react-icons/bi";
 
 interface DynamicPictureProps {
   grabDynamicDetails: any;
@@ -239,17 +247,25 @@ function DynamicPictureModal({
               )}
             </div>
             <div className="details-comment-main-con">
-              <div className="poster-details">
-                <div className="poster-details-img">
-                  <img src={fetchDetail[0]?.image} alt="" />
-                </div>
-                <div className="poster-name-con">
-                  <p className="poster-name">{fetchDetail[0]?.name}</p>
-                  <Moment fromNow className="time-sent">
-                    {grabDynamicDetails?.timestamp?.toDate()}
-                  </Moment>
-                </div>
-              </div>
+              <Menu shadow="md" width={200}>
+                <Menu.Target>
+                  <div className="poster-details" style={{ cursor: "pointer" }}>
+                    <div className="poster-details-img">
+                      <img src={fetchDetail[0]?.image} alt="" />
+                    </div>
+                    <div className="poster-name-con">
+                      <p className="poster-name">{fetchDetail[0]?.name}</p>
+                      <Moment fromNow className="time-sent">
+                        {grabDynamicDetails?.timestamp?.toDate()}
+                      </Moment>
+                    </div>
+                  </div>
+                </Menu.Target>
+                <Menu.Dropdown style={{ background: "#d8f2ff" }}>
+                  <Menu.Label>Cdt: {fetchDetail[0]?.name}</Menu.Label>
+                  <Menu.Label>{fetchDetail[0]?.email}</Menu.Label>
+                </Menu.Dropdown>
+              </Menu>
               <div className="post-details">
                 <MdLocationPin className="post-details-icon" />
                 <span className="post-detail">
@@ -259,7 +275,14 @@ function DynamicPictureModal({
               <div className="post-details">
                 <BsPersonFill className="post-details-icon" />
                 <span className="post-detail">
-                  {grabDynamicDetails?.namesonpicture}
+                  {grabDynamicDetails?.namesonpicture} (
+                  {grabDynamicDetails?.department})
+                </span>
+              </div>
+              <div className="post-details">
+                <BiSolidCalendar className="post-details-icon" />
+                <span className="post-detail">
+                  {grabDynamicDetails?.pictureyear}
                 </span>
               </div>
               <div className="post-details">
@@ -346,19 +369,29 @@ function DynamicPictureModal({
                 <div className="reviews" id="comment">
                   {review?.map((comment) => (
                     <div className="quote" key={comment?.id}>
-                      <Group>
-                        <Avatar color="blue" className="commentimage">
-                          <img src={comment.data().userimage} alt="img" />
-                        </Avatar>
-                        <div className="commenter-name">
-                          <Text>{comment.data().username}</Text>
-                          <Text size="xs" color="dimmed">
-                            <Moment fromNow className="time-posted">
-                              {comment.data().timestamp?.toDate()}
-                            </Moment>
-                          </Text>
-                        </div>
-                      </Group>
+                      <Menu shadow="md" width={200}>
+                        <Menu.Target>
+                          <Group style={{ cursor: "pointer" }}>
+                            <Avatar color="blue" className="commentimage">
+                              <img src={comment.data().userimage} alt="img" />
+                            </Avatar>
+                            <div className="commenter-name">
+                              <Text>{comment.data().username}</Text>
+                              <Text size="xs" color="dimmed">
+                                <Moment fromNow className="time-posted">
+                                  {comment.data().timestamp?.toDate()}
+                                </Moment>
+                              </Text>
+                            </div>
+                          </Group>
+                        </Menu.Target>
+                        <Menu.Dropdown style={{ background: "#d8f2ff" }}>
+                          <Menu.Label>
+                            Cdt: {comment.data().username}
+                          </Menu.Label>
+                          <Menu.Label>{comment.data().useremail}</Menu.Label>
+                        </Menu.Dropdown>
+                      </Menu>
                       <p className="quote-text">{comment.data().yourreview}</p>
                     </div>
                   ))}
