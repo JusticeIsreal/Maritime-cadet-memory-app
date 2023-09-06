@@ -178,7 +178,7 @@ function Product({
   const { data: session } = useSession();
 
   // PICTURES LIKE STATE
-  const [likes, setLikes] = useState<any[]>([]);
+  const [likes, setLikes] = useState<any>(null);
   const [hasLikes, setHasLikes] = useState<boolean>(false);
 
   // fetch likes from firebase
@@ -191,8 +191,8 @@ function Product({
   // to unlike logic
   useEffect(() => {
     setHasLikes(
-      likes.findIndex(
-        (like) => like.id === (session?.user as { uid: any })?.uid
+      likes?.findIndex(
+        (like: { id: any; }) => like.id === (session?.user as { uid: any })?.uid
       ) !== -1
     );
   }, [likes]);
@@ -257,7 +257,8 @@ function Product({
           />
         </span>
       </div>
-      {productimages && (
+      <></>
+      {likes &&  (
         <div className="likenshare">
           <span className="likenshareicon">
             {hasLikes ? (
