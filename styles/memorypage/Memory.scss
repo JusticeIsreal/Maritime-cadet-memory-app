@@ -105,11 +105,11 @@ $general-bg: #001d3d;
     width: 100%;
     margin: 0 auto;
     columns: 2;
-    column-gap: 10px;
+    column-gap: 15px;
 
     @include responsive(bigphone) {
       columns: 3;
-      column-gap: 20px;
+      column-gap: 25px;
     }
     @include responsive(tablet) {
       columns: 4;
@@ -126,10 +126,10 @@ $general-bg: #001d3d;
       position: relative;
       width: 100% !important;
       // max-height: 230px;
-      margin: 10px 0;
+      margin: 15px 0;
       break-inside: avoid;
       @include responsive(bigphone) {
-        margin: 20px 0;
+        margin: 25px 0;
         // max-height: 330px;
       }
       @include responsive(desktop) {
@@ -238,7 +238,7 @@ $general-bg: #001d3d;
   right: 0;
   bottom: 10px;
   border-radius: 50%;
-  z-index: 2000;
+  z-index: 10;
   cursor: pointer;
 
   &:hover {

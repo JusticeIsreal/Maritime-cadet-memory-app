@@ -42,15 +42,15 @@
   margin: 0 auto;
   -moz-columns: 2;
        columns: 2;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
 }
 @media only screen and (min-width: 768px) {
   .product-main-con .products-con {
     -moz-columns: 3;
          columns: 3;
-    -moz-column-gap: 20px;
-         column-gap: 20px;
+    -moz-column-gap: 25px;
+         column-gap: 25px;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -73,13 +73,13 @@
   border-radius: 5px;
   position: relative;
   width: 100% !important;
-  margin: 10px 0;
+  margin: 15px 0;
   -moz-column-break-inside: avoid;
        break-inside: avoid;
 }
 @media only screen and (min-width: 768px) {
   .product-main-con .products-con .products {
-    margin: 20px 0;
+    margin: 25px 0;
   }
 }
 .product-main-con .products-con .products .main-poster-con {
@@ -183,7 +183,7 @@
   right: 0;
   bottom: 10px;
   border-radius: 50%;
-  z-index: 2000;
+  z-index: 10;
   cursor: pointer;
 }
 .post-memory:hover {
