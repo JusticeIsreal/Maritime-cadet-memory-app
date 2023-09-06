@@ -122,6 +122,7 @@ const Topbar: FC<TopbarProps> = ({
                       // justifyContent: "center",
                       alignItems: "center",
                     }}
+                    onClick={() => signOut()}
                   >
                     Sign Out{" "}
                     <PiSignOutBold
@@ -147,18 +148,32 @@ const Topbar: FC<TopbarProps> = ({
                     href={`https://wa.me/+2348143221117?text=Hello John, I am ${sessions?.user?.name} from the cadet memory platform you designed.`}
                     target="_blank"
                   >
-                    <Menu.Label style={{ background: "#d8f2ff" }}>
-                      Designed Kngsley John and
+                    <Menu.Label
+                      style={{
+                        background: "#d8f2ff",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Designed KO John
                     </Menu.Label>
                   </a>
                   <a
                     href={`https://wa.me/+2348104015180?text=Hello Justice, I am ${sessions?.user?.name} from the cadet memory platform you developed.`}
                     target="_blank"
                   >
-                    <Menu.Label style={{ background: "#d8f2ff" }}>
-                      Developed by Justice Agbonma
+                    <Menu.Label
+                      style={{
+                        background: "#d8f2ff",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Developed by JI Agbonma
                     </Menu.Label>
                   </a>
+
+                  <Menu.Label style={{ background: "#d8f2ff" }}>
+                    MAN/18/HND/ME
+                  </Menu.Label>
                 </Menu.Dropdown>
               </Menu>
             </div>
