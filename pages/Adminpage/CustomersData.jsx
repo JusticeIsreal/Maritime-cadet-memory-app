@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import { useForm } from "react-hook-form";
 import axios from "axios";
 import html2canvas from "html2canvas";
-// import { useNavigate } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
 import Topbar from "../../Components/AdminPageComponents/Topbar";
 import Sidebar from "../../Components/AdminPageComponents/Sidebar";
-// import Loader from "../../Components/Loader";
 // ICON
 import { HiRefresh, HiCloudDownload } from "react-icons/hi";
 import { GrUserWorker, GrUserAdmin } from "react-icons/gr";
@@ -18,8 +15,6 @@ import { GoVerified } from "react-icons/go";
 import Link from "next/link";
 import { FcCancel } from "react-icons/fc";
 import { BsSearch } from "react-icons/bs";
-import Pagination from "../../Components/Pagination";
-import { paginate } from "../../paginate";
 
 function CustomersData() {
   const router = useRouter();

@@ -13,7 +13,6 @@ import {
 } from "firebase/firestore";
 import { db, db2 } from "../Firebase";
 import Topbar from "../Components/Topbar";
-// import LoginModal from "../Components/LoginModal";
 import Modal from "../Components/Modals/LoginModal";
 import DynamicPictureModal from "../Components/Modals/dynamicPictureModal";
 import AddNewMemory from "../Components/AddNewMemory";

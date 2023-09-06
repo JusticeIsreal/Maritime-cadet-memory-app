@@ -19,7 +19,6 @@ import Moment from "react-moment";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Loader from "../Loader";
 import DynamicPictureModal from "../Modals/dynamicPictureModal";
-// import { DynamicPictureModal } from "../Modals/DynamicPictureModal";
 interface TypeProps {
   product: any[];
   dynamicBtn: string[];

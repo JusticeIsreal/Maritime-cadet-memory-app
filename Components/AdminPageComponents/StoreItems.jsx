@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-// import Pagination from "../Pagination";
-// import { paginate } from "../../paginate";
 import { HiRefresh } from "react-icons/hi";
-// import Loader from "../Loader";
 // ICONS
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../Loader";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase";
 import { useRouter } from "next/router";
-// import { allUsers } from "../../Services/functions";
 
 function StoreItems({ productDetails }) {
   // ...................................

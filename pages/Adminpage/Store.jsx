@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 // firebase imports
 import { db, storage } from "../../Firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 // COMPONENTS
 import Topbar from "../../Components/AdminPageComponents/Topbar";
 import Sidebar from "../../Components/AdminPageComponents/Sidebar";
-import StoreItems from "../../Components/AdminPageComponents/StoreItems";
 
 // ICONS
-import { MdArrowBackIos } from "react-icons/md";
-// import BannerForm from "../../Components/AdminPageComponentsProductForm'";
-// import ProductForm from "../../Components/AdminPageComponents/ProductForm";
-// import BannerItems from "../../Components/AdminPageComponents/BannerItems";
-import Loader from "../../Components/Loader";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getSessionUser } from "../../Services/functions";
-// import AdvertItems from "../../Components/AdminPageComponents/AdvertItems";
-// import AdvertForm from "../../Components/AdminPageComponents/AdvertForm";
 
 function Store() {
   // display form on and of
