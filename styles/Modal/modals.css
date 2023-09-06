@@ -70,6 +70,12 @@
     max-width: 520px !important;
   }
 }
+@media only screen and (min-width: 1024px) {
+  .modal-main-con .modal-relative .modal-card {
+    height: 90% !important;
+    max-height: 600px !important;
+  }
+}
 .modal-main-con .modal-relative .modal-card .go-back-login {
   position: absolute;
   cursor: pointer;

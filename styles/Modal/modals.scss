@@ -114,7 +114,6 @@ $general-bg: #001d3d;
       border-radius: 10px;
       overflow: hidden;
       background: #d8f2ff !important;
-      //   border: 2px solid red;
 
       @include responsive(phone, landscape) {
         transform: rotateZ(90deg) !important;
@@ -123,6 +122,11 @@ $general-bg: #001d3d;
       @include responsive(bigphone) {
         transform: rotateZ(0deg) !important;
         max-width: 520px !important;
+      }
+      @include responsive(tablet) {
+        // border: 2px solid red;
+        height: 90% !important;
+        max-height: 600px !important;
       }
       .go-back-login {
         position: absolute;
