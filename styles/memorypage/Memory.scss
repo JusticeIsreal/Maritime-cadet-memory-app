@@ -102,7 +102,7 @@ $general-bg: #001d3d;
   }
   .products-con {
     // border: 2px solid red;
-  
+
     width: 100%;
     margin: 0 auto;
     columns: 2;
@@ -116,7 +116,7 @@ $general-bg: #001d3d;
       columns: 4;
     }
     @include responsive(desktop) {
-      columns: 5;
+      columns: 6;
     }
 
     .products {
@@ -159,6 +159,14 @@ $general-bg: #001d3d;
           &:hover {
             transform: scale(1.1);
           }
+        }
+        .home-product-img1 {
+          width: 100%;
+          object-fit: contain !important;
+          cursor: pointer;
+          // filter: blur(10px); /* Apply a blur effect */
+          // transition: filter 3s ease-in-out;
+          height: 200px;
         }
       }
 

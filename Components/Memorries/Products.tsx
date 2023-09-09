@@ -21,6 +21,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Loader from "../Loader";
 import DynamicPictureModal from "../Modals/dynamicPictureModal";
 import { arrayBuffer } from "stream/consumers";
+import { Skeleton } from "@mantine/core";
 interface TypeProps {
   product: any[];
   dynamicBtn: string[];
@@ -237,7 +238,7 @@ function Product({
       return null;
     }
   };
-
+  const [imgLoded, setImgLoaded] = useState(true);
   return (
     <div
       className="products"
@@ -247,20 +248,25 @@ function Product({
       data-aos-duration="600"
     >
       <div className="product-img">
+        {" "}
         <span onClick={() => getClickedPictureDetails(id)}>
           <img
             src={productimages[0]}
             alt="img"
             loading="lazy"
-            className="home-product-img"
-            // placeholderSrc="/Collection of Cherished Moments.png"
+            className={imgLoded ? "home-product-img" : "home-product-img"}
+            placeholder="/Collection of Cherished Moments.png"
             // fill
+            onLoad={() => setImgLoaded(false)}
             // effect="blur"
           />
         </span>
+        {imgLoded && (
+          <Skeleton visible={imgLoded} className="home-product-img1"></Skeleton>
+        )}
       </div>
 
-      {likes && (
+      {imgLoded ? null : (
         <div className="likenshare">
           <span className="likenshareicon">
             {hasLikes ? (
@@ -272,7 +278,7 @@ function Product({
             ) : (
               <BsHeart onClick={() => addToFav(id)} className="icon" />
             )}
-            <sub>{likes.length > 0 ? <>{likes.length}</> : null}</sub>
+            <sub>{likes?.length > 0 ? <>{likes?.length}</> : null}</sub>
           </span>
         </div>
       )}
