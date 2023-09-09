@@ -74,12 +74,12 @@
   position: relative;
   width: 100% !important;
   margin: 15px 0;
-  -moz-column-break-inside: avoid;
-       break-inside: avoid;
+  -moz-column-break-inside: avoid !important;
+       break-inside: avoid !important;
 }
 @media only screen and (min-width: 768px) {
   .product-main-con .products-con .products {
-    margin: 25px 0;
+    margin-top: auto;
   }
 }
 .product-main-con .products-con .products .main-poster-con {

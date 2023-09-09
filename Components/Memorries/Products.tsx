@@ -13,12 +13,14 @@ import {
   query,
   setDoc,
 } from "firebase/firestore";
+import { getPlaiceholder } from "plaiceholder";
 import { db } from "../../Firebase";
 import { useSession } from "next-auth/react";
 import Moment from "react-moment";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Loader from "../Loader";
 import DynamicPictureModal from "../Modals/dynamicPictureModal";
+import { arrayBuffer } from "stream/consumers";
 interface TypeProps {
   product: any[];
   dynamicBtn: string[];
@@ -69,7 +71,7 @@ function Products({
       return "";
     }
   });
-
+  console.log(product);
   return (
     <>
       <>
@@ -107,7 +109,7 @@ function Products({
                         timestamp: any;
                         (): any;
                         new (): any;
-                        image: string;
+                        image: string[];
                         namesonpicture: string;
                         picturelocation: string;
                         pictureyear: number;
@@ -161,7 +163,7 @@ function Product({
   setPostID,
 }: {
   id: any;
-  productimages: any;
+  productimages: string[];
   namesonpicture: string;
   picturelocation: string;
   pictureyear: number;
@@ -246,17 +248,18 @@ function Product({
     >
       <div className="product-img">
         <span onClick={() => getClickedPictureDetails(id)}>
-          <LazyLoadImage
+          <img
             src={productimages[0]}
             alt="img"
             loading="lazy"
             className="home-product-img"
-            effect="blur"
-            placeholderSrc={productimages[0]}
+            // placeholderSrc="/Collection of Cherished Moments.png"
+            // fill
+            // effect="blur"
           />
         </span>
       </div>
-      <></>
+
       {likes && (
         <div className="likenshare">
           <span className="likenshareicon">
