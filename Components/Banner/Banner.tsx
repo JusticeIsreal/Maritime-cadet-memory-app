@@ -68,6 +68,14 @@ const Banner = () => {
           className="cadet-img"
         />
       </div>
+      <div className="cadet-imgbg">
+        <Image
+          src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694220026/Screenshot_2023-09-09_at_01.39.19_d4fx4s.png"
+          alt="img"
+          fill={true}
+          className="cadet-img"
+        />
+      </div>
 
       <div style={{ color: "white" }} className="text-sli">
         <div className="text-sl">
@@ -91,7 +99,6 @@ const Banner = () => {
           </span>
         </div>
       </div>
-     
     </div>
   );
 };

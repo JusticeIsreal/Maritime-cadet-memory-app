@@ -65,7 +65,7 @@ const Topbar: FC<TopbarProps> = ({
             <img
               style={{ height: "40px" }}
               className="icon"
-              src="/Mémoire 18.png"
+              src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png"
               alt=""
             />
           </Link>

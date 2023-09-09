@@ -89,7 +89,6 @@ $button-bg: #ffb703;
 
 // TOP BAR
 .topbar-main-con {
- 
   // border: 2px solid red !important;
   @include flexDisplay(center, center, column);
   position: relative;
@@ -123,11 +122,18 @@ $button-bg: #ffb703;
       background: $transparent-bg;
       @include responsive(bigphone) {
         width: 100px;
+        // border: 2px solid red;
       }
       img {
         width: 100%;
+
         object-fit: contain;
         background: $transparent-bg;
+
+        @include responsive(bigphone) {
+          // border: 2px solid red;
+          height: 50px !important;
+        }
       }
     }
 

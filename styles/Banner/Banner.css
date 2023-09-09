@@ -29,6 +29,7 @@
   height: calc(100vh - 140px);
   overflow: hidden;
   background: #001d3d;
+  z-index: 20000;
   /* ScrollingText.css */
 }
 @media only screen and (min-width: 768px) {
@@ -40,6 +41,7 @@
   width: 100%;
   margin-left: 40px;
   background: rgba(18, 104, 130, 0);
+  border: 2px solid red;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con .banner-con {
@@ -52,7 +54,7 @@
   margin-right: auto;
   margin-bottom: 150px;
   position: relative;
-  background: rgba(18, 104, 130, 0);
+  background: transparent !important;
 }
 @media only screen and (min-width: 768px) {
   .banner-main-con .banner-img-con {
@@ -61,6 +63,7 @@
   }
 }
 .banner-main-con .banner-img-con .banner-text-img {
+  background: transparent !important;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -212,6 +215,7 @@
   }
 }
 .banner-main-con .cadet-img-con {
+  border: 2px solid red;
   z-index: 10;
   background: transparent;
   position: absolute;
@@ -245,6 +249,11 @@
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.banner-main-con .cadet-imgbg {
+  border: 2px solid red;
+  top: 0;
+  opacity: 0.04;
 }
 
 .galaxy {

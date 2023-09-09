@@ -26,7 +26,6 @@
 $txt-blue: #ea9319;
 $font-family: "Poppins", sans-serif;
 
-
 @mixin flexDisplay($justifyProp, $alignProp, $flexDirection) {
   display: flex;
   justify-content: $justifyProp;
