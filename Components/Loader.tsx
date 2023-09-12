@@ -3,7 +3,7 @@ import React from "react";
 function Loader() {
   return (
     <div className="loader-con">
-      <span className="loader">mėmoire 18</span>
+      <span className="loader">Loading ...</span>
     </div>
   );
 }

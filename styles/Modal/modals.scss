@@ -141,10 +141,7 @@ $general-bg: #001d3d;
           background: transparent;
         }
         .go-bac {
-          color: $text-color !important;
-          @include responsive(tablet) {
-            color: #000c18 !important;
-          }
+          color: $general-bg;
         }
       }
       .download-image {
@@ -156,6 +153,7 @@ $general-bg: #001d3d;
         background: transparent;
         color: $text-color !important;
         .login-close-icon {
+          color: $general-bg;
           font-size: 24px;
           background: transparent;
         }

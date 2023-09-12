@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import AddNewMemory from "../AddNewMemory";
+import ShipAnimation from "../ship-animation";
+import { BsFillStarFill } from "react-icons/bs";
 
 const generateStars = () => {
   // CREATING AN NIMATION OF SLY LIGHT
@@ -61,38 +63,25 @@ const Banner = () => {
         <div></div>
       </div>
       <div className="cadet-img-con">
-        <Image
-          src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1693577187/Official_Launch_Date_Background_Removed_u3ad6p.png"
-          alt="img"
-          fill={true}
-          className="cadet-img"
-        />
-      </div>
-      <div className="cadet-imgbg">
-        <Image
-          src="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694220026/Screenshot_2023-09-09_at_01.39.19_d4fx4s.png"
-          alt="img"
-          fill={true}
-          className="cadet-img"
-        />
+        <ShipAnimation />
       </div>
 
-      <div style={{ color: "white" }} className="text-sli">
+      <div style={{ color: "#001d3d" }} className="text-sli">
         <div className="text-sl">
           <span>
             Developed by{" "}
             <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
           </span>
-          <img src="/sta 3.png" alt="img" />
+          <BsFillStarFill className="img" />
           <span>
             Designed by <a href="http://kingsleyjohn.com"> Kingsley John</a>
           </span>
-          <img src="/sta 3.png" alt="" />
+          <BsFillStarFill className="img" />
           <span>
             Developed by{" "}
             <a href="https://www.justiceagbonma.com">Justice Agbonma</a>
           </span>
-          <img src="/sta 3.png" alt="" />
+          <BsFillStarFill className="img" />
           <span>
             Designed by{" "}
             <a href="https://www.kingsleyjohn.com"> Kingsley John</a>

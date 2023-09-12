@@ -89,12 +89,7 @@
   background: transparent;
 }
 .modal-main-con .modal-relative .modal-card .go-back-login .go-bac {
-  color: #8ecae6 !important;
-}
-@media only screen and (min-width: 1024px) {
-  .modal-main-con .modal-relative .modal-card .go-back-login .go-bac {
-    color: #000c18 !important;
-  }
+  color: #001d3d;
 }
 .modal-main-con .modal-relative .modal-card .download-image {
   position: absolute;
@@ -106,6 +101,7 @@
   color: #8ecae6 !important;
 }
 .modal-main-con .modal-relative .modal-card .download-image .login-close-icon {
+  color: #001d3d;
   font-size: 24px;
   background: transparent;
 }

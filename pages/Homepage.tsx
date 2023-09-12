@@ -66,12 +66,12 @@ const Homepage = () => {
       }}
     >
       {/* TOPBAR */}
-      <Topbar
+      {/* <Topbar
         setPostTriger={setPostTriger}
         newSetFilter={finalList}
         setSearch={setSearch}
         search={search}
-      />
+      /> */}
       {finalList.length < 1 ? (
         <Loader />
       ) : (
