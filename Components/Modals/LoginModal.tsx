@@ -17,7 +17,7 @@ function LoginModal({ setLoginTriger }: { setLoginTriger: any }) {
           </span>
           <div className="modal-text">
             {/* <GiStopSign className="login-stop-icon" /> */}
-            <p>Sig in to continue</p>
+            <p>Sign in to continue</p>
             <button className="modal-link" onClick={() => signIn()}>
               Sign in
             </button>
