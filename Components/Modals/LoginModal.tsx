@@ -16,8 +16,8 @@ function LoginModal({ setLoginTriger }: { setLoginTriger: any }) {
             <MdOutlineClose className="login-close-icon" />
           </span>
           <div className="modal-text">
-            <GiStopSign className="login-stop-icon" />
-            <p>Sigin to continue</p>
+            {/* <GiStopSign className="login-stop-icon" /> */}
+            <p>Sig in to continue</p>
             <button className="modal-link" onClick={() => signIn()}>
               Sign in
             </button>
