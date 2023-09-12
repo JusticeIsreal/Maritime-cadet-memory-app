@@ -37,7 +37,11 @@ export default function MyApp({
 
   return (
     <SessionProvider session={session}>
-      <div style={{ background: "#001d3d" }}>
+      <div
+        style={{
+          background: "#001d3d",
+        }}
+      >
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

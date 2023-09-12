@@ -63,6 +63,7 @@ const Homepage = () => {
       style={{
         position: "relative",
         maxWidth: "3000px",
+        background: "#001d3d",
       }}
     >
       {/* TOPBAR */}

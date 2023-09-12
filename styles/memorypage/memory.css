@@ -18,12 +18,18 @@
   background-color: rgba(65, 105, 225, 0);
 }
 
+.memory-main {
+  height: 100vh;
+  overflow: scroll;
+}
+
 .product-main-con {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 100%;
+  overflow: scroll;
   margin: 0 auto;
   max-width: 3000px;
   padding: 0 14px;

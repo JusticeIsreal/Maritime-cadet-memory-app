@@ -115,7 +115,9 @@ function memories() {
   const fetchDetail = posterDetails.map((item) => item.data());
 
   return (
-    <div>
+    <div className="memory-main"
+    // style={{ background: "#001d3d" }}
+    >
       <Topbar
         setPostTriger={setPostTriger}
         newSetFilter={finalList}

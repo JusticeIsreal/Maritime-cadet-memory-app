@@ -87,10 +87,17 @@ $general-bg: #001d3d;
   }
 }
 // MEMORY COMPONENTS
-.product-main-con {
+.memory-main {
   // border: 2px solid red;
+  height: 100vh;
+  overflow: scroll;
+}
+.product-main-con {
   @include flexDisplay(space-between, center, column);
   width: 100%;
+  // border: 2px solid red;
+  // height: 100vh;
+  overflow: scroll;
   margin: 0 auto;
   max-width: 3000px;
   padding: 0 14px;
