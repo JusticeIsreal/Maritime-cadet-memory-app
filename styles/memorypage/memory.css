@@ -187,8 +187,8 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin: 0 auto;
   position: absolute;
   position: fixed;
@@ -198,6 +198,12 @@
   border-radius: 50%;
   z-index: 10;
   cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .post-memory {
+    width: 80px;
+    height: 80px;
+  }
 }
 .post-memory:hover {
   background: #da8701;

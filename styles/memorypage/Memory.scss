@@ -247,8 +247,8 @@ $general-bg: #001d3d;
 .post-memory {
   background-color: #ffb703;
   @include flexDisplay(space-around, center, column);
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin: 0 auto;
   position: absolute;
   position: fixed;
@@ -258,6 +258,10 @@ $general-bg: #001d3d;
   border-radius: 50%;
   z-index: 10;
   cursor: pointer;
+  @include responsive(bigphone) {
+    width: 80px;
+    height: 80px;
+  }
 
   &:hover {
     background: #da8701;
