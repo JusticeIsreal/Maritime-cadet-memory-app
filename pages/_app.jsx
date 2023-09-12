@@ -60,20 +60,20 @@ export default function MyApp({
 
           <link rel="manifest" href="/manifest.json" />
           <link
-            href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png"
+            href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694548857/MARITIME_FILE_Background_Removed_nw5w3n.png"
             rel="icon"
             type="image/png"
             sizes="16x16"
           />
           <link
-            href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png"
+            href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694548857/MARITIME_FILE_Background_Removed_nw5w3n.png"
             rel="icon"
             type="image/png"
             sizes="32x32"
           />
           <link
             rel="apple-touch-icon"
-            href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png"
+            href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694548857/MARITIME_FILE_Background_Removed_nw5w3n.png"
           ></link>
           <meta name="theme-color" content="white" />
         </Head>

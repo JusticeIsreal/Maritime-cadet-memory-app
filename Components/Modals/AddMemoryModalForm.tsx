@@ -115,7 +115,7 @@ function AddMemoryModalForm({ setPostTriger }: DynamicPictureProps) {
     try {
       const colRef = collection(db, "memories");
       await addDoc(colRef, { ...productDetails });
-      alert("Product added successfully!");
+      alert("Memory added successfully!");
       setPostTriger(false);
     } catch (error) {
       console.error(error);

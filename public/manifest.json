@@ -1,16 +1,16 @@
 {
-  "name": "MAN/18/HND/ME",
+  "name": "MAN CADETS",
   "short_name": "MAN/18",
   "description": "Designed and Developed by K0 John and JI Agbonma (MAN/18/ME/HND)",
   "icons": [
     {
-      "src": "https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png",
+      "src": "https://res.cloudinary.com/dd61rrbxs/image/upload/v1694548857/MARITIME_FILE_Background_Removed_nw5w3n.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png",
+      "src": "https://res.cloudinary.com/dd61rrbxs/image/upload/v1694548857/MARITIME_FILE_Background_Removed_nw5w3n.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

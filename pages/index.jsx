@@ -63,7 +63,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="icon"
-          href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694219105/MAN_1_Background_Removed_ocabqo.png"
+          href="https://res.cloudinary.com/dd61rrbxs/image/upload/v1694548857/MARITIME_FILE_Background_Removed_nw5w3n.png"
         />
       </Head>
       <main className="app-main-con">
