@@ -189,7 +189,9 @@ function DynamicPictureModal({
   let currentDetailIndex = postsByIdArr.indexOf(postID);
   const countPlus = async () => {
     currentDetailIndex += 1;
-
+    if (currentDetailIndex > postsByIdArr.length) {
+      currentDetailIndex = postsByIdArr.length - 1;
+    }
     const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
     const itemDoc = await getDoc(itemRef);
     setPostID(postsByIdArr[currentDetailIndex]);
@@ -202,7 +204,9 @@ function DynamicPictureModal({
   };
   const countMinus = async () => {
     currentDetailIndex -= 1;
-
+    if (currentDetailIndex < 0) {
+      currentDetailIndex = 0;
+    }
     const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
     const itemDoc = await getDoc(itemRef);
     setPostID(postsByIdArr[currentDetailIndex]);
