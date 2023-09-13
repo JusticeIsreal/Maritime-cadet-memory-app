@@ -6,6 +6,8 @@ import { PiSignOutBold } from "react-icons/pi";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Menu, Button, Text } from "@mantine/core";
+import CustomerID from "./Profile";
+import Users from "./Users";
 interface TopbarProps {
   setSearch: (value: string) => void;
   setPostTriger: any;
@@ -121,6 +123,7 @@ const Topbar: FC<TopbarProps> = ({
                       display: "flex",
                       // justifyContent: "center",
                       alignItems: "center",
+                      cursor: "pointer",
                     }}
                     onClick={() => signOut()}
                   >
@@ -140,10 +143,19 @@ const Topbar: FC<TopbarProps> = ({
                     <br />
                     <br />
                   </p>
+                  <Users />
+                  <p
+                    style={{
+                      background: "#d8f2ff",
+                    }}
+                  >
+                    <br />
+                    <br />
+                  </p>
 
-                  <Menu.Label style={{ background: "#d8f2ff" }}>
+                  {/* <Menu.Label style={{ background: "#d8f2ff" }}>
                     This platform was
-                  </Menu.Label>
+                  </Menu.Label> */}
                   <a
                     href={`https://wa.me/+2348143221117?text=Hello John, I am ${sessions?.user?.name} from the cadet memory platform you designed.`}
                     target="_blank"
@@ -152,6 +164,7 @@ const Topbar: FC<TopbarProps> = ({
                       style={{
                         background: "#d8f2ff",
                         textDecoration: "underline",
+                        cursor: "pointer",
                       }}
                     >
                       Designed KO John
@@ -165,15 +178,12 @@ const Topbar: FC<TopbarProps> = ({
                       style={{
                         background: "#d8f2ff",
                         textDecoration: "underline",
+                        cursor: "pointer",
                       }}
                     >
                       Developed by JI Agbonma
                     </Menu.Label>
                   </a>
-
-                  <Menu.Label style={{ background: "#d8f2ff" }}>
-                    MAN/18/HND/ME
-                  </Menu.Label>
                 </Menu.Dropdown>
               </Menu>
             </div>

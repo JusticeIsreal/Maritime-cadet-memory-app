@@ -21,14 +21,26 @@ function Users() {
   const allUsers = user.map((item) => item.data());
   console.log(allUsers);
   return (
-    <div>
-      <h3>Admin</h3>
+    <div className="user-con">
       <div>
-        {allUsers.map((item) => (
-          <SingleUsers key={item.id} {...item} />
-        ))}
+        <div className="single-use-con  admin-con">
+          <h3>Admin</h3>
+          <div className="user-img-con">
+            <Image
+              src="https://res.cloudinary.com/isreal/image/upload/v1675303651/My%20portfolio%20Project/1671744344371_ovpmot.jpg"
+              alt="h"
+              height={40}
+              width={50}
+            />
+          </div>
+          <div className="user-email-name">
+            <p>Justice Agbonma</p>
+            <p>+2348104015180</p>
+            <p>Justiceyba@gmail.com</p>
+          </div>
+        </div>
       </div>
-
+      <h4 style={{ marginTop: "20px" }}>Registered Cadets</h4>
       <div>
         {allUsers.map((item) => (
           <SingleUsers key={item.id} {...item} />
@@ -58,11 +70,11 @@ function SingleUsers({
   endyear: any;
 }) {
   return (
-    <div>
-      <div>
-        <Image src={image} alt="h" height={40} width={50} />
+    <div className="single-use-con">
+      <div className="user-img-con">
+        <Image src={image} className="img" alt="h" height={40} width={50} />
       </div>
-      <div>
+      <div className="user-email-name">
         <p>{name}</p>
         <p>{email}</p>
       </div>
@@ -89,11 +101,11 @@ function AdminUsers({
   endyear: any;
 }) {
   return (
-    <div>
-      <div>
+    <div className="single-use-con">
+      <div className="user-img-con">
         <Image src={image} alt="h" height={40} width={50} />
       </div>
-      <div>
+      <div className="user-email-name">
         <p>{name}</p>
         <p>{email}</p>
       </div>
