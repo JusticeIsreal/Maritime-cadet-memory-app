@@ -92,6 +92,7 @@ function Products({
                     style={{
                       color: "#219ebc",
                       textDecorationLine: "underline",
+                      cursor: "pointer",
                     }}
                     onClick={() => setPostTriger(true)}
                   >
