@@ -143,7 +143,7 @@ function DynamicPictureModal({
         (like) => like.id === (session?.user as { uid: any })?.uid
       ) !== -1
     );
-  }, [likes, countMinus, countPlus]);
+  }, [likes]);
 
 
   // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
