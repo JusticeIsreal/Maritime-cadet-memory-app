@@ -102,10 +102,12 @@ $general-bg: #001d3d;
   max-width: 3000px;
   padding: 0 14px;
   padding-top: 80px;
+  padding-bottom: 80px !important;
 
   @include responsive(bigphone) {
     padding: 0 16px;
     padding-top: 102px;
+    padding-bottom: 80px !important;
   }
   .products-con {
     // border: 2px solid red;
