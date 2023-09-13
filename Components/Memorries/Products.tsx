@@ -47,7 +47,7 @@ function Products({
     (approved) => approved.data().approve === "yes"
   );
 
-  const dd = approvedPictures.map((item) => item.data());
+
 
   const newProduct = approvedPictures.filter((item) => {
     if (item.data().namesonpicture === "") {
@@ -189,7 +189,7 @@ function Product({
     onSnapshot(collection(db, "memories", id, "likes"), (snapshot) => {
       return setLikes(snapshot.docs);
     });
-  }, [db, id]);
+  }, [db]);
 
   // to unlike logic
   useEffect(() => {

@@ -34,6 +34,7 @@ function memories() {
       }
     );
   }, [router, loginTriger]);
+
   // ADD IMAGE TO FAVORITE
   //   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
@@ -91,13 +92,11 @@ function memories() {
     ...selectDate,
   ];
 
- // fetch product by id to triger picture modal
+  // fetch product by id to triger picture modal
   const [grabDynamicDetails, setGrabDynamicDetails] = useState<any>();
   const [posterDetails, setPosterDetails] = useState<any[]>([]);
   const [postID, setPostID] = useState<any>("");
- 
 
-  
   useEffect(() => {
     const getPosterDetails = async () => {
       //   if (grabDynamicDetails?.length > 0) {
@@ -116,6 +115,7 @@ function memories() {
     // };
     getPosterDetails();
   }, [grabDynamicDetails]);
+  
   const fetchDetail = posterDetails.map((item) => item.data());
 
   return (

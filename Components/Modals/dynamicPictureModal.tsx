@@ -126,10 +126,13 @@ function DynamicPictureModal({
 
   // fetch likes from firebase
   useEffect(() => {
+   
     onSnapshot(collection(db, "memories", postID, "likes"), (snapshot) => {
       return setLikes(snapshot.docs);
     });
-  }, [db, countMinus, countPlus]);
+  }, [originalURL]);
+  // db, countMinus, countPlus;
+ 
 
   // to unlike logic
   useEffect(() => {
@@ -139,6 +142,7 @@ function DynamicPictureModal({
       ) !== -1
     );
   }, [likes, countMinus, countPlus]);
+
 
   // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
   const addToFav = async (id: string) => {
@@ -220,7 +224,7 @@ function DynamicPictureModal({
 
     [db]
   );
-
+ 
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
