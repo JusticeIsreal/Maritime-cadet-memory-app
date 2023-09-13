@@ -199,6 +199,8 @@ $button-bg: #ffb703;
 
         .search-dropdown-con {
           // border: 2px solid red;
+          max-height: 80vh;
+          overflow-y: scroll;
           margin-top: 5px;
           border-radius: 10px;
           background: #d8f2ff;

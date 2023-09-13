@@ -147,6 +147,8 @@
   font-weight: 400;
 }
 .topbar-main-con .topbar-top-con .topbar-top-con-right form .search-dropdown-con {
+  max-height: 80vh;
+  overflow-y: scroll;
   margin-top: 5px;
   border-radius: 10px;
   background: #d8f2ff;
