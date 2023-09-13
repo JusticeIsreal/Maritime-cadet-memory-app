@@ -27,28 +27,34 @@ export default function Home() {
     if (session && !isSessionSaved) {
       const usersRef = collection(db2, "registered_Users");
       const q = query(usersRef, where("email", "==", session.user.email));
-      const querySnapshot = await getDocs(q);
 
-      if (querySnapshot.empty) {
-        await addDoc(usersRef, {
-          name: session.user.name,
-          email: session.user.email,
-          image: session.user.image,
-          userId: session.user.uid,
-          phone_number: "",
-          department: "",
-          startyear: "",
-          endyear: "",
-          time: serverTimestamp(),
-        });
-        console.log("User added to signedInUsers collection");
-        setIsSessionSaved(true);
-      } else {
-        console.log("User already exists in signedInUsers collection");
-        setIsSessionSaved(true);
+      try {
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+          await addDoc(usersRef, {
+            name: session.user.name,
+            email: session.user.email,
+            image: session.user.image,
+            userId: session.user.uid,
+            phone_number: "",
+            department: "",
+            startyear: "",
+            endyear: "",
+            time: serverTimestamp(),
+          });
+          console.log("User added to signedInUsers collection", session);
+          setIsSessionSaved(true);
+        } else {
+          console.log("User already exists in signedInUsers collection");
+          setIsSessionSaved(true);
+        }
+      } catch (error) {
+        console.error("Error saving session data:", error);
       }
     }
   };
+
   useEffect(() => {
     saveSession();
   }, [session]);

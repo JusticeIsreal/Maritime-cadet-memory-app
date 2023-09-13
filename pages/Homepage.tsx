@@ -36,7 +36,7 @@ const Homepage = () => {
   }, [router, loginTriger]);
 
   // USING SEARCH BAR TO FILTER
-  const [search, setSearch] = useState<any>("");
+
 
   const selectName = [
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),

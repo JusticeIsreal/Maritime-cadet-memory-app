@@ -3,6 +3,7 @@ import Products from "../Components/Memorries/Products";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -10,6 +11,7 @@ import {
   onSnapshot,
   orderBy,
   query,
+  serverTimestamp,
   where,
 } from "firebase/firestore";
 import { db, db2 } from "../Firebase";
@@ -33,7 +35,7 @@ function memories() {
         setProducts(snapshot.docs);
       }
     );
-  }, [router, loginTriger]);
+  }, [router]);
 
   // ADD IMAGE TO FAVORITE
   //   const setCartQty = useContext(CartQuantityContext).setCartQty;
@@ -72,7 +74,7 @@ function memories() {
       );
     }
   }, [category, products, categoryYear]);
-
+  console.log(category, product, categoryYear);
   const selectName = [
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),
   ];
@@ -115,9 +117,45 @@ function memories() {
     // };
     getPosterDetails();
   }, [grabDynamicDetails]);
-  
-  const fetchDetail = posterDetails.map((item) => item.data());
 
+  const fetchDetail = posterDetails.map((item) => item.data());
+  const { data: sessions } = useSession();
+  const [isSessionSaved, setIsSessionSaved] = useState(false);
+  const saveSession = async () => {
+    if (sessions && !isSessionSaved) {
+      const usersRef = collection(db2, "registered_Users");
+      const q = query(usersRef, where("email", "==", sessions?.user?.email));
+
+      try {
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+          await addDoc(usersRef, {
+            name: sessions?.user?.name,
+            email: sessions?.user?.email,
+            image: sessions?.user?.image,
+            userId: (session?.user as { uid: any })?.uid,
+            phone_number: "",
+            department: "",
+            startyear: "",
+            endyear: "",
+            time: serverTimestamp(),
+          });
+          console.log("User added to signedInUsers collection", session);
+          setIsSessionSaved(true);
+        } else {
+          console.log("User already exists in signedInUsers collection");
+          setIsSessionSaved(true);
+        }
+      } catch (error) {
+        console.error("Error saving session data:", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    saveSession();
+  }, [sessions]);
   return (
     <div
       className="memory-main"

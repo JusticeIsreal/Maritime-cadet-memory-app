@@ -47,8 +47,6 @@ function Products({
     (approved) => approved.data().approve === "yes"
   );
 
-
-
   const newProduct = approvedPictures.filter((item) => {
     if (item.data().namesonpicture === "") {
       return item;

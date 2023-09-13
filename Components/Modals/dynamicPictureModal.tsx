@@ -69,7 +69,7 @@ function DynamicPictureModal({
 
   // download image
   const router = useRouter();
-  
+
   function replaceCloudinaryValue(url: string, replacement: string) {
     const startIndex = url.indexOf("/upload/") + 8; // Find the index after "/upload/"
     const endIndex = url.lastIndexOf("/"); // Find the last index before the filename
@@ -128,13 +128,12 @@ function DynamicPictureModal({
 
   // fetch likes from firebase
   useEffect(() => {
-   
     onSnapshot(collection(db, "memories", postID, "likes"), (snapshot) => {
       return setLikes(snapshot.docs);
     });
   }, [originalURL]);
+
   // db, countMinus, countPlus;
- 
 
   // to unlike logic
   useEffect(() => {
@@ -144,7 +143,6 @@ function DynamicPictureModal({
       ) !== -1
     );
   }, [likes]);
-
 
   // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
   const addToFav = async (id: string) => {
@@ -226,7 +224,7 @@ function DynamicPictureModal({
 
     [db]
   );
- 
+
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
