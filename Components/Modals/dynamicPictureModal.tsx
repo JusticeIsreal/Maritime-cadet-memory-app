@@ -69,6 +69,7 @@ function DynamicPictureModal({
 
   // download image
   const router = useRouter();
+  
   function replaceCloudinaryValue(url: string, replacement: string) {
     const startIndex = url.indexOf("/upload/") + 8; // Find the index after "/upload/"
     const endIndex = url.lastIndexOf("/"); // Find the last index before the filename
@@ -86,38 +87,39 @@ function DynamicPictureModal({
   // selecting each post
   const postsByIdArr = pictures.map((item) => item.id);
 
-  const countPlus = async () => {
-    let currentDetailIndex = postsByIdArr.indexOf(postID);
-    currentDetailIndex += 1;
-    if (currentDetailIndex > postsByIdArr.length) {
-      currentDetailIndex = postsByIdArr.length - 1;
-    }
-    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
-    const itemDoc = await getDoc(itemRef);
-    setPostID(postsByIdArr[currentDetailIndex]);
-    if (itemDoc.exists()) {
-      const itemData = itemDoc.data();
-      setGrabDynamicDetails(itemData);
-    } else {
-      return null;
-    }
-  };
-  const countMinus = async () => {
-    let currentDetailIndex = postsByIdArr.indexOf(postID);
-    currentDetailIndex -= 1;
-    if (currentDetailIndex < 0) {
-      currentDetailIndex = 0;
-    }
-    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
-    const itemDoc = await getDoc(itemRef);
-    setPostID(postsByIdArr[currentDetailIndex]);
-    if (itemDoc.exists()) {
-      const itemData = itemDoc.data();
-      setGrabDynamicDetails(itemData);
-    } else {
-      return null;
-    }
-  };
+  // const countPlus = async () => {
+  //   let currentDetailIndex = postsByIdArr.indexOf(postID);
+  //   currentDetailIndex += 1;
+  //   if (currentDetailIndex > postsByIdArr.length) {
+  //     currentDetailIndex = postsByIdArr.length - 1;
+  //   }
+  //   const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
+  //   const itemDoc = await getDoc(itemRef);
+  //   setPostID(postsByIdArr[currentDetailIndex]);
+  //   if (itemDoc.exists()) {
+  //     const itemData = itemDoc.data();
+  //     setGrabDynamicDetails(itemData);
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
+  // const countMinus = async () => {
+  //   let currentDetailIndex = postsByIdArr.indexOf(postID);
+  //   currentDetailIndex -= 1;
+  //   if (currentDetailIndex < 0) {
+  //     currentDetailIndex = 0;
+  //   }
+  //   const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
+  //   const itemDoc = await getDoc(itemRef);
+  //   setPostID(postsByIdArr[currentDetailIndex]);
+  //   if (itemDoc.exists()) {
+  //     const itemData = itemDoc.data();
+  //     setGrabDynamicDetails(itemData);
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   // console.log(postID);
   // PICTURES LIKE STATE
@@ -229,7 +231,7 @@ function DynamicPictureModal({
     <div className="modal-main-con">
       <div className="modal-relative">
         <div className="modal-card forDynamic-picture">
-          <div className="Forward-backward-con">
+          {/* <div className="Forward-backward-con">
             <div className="fb-btn-con">
               <span onClick={countMinus}>
                 <FaChevronLeft className="fb-btn-icon" />
@@ -238,7 +240,7 @@ function DynamicPictureModal({
                 <FaChevronRight className="fb-btn-icon" />
               </span>
             </div>
-          </div>
+          </div> */}
           <span className="go-back-login " onClick={() => closeModal()}>
             <MdOutlineClose className="login-close-icon go-bac" />
           </span>
