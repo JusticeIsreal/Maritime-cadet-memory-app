@@ -82,7 +82,42 @@ function DynamicPictureModal({
 
   // GET NEXT AUTH USER SESSION DETAILS
   const { data: session } = useSession();
+  // Counter to show next slide
+  // selecting each post
+  const postsByIdArr = pictures.map((item) => item.id);
+  let currentDetailIndex = postsByIdArr.indexOf(postID);
+  const countPlus = async () => {
+    currentDetailIndex += 1;
+    if (currentDetailIndex > postsByIdArr.length) {
+      currentDetailIndex = postsByIdArr.length - 1;
+    }
+    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
+    const itemDoc = await getDoc(itemRef);
+    setPostID(postsByIdArr[currentDetailIndex]);
+    if (itemDoc.exists()) {
+      const itemData = itemDoc.data();
+      setGrabDynamicDetails(itemData);
+    } else {
+      return null;
+    }
+  };
+  const countMinus = async () => {
+    currentDetailIndex -= 1;
+    if (currentDetailIndex < 0) {
+      currentDetailIndex = 0;
+    }
+    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
+    const itemDoc = await getDoc(itemRef);
+    setPostID(postsByIdArr[currentDetailIndex]);
+    if (itemDoc.exists()) {
+      const itemData = itemDoc.data();
+      setGrabDynamicDetails(itemData);
+    } else {
+      return null;
+    }
+  };
 
+  console.log(postID);
   // PICTURES LIKE STATE
   const [likes, setLikes] = useState<any[]>([]);
   const [hasLikes, setHasLikes] = useState<boolean>(false);
@@ -92,7 +127,7 @@ function DynamicPictureModal({
     onSnapshot(collection(db, "memories", postID, "likes"), (snapshot) => {
       return setLikes(snapshot.docs);
     });
-  }, [db]);
+  }, [db, countMinus, countPlus]);
 
   // to unlike logic
   useEffect(() => {
@@ -101,7 +136,7 @@ function DynamicPictureModal({
         (like) => like.id === (session?.user as { uid: any })?.uid
       ) !== -1
     );
-  }, [likes]);
+  }, [likes, countMinus, countPlus]);
 
   // LIKE AN IMAGE AND SAME TIME ADD IT TO FAVOURITES
   const addToFav = async (id: string) => {
@@ -183,40 +218,6 @@ function DynamicPictureModal({
     [db, postID]
   );
 
-  // Counter to show next slide
-  // selecting each post
-  const postsByIdArr = pictures.map((item) => item.id);
-  let currentDetailIndex = postsByIdArr.indexOf(postID);
-  const countPlus = async () => {
-    currentDetailIndex += 1;
-    if (currentDetailIndex > postsByIdArr.length) {
-      currentDetailIndex = postsByIdArr.length - 1;
-    }
-    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
-    const itemDoc = await getDoc(itemRef);
-    setPostID(postsByIdArr[currentDetailIndex]);
-    if (itemDoc.exists()) {
-      const itemData = itemDoc.data();
-      setGrabDynamicDetails(itemData);
-    } else {
-      return null;
-    }
-  };
-  const countMinus = async () => {
-    currentDetailIndex -= 1;
-    if (currentDetailIndex < 0) {
-      currentDetailIndex = 0;
-    }
-    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
-    const itemDoc = await getDoc(itemRef);
-    setPostID(postsByIdArr[currentDetailIndex]);
-    if (itemDoc.exists()) {
-      const itemData = itemDoc.data();
-      setGrabDynamicDetails(itemData);
-    } else {
-      return null;
-    }
-  };
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
