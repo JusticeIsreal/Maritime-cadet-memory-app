@@ -141,7 +141,6 @@ const Topbar: FC<TopbarProps> = ({
                     }}
                   >
                     <br />
-                    <br />
                   </p>
                   <Users />
                   <p
