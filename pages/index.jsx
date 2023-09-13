@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <section className="oo">
       <Head>
-        <title>MAN/18/HND/ME</title>
+        <title>Academy Acrchive</title>
         <meta
           name="description"
           content="Designed and Developed by K0 John and JI Agbonma (MAN/18/ME/HND)"

@@ -56,7 +56,7 @@ export default function MyApp({
 
           <meta name="description" content="Description" />
           <meta name="keywords" content="Keywords" />
-          <title>MAN/18</title>
+          <title>Academy Acrchive</title>
 
           <link rel="manifest" href="/manifest.json" />
           <link
