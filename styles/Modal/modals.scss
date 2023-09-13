@@ -543,6 +543,7 @@ $general-bg: #001d3d;
           padding-top: 20px;
           width: 100%;
           height: 100%;
+          // background: $general-bg;
           @include flexDisplay(flex-start, flex-end, column);
 
           @include responsive(tablet) {
