@@ -22,6 +22,7 @@ import Loader from "../Loader";
 import DynamicPictureModal from "../Modals/dynamicPictureModal";
 import { arrayBuffer } from "stream/consumers";
 import { Skeleton } from "@mantine/core";
+import { RiDeleteBin5Line } from "react-icons/ri";
 interface TypeProps {
   product: any[];
   dynamicBtn: string[];
@@ -239,6 +240,13 @@ function Product({
     }
   };
   const [imgLoded, setImgLoaded] = useState(true);
+
+  // delete
+  const deleteProduct = async (id: any) => {
+    const itemRef = doc(db, "memories", id);
+    await deleteDoc(itemRef);
+    // console.log("Item successfully deleted!");
+  };
   return (
     <div
       className="products"
@@ -247,6 +255,19 @@ function Product({
       data-aos-easing="ease-in-sine"
       data-aos-duration="600"
     >
+      {session?.user?.email === "justiceyba@gmail.com" && (
+        <RiDeleteBin5Line
+          onClick={() => deleteProduct(id)}
+          style={{
+            position: "absolute",
+            left: "0",
+            zIndex: "2",
+            fontSize: "20px",
+            color: "red",
+          }}
+        />
+      )}
+
       <div className="product-img">
         {" "}
         <span onClick={() => getClickedPictureDetails(id)}>

@@ -121,7 +121,7 @@ function DynamicPictureModal({
   //   }
   // };
 
-  // console.log(postID);
+
   // PICTURES LIKE STATE
   const [likes, setLikes] = useState<any[]>([]);
   const [hasLikes, setHasLikes] = useState<boolean>(false);

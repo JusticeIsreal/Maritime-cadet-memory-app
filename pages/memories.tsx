@@ -74,7 +74,6 @@ function memories() {
       );
     }
   }, [category, products, categoryYear]);
-  console.log(category, product, categoryYear);
   const selectName = [
     ...new Set(products.map((category) => category?.data()?.namesonpicture)),
   ];
