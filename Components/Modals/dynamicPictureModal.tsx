@@ -85,8 +85,9 @@ function DynamicPictureModal({
   // Counter to show next slide
   // selecting each post
   const postsByIdArr = pictures.map((item) => item.id);
-  let currentDetailIndex = postsByIdArr.indexOf(postID);
+
   const countPlus = async () => {
+    let currentDetailIndex = postsByIdArr.indexOf(postID);
     currentDetailIndex += 1;
     if (currentDetailIndex > postsByIdArr.length) {
       currentDetailIndex = postsByIdArr.length - 1;
@@ -102,6 +103,7 @@ function DynamicPictureModal({
     }
   };
   const countMinus = async () => {
+    let currentDetailIndex = postsByIdArr.indexOf(postID);
     currentDetailIndex -= 1;
     if (currentDetailIndex < 0) {
       currentDetailIndex = 0;
@@ -117,7 +119,7 @@ function DynamicPictureModal({
     }
   };
 
-  console.log(postID);
+  // console.log(postID);
   // PICTURES LIKE STATE
   const [likes, setLikes] = useState<any[]>([]);
   const [hasLikes, setHasLikes] = useState<boolean>(false);
@@ -215,7 +217,8 @@ function DynamicPictureModal({
         ),
         (snapshot) => setReview(snapshot.docs)
       ),
-    [db, postID]
+
+    [db]
   );
 
   return (

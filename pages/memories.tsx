@@ -96,10 +96,8 @@ function memories() {
   const [posterDetails, setPosterDetails] = useState<any[]>([]);
   const [postID, setPostID] = useState<any>("");
  
- 
-  const getClickedPictureDetails = async () => {
+
   
-  };
   useEffect(() => {
     const getPosterDetails = async () => {
       //   if (grabDynamicDetails?.length > 0) {

@@ -231,10 +231,11 @@ function Product({
   const getClickedPictureDetails = async (id: any) => {
     const itemRef = doc(db, "memories", id);
     const itemDoc = await getDoc(itemRef);
-    setPostID(id);
+
     if (itemDoc.exists()) {
       const itemData = itemDoc.data();
       setGrabDynamicDetails(itemData);
+      setPostID(id);
     } else {
       return null;
     }
