@@ -508,7 +508,9 @@ $general-bg: #001d3d;
         }
       }
     }
-
+    .login-modal {
+      height: max-content !important;
+    }
     // STYLE FOR DYNAMIC PICTURE DETAILS
 
     .forDynamic-picture {

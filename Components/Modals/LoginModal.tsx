@@ -11,7 +11,7 @@ function LoginModal({ setLoginTriger }: { setLoginTriger: any }) {
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
-        <div className="modal-card">
+        <div className="modal-card login-modal">
           <span onClick={() => closeModal()} className="go-back-login">
             <MdOutlineClose className="login-close-icon" />
           </span>

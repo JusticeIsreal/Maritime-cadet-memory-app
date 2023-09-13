@@ -447,6 +447,10 @@
      object-fit: cover;
   background: transparent;
 }
+.modal-main-con .modal-relative .login-modal {
+  height: -moz-max-content !important;
+  height: max-content !important;
+}
 .modal-main-con .modal-relative .forDynamic-picture {
   width: 95% !important;
   height: 700px;
