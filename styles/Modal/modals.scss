@@ -516,6 +516,7 @@ $general-bg: #001d3d;
     .forDynamic-picture {
       width: 95% !important;
       height: 700px;
+      position: relative;
       @include responsive(tablet) {
         padding: 32px;
         max-width: 900px !important;
@@ -911,6 +912,31 @@ $general-bg: #001d3d;
                   font-size: 15px;
                 }
               }
+            }
+          }
+        }
+      }
+
+      // forward backword nav
+      .Forward-backward-con {
+        // border: 2px solid red;
+        width: 100%;
+        position: absolute;
+        z-index: 20;
+
+        .fb-btn-con {
+          // border: 2px solid red;
+          padding: 5px;
+          position: relative;
+          @include flexDisplay(space-between, center, row);
+
+          span {
+            padding: 5px 2px;
+            background: rgba(0, 29, 61, 0.7);
+            color: #8ecae6;
+            cursor: pointer;
+            .fb-btn-icon {
+              font-size: 30px;
             }
           }
         }

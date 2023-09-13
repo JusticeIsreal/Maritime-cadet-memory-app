@@ -3,6 +3,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   onSnapshot,
   orderBy,
   query,
@@ -19,6 +20,7 @@ import { GiPerson, GiStopSign } from "react-icons/gi";
 import { LuDownload, LuDownloadCloud } from "react-icons/lu";
 import { MdLocationPin, MdOutlineClose } from "react-icons/md";
 import { RiChatHistoryFill } from "react-icons/ri";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Moment from "react-moment";
 import { db } from "../../Firebase";
@@ -38,7 +40,10 @@ interface DynamicPictureProps {
   setGrabDynamicDetails: (value: any) => void;
   fetchDetail: any[];
   setLoginTriger: (value: any) => void;
+  setPostID: (value: any) => void;
+  setSearch: (value: string) => void;
   postID: any;
+  pictures: any[];
 }
 function DynamicPictureModal({
   grabDynamicDetails,
@@ -46,10 +51,14 @@ function DynamicPictureModal({
   fetchDetail,
   setLoginTriger,
   postID,
+  pictures,
+  setPostID,
+  setSearch,
 }: DynamicPictureProps) {
   // GO BACK
   const closeModal = () => {
     setGrabDynamicDetails("");
+    setSearch("");
   };
   // change image display
   const [disimg, setDisimg] = useState<number>(0);
@@ -174,11 +183,50 @@ function DynamicPictureModal({
     [db, postID]
   );
 
-  console.log(review.map((item) => item.data()));
+  // Counter to show next slide
+  // selecting each post
+  const postsByIdArr = pictures.map((item) => item.id);
+  let currentDetailIndex = postsByIdArr.indexOf(postID);
+  const countPlus = async () => {
+    currentDetailIndex += 1;
+
+    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
+    const itemDoc = await getDoc(itemRef);
+    setPostID(postsByIdArr[currentDetailIndex]);
+    if (itemDoc.exists()) {
+      const itemData = itemDoc.data();
+      setGrabDynamicDetails(itemData);
+    } else {
+      return null;
+    }
+  };
+  const countMinus = async () => {
+    currentDetailIndex -= 1;
+
+    const itemRef = doc(db, "memories", postsByIdArr[currentDetailIndex]);
+    const itemDoc = await getDoc(itemRef);
+    setPostID(postsByIdArr[currentDetailIndex]);
+    if (itemDoc.exists()) {
+      const itemData = itemDoc.data();
+      setGrabDynamicDetails(itemData);
+    } else {
+      return null;
+    }
+  };
   return (
     <div className="modal-main-con">
       <div className="modal-relative">
         <div className="modal-card forDynamic-picture">
+          <div className="Forward-backward-con">
+            <div className="fb-btn-con">
+              <span onClick={countMinus}>
+                <FaChevronLeft className="fb-btn-icon" />
+              </span>
+              <span onClick={countPlus}>
+                <FaChevronRight className="fb-btn-icon" />
+              </span>
+            </div>
+          </div>
           <span className="go-back-login " onClick={() => closeModal()}>
             <MdOutlineClose className="login-close-icon go-bac" />
           </span>
@@ -193,6 +241,7 @@ function DynamicPictureModal({
               >
                 <LuDownload className="login-close-icon" />
               </span>
+
               <div className="main-image-con">
                 <LazyLoadImage
                   src={originalURL}
@@ -200,6 +249,7 @@ function DynamicPictureModal({
                   loading="lazy"
                   className="cadet-img"
                 />
+
                 <div className="likenshare">
                   <span className="likenshareicon">
                     {hasLikes ? (

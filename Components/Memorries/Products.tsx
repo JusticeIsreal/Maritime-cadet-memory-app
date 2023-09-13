@@ -72,7 +72,7 @@ function Products({
       return "";
     }
   });
-  console.log(product);
+
   return (
     <>
       <>

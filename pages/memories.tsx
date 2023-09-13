@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import {
   collection,
+  doc,
+  getDoc,
   getDocs,
   onSnapshot,
   orderBy,
@@ -36,7 +38,7 @@ function memories() {
   //   const setCartQty = useContext(CartQuantityContext).setCartQty;
 
   // FILTER THE PICTURES
-  console.log(postTriger);
+
   const [category, setCategory] = useState<string>("All");
   const [categoryYear, setCategoryYear] = useState<string>("All");
   // state for images
@@ -89,11 +91,15 @@ function memories() {
     ...selectDate,
   ];
 
-  // fetch product by id to triger picture modal
+ // fetch product by id to triger picture modal
   const [grabDynamicDetails, setGrabDynamicDetails] = useState<any>();
   const [posterDetails, setPosterDetails] = useState<any[]>([]);
-  const [postID, setPostID] = useState<any[]>();
-
+  const [postID, setPostID] = useState<any>("");
+ 
+ 
+  const getClickedPictureDetails = async () => {
+  
+  };
   useEffect(() => {
     const getPosterDetails = async () => {
       //   if (grabDynamicDetails?.length > 0) {
@@ -107,16 +113,17 @@ function memories() {
           );
         }
       );
-      // console.log();
     };
+
     // };
     getPosterDetails();
   }, [grabDynamicDetails]);
   const fetchDetail = posterDetails.map((item) => item.data());
 
   return (
-    <div className="memory-main"
-    // style={{ background: "#001d3d" }}
+    <div
+      className="memory-main"
+      // style={{ background: "#001d3d" }}
     >
       <Topbar
         setPostTriger={setPostTriger}
@@ -132,6 +139,9 @@ function memories() {
           fetchDetail={fetchDetail}
           setLoginTriger={setLoginTriger}
           postID={postID}
+          setPostID={setPostID}
+          pictures={products}
+          setSearch={setSearch}
         />
       )}
 

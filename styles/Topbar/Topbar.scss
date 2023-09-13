@@ -212,16 +212,17 @@ $button-bg: #ffb703;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
-            height: 34px;
+            cursor: pointer;
+            border-radius: 5px;
             background: transparent;
+            background: rgba(33, 158, 188, 0.2);
+            margin: 5px 0;
             p {
               background: transparent;
               padding: 8px;
             }
             &:hover {
-              background: #fd9e02;
-              border-radius: 5px;
-              background: rgba(33, 158, 188, 0.2);
+              background: rgba(33, 157, 188, 0.319);
             }
           }
         }

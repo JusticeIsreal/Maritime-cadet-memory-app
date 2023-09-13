@@ -85,7 +85,7 @@ const Topbar: FC<TopbarProps> = ({
                 setSearch(e.target.value);
               }}
             />
-            {/* {dropDownCon && search ? (
+            {dropDownCon && search ? (
               <div className="search-dropdown-con">
                 {result?.map((product, index) => (
                   <TopbarSearchOption
@@ -97,7 +97,7 @@ const Topbar: FC<TopbarProps> = ({
                   />
                 ))}
               </div>
-            ) : null} */}
+            ) : null}
           </form>
 
           {sessions ? (
