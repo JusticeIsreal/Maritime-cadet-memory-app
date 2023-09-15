@@ -1,31 +1,23 @@
-# Progressive Web App Example
+Maritime Cadets Archive
+![Maritime Cadets Archive](/readMe.png)
 
-This example uses [`next-pwa`](https://github.com/shadowwalker/next-pwa) to create a progressive web app (PWA) powered by [Workbox](https://developers.google.com/web/tools/workbox/).
 
-## Deploy your own
+Overview
+The Maritime Cadets Archive is a dedicated platform designed exclusively for cadets and alumni of the Maritime Academy of Nigeria. It serves as an invaluable repository for preserving the cherished moments spent at the academy through the sharing of captivating photographs.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+Project Description
+This application provides a seamless platform for cadets to post their pictures, showcasing the beautiful memories created during their time at the academy. It encourages interaction among cadets as they can like, comment on, or download these shared pictures, fostering a sense of community and nostalgia.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/progressive-web-app&project-name=progressive-web-app&repository-name=progressive-web-app)
+Key Features
+Photo Sharing: Cadets can easily upload and share their academy memories in the form of photos.
+Interaction: The platform allows cadets to like and comment on each other's pictures, creating a sense of camaraderie.
+Download: Cadets have the option to download photos, preserving these memories for years to come.
+Purpose
+The primary goal of the Maritime Cadets Archive is to act as a digital time capsule, preserving the captivating memories and experiences of cadets during their training at the Maritime Academy of Nigeria. By creating a centralized repository for these photographs, we aim to:
 
-## How to use
+Promote Community: Foster a strong sense of community among cadets and alumni by encouraging interaction and reminiscence.
+Preserve Memories: Ensure that the beautiful moments captured in these pictures are never forgotten and remain accessible to all.
+Celebrate Tradition: Uphold the rich traditions of the academy by celebrating the experiences of cadets over the years.
+Project Website
+This project is hosted live at www.manarchive.com. We invite all Maritime Academy cadets and alumni to explore, contribute, and relive the memories that define our unique maritime journey.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example progressive-web-app progressive-web-app
-# or
-yarn create next-app --example progressive-web-app progressive-web-app
-# or
-pnpm create next-app --example progressive-web-app progressive-web-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-# e-commerce-client
-# e-commerce-client-side
-# e-commerce-client-side
-# e-commerce-client-sides
-# e-commerce-client-sides
-# e-commerce-client-sides
-# e-commerce-client-sides
-# Maritime-cadet-memory-app
